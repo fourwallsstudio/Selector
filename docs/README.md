@@ -27,7 +27,7 @@
 [wireframes]: ./wireframes/
 [components]: ./component-hierarchy.md
 [state]: ./sample-state.md
-[schema]: ./sample-schema.md
+[schema]: ./schema.md
 [api]: ./api-endpoints.md
 
 ## Implementation Timeline
