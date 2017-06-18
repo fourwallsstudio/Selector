@@ -35,6 +35,7 @@
         title: "PLUR",
         url: "/",
         author_id: 1,
+        description: "about",
         date_ago: "1 day",
         comments: [1, 2, 3],
         tag_ids: [1, 2, 3],
