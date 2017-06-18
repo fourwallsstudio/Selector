@@ -27,6 +27,7 @@ description | text      |
 column name | data type | details
 ------------|-----------|-----------------------
 id          | integer   | not null, primary key
+body        | text      | not null
 author_id   | integer   | not null, foreign key (references users), indexed
 show_id   | integer   | not null, foreign key (references shows), indexed
 

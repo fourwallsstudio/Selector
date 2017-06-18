@@ -4,8 +4,8 @@
 
 [Trello link][trello]
 
-[heroku]:
-[trello]:
+[heroku]: https://www.heroku.com/
+[trello]: https://trello.com/b/JJJEV2XT/selector
 
 ## Minimum Viable Product
 
@@ -40,7 +40,7 @@ Selector is a web application inspired by MixCloud built using Ruby on Rails and
 
 ### Phase 2: Shows Model, API, and components (2 days)
 
-**Objective:** Shows can be created, read, edited and destroyed through the API.
+**Objective:** Shows can be created, played, edited and destroyed through the API.
 
 ### Phase 3: Show Playback (1 day)
 
