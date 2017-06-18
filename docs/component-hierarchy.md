@@ -3,6 +3,9 @@
 ### AuthFormContainer
   - AuthForm
 
+  ### HomeContainer
+  - SideBar
+
 ### HeaderNavContainer
   - Search
   - UserDropDown
@@ -14,7 +17,10 @@
 
 ### UserProfileContainer
   - ShowFeed
-  - ShowFeedItem
+    - ShowFeedItem
+
+### UploadShowContainer
+  - UploadShowForm
 
 ### ShowViewContainer
   - ShowViewPlayer
@@ -25,19 +31,32 @@
 
 ### ShowFeedContainer
   - ShowFeed
-  - ShowFeedItem
+    - ShowFeedItem
 
 ### SearchContainer
   - Search
 
 ### TagResultsContainer
   - TagIndex
-  - TagIndexItem
+    - TagIndexItem
 
 ### ShowResultsContainer
   - ShowResultIndex
-  - ShowResultIndexItem
+    - ShowResultIndexItem
 
 ### UserResultsContainer
   - UserIndex
-  - UserIndexItem
+    - UserIndexItem
+
+
+## Routes
+
+|Path   | Component   |
+|-------|-------------|
+| "/sign-up" | "AuthFormContainer" |
+| "/log-in" | "AuthFormContainer" |
+| "/" | "HomeContainer" |
+| "/userName" | "UserProfileContainer" |
+| "/authorName/showTitle" | "ShowViewContainer" |
+| "/search" | "SearchContainer" |
+| "/upload" | "UploadShowContainer" |
