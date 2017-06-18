@@ -53,9 +53,9 @@
 
 |Path   | Component   |
 |-------|-------------|
-| "/sign-up" | "AuthFormContainer" |
-| "/log-in" | "AuthFormContainer" |
 | "/" | "HomeContainer" |
+| "/signup" | "AuthFormContainer" |
+| "/login" | "AuthFormContainer" |
 | "/userName" | "UserProfileContainer" |
 | "/authorName/showTitle" | "ShowViewContainer" |
 | "/search" | "SearchContainer" |
