@@ -1,3 +1,6 @@
+## Sample State
+
+```js
 {
   session: {
     currentUser: {
@@ -57,3 +60,4 @@
     }
   }
 }
+```
