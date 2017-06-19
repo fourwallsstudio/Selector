@@ -1,10 +1,7 @@
 # Component Hierarchy
 
-### AuthFormContainer
+### AuthFormModalContainer
   - AuthForm
-
-  ### HomeContainer
-  - SideBar
 
 ### HeaderNavContainer
   - Search
@@ -53,7 +50,6 @@
 
 |Path   | Component   |
 |-------|-------------|
-| "/" | "HomeContainer" |
 | "/signup" | "AuthFormContainer" |
 | "/login" | "AuthFormContainer" |
 | "/userName" | "UserProfileContainer" |

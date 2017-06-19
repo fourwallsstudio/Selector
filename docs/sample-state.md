@@ -14,6 +14,10 @@
 
   errors: [],
 
+  modal: {
+    active: false
+  }
+
   users: {
     1: {
       username: "user",

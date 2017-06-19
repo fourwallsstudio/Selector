@@ -3,7 +3,8 @@ var path = require('path');
 module.exports = {
   entry: './frontend/selector.jsx',
   output: {
-    filename: './bundle.js',
+    path: path.resolve(__dirname, 'app', 'assets', 'javascripts'),
+    filename: "bundle.js"
   },
   module: {
     loaders: [
