@@ -17,7 +17,7 @@ Selector is a web application inspired by MixCloud built using Ruby on Rails and
 - [ ] Show playback
 - [ ] User Profile Pages
 - [ ] Comments
-- [ ] Production README [sample](docs/production_readme.md)
+- [ ] Production README
 
 ## Design Docs
 * [View Wireframes][wireframes]
