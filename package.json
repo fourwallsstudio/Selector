@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "engines": {
-    "node": "4.1.1",
-    "npm": "2.1.x"
+    "node": "7.10.0",
+    "npm": "3.10.10"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -22,6 +22,8 @@
     "babel-preset-react": "^6.24.1",
     "draggable": "^4.1.2",
     "howler": "^2.0.4",
+    "lodash": "^4.17.4",
+    "node": "0.0.0",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
     "react-draggable": "^2.2.6",
