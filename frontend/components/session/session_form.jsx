@@ -1,5 +1,6 @@
 import React from 'react';
 import { withRouter, Link } from 'react-router-dom';
+import Draggable from 'react-draggable';
 
 class SessionForm extends React.Component {
 	constructor(props) {
@@ -14,26 +15,29 @@ class SessionForm extends React.Component {
     this.update = this.update.bind(this);
   }
 
-  componentWillReceiveProps(nextProps) {
-    if(nextProps.loggedIn) {
-      this.props.history.push('/');
-    }
-  }
-
-  componentDidMount() {
-    if(this.props.loggedIn) {
-      this.props.history.push('/');
-    }
-  }
+  // componentWillReceiveProps(nextProps) {
+	// 	debugger
+  //   if(nextProps.loggedIn) {
+  //     this.props.history.push('/home');
+  //   }
+  // }
+	//
+  // componentDidMount() {
+	// 	debugger
+  //   if(this.props.loggedIn) {
+  //     this.props.history.push('/home');
+  //   }
+  // }
 
   handleSubmit(e) {
     e.preventDefault();
     const user = Object.assign({}, this.state);
-    debugger
     if (this.props.formType === 'login') {
-      this.props.login(user);
+      this.props.login(user)
+				.then(() => this.props.history.push('/home'));
     } else {
-      this.props.signup(user);
+      this.props.signup(user)
+				.then(() => this.props.history.push('/home'));
     }
   }
 
@@ -60,36 +64,38 @@ class SessionForm extends React.Component {
 
     return (
       <section>
-        <div className="auth-modal-container">
-          <div className="link-nav-box">
-            <Link to={`/login`}>Login</Link>
-            <Link to={`/signup`}>Sign up</Link>
+        <Draggable>
+          <div className="auth-modal-container">
+            <div className="link-nav-box">
+              <Link to={`/login`}>Login</Link>
+              <Link to={`/signup`}>Sign up</Link>
+            </div>
+
+            <form onSubmit={ this.handleSubmit }>
+              <div className="a-m-input">
+                <input
+                  type="text"
+                  value={this.state.username}
+                  placeholder="Enter your username"
+                  onChange={this.update('username')}
+                  />
+              </div>
+
+              { emailInput }
+
+              <div className="a-m-input">
+                <input
+                  type="password"
+                  value={this.state.password}
+                  placeholder="Enter your password"
+                  className="a-m-input"
+                  onChange={this.update('password')}
+                  />
+              </div>
+              <button>{formName}</button>
+            </form>
           </div>
-
-          <form onSubmit={ this.handleSubmit }>
-            <div className="a-m-input">
-              <input
-                type="text"
-                value={this.state.username}
-                placeholder="Enter your username"
-                onChange={this.update('username')}
-                />
-            </div>
-
-            { emailInput }
-
-            <div className="a-m-input">
-              <input
-                type="password"
-                value={this.state.password}
-                placeholder="Enter your password"
-                className="a-m-input"
-                onChange={this.update('password')}
-                />
-            </div>
-            <button>{formName}</button>
-          </form>
-        </div>
+        </Draggable>
 
         <div className="auth-modal-background">
         </div>

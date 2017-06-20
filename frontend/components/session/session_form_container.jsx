@@ -4,7 +4,6 @@ import { login, signup } from '../../actions/session_actions';
 
 
 const mapStateToProps = ({ session }, { location }) => {
-  // debugger
   return {
     loggedIn: Boolean(session.currentUser),
     errors: session.errors,
@@ -12,16 +11,7 @@ const mapStateToProps = ({ session }, { location }) => {
   }
 }
 
-// const mapDispatchToProps = (dispatch, { location }) => {
-//   const processForm = location.pathname = '/login' ? login : signup;
-//   debugger
-//   return {
-//     processForm: user => dispatch(processForm(user))
-//   }
-// }
-
 const mapDispatchToProps = (dispatch, { location }) => {
-  debugger
   return {
     login: user => dispatch(login(user)),
     signup: user => dispatch(signup(user))

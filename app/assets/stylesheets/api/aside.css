@@ -1,0 +1,21 @@
+.user-welcome-aside-container {
+  width: 300px;
+  border: solid 1px grey;
+}
+
+.u-w-a-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  border-bottom: solid 1px #E7E7E7;
+}
+
+.u-w-a-head h2 {
+  color: grey;
+  font-size: 20px;
+}
+
+.u-w-a-list {
+
+}

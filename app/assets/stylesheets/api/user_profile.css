@@ -1,0 +1,84 @@
+.user-profile-container {
+  width: 100%;
+  height: auto;
+}
+
+.user-profile-header {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  width: 100%;
+  height: 240px;
+  border: solid 1px black;
+}
+
+.u-p-head-items-box {
+  display: flex;
+  flex-wrap: wrap;
+  position: relative;
+  top: 40px;
+  width: auto;
+  height: 160px;
+  border: solid 1px grey;
+  margin-left: 100px;
+}
+
+.avatar-box {
+  width: 160px;
+  height: 160px;
+  background-color: #EFFAFF;
+}
+
+.u-p-title-box {
+}
+
+.u-p-head-items-box h1 {
+  font-size: 24px;
+  width: 60%;
+  padding: 20px;
+}
+
+.u-p-head-items-box button {
+  color: white;
+  font-size: 12px;
+  background-color: #50B348;
+  padding: 7px 10px;
+  border-radius: 5px;
+  margin: 0 20px;
+}
+
+.u-p-head-base {
+  width: 100%;
+  height: 80px;
+}
+
+
+/*
+  User Profile Main
+*/
+
+
+.u-p-main-container {
+  display: flex;
+  justify-content: space-between;
+  width: 90%;
+  margin: 0 auto;
+}
+
+
+/*
+  User Profile Aside
+*/
+
+.user-profile-aside-container {
+  width: 300px;
+  border: solid 1px grey;
+}
+
+.u-p-a-stats-box {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  border-bottom: solid 1px #E7E7E7;
+}

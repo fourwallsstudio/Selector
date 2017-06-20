@@ -1,18 +1,26 @@
 import React from 'react';
 import { Route } from 'react-router-dom';
-import AuthRoute from '../util/route_util';
+import { AuthRoute, ProtectedRoute } from '../util/route_util.jsx';
 import HeaderNavContainer from './header_nav/header_nav_container';
 import SessionFormContainer from './session/session_form_container';
+import UserWelcomeContainer from './user_welcome/user_welcome_container';
+import UserProfileContainer from './user_profile/user_profile_container';
 
-const App = () => (
-  <div>
-    <HeaderNavContainer />
-    <div className="head-filler"></div>
+const App = () =>  {
 
+  return (
+    <div>
+      <HeaderNavContainer />
+      <div className="head-filler"></div>
 
-    <Route path="/login" component={ SessionFormContainer } />
-    <Route path="/signup" component={ SessionFormContainer } />
-  </div>
-);
+      <AuthRoute path="/login" component={ SessionFormContainer } />
+      <AuthRoute path="/signup" component={ SessionFormContainer } />
+      <ProtectedRoute exact path='/home' component={ UserWelcomeContainer } />
+      <Route exact path="/:username" component={ UserProfileContainer } />
+    </div>
+  )
+};
 
 export default App;
+
+// <Route exact path="/:showId" component={ ShowViewContainer } />
