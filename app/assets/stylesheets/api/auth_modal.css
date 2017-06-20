@@ -1,0 +1,86 @@
+.auth-modal-background {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  background-color: #34495E;
+  filter: opacity(.5);
+  z-index: 990;
+}
+
+.auth-modal-container {
+  position: absolute;
+  z-index: 991;
+  display: flex;
+  font-size: 14px;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  height: 400px;
+  width: 360px;
+  top: 50%;
+  left: 50%;
+  margin: -200px -180px;
+  background-color: #F5F9FC;
+}
+
+.link-nav-box {
+  width: 100%;
+  height: 40px;
+  display: flex;
+  background-color: white;
+  border-bottom: solid 1px lightgrey;
+  justify-content: center;
+  align-items: center;
+}
+
+.link-nav-box a {
+  padding: 10px 0;
+  margin: 0 20px;
+  color: #25374A;
+}
+
+.link-nav-box a:hover {
+  border-bottom: solid 3px #4FA6D3;
+}
+
+.auth-modal-container form {
+  position: static;
+  width: 80%;
+  margin-bottom: 20px;
+}
+
+
+.a-m-input {
+  width: 100%;
+  border: solid 1px lightgrey;
+  border-radius: 5px;
+  padding: 12px 0px;
+  margin: 10px 0;
+  background-color: white;
+}
+
+.auth-modal-container input {
+  width: 80%;
+  border: none;
+  border-radius: 5px;
+  padding: 0px 15px;
+  margin: 0;
+  /*background-color: white;*/
+}
+
+::-webkit-input-placeholder {
+  color: #25374A;
+  /*padding-left: 15px;*/
+}
+
+
+.auth-modal-container button {
+  background-color: #92CF90;
+  color: white;
+  text-align: center;
+  width: 100%;
+  padding: 7px 0;
+  border-radius: 5px;
+  margin: 10px 0;
+}

@@ -1,5 +1,17 @@
 # Component Hierarchy
 
+### HomeContainer
+  - WelcomeBanner
+  - Genre
+  - Featured
+  - ShowFeed
+  - Aside
+
+### LoggedInHomeContainer
+  - InnerHeader
+  - ShowFeed
+  - Aside
+
 ### AuthFormModalContainer
   - AuthForm
 
@@ -50,6 +62,7 @@
 
 |Path   | Component   |
 |-------|-------------|
+| "/"   |  "HomeContainer"  |
 | "/signup" | "AuthFormContainer" |
 | "/login" | "AuthFormContainer" |
 | "/userName" | "UserProfileContainer" |

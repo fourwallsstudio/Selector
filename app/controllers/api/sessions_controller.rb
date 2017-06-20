@@ -6,9 +6,10 @@ class Api::SessionsController < ApplicationController
       params[:user][:password]
     )
 
+    # debugger
     if user
       login(user)
-      render 'api/users/show'
+      render "api/users/show"
     else
       render json: ['invalid username or password'], status: 401
     end
@@ -16,6 +17,6 @@ class Api::SessionsController < ApplicationController
 
   def destroy
     logout
-    render 'api/users/show'
+    render json: {}
   end
 end

@@ -1,11 +1,15 @@
 import React from 'react';
-import HeaderNavContainer from './header_nav_container';
+import App from './App';
+import { Provider } from 'react-redux';
+import { HashRouter } from 'react-router-dom';
 
-const Root = () => {
+const Root = ({ store }) => {
   return (
-    <section>
-      <h1>Welcome to Selector</h1>
-    </section>
+    <Provider store={ store }>
+      <HashRouter>
+        <App />
+      </HashRouter>
+    </Provider>
   )
 };
 

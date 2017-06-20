@@ -38,11 +38,11 @@ Selector is a web application inspired by MixCloud built using Ruby on Rails and
 
 **Objective:** Functioning rails project with front-end Authentication
 
-### Phase 2: Shows Model, API, and components (2 days)
+### Phase 2: Shows Model, API, and components (3 days)
 
 **Objective:** Shows can be created, played, edited and destroyed through the API.
 
-### Phase 3: Show Playback (1 day)
+### Phase 3: Show Playback (2 day)
 
 **Objective:** Playing shows with progress bar with continuous play
 
@@ -50,7 +50,7 @@ Selector is a web application inspired by MixCloud built using Ruby on Rails and
 
 **Objective:** Users have a show feed
 
-### Phase 5: Comments (w2: 1 day)
+### Phase 5: Comments (1 day)
 
 **Objective:** Allow for creating and removing comments on shows.
 

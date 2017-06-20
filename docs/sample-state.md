@@ -41,6 +41,8 @@
         author_id: 1,
         description: "about",
         date_ago: "1 day",
+        length: "1h36m",
+        image: "http://alsdkfj.aasdfh,jpg",
         comments: [1, 2, 3],
         tag_ids: [1, 2, 3],
         }

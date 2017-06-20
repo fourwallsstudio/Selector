@@ -1,10 +1,11 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import Header from './header';
+import HeaderNav from './header_nav';
 
 const mapStateToProps = state => {
     return {
-
+      loggedIn: Boolean(state.session.currentUser),
+      currentUser: state.session.currentUser
     }
 }
 
@@ -17,4 +18,4 @@ const mapDispatchToProps = dispatch => {
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(Header);
+)(HeaderNav);
