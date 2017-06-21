@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import HeaderNav from './header_nav';
+import { logout } from '../../actions/session_actions';
 
 const mapStateToProps = state => {
     return {
@@ -11,7 +12,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-
+      logout: () => dispatch(logout())
     }
 }
 

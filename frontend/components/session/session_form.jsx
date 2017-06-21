@@ -34,15 +34,24 @@ class SessionForm extends React.Component {
     const user = Object.assign({}, this.state);
     if (this.props.formType === 'login') {
       this.props.login(user)
-				.then(() => this.props.history.push('/home'));
+				.then(() => this.props.history.push('/home'))
     } else {
       this.props.signup(user)
 				.then(() => this.props.history.push('/home'));
     }
   }
 
+	renderErrors() {
+    return(
+      <div className="auth-form-errors">{this.props.errors}</div>
+    );
+  }
+
   update(stateKey) {
-    return e => this.setState({ [stateKey]: e.target.value })
+    return e => {
+			this.setState({ [stateKey]: e.target.value });
+			this.props.clearErrors();
+		}
   }
 
   render() {
@@ -64,12 +73,13 @@ class SessionForm extends React.Component {
 
     return (
       <section>
-        <Draggable>
           <div className="auth-modal-container">
             <div className="link-nav-box">
               <Link to={`/login`}>Login</Link>
               <Link to={`/signup`}>Sign up</Link>
             </div>
+
+						{ this.renderErrors() }
 
             <form onSubmit={ this.handleSubmit }>
               <div className="a-m-input">
@@ -95,7 +105,6 @@ class SessionForm extends React.Component {
               <button>{formName}</button>
             </form>
           </div>
-        </Draggable>
 
         <div className="auth-modal-background">
         </div>

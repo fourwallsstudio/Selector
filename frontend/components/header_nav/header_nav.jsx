@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link, Route } from 'react-router-dom';
+import { Link, Route, withRouter } from 'react-router-dom';
 import SearchContainer from '../search/search_container';
 
 
@@ -16,17 +16,22 @@ class HeaderNav extends React.Component {
                         className="head-nav-button-signin">Sign up</Link>
                     </div>;
     } else {
+      let user = this.props.currentUser;
       rightSideNav = <div className="head-nav-user">
                       <div className="header-nav-user-img-box">
+                        <img src={user.avatar} />
                       </div>
-                      <h3>{this.props.currentUser.username}</h3>
+                      <Link to={`/user/${user.id}`}>{user.username}</Link>
                       <p className="user-dropdown-arrow">^</p>
+                      <button onClick={() => this.props.logout()}>Logout</button>
                     </div>;
     }
 
     return (
       <header className="header-nav-container">
-        <h2>Selector</h2>
+        <Link to="/" className="header-link">
+          <h2>Selector</h2>
+        </Link>
         <SearchContainer />
         <div className='header-nav-links'>
           <div className='upload'>UPLOAD</div>
@@ -38,4 +43,4 @@ class HeaderNav extends React.Component {
   }
 }
 
-export default HeaderNav;
+export default withRouter(HeaderNav);

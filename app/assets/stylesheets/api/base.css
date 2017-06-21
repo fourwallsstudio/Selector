@@ -39,7 +39,7 @@ body {
   height: 30px;
   width: 30px;
   float: left;
-  /*background: url("../pics/119012-200.png") no-repeat;*/
+  background: url("119012-200.png") no-repeat;
   background-size: 30px 30px;
   filter: invert(100%);
 }

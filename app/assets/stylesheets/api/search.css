@@ -23,7 +23,7 @@
   height: 30px;
   width: 30px;
   left: 10px;
-  /*background: url("../pics/search.png") no-repeat;*/
+  background: url("search.png") no-repeat;
   background-size: 30px 30px;
 }
 

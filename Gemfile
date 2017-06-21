@@ -27,7 +27,7 @@ gem 'bcrypt', '~> 3.1.7'
 # gem 'unicorn'
 
 gem "paperclip", '~> 5.0.0'
-
+gem "aws-sdk"
 gem 'figaro'
 
 # Use Capistrano for deployment

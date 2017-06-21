@@ -44,6 +44,10 @@
   border-bottom: solid 3px #4FA6D3;
 }
 
+.auth-form-errors {
+  color: red;
+}
+
 .auth-modal-container form {
   position: static;
   width: 80%;
