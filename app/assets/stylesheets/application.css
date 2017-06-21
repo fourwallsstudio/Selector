@@ -15,6 +15,6 @@
  */
 
 
-@import "api/reset.scss";
+@import "api/reset.css";
 
-@import "api/base.scss";
+@import "api/base.css";
