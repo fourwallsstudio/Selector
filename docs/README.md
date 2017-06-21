@@ -4,7 +4,7 @@
 
 [Trello link][trello]
 
-[heroku]: https://www.heroku.com/
+[heroku]: https://selectorapp.herokuapp.com/#/
 [trello]: https://trello.com/b/JJJEV2XT/selector
 
 ## Minimum Viable Product
