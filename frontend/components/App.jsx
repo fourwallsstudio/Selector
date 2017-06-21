@@ -18,7 +18,7 @@ const App = () =>  {
       <AuthRoute path="/signup" component={ SessionFormContainer } />
       <Route exact path="/user/:userId" component={ UserProfileContainer } />
       <ProtectedRoute exact path='/home' component={ UserWelcomeContainer } />
-      <ProtectedRoute exact path='/upload' component={ UploadFormContainer } />
+      <Route exact path='/upload' component={ UploadFormContainer } />
     </div>
   )
 };

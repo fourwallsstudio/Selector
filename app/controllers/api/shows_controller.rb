@@ -10,7 +10,7 @@ class Api::ShowsController < ApplicationController
 
   def create
     @show = Show.new(show_params)
-    @show.author = current_user.id
+    @show.author_id = current_user.id
 
     if @show.save
       render :show

@@ -1,18 +1,20 @@
 import UploadForm from './upload_form';
 import { connect } from 'react-redux';
-import { createShow } from '../../actions/show_actions';
+import { uploadShow, clearErrors } from '../../actions/show_actions';
 
 
 const mapStateToProps = ({ session }) => {
   return {
     loggedIn: Boolean(session.currentUser),
+    errors: session.errors,
     currentUser: session.currentUser
   }
 }
 
 const mapDispatchToProps = dispatch => {
   return {
-    createShow: show => dispatch(createShow(show))
+    uploadShow: show => dispatch(uploadShow(show)),
+    clearErrors: () => dispatch(clearErrors())
   }
 }
 

@@ -1,5 +1,5 @@
 
-export const makeShow = show => {
+export const uploadShow = show => {
   return $.ajax({
     method: 'POST',
     url: '/api/shows',

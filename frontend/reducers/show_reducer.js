@@ -1,4 +1,8 @@
-import { CREATE_SHOW, RECEIVE_ERRORS } from '../actions/show_actions';
+import {
+  CREATE_SHOW,
+  RECEIVE_ERRORS,
+  CLEAR_ERRORS
+} from '../actions/show_actions';
 import { merge } from 'lodash';
 
 const defaultState = {
@@ -19,9 +23,12 @@ const showReducer = (state = defaultState, action) => {
       });
     case RECEIVE_ERRORS:
       return merge({}, state, {
-        entities: {},
         currentShow: null,
         errors: action.errors
+      });
+    case CLEAR_ERRORS:
+      return merge({}, state, {
+        errors: []
       });
     default:
       return state;
