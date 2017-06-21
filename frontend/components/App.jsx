@@ -5,6 +5,7 @@ import HeaderNavContainer from './header_nav/header_nav_container';
 import SessionFormContainer from './session/session_form_container';
 import UserWelcomeContainer from './user_welcome/user_welcome_container';
 import UserProfileContainer from './user_profile/user_profile_container';
+import UploadFormContainer from './upload/upload_form_container';
 
 const App = () =>  {
 
@@ -15,8 +16,9 @@ const App = () =>  {
 
       <AuthRoute path="/login" component={ SessionFormContainer } />
       <AuthRoute path="/signup" component={ SessionFormContainer } />
-      <ProtectedRoute exact path='/home' component={ UserWelcomeContainer } />
       <Route exact path="/user/:userId" component={ UserProfileContainer } />
+      <ProtectedRoute exact path='/home' component={ UserWelcomeContainer } />
+      <ProtectedRoute exact path='/upload' component={ UploadFormContainer } />
     </div>
   )
 };

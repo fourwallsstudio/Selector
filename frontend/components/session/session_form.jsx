@@ -15,20 +15,6 @@ class SessionForm extends React.Component {
     this.update = this.update.bind(this);
   }
 
-  // componentWillReceiveProps(nextProps) {
-	// 	debugger
-  //   if(nextProps.loggedIn) {
-  //     this.props.history.push('/home');
-  //   }
-  // }
-	//
-  // componentDidMount() {
-	// 	debugger
-  //   if(this.props.loggedIn) {
-  //     this.props.history.push('/home');
-  //   }
-  // }
-
   handleSubmit(e) {
     e.preventDefault();
     const user = Object.assign({}, this.state);
