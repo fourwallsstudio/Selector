@@ -1,0 +1,33 @@
+.header-search-bar {
+  display: flex;
+  align-items: center;
+  position: relative;
+  width: 30%;
+}
+
+.header-search-bar input {
+  line-height: 30px;
+  width: 100%;
+  outline:none;
+  font-size: 14px;
+  /*color: lightgrey;*/
+  background-color: #1F3341;
+  border: solid 2px #1F3341;
+  border-radius: 5px;
+  padding-left: 45px;
+}
+
+.header-search-bar:before {
+  content: "";
+  position: absolute;
+  height: 30px;
+  width: 30px;
+  left: 10px;
+  background: image_url("search.png") no-repeat;
+  background-size: 30px 30px;
+}
+
+::-webkit-input-placeholder {
+  color: lightgrey;
+  /*padding-left: 15px;*/
+}

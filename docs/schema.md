@@ -19,11 +19,11 @@ column name | data type | details
 ------------|-----------|-----------------------
 id          | integer   | not null, primary key
 title       | string    | not null
-url         | text      | not null
+description | text      |
+show_url         | text      | not null
 author_id   | integer   | not null, foreign key (references users), indexed
 image_url   | string    |
 length      | string    |
-description | text      |
 
 ## comments
 column name | data type | details

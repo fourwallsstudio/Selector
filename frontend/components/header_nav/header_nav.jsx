@@ -19,7 +19,7 @@ class HeaderNav extends React.Component {
       let user = this.props.currentUser;
       rightSideNav = <div className="head-nav-user">
                       <div className="header-nav-user-img-box">
-                        <img src={user.avatar} />
+                        <img src={user.avatar_url} onClick={() => this.props.history.push(`/user/${user.id}`)}/>
                       </div>
                       <Link to={`/user/${user.id}`}>{user.username}</Link>
                       <p className="user-dropdown-arrow">^</p>

@@ -48,14 +48,14 @@
   cursor: pointer;
 }
 
-.head-nav-user h3 {
+.head-nav-user a {
   /*font-family: Open Sans;*/
   font-size: 14px;
   line-height: 6px;
   font-weight: 100;
 }
 
-.head-nav-user h3:hover {
+.head-nav-user a:hover {
   cursor: pointer;
   color: white;
 }
