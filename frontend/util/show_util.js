@@ -1,8 +1,25 @@
 
 export const uploadShow = show => {
-  return $.ajax({
+    debugger
+    return $.ajax({
     method: 'POST',
     url: '/api/shows',
-    data: { show: show }
+    processData: false,
+    contentType: false,
+    data: show
+  })
+}
+
+export const fetchAllShows = () => {
+    return $.ajax({
+    method: 'GET',
+    url: '/api/shows'
+  })
+}
+
+export const fetchSingleShow = id => {
+    return $.ajax({
+    method: 'GET',
+    url: `/api/shows/${id}`,
   })
 }

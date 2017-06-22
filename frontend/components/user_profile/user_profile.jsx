@@ -28,7 +28,7 @@ class UserProfile extends React.Component {
           <div className="user-profile-header">
             <div className="u-p-head-items-box">
               <div className="avatar-box">
-                <img />
+                <img  />
               </div>
               <div className="u-p-title-box">
                 <h1>{  }</h1>

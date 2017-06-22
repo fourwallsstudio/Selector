@@ -16,12 +16,13 @@
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  height: 400px;
+  height: 440px;
   width: 360px;
   top: 50%;
   left: 50%;
   margin: -200px -180px;
   background-color: #F5F9FC;
+  border-radius: 5px;
 }
 
 .link-nav-box {
@@ -30,6 +31,7 @@
   display: flex;
   background-color: white;
   border-bottom: solid 1px lightgrey;
+  border-radius: 5px 5px 0 0;
   justify-content: center;
   align-items: center;
 }
@@ -44,9 +46,39 @@
   border-bottom: solid 3px #4FA6D3;
 }
 
+.auth-form-errors-box {
+  height: 20px;
+}
+
 .auth-form-errors {
   color: red;
 }
+
+.guest-login {
+  display: flex;
+  position: relative;
+  width: 80%;
+  color: grey;
+  justify-content: space-between;
+  flex-direction: column;
+  text-align: center;
+  border-bottom: solid 1px lightgrey;
+}
+
+.guest-login > p {
+  position: absolute;
+  bottom: -8px;
+  left: 44%;
+  background-color: #F5F9FC;
+  padding: 0 10px;
+}
+
+.guest-login-box {
+  line-height: 30px;
+  margin-bottom: 20px;
+}
+
+
 
 .auth-modal-container form {
   position: static;

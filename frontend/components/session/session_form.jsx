@@ -29,14 +29,16 @@ class SessionForm extends React.Component {
 
 	renderErrors() {
     return(
-      <div className="auth-form-errors">{this.props.errors}</div>
+      <div className="auth-form-errors">{this.props.errors[0]}</div>
     );
   }
 
   update(stateKey) {
     return e => {
 			this.setState({ [stateKey]: e.target.value });
-			this.props.clearErrors();
+			if (this.props.errors.length) {
+				this.props.clearErrors();
+			}
 		}
   }
 
@@ -65,7 +67,18 @@ class SessionForm extends React.Component {
               <Link to={`/signup`}>Sign up</Link>
             </div>
 
-						{ this.renderErrors() }
+						<div className="auth-form-errors-box">
+							{ this.renderErrors() }
+						</div>
+
+						<div className="guest-login">
+							<div className="guest-login-box">
+								<p>Login as guest</p>
+								<p>Username & Email: guest</p>
+								<p>Password: 12345678</p>
+							</div>
+							<p>or</p>
+						</div>
 
             <form onSubmit={ this.handleSubmit }>
               <div className="a-m-input">

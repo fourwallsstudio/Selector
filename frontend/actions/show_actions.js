@@ -1,7 +1,10 @@
 export const CREATE_SHOW = 'CREATE_SHOW';
+export const RECEIVE_SHOWS = 'RECEIVE_SHOWS';
+export const RECEIVE_SHOW = 'RECEIVE_SHOW';
 export const RECEIVE_ERRORS = 'RECEIVE_ERRORS';
 export const CLEAR_ERRORS = 'CLEAR_ERRORS';
 import * as APIUtil from '../util/show_util';
+
 
 export const uploadShow = show => {
   return dispatch => {
@@ -13,9 +16,43 @@ export const uploadShow = show => {
   }
 }
 
+export const fetchAllShows = () => {
+  return dipatch => {
+    return (
+      APIUtil.fetchAllShows()
+        .then(shows => dispatch(receiveAllShows(shows)),
+          err => dispatch(receiveErrors(err.responseJSON)))
+    )
+  }
+}
+
+export const fetchSingleShow = () => {
+  return dipatch => {
+    return (
+      APIUtil.fetchSingleShow(show)
+        .then(show => dispatch(receiveSingleShow(show)),
+          err => dispatch(receiveErrors(err.responseJSON)))
+    )
+  }
+}
+
 export const createShow = show => {
   return {
     type: CREATE_SHOW,
+    show
+  }
+}
+
+export const receiveAllShows = shows => {
+  return {
+    type: RECEIVE_SHOWS,
+    shows
+  }
+}
+
+export const receiveSingleShow = show => {
+  return {
+    type: RECEIVE_SHOW,
     show
   }
 }

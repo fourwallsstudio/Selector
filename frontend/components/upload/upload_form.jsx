@@ -1,5 +1,5 @@
 import React from 'react';
-import ReactUploadFile from 'react-upload-file';
+import FileUploadProgress  from 'react-fileupload-progress';
 
 class UploadForm extends React.Component {
   constructor(props) {
@@ -14,13 +14,13 @@ class UploadForm extends React.Component {
 
     this.handleSubmit = this.handleSubmit.bind(this);
     this.update = this.update.bind(this);
-    this.updateFile = this.updateFile.bind(this);
+    this.updateAudio = this.updateAudio.bind(this);
+    this.updateImage = this.updateImage.bind(this);
   }
 
   handleSubmit(e) {
     e.preventDefault();
-    const show = Object.assign({}, this.state);
-    this.props.uploadShow(show)
+    this.props.uploadShow(this.state);
   }
 
   renderErrors() {
@@ -32,18 +32,23 @@ class UploadForm extends React.Component {
   update(stateKey) {
     return e => {
 			this.setState({ [stateKey]: e.target.value });
-			this.props.clearErrors();
+
+      if (this.props.errors) {
+        this.props.clearErrors();
+      }
 		}
   }
 
-  updateFile(stateKey) {
-    return e => {
-      const file = e.target.files[0];
-      let data = new FormData();
-      data.append('file', file);
-      debugger
-      this.setState({ [stateKey]: data });
-    }
+  updateAudio(e) {
+    e.preventDefault();
+    let file = e.target.files[0];
+    this.setState({ audio: file });
+  }
+
+  updateImage(e) {
+    e.preventDefault();
+    let file = e.target.files[0];
+    this.setState({ image: file });
   }
 
 
@@ -71,7 +76,7 @@ class UploadForm extends React.Component {
                 Choose File
                 <input
                   type="file"
-                  onChange={this.updateFile('audio')}
+                  onChange={ this.updateAudio }
                   />
               </div>
               <p>Please choose an audio file - MP3, AAC, M4A, MP4 audio or OGG types are accepted.</p>
@@ -80,7 +85,7 @@ class UploadForm extends React.Component {
                 Choose Image
                 <input
                   type="file"
-                  onChange={this.updateFile('image')}
+                  onChange={ this.updateImage }
                   />
               </div>
               <input

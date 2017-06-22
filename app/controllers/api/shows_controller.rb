@@ -9,6 +9,7 @@ class Api::ShowsController < ApplicationController
   end
 
   def create
+    debugger
     @show = Show.new(show_params)
     @show.author_id = current_user.id
 
@@ -38,6 +39,7 @@ class Api::ShowsController < ApplicationController
   private
 
   def show_params
+    # debugger
     params.require(:show).permit(:title, :audio, :image, :description)
   end
 

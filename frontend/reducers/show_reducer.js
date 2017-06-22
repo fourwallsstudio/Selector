@@ -1,5 +1,7 @@
 import {
   CREATE_SHOW,
+  RECEIVE_SHOWS,
+  RECEIVE_SHOW,
   RECEIVE_ERRORS,
   CLEAR_ERRORS
 } from '../actions/show_actions';
@@ -20,6 +22,10 @@ const showReducer = (state = defaultState, action) => {
         entities: { [action.show.id]: action.show },
         currentShow: action.show.id,
         errors: []
+      });
+    case RECEIVE_SHOWS:
+      return merge({}, state, {
+        entities: action.shows
       });
     case RECEIVE_ERRORS:
       return merge({}, state, {
