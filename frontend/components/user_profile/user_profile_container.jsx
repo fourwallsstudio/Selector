@@ -3,7 +3,6 @@ import UserProfile from './user_profile';
 import fetchUser from '../../actions/user_actions';
 
 const mapStateToProps = (state, { match }) => {
-  debugger
   const userId = parseInt(match.params.userId);
   return {
     userId

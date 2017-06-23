@@ -1,5 +1,4 @@
 import React from 'react';
-import FileUploadProgress  from 'react-fileupload-progress';
 
 class UploadForm extends React.Component {
   constructor(props) {
@@ -20,7 +19,16 @@ class UploadForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    this.props.uploadShow(this.state);
+    debugger
+    var file = this.state.imageFile;
+
+    var formData = new FormData();
+    formData.append("show[title]", this.state.title);
+    formData.append("show[description]", this.state.description);
+    formData.append("show[image]", this.state.image);
+    formData.append("show[audio]", this.state.audio);
+
+    this.props.uploadShow(formData);
   }
 
   renderErrors() {
@@ -58,6 +66,9 @@ class UploadForm extends React.Component {
         <div>must be logged in to upload</div>
       )
     } else {
+
+      let hidden = "";
+
       return (
         <section className="upload-form-container">
           <div className="upload-header">
@@ -65,6 +76,9 @@ class UploadForm extends React.Component {
           </div>
 
           <div className="upload-banners-container">
+            <div className="upload-spinner-box">
+              <i className="fa fa-refresh fa-5x" aria-hidden="true"></i>
+            </div>
           </div>
 
           <div className="upload-form-box">

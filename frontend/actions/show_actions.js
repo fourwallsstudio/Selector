@@ -1,6 +1,7 @@
 export const CREATE_SHOW = 'CREATE_SHOW';
 export const RECEIVE_SHOWS = 'RECEIVE_SHOWS';
 export const RECEIVE_SHOW = 'RECEIVE_SHOW';
+export const REMOVE_SHOW = 'REMOVE_SHOW';
 export const RECEIVE_ERRORS = 'RECEIVE_ERRORS';
 export const CLEAR_ERRORS = 'CLEAR_ERRORS';
 import * as APIUtil from '../util/show_util';
@@ -26,15 +27,27 @@ export const fetchAllShows = () => {
   }
 }
 
-export const fetchSingleShow = () => {
+export const fetchSingleShow = showId => {
   return dipatch => {
     return (
-      APIUtil.fetchSingleShow(show)
+      APIUtil.fetchSingleShow(showId)
         .then(show => dispatch(receiveSingleShow(show)),
           err => dispatch(receiveErrors(err.responseJSON)))
     )
   }
 }
+
+export const deleteShow = showId => {
+  return dipatch => {
+    return (
+      APIUtil.deleteShow(showId)
+        .then(show => dispatch(removeShow(show)),
+          err => dispatch(receiveErrors(err.responseJSON)))
+    )
+  }
+}
+
+
 
 export const createShow = show => {
   return {
@@ -53,6 +66,13 @@ export const receiveAllShows = shows => {
 export const receiveSingleShow = show => {
   return {
     type: RECEIVE_SHOW,
+    show
+  }
+}
+
+export const removeShow = show => {
+  return {
+    type: REMOVE_SHOW,
     show
   }
 }

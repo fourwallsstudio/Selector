@@ -1,6 +1,7 @@
 .user-welcome-aside-container {
   width: 300px;
-  border: solid 1px grey;
+  margin: 20px 0;
+  /*border: solid 1px grey;*/
 }
 
 .u-w-a-head {
@@ -8,6 +9,7 @@
   justify-content: space-between;
   align-items: center;
   width: 100%;
+  height: 50px;
   border-bottom: solid 1px #E7E7E7;
 }
 
@@ -15,6 +17,25 @@
   color: grey;
   font-size: 20px;
 }
+
+
+.u-w-a-follow-spinner {
+  position: relative;
+  width: 32px;
+  height: 32px;
+  border-radius: 5px;
+}
+
+.fa.fa-refresh {
+  position: absolute;
+  width: 32px;
+  height: 32px;
+  top: 8px;
+  left: 14px;
+  color: #4FA6D3;
+}
+
+
 
 .u-w-a-list {
 

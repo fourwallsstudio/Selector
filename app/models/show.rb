@@ -27,5 +27,8 @@ class Show < ActiveRecord::Base
     'audio/x-mpeg', 'audio/mp3', 'audio/x-mp3', 'audio/mpeg3',
     'audio/x-mpeg3', 'audio/mpg', 'audio/x-mpg', 'audio/x-mpegaudio' ]
 
-  belongs_to :author, class_name: :User, foreign_key: :author_id
+  belongs_to :author,
+    class_name: :User,
+    foreign_key: :author_id,
+    primary_key: :id
 end

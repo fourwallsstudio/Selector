@@ -7,12 +7,14 @@
   display: flex;
   justify-content: space-between;
   width: 15%;
-  color: lightgrey;
   font-size: 12px;
+  color: #CDD9E4;
 }
 
 .upload:hover, .categories:hover {
+  cursor: pointer;
   color: white;
+  transition: color 0.3s ease-in-out;
 }
 
 
@@ -21,16 +23,16 @@
 
 .head-nav-user {
   display: flex;
+  height: 50px;
   justify-content: space-between;
   align-items: center;
-  margin-right: 100px;
   color: lightgrey;
 }
 
 
 .header-nav-user-img-box {
-  height: 35px;
-  width: 35px;
+  height: 30px;
+  width: 30px;
   overflow: hidden;
   margin-right: 20px;
   /*border: solid 1px white;*/
@@ -53,14 +55,31 @@
   font-size: 14px;
   line-height: 6px;
   font-weight: 100;
+  color: white;
+  transition: color 0.3s ease-in-out;
 }
 
 .head-nav-user a:hover {
   cursor: pointer;
-  color: white;
+  color: lightgrey;
 }
 
-.head-nav-user p {
-  padding: 10px 10px;
+
+.user-dropdown-arrow {
+  position: relative;
+  width: 50px;
+  height: 50px;
+}
+
+.fa.fa-chevron-down {
+  position: absolute;
+  top: 17px;
+  left: 17px;
+  width: 50px;
+  height: 50px;
+  color: lightgrey;
+}
+
+.user-dropdown-arrow.active {
   transform: rotate(180deg);
 }

@@ -22,22 +22,26 @@ class HeaderNav extends React.Component {
                         <img src={user.avatar_url} onClick={() => this.props.history.push(`/user/${user.id}`)}/>
                       </div>
                       <Link to={`/user/${user.id}`}>{user.username}</Link>
-                      <p className="user-dropdown-arrow">^</p>
-                      <button onClick={() => this.props.logout()}>Logout</button>
+                      <div className="user-dropdown-arrow">
+                        <i className="fa fa-chevron-down" aria-hidden="true"></i>
+                      </div>
                     </div>;
     }
+    // <button onClick={() => this.props.logout()}>Logout</button>
 
     return (
       <header className="header-nav-container">
-        <Link to="/" className="header-link">
-          <h2>Selector</h2>
-        </Link>
-        <SearchContainer />
-        <div className='header-nav-links'>
-          <Link to={'/upload'} className='upload'>UPLOAD</Link>
-          <div className='categories'>CATEGORIES</div>
+        <div className="header-nav-inside-box">
+          <Link to="/home" className="header-link">
+            <h2>Selector</h2>
+          </Link>
+          <SearchContainer />
+          <div className='header-nav-links'>
+            <Link to={'/upload'} className='upload'>UPLOAD</Link>
+            <div className='categories'>CATEGORIES</div>
+          </div>
+          { rightSideNav }
         </div>
-        { rightSideNav }
       </header>
     )
   }

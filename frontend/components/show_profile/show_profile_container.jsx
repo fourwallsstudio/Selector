@@ -1,18 +1,23 @@
 import { connect } from 'react-redux';
 import ShowProfile from './show_profile';
-import { fetchShow } from '../../actions/show_actions';
+import javascript_time_ago from 'javascript-time-ago'
+import { fetchSingleShow, deleteShow } from '../../actions/show_actions';
+import { selectShow } from '../../reducers/selecters';
 
 const mapStateToProps = (state, { match }) => {
-  debugger
   const showId = parseInt(match.params.showId);
+  const currentUser = state.session.currentUser;
   return {
-    showId
+    show: selectShow(state, showId),
+    showId,
+    currentUser
   }
 }
 
 const mapDispatchToProps = dispatch => {
   return {
-    fetchShow: show => { dispatch(fetchShow(show)) }
+    fetchSingleShow: showId => dispatch(fetchSingleShow(showId)),
+    deleteShow: showId => dispatch(deleteShow(showId))
   }
 }
 

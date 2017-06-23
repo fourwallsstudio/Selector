@@ -7,3 +7,7 @@ export const selectUser = ({ users }, userId) => {
 export const selectAllShows = ({ shows }) => {
   return values(shows.entities);
 }
+
+export const selectShow = ({ shows }, showId) => {
+  return shows.entities[showId];
+}

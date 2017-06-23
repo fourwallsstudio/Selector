@@ -24,7 +24,10 @@ class User < ActiveRecord::Base
   validates :username, :email, :session_token, uniqueness: true
   validates :password, length: { minimum: 6, allow_nil: true }
 
-  has_many :shows
+  has_many :shows,
+  class_name: :Show,
+  foreign_key: :author_id,
+  primary_key: :id
 
   has_attached_file :avatar, default_url: "default_bg.jpg"
   validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\Z/
