@@ -25,9 +25,9 @@ class HeaderNav extends React.Component {
                       <div className="user-dropdown-arrow">
                         <i className="fa fa-chevron-down" aria-hidden="true"></i>
                       </div>
+                      <button onClick={() => this.props.logout()}>Logout</button>
                     </div>;
     }
-    // <button onClick={() => this.props.logout()}>Logout</button>
 
     return (
       <header className="header-nav-container">

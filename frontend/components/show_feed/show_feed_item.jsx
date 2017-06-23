@@ -11,7 +11,10 @@ const ShowFeedItem = ({ show }) => {
 
       <div className="s-f-i-main">
         <div className="img-box">
-          <img src={ show.image_url } />
+          <Link to={`/show/${show.id}`} className="play-title">
+            <img src={ show.image_url } />
+          </Link>
+
         </div>
         <div className="play-box">
           <div className="play-arrow">
