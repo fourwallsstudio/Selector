@@ -37,8 +37,14 @@ class HeaderNav extends React.Component {
           </Link>
           <SearchContainer />
           <div className='header-nav-links'>
-            <Link to={'/upload'} className='upload'>UPLOAD</Link>
-            <div className='categories'>CATEGORIES</div>
+            <Link to={'/upload'} className='upload'>
+              <i className="fa fa-superpowers fa-lg" aria-hidden="true"></i>
+              <h4>UPLOAD</h4>
+            </Link>
+            <div className='categories'>
+              <i className="fa fa-th-large fa-lg" aria-hidden="true"></i>
+              <h4>CATEGORIES</h4>
+            </div>
           </div>
           { rightSideNav }
         </div>

@@ -31,6 +31,15 @@ body {
   line-height: 50px;
 }
 
+.header-nav-container h2:hover {
+  color: lightgrey;
+  transition: color 0.2s ease-in-out
+}
+
+.header-nav-container h2:hover:before {
+  filter: invert(80%);
+  transition: filter 0.2s ease-in-out
+}
 
 .header-nav-container h2:before {
   content: "";

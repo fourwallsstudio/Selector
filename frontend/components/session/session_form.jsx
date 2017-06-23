@@ -13,6 +13,8 @@ class SessionForm extends React.Component {
 
     this.handleSubmit = this.handleSubmit.bind(this);
     this.update = this.update.bind(this);
+		this.handleClose = this.handleClose.bind(this);
+		this.handleGuest = this.handleGuest.bind(this);
   }
 
   handleSubmit(e) {
@@ -26,6 +28,24 @@ class SessionForm extends React.Component {
 				.then(() => this.props.history.push('/home'));
     }
   }
+
+	handleGuest(e) {
+		e.preventDefault();
+
+		const user = {
+				username: 'guest',
+				email: 'guest',
+				password: '12345678'
+			};
+
+		this.props.login(user)
+		.then(() => this.props.history.push('/home'));
+	}
+
+	handleClose(e) {
+		e.preventDefault();
+		this.props.history.push('/');
+	}
 
 	renderErrors() {
     return(
@@ -65,18 +85,19 @@ class SessionForm extends React.Component {
             <div className="link-nav-box">
               <Link to={`/login`}>Login</Link>
               <Link to={`/signup`}>Sign up</Link>
+							<div className="close-login-button" onClick={ this.handleClose }>
+								<i className="fa fa-times" aria-hidden="true"></i>
+							</div>
             </div>
+
 
 						<div className="auth-form-errors-box">
 							{ this.renderErrors() }
 						</div>
-
+						<div className="guest-login-button-box">
+							<button className="guest-login-button" onClick={ this.handleGuest }>Login as guest</button>
+						</div>
 						<div className="guest-login">
-							<div className="guest-login-box">
-								<p>Login as guest</p>
-								<p>Username & Email: guest</p>
-								<p>Password: 12345678</p>
-							</div>
 							<p>or</p>
 						</div>
 
@@ -101,7 +122,7 @@ class SessionForm extends React.Component {
                   onChange={this.update('password')}
                   />
               </div>
-              <button>{formName}</button>
+              <button className="auth-modal-submit">{formName}</button>
             </form>
           </div>
 

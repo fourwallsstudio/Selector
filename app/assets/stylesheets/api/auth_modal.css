@@ -26,6 +26,7 @@
 }
 
 .link-nav-box {
+  position: relative;
   width: 100%;
   height: 40px;
   display: flex;
@@ -46,12 +47,28 @@
   border-bottom: solid 3px #4FA6D3;
 }
 
+.close-login-button {
+  position: absolute;
+  color: grey;
+  right: 20px;
+}
+
+.close-login-button:hover {
+  cursor: pointer;
+  top: 10px;
+}
+
 .auth-form-errors-box {
   height: 20px;
+  margin-top: 15px;
 }
 
 .auth-form-errors {
   color: red;
+}
+
+.guest-login-button-box {
+  width: 80%;
 }
 
 .guest-login {
@@ -65,6 +82,11 @@
   border-bottom: solid 1px lightgrey;
 }
 
+.guest-login-button {
+  margin-bottom: 40px;
+  width: 60px;
+}
+
 .guest-login > p {
   position: absolute;
   bottom: -8px;
@@ -73,17 +95,14 @@
   padding: 0 10px;
 }
 
-.guest-login-box {
-  line-height: 30px;
-  margin-bottom: 20px;
-}
+
 
 
 
 .auth-modal-container form {
   position: static;
   width: 80%;
-  margin-bottom: 20px;
+  margin: 10px 0 20px 0;
 }
 
 
@@ -118,5 +137,9 @@
   width: 100%;
   padding: 7px 0;
   border-radius: 5px;
-  margin: 10px 0;
+  margin: 20px 0;
+}
+
+.auth-modal-container button:hover {
+  background-color: #8EC18D;
 }

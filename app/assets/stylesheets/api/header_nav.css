@@ -6,15 +6,37 @@
 .header-nav-links {
   display: flex;
   justify-content: space-between;
-  width: 15%;
+  width: 240px;
   font-size: 12px;
   color: #CDD9E4;
+}
+
+.upload, .categories {
+  position: relative;
+  height: 50px;
+  text-align: center;
+}
+
+.upload h4, .categories h4 {
+  line-height: 50px;
+  margin: 0;
 }
 
 .upload:hover, .categories:hover {
   cursor: pointer;
   color: white;
   transition: color 0.3s ease-in-out;
+}
+
+.fa-superpowers {
+  width: 20px;
+  height: 20px;
+}
+
+.fa-superpowers, .fa-th-large {
+  position: absolute;
+  top: 18px;
+  left: 0;
 }
 
 

@@ -137,7 +137,7 @@ class ShowProfile extends React.Component {
                     Add to
                   </div>
                   <div className="s-p-h-b share">
-                    <i className="fa fa-upload fa-lg" aria-hidden="true"></i>
+                    <i className="fa fa-recycle fa-lg" aria-hidden="true"></i>
                     Repost
                   </div>
                   <div className="s-p-h-b add">

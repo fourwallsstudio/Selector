@@ -18,6 +18,7 @@
 
 .inner-header-container {
   /*position: fixed;*/
+  position: absolute;
   right: 0;
   left: 0;
   width: 100vw;
@@ -38,21 +39,26 @@
   display: inline-block;
   line-height: 42px;
   font-size: 12px;
-  color: grey;
+  color: #8196A7;
 }
 
 .i-h-links {
-  margin-right: 20px;
+  margin-right: 60px;
   height: 40px;
   position: relative;
 }
 
-/*.fa.fa-database, .fa.fa-play-circle-o, .fa.fa-history,
-.fa.fa-heart-o, .fa.fa-fire {
+.i-h-links:hover > * {
+  color: #4FA6D3;
+  transition: color 0.2s ease-in-out;
+}
+
+.fa-database, .fa-play-circle-o, .fa-history,
+.fa-star-o, .fa-fire {
   position: absolute;
-  top: 0px;
-  left: 0px;
+  top: 12px;
+  left: -30px;
   width: 40px;
   height: 40px;
-  color: #EFFAFF;
-}*/
+  color: #8196A7;
+}

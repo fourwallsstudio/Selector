@@ -41,7 +41,7 @@ const ShowFeedItem = ({ show }) => {
                 <i className="fa fa-retweet fa-lg" aria-hidden="true"></i>
               </div>
               <div className="s-f-i-b share">
-                <i className="fa fa-upload fa-lg" aria-hidden="true"></i>
+                <i className="fa fa-recycle fa-lg" aria-hidden="true"></i>
               </div>
               <div className="s-f-i-b add">
                 <i className="fa fa-music fa-lg" aria-hidden="true"></i>
