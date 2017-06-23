@@ -37,17 +37,17 @@
   animation:spin 2s linear infinite;
 }
 
-// 
+//
 // @-moz-keyframes spin { 100% { -moz-transform: rotate(360deg); } }
 // @-webkit-keyframes spin { 100% { -webkit-transform: rotate(360deg); } }
 // @keyframes spin { 100% { -webkit-transform: rotate(360deg); transform:rotate(360deg); } }
 
 
-.upload-spinner-box.fa-refresh {
+.fa-refresh {
   position: absolute;
   top: 10px;
   left: 10px;
-  color: #4FA6D3;
+  color: #9FC5E2;
   margin: 0 auto;
 }
 
@@ -61,39 +61,105 @@
   align-items: center;
 }
 
+.audio-file-name {
+  color: #E59095;
+}
+
 .upload-form-box p {
   margin: 5px;
 }
 
-.upload-form-box p:first-of-type {
+.p-red {
   color: #4FA6D3;
 }
 
-.upload-input-audio input, .upload-input-image input {
-  opacity: 0;
-  width: 120px;
-  height: 40px;
+
+.upload-input-lower-box {
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  width: 100%;
+  margin-top: 40px;
 }
 
 .upload-input-audio, .upload-input-image {
   color: white;
   text-align: center;
-
+  position: relative;
   line-height: 40px;
   width: 120px;
   height: 40px;
-  background-color: #4FA6D3;
+  background-color: #9FC5E2;
   border-radius: 5px;
-  margin: 20px;
+  margin: 20px 0 10px 0;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.upload-input-audio:hover, .upload-input-image:hover {
+  background-color: #9ABBD5;
+}
+
+.upload-input-image {
+    top: 160px;
+    left: 90px;
+}
+
+.upload-input-audio input, .upload-input-image input {
+  opacity: 0;
+  position: absolute;
+  top: 0px;
+  left: -85px;
+  width: 200px;
+  height: 40px;
+  font-size: 50px;
+}
+
+.upload-input-audio input, .upload-input-image input {
+  cursor: pointer;
+}
+
+.upload-image-preview-box {
+  position: relative;
+  width: 300px;
+  height: 300px;
+  background-color: #F5F9FC;
+  border: solid 1px #EBF0F2;
+  overflow: hidden;
+}
+
+.image-preview {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: auto;
+}
+
+.fa-cloud-upload {
+  position: absolute;
+  top: 100px;
+  left: 112px;
+  width: 30px;
+  height: 30px;
+  color: #9FC5E2;
+  z-index: 1;
+}
+
+.upload-input-lower-box-text-input-box {
+  width: 760px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
 }
 
 .u-f-title, .u-f-descript {
-  width: 80%;
+  height: 24px;
   background-color: white;
   border: solid 1px lightgrey;
   padding: 10px;
   border-radius: 5px;
-  margin: 10px
+  margin: 0 10px 10px 10px;
 }
 
 .u-f-title .clicked {
@@ -110,9 +176,21 @@
   margin: 20px;
 }
 
+.upload-form-box button:hover {
+  background-color: #44A73D;
+}
+
+.edit-form-delete-link {
+  color: #E59095;
+  text-align: center;
+  cursor: pointer;
+}
 
 
 
+.edit-form-delete-link:hover {
+  text-decoration: underline;
+}
 
 
 

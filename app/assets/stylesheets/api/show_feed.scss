@@ -82,7 +82,8 @@
   /*float: left;*/
   width: 160px;
   height: 160px;
-  background-color: #EFFAFF;
+  // background-color: #EFFAFF;
+  background-color: white;
   overflow: hidden;
   margin: 5px 5px 5px 0;
 }
@@ -90,6 +91,7 @@
 .img-box:hover {
   cursor: pointer;
 }
+
 
 .play-box {
   display: flex;

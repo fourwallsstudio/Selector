@@ -11,7 +11,6 @@ class Api::ShowsController < ApplicationController
   def create
     @show = Show.new(show_params)
     @show.author_id = current_user.id
-
     if @show.save
       render :show
     else
@@ -22,7 +21,7 @@ class Api::ShowsController < ApplicationController
   def update
     @show = current_user.shows.find(params[:id])
 
-    if @show.update_attributes(show_params)
+    if @show.update(show_params)
       render :show
     else
       render json: @show.errors.full_messages, status: 422
@@ -30,9 +29,7 @@ class Api::ShowsController < ApplicationController
   end
 
   def destroy
-    debugger
     @show = current_user.shows.find(params[:id])
-    debugger
     @show.destroy
     render :index
   end

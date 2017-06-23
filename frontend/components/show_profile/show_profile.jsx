@@ -9,6 +9,7 @@ class ShowProfile extends React.Component {
 
     this.handleDelete = this.handleDelete.bind(this);
     this.timeAgo = this.timeAgo.bind(this);
+    this.handleEditClick = this.handleEditClick.bind(this);
   }
 
   componentDidMount() {
@@ -32,6 +33,11 @@ class ShowProfile extends React.Component {
       .then( () => this.props.history.push('/home') );
   }
 
+  handleEditClick(e) {
+    e.preventDefault();
+    this.props.history.push('/edit/${this.props.show.id}');
+  }
+
   render() {
     if (!this.props.show) {
       return (
@@ -43,10 +49,10 @@ class ShowProfile extends React.Component {
 
       if (this.props.currentUser.id === show.author_id) {
         userControls = <div className="show-user-controls-container">
-                        <div className="s-u-c-b edit">
+                        <Link to={`/edit/${show.id}`} className="s-u-c-b edit">
                           <i className="fa fa-toggle-on fa-lg" aria-hidden="true"></i>
                           <h2>Edit</h2>
-                        </div>
+                        </Link>
 
                         <div className="s-u-c-b embed">
                           <i className="fa fa-trash-o fa-lg" aria-hidden="true"></i>

@@ -37,6 +37,16 @@ export const fetchSingleShow = showId => {
   }
 }
 
+export const updateShow = (showId, formData) => {
+  return dispatch => {
+    return (
+      APIUtil.updateShow(showId, formData)
+        .then(show => dispatch(receiveSingleShow(show)),
+          err => dispatch(receiveErrors(err.responseJSON)))
+    )
+  }
+}
+
 export const deleteShow = showId => {
   return dipatch => {
     return (
@@ -46,7 +56,6 @@ export const deleteShow = showId => {
     )
   }
 }
-
 
 
 export const createShow = show => {

@@ -8,6 +8,7 @@ const mapStateToProps = (state, { match }) => {
   const showId = parseInt(match.params.showId);
   const currentUser = state.session.currentUser;
   return {
+    formType: "upload",
     show: selectShow(state, showId),
     showId,
     currentUser

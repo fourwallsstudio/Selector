@@ -5,6 +5,7 @@ import { uploadShow, clearErrors } from '../../actions/show_actions';
 
 const mapStateToProps = ({ session }) => {
   return {
+    formType: "upload",
     loggedIn: Boolean(session.currentUser),
     errors: session.errors,
     currentUser: session.currentUser

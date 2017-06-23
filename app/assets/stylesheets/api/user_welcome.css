@@ -47,7 +47,7 @@
   position: relative;
 }
 
-.fa.fa-database, .fa.fa-play-circle-o, .fa.fa-history,
+/*.fa.fa-database, .fa.fa-play-circle-o, .fa.fa-history,
 .fa.fa-heart-o, .fa.fa-fire {
   position: absolute;
   top: 0px;
@@ -55,4 +55,4 @@
   width: 40px;
   height: 40px;
   color: #EFFAFF;
-}
+}*/

@@ -153,7 +153,7 @@
   border-radius: 5px;
 }
 
-.fa.fa-headphones, .fa.fa-clock-o, .fa.fa-calendar {
+.fa-headphones, .fa-clock-o, .fa-calendar {
   position: absolute;
   width: 50px;
   height: 32px;
@@ -162,7 +162,7 @@
   color: #697F95;
 }
 
-.fa.fa-headphones:hover {
+.fa-headphones:hover {
   cursor: pointer;
 }
 
@@ -206,7 +206,7 @@
   background-color: #FCFBFB;
 }
 
-.fa.fa-heart-o, .fa.fa-retweet, .fa.fa-upload, .fa.fa-music {
+.fa-heart-o, .fa-retweet, .fa-upload, .fa-music {
   position: absolute;
   width: 50px;
   height: 32px;
@@ -343,7 +343,8 @@
 
 
 
-.fa {
+.fa-toggle-on, .fa-trash-o, .fa-trophy,
+.fa-bullhorn, .fa-upload, .fa-trash-o {
   position: absolute;
   top: 18px;
   left: 30px;

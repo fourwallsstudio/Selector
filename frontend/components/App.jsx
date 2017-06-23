@@ -7,6 +7,7 @@ import UserWelcomeContainer from './user_welcome/user_welcome_container';
 import UserProfileContainer from './user_profile/user_profile_container';
 import ShowProfileContainer from './show_profile/show_profile_container';
 import UploadFormContainer from './upload/upload_form_container';
+import EditFormContainer from './upload/edit_form_container';
 
 const App = () =>  {
 
@@ -20,7 +21,8 @@ const App = () =>  {
       <Route exact path="/user/:userId" component={ UserProfileContainer } />
       <Route exact path="/show/:showId" component={ ShowProfileContainer } />
       <ProtectedRoute exact path='/home' component={ UserWelcomeContainer } />
-      <Route exact path='/upload' component={ UploadFormContainer } />
+      <ProtectedRoute exact path='/upload' component={ UploadFormContainer } />
+      <ProtectedRoute exact path='/edit/:showId' component={ EditFormContainer } />
     </div>
   )
 };
