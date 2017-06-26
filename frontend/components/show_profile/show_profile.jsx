@@ -42,18 +42,25 @@ class ShowProfile extends React.Component {
 
   handlePlayClick(e) {
     e.preventDefault();
-    let current = this.props.player.currentPlay;
+    if (!this.props.player.player.length ||
+      this.props.player.player[0]._sounds[0].show_id !== this.props.showId) {
 
-    if (current === this.props.showId) {
-      let newStatus = !this.props.player.paused
-      this.props.updateCurrentPlay(current, newStatus);
-    } else {
       const queueItem = {
         show_id: this.props.showId,
         user_id: this.props.currentUser.id,
         seek: 0
       }
       this.props.createQueueItem(queueItem);
+
+    } else {
+
+      let current = this.props.player.player[0]._sounds[0];
+
+      if (current._paused) {
+        this.props.player.player[0].play();
+      } else {
+        this.props.player.player[0].pause();
+      }
     }
   }
 
@@ -65,6 +72,29 @@ class ShowProfile extends React.Component {
     } else {
       const show = this.props.show;
       let userControls;
+      let playDisplay;
+      
+      if (this.props.player.player.length && this.props.queue[0].show_id === show.id) {
+        if (this.props.player.status === 'playing') {
+          playDisplay = (
+            <svg className="play-circle-pause" viewBox="0 0 16 20">
+              <path d="M3.89,0H1.5A1.5,1.5,0,0,0,0,1.5v17A1.5,1.5,0,0,0,1.5,20H3.89A1.6,1.6,0,0,0,5.5,18.5V1.5A1.6,1.6,0,0,0,3.89,0Zm10.5,0H12a1.5,1.5,0,0,0-1.5,1.5v17A1.5,1.5,0,0,0,12,20h2.39A1.6,1.6,0,0,0,16,18.5V1.5A1.6,1.6,0,0,0,14.39,0Z"/>
+            </svg>
+          );
+        } else {
+          playDisplay = (
+            <svg className="play-circle-play" viewBox="0 0 16 20">
+              <path d="M0,18V2C0,0.21,1.35-.51,3,0.38l11.73,8c1.66,0.89,1.66,2.33,0,3.21L3,19.61C1.36,20.49,0,19.77,0,18Z"/>
+            </svg>
+          );
+        }
+      } else {
+        playDisplay = (
+          <svg className="play-circle-play" viewBox="0 0 16 20">
+            <path d="M0,18V2C0,0.21,1.35-.51,3,0.38l11.73,8c1.66,0.89,1.66,2.33,0,3.21L3,19.61C1.36,20.49,0,19.77,0,18Z"/>
+          </svg>
+        );
+      }
 
       if (this.props.currentUser.id === show.author_id) {
         userControls = <div className="show-user-controls-container">
@@ -113,9 +143,7 @@ class ShowProfile extends React.Component {
                 <div className="play-circle-box"
                     onClick={ this.handlePlayClick }>
 
-                  <svg className="play-circle" viewBox="0 0 16 20">
-                    <path d="M0,18V2C0,0.21,1.35-.51,3,0.38l11.73,8c1.66,0.89,1.66,2.33,0,3.21L3,19.61C1.36,20.49,0,19.77,0,18Z"/>
-                  </svg>
+                    { playDisplay }
 
                 </div>
 

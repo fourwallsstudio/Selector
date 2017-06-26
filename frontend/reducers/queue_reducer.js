@@ -10,7 +10,7 @@ const queueReducer = (state = [], action) => {
 
   switch (action.type) {
     case CREATE_QUEUE_ITEM:
-      updatedState = newState.concat([action.queueItem]);
+      updatedState = [action.queueItem].concat(newState);
       return updatedState;
     case REMOVE_QUEUE_ITEM:
       updatedState = newState.slice(0, -1);

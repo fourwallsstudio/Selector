@@ -2,6 +2,32 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 const ShowFeedItem = ({ show }) => {
+
+  // handlePlayClick(e) {
+  //   e.preventDefault();
+  //   if (!this.props.player.player.length ||
+  //     this.props.player.player[0]._sounds[0].show_id !== this.props.showId) {
+  //
+  //     const queueItem = {
+  //       show_id: this.props.showId,
+  //       user_id: this.props.currentUser.id,
+  //       seek: 0
+  //     }
+  //     this.props.createQueueItem(queueItem);
+  //
+  //   } else {
+  //
+  //     let current = this.props.player.player[0]._sounds[0];
+  //
+  //     if (current._paused) {
+  //       this.props.player.player[0].play();
+  //     } else {
+  //       this.props.player.player[0].pause();
+  //     }
+  //   }
+  // }
+
+
   return (
     <li id={ show.id } className="show-feed-item-container group">
       <div className="s-f-i-head">

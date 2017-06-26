@@ -17,7 +17,7 @@
   height: 50px;
   color: white;
   background-color: #2D4050;
-  border-bottom: solid 2px rgba(0, 0, 0, .3);
+  // border-bottom: solid 2px rgba(0, 0, 0, .3);
 }
 
 /*
@@ -136,8 +136,21 @@
 }
 
 .playback-queue-dropdown {
-    height: 50px;
-    width: 90px;
+  position: relative;
+  height: 50px;
+  width: 90px;
+}
+
+.playback-queue-dropdown h4 {
+  margin: 0;
+  line-height: 50px;
+  padding: 0 20px;
+}
+
+.playback-queue-dropdown i {
+  position: absolute;
+  top: 0;
+  right: 0;
 }
 
 /*

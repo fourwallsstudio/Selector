@@ -8,13 +8,11 @@ class Player extends React.Component {
     super(props)
 
     this.state = {
-      howlerQueue: null,
       playerQueue: []
     }
 
     this.howlerPlayer = this.howlerPlayer.bind(this);
   }
-
 
 
   componentWillReceiveProps(nextProps) {
@@ -31,7 +29,8 @@ class Player extends React.Component {
       return true;
     } else {
 
-      if (this.props.player.paused !== nextProps.player.paused) {
+      if (!this.props.player.length ||
+        this.props.player[0].paused !== nextProps.player[0].paused) {
         return true;
       }
 
@@ -39,59 +38,38 @@ class Player extends React.Component {
     }
   }
 
-
-  componentWillUpdate(nextProps) {
-
-  }
-
-  componentDidUpdate() {
-    if (!this.state.howlerQueue) {
+  componentDidUpdate(prevProps, prevState) {
+    if (prevState.playerQueue.length !== this.state.playerQueue.length) {
+      if (this.props.player.player.length) { prevProps.player.player[0].pause() }
       this.howlerPlayer();
-
-    } else if (this.state.howlerQueue._sounds.length !== this.state.playerQueue.length) {
-
-      this.state.howlerQueue.pause();
-      this.howlerPlayer();
-    }
-  }
-
-
-  howlerHandler() {
-    if (this.props.player.paused) {
-      this.state.howlerQueue.pause();
-    } else {
-      this.state.howlerQueue.play();
     }
   }
 
 
   howlerPlayer() {
+    const q = this.state.playerQueue[0];
+    const source = q.show.audio_url;
 
-    const q = this.state.playerQueue;
-    const source = q.map((qi) => qi.show.audio_url );
-
-    this.state.howlerQueue = new Howl({
+    const howlPlay = new Howl({
       src: source,
       onload: () => {
-        for (let i = 0; i < q.length; i++) {
-          this.state.howlerQueue._sounds[i].show_id = q[i].show.id;
-          this.state.howlerQueue._sounds[i]._seek = q[i].seek;
-        }
+          howlPlay._sounds[0].show_id = q.show.id;
       },
       onplay: () => {
-        this.props.updateCurrentPlay(
-          this.state.howlerQueue._sounds[0].show_id,
-          this.state.howlerQueue._sounds[0]._paused
+        this.props.updateHowlerPlayer(
+          howlPlay,
         );
       },
-      onpause: () => { },
+      onpause: () => {
+        this.props.updatePlayStatus(
+          howlPlay._sounds[0]._paused
+        );
+      },
       onend: () => { console.log("onend") },
       onstop: () => { console.log("onstop") }
     });
 
-
-    this.state.howlerQueue.play();
-    console.log(this.state.howlerQueue);
+    howlPlay.play();
   };
 
 
@@ -147,8 +125,11 @@ class Player extends React.Component {
 
               </div>
 
-              <div className="playback-queue-dropdown-dropdown">
-
+              <div className="playback-queue-dropdown">
+                <h4>NEXT</h4>
+                  <i className="fa fa-chevron-down fa-lg"
+                    aria-hidden="true"
+                    ></i>
               </div>
             </div>
           </div>

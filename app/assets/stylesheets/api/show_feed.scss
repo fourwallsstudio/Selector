@@ -116,6 +116,10 @@
 
 .play-arrow:hover {
   cursor: pointer;
+  background-color: rgba(255, 255, 255, 0.2);
+  border: solid 2px #9DA495;
+  transition: background-color 0.4s ease-in-out,
+    border 0.4s ease-in-out;
 }
 
 .play-arrow svg {

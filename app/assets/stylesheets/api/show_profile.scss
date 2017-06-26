@@ -65,12 +65,21 @@
   border: solid 2px #9DA495;
 }
 
-.play-circle {
+.play-circle-play {
   position: relative;
   width: 40px;
   height: 40px;
-  top: 26px;
-  left: 30px;
+  top: 30%;
+  left: 32%;
+  fill: #4E5151;
+}
+
+.play-circle-pause {
+  position: relative;
+  width: 40px;
+  height: 40px;
+  top: 30%;
+  left: 28%;
   fill: #4E5151;
 }
 
