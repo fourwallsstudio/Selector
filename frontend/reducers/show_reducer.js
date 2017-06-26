@@ -18,7 +18,7 @@ const showReducer = (state = defaultState, action) => {
   Object.freeze(state);
 
   switch (action.type) {
-    
+
     case CREATE_SHOW:
       return merge({}, state, {
         entities: { [action.show.id]: action.show },
@@ -27,8 +27,10 @@ const showReducer = (state = defaultState, action) => {
       });
 
     case RECEIVE_SHOWS:
+      let newEntities = {}
+      action.shows.forEach((show) => { newEntities[show.id] = show } )
       return merge({}, state, {
-        entities: action.shows
+        entities: newEntities
       });
 
     case RECEIVE_SHOW:

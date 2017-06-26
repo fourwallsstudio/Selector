@@ -1,6 +1,7 @@
 import React from 'react';
 import javascript_time_ago from 'javascript-time-ago'
 import { withRouter, Link } from 'react-router-dom'
+import { Howl } from 'howler';
 import ShowProfileAside from './show_profile_aside';
 
 class ShowProfile extends React.Component {
@@ -10,6 +11,7 @@ class ShowProfile extends React.Component {
     this.handleDelete = this.handleDelete.bind(this);
     this.timeAgo = this.timeAgo.bind(this);
     this.handleEditClick = this.handleEditClick.bind(this);
+    this.handlePlayClick = this.handlePlayClick.bind(this);
   }
 
   componentDidMount() {
@@ -36,6 +38,23 @@ class ShowProfile extends React.Component {
   handleEditClick(e) {
     e.preventDefault();
     this.props.history.push('/edit/${this.props.show.id}');
+  }
+
+  handlePlayClick(e) {
+    e.preventDefault();
+    let current = this.props.player.currentPlay;
+
+    if (current === this.props.showId) {
+      let newStatus = !this.props.player.paused
+      this.props.updateCurrentPlay(current, newStatus);
+    } else {
+      const queueItem = {
+        show_id: this.props.showId,
+        user_id: this.props.currentUser.id,
+        seek: 0
+      }
+      this.props.createQueueItem(queueItem);
+    }
   }
 
   render() {
@@ -91,7 +110,8 @@ class ShowProfile extends React.Component {
           <div className="header-overlap">
             <div className="s-p-inside-header-box">
               <div className="s-p-head-items-box">
-                <div className="play-circle-box">
+                <div className="play-circle-box"
+                    onClick={ this.handlePlayClick }>
 
                   <svg className="play-circle" viewBox="0 0 16 20">
                     <path d="M0,18V2C0,0.21,1.35-.51,3,0.38l11.73,8c1.66,0.89,1.66,2.33,0,3.21L3,19.61C1.36,20.49,0,19.77,0,18Z"/>
@@ -179,6 +199,7 @@ class ShowProfile extends React.Component {
             <ShowProfileAside show={ show } />
           </div>
 
+          <div className="foot-filler"></div>
         </section>
       )
     }

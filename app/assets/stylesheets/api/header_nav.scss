@@ -1,0 +1,267 @@
+.head-filler {
+  height: 50px;
+  z-index: -1;
+}
+
+.header-nav-container {
+  height: 50px;
+  position: absolute;
+  width: 100vw;
+  z-index: 2;
+  background-color: #34495E;
+}
+
+.header-nav-inside-box {
+  height: 50px;
+  width: 80%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: white;
+  margin: 0 auto;
+}
+
+.header-nav-left-box {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.header-link {
+  margin-right: 40px;
+}
+
+.header-link h2 {
+  position: relative;
+  font-size: 20px;
+  line-height: 50px;
+}
+
+.header-link h2:hover {
+  color: lightgrey;
+  transition: color 0.2s ease-in-out
+}
+
+.header-link h2:hover:before {
+  filter: invert(80%);
+  transition: filter 0.2s ease-in-out
+}
+
+.header-link h2:before {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 10px;
+  left: -34px;
+  z-index: 1;
+  height: 30px;
+  width: 30px;
+  float: left;
+  background: image_url("119012-200.png") no-repeat;
+  background-size: 30px 30px;
+  filter: invert(100%);
+}
+
+
+/*
+  SEARCH BAR IN search.scss
+*/
+
+/*
+nav links
+*/
+
+.header-nav-links {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+  color: #CDD9E4;
+  margin-left: 20px;
+}
+
+.upload, .categories {
+  position: relative;
+  height: 50px;
+  font-family: OpenSans-Bold;
+  text-align: center;
+  margin: 0 10px;
+}
+
+.upload {
+  width: 100px;
+}
+
+.categories {
+  width: 120px;
+}
+
+.upload h4, .categories h4 {
+  line-height: 50px;
+  margin: 0;
+}
+
+.upload:hover, .categories:hover {
+  cursor: pointer;
+  color: white;
+  transition: color 0.3s ease-in-out;
+}
+
+.fa-level-up {
+  width: 20px;
+  height: 20px;
+}
+
+.fa-level-up, .fa-th-large {
+  position: absolute;
+  top: 18px;
+  left: 0;
+}
+
+
+/* right nav login */
+
+
+.head-nav-right {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  font-size: 14px;
+}
+
+.head-nav-button-login {
+  margin: 10px;
+}
+
+.head-nav-right p {
+  color: lightgrey;
+}
+
+.head-nav-button-signin {
+  background-color: #4FA6D3;
+  padding: 7px 10px;
+  border-radius: 5px;
+  margin: 10px;
+}
+
+
+/* right nav  user */
+
+
+.head-nav-user {
+  display: flex;
+  height: 50px;
+  justify-content: space-between;
+  align-items: center;
+  color: lightgrey;
+}
+
+.head-nav-right-login {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+
+.header-nav-user-img-box {
+  height: 30px;
+  width: 30px;
+  overflow: hidden;
+  margin-right: 20px;
+  /*border: solid 1px white;*/
+  border-radius: 5px;
+  background-color: white;
+}
+
+.header-nav-user-img-box img {
+  height: 100%;
+  width: auto;
+}
+
+.header-nav-user-img-box img:hover {
+  opacity: .8;
+  cursor: pointer;
+}
+
+.head-nav-user a {
+  /*font-family: Open Sans;*/
+  font-size: 14px;
+  line-height: 6px;
+  font-weight: 100;
+  color: white;
+  transition: color 0.3s ease-in-out;
+}
+
+.head-nav-user a:hover {
+  cursor: pointer;
+  color: lightgrey;
+}
+
+
+.user-dropdown-arrow {
+  position: relative;
+  width: 50px;
+  height: 50px;
+}
+
+.fa-chevron-down {
+  position: absolute;
+  top: 17px;
+  left: 17px;
+  width: 14px;
+  height: 14px;
+  color: white;
+}
+
+.fa-chevron-down:hover {
+  color: lightgrey;
+}
+
+.user-dropdown-arrow.active {
+  transform: rotate(180deg);
+}
+
+
+/*
+  UserNavDropdown
+*/
+
+.user-nav-dropdown-container {
+  position: absolute;
+  top: 43px;
+  left: -90px;
+  width: 130px;
+}
+
+.user-nav-dropdown-arrow-up {
+  width: 0;
+  height: 0;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-bottom: 5px solid white;
+  margin-left: 110px;
+}
+
+.user-nav-dropdown {
+  text-align: center;
+}
+
+.user-nav-dropdown-row {
+  width: 100%;
+  height: 30px;
+  line-height: 30px;
+  color: #495973;
+  background-color: white;
+  border-bottom: solid 1px lightgrey;
+}
+
+.user-nav-dropdown-row:first-child {
+  background-color: white;
+  border-radius: 5px 5px 0 0;
+}
+
+.user-nav-dropdown-row:hover {
+  background-color: #EFFAFF;
+  color: #6BACD4;
+  transition: background-color 0.2s ease-in-out,
+    color 0.2s ease-in-out;
+}

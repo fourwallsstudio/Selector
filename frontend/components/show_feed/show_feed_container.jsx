@@ -11,7 +11,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    fetchAllShows: () => dispatch(fetchAllShows())
+    fetchAllShows: () => dispatch(fetchAllShows()),
+    createQueueItem: q => dispatch(createQueueItem(q))
   }
 }
 

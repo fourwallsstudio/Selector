@@ -11,3 +11,18 @@ export const selectAllShows = ({ shows }) => {
 export const selectShow = ({ shows }, showId) => {
   return shows.entities[showId];
 }
+
+export const selectPlayerQueue = (shows, queue) => {
+  let playerQueue = []
+  let keys = Object.keys(shows);
+  keys.length && queue.forEach( (queueItem) => {
+    if (keys.includes(queueItem.show_id.toString())) {
+      playerQueue.push({
+        show: shows[queueItem.show_id],
+        seek: queueItem.seek,
+      })
+    }
+  })
+
+  return playerQueue;
+}

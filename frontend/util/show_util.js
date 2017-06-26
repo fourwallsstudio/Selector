@@ -1,5 +1,5 @@
 export const uploadShow = formData => {
-    return $.ajax({
+  return $.ajax({
     method: 'POST',
     url: '/api/shows',
     processData: false,

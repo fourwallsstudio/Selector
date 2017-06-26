@@ -2,6 +2,8 @@ import { connect } from 'react-redux';
 import ShowProfile from './show_profile';
 import javascript_time_ago from 'javascript-time-ago'
 import { fetchSingleShow, deleteShow } from '../../actions/show_actions';
+import { createQueueItem } from '../../actions/queue_actions';
+import { updateCurrentPlay } from '../../actions/player_actions';
 import { selectShow } from '../../reducers/selecters';
 
 const mapStateToProps = (state, { match }) => {
@@ -11,14 +13,18 @@ const mapStateToProps = (state, { match }) => {
     formType: "upload",
     show: selectShow(state, showId),
     showId,
-    currentUser
+    currentUser,
+    queue: state.queue,
+    player: state.player
   }
 }
 
 const mapDispatchToProps = dispatch => {
   return {
     fetchSingleShow: showId => dispatch(fetchSingleShow(showId)),
-    deleteShow: showId => dispatch(deleteShow(showId))
+    deleteShow: showId => dispatch(deleteShow(showId)),
+    createQueueItem: q => dispatch(createQueueItem(q)),
+    updateCurrentPlay: (cp, p) => dispatch(updateCurrentPlay(cp, p))
   }
 }
 

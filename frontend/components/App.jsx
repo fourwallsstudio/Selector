@@ -8,6 +8,10 @@ import UserProfileContainer from './user_profile/user_profile_container';
 import ShowProfileContainer from './show_profile/show_profile_container';
 import UploadFormContainer from './upload/upload_form_container';
 import EditFormContainer from './upload/edit_form_container';
+import PlayerContainer from './player/player_container';
+
+
+
 
 const App = () =>  {
 
@@ -15,6 +19,8 @@ const App = () =>  {
     <div>
       <HeaderNavContainer />
       <div className="head-filler"></div>
+
+      <PlayerContainer />
 
       <AuthRoute path="/login" component={ SessionFormContainer } />
       <AuthRoute path="/signup" component={ SessionFormContainer } />

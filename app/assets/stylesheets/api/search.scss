@@ -2,13 +2,13 @@
   display: flex;
   align-items: center;
   position: relative;
-  width: 30%;
+  width: 280px;
 }
 
 .header-search-bar input {
   line-height: 30px;
   width: 100%;
-  outline:none;
+  outline: none;
   font-size: 14px;
   /*color: lightgrey;*/
   background-color: #1F3341;
@@ -28,6 +28,6 @@
 }
 
 ::-webkit-input-placeholder {
-  color: lightgrey;
+  color: #737F88;
   /*padding-left: 15px;*/
 }

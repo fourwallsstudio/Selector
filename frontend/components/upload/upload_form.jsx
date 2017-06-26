@@ -82,6 +82,7 @@ class UploadForm extends React.Component {
   updateAudio(e) {
     e.preventDefault();
     let file = e.target.files[0];
+    debugger
     this.audioFileName = file.name;
     this.setState({ audio: file });
   }
@@ -166,7 +167,7 @@ class UploadForm extends React.Component {
                     type="text"
                     value={this.state.title}
                     className="u-f-title"
-                    placeholder="Choose a tilte for your upload"
+                    placeholder="Choose a title for your upload"
                     onChange={this.update('title')}
                     />
                   <input
@@ -184,6 +185,7 @@ class UploadForm extends React.Component {
             { deleteButton }
           </div>
 
+          <div className="foot-filler"></div>
         </section>
       )
     }

@@ -44,6 +44,7 @@ class ShowFeed extends React.Component {
               <div className="s-f-f-logo"></div>
             </div>
           </div>
+          <div className="foot-filler"></div>
         </section>
       )
     }

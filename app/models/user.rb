@@ -28,6 +28,7 @@ class User < ActiveRecord::Base
   class_name: :Show,
   foreign_key: :author_id,
   primary_key: :id
+  has_many :queue_items
 
   has_attached_file :avatar, default_url: "default_bg.jpg"
   validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\Z/
