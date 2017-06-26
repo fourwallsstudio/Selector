@@ -95,12 +95,6 @@ class Player extends React.Component {
   };
 
 
-  // handlePlayClick() {
-  //   e.preventDefault();
-  //   if (!this.state.playActive) {
-  //     this.setupPlayer(e.target);
-  //   }
-  // }
 
   render() {
     if (!this.state.playerQueue.length) {

@@ -11,26 +11,23 @@ import EditFormContainer from './upload/edit_form_container';
 import PlayerContainer from './player/player_container';
 
 
-
-
 const App = () =>  {
+    return (
+      <div>
+        <HeaderNavContainer />
+        <div className="head-filler"></div>
 
-  return (
-    <div>
-      <HeaderNavContainer />
-      <div className="head-filler"></div>
+        <PlayerContainer />
 
-      <PlayerContainer />
-
-      <AuthRoute path="/login" component={ SessionFormContainer } />
-      <AuthRoute path="/signup" component={ SessionFormContainer } />
-      <Route exact path="/user/:userId" component={ UserProfileContainer } />
-      <Route exact path="/show/:showId" component={ ShowProfileContainer } />
-      <ProtectedRoute exact path='/home' component={ UserWelcomeContainer } />
-      <ProtectedRoute exact path='/upload' component={ UploadFormContainer } />
-      <ProtectedRoute exact path='/edit/:showId' component={ EditFormContainer } />
-    </div>
-  )
+        <AuthRoute path="/login" component={ SessionFormContainer } />
+        <AuthRoute path="/signup" component={ SessionFormContainer } />
+        <Route exact path="/user/:userId" component={ UserProfileContainer } />
+        <Route exact path="/show/:showId" component={ ShowProfileContainer } />
+        <ProtectedRoute exact path='/home' component={ UserWelcomeContainer } />
+        <ProtectedRoute exact path='/upload' component={ UploadFormContainer } />
+        <ProtectedRoute exact path='/edit/:showId' component={ EditFormContainer } />
+      </div>
+    )
 };
 
 export default App;
