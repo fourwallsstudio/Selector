@@ -2,6 +2,7 @@ import React from 'react';
 import { values } from 'lodash';
 import { selectPlayerQueue } from '../../reducers/selecters';
 import QueueItem from './queue_item';
+import Countdown from './countdown';
 
 class Player extends React.Component {
   constructor(props) {
@@ -22,7 +23,7 @@ class Player extends React.Component {
   }
 
 
-  shouldComponentUpdate(nextProps) {
+  shouldComponentUpdate(nextProps, nextState) {
     if (nextProps.queue.length &&
       this.props.queue.length !== nextProps.queue.length) {
 
@@ -45,7 +46,6 @@ class Player extends React.Component {
     }
   }
 
-
   howlerPlayer() {
     const q = this.state.playerQueue[0];
     const source = q.show.audio_url;
@@ -65,7 +65,9 @@ class Player extends React.Component {
           howlPlay._sounds[0]._paused
         );
       },
-      onend: () => { console.log("onend") },
+      onend: () => {
+
+      },
       onstop: () => { console.log("onstop") }
     });
 
@@ -79,6 +81,11 @@ class Player extends React.Component {
       return <div></div>;
     } else {
       let currentShow = this.state.playerQueue[0].show;
+      let counter;
+
+      if (this.props.player.player.length) {
+        counter = <Countdown player={ this.props.player.player[0] } />;
+      }
 
       let rest = this.state.playerQueue.slice(1).map( queueItem => {
         return <QueueItem key={ queueItem.show_id } queueItem={ queueItem } />;
@@ -111,7 +118,7 @@ class Player extends React.Component {
 
               </div>
               <div className="first-queue-playback-countdown">
-
+                { counter }
               </div>
             </div>
 

@@ -16,8 +16,6 @@ const playerReducer = (state = defaultState, action) => {
 
   switch (action.type) {
     case UPDATE_HOWLER_PLAYER:
-      // let newState = state;
-      // let updateState = [action.howlPlay].concat(newState)
       let newState = state;
       let updateState = {
         player: [action.howlPlay].concat(newState.player),

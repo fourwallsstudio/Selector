@@ -122,7 +122,16 @@
     border 0.4s ease-in-out;
 }
 
-.play-arrow svg {
+.show-feed-play-circle-pause {
+  position: absolute;
+  height: 20px;
+  width: 16px;
+  top: 15px;
+  left: 17px;
+  fill: #34495E;
+}
+
+.show-feed-play-circle-play {
   position: absolute;
   height: 20px;
   width: 16px;

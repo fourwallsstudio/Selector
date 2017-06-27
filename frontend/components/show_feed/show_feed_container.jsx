@@ -2,10 +2,14 @@ import { connect } from 'react-redux';
 import ShowFeed from './show_feed';
 import { fetchAllShows } from '../../actions/show_actions';
 import { selectAllShows } from '../../reducers/selecters';
+import { createQueueItem } from '../../actions/queue_actions';
 
 const mapStateToProps = state => {
   return {
-    shows: selectAllShows(state)
+    shows: selectAllShows(state),
+    queue: state.queue,
+    player: state.player,
+    currentUser: state.session.currentUser
   }
 }
 

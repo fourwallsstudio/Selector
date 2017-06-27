@@ -23,7 +23,17 @@ class ShowFeed extends React.Component {
         <div>no shows at this time</div>
       )
     } else {
-      const showItems = this.props.shows.map( show => <ShowFeedItem key={show.id} show={show}/> )
+      const showItems = this.props.shows.map( show => {
+        return (
+          <ShowFeedItem
+            key={show.id}
+            show={show}
+            queue={ this.props.queue }
+            player={ this.props.player}
+            createQueueItem={ this.props.createQueueItem }
+            currentUser={ this.props.currentUser }
+            />
+        )});
       return (
         <section className="show-feed-container group">
           <div className="show-feed-head">
