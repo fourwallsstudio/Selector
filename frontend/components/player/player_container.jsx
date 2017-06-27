@@ -1,7 +1,6 @@
 import { connect } from 'react-redux';
-import { deleteQueueItem } from '../../actions/queue_actions';
+import { deleteQueueItem, nextQueueItem } from '../../actions/queue_actions';
 import {
-  updateCurrentPlay,
   updateHowlerPlayer,
   updatePlayStatus
  } from '../../actions/player_actions';
@@ -18,10 +17,10 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    deleteQueueItem: id => dispatch(deleteQueueItem(id)),
-    updateCurrentPlay: (cp, p) => dispatch(updateCurrentPlay(cp, p)),
+    deleteQueueItem: () => dispatch(deleteQueueItem()),
     updateHowlerPlayer: (hp) => dispatch(updateHowlerPlayer(hp)),
-    updatePlayStatus: (s) => dispatch(updatePlayStatus(s))
+    updatePlayStatus: (s) => dispatch(updatePlayStatus(s)),
+    nextQueueItem: () => dispatch(nextQueueItem())
   }
 }
 

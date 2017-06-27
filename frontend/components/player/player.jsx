@@ -9,10 +9,13 @@ class Player extends React.Component {
     super(props)
 
     this.state = {
-      playerQueue: []
+      playerQueue: [],
+      dropdownIsActive: false
     }
 
     this.howlerPlayer = this.howlerPlayer.bind(this);
+    this.dropdownHandle = this.dropdownHandle.bind(this);
+    this.handlePlayClick = this.handlePlayClick.bind(this);
   }
 
 
@@ -24,6 +27,10 @@ class Player extends React.Component {
 
 
   shouldComponentUpdate(nextProps, nextState) {
+    if (this.state.dropdownIsActive !== nextState.dropdownIsActive) {
+      return true;
+    }
+
     if (nextProps.queue.length &&
       this.props.queue.length !== nextProps.queue.length) {
 
@@ -66,7 +73,7 @@ class Player extends React.Component {
         );
       },
       onend: () => {
-
+        this.props.nextQueueItem();
       },
       onstop: () => { console.log("onstop") }
     });
@@ -75,24 +82,69 @@ class Player extends React.Component {
   };
 
 
+  dropdownHandle() {
+    this.setState({
+      dropdownIsActive: !this.state.dropdownIsActive
+    })
+  }
+
+  handlePlayClick(e) {
+    e.preventDefault();
+    let current = this.props.player.player[0]._sounds[0];
+
+    if (current._paused) {
+      this.props.player.player[0].play();
+    } else {
+      this.props.player.player[0].pause();
+    }
+  }
+
 
   render() {
     if (!this.state.playerQueue.length) {
       return <div></div>;
     } else {
+
       let currentShow = this.state.playerQueue[0].show;
       let counter;
+      let dropdown;
+      let firstPlayDisplay;
 
-      if (this.props.player.player.length) {
-        counter = <Countdown player={ this.props.player.player[0] } />;
-      }
-
+      // QUEUE REST
       let rest = this.state.playerQueue.slice(1).map( queueItem => {
         return <QueueItem key={ queueItem.show_id } queueItem={ queueItem } />;
       })
 
+      // COUNTER
+      if (this.props.player.player.length) {
+        counter = <Countdown player={ this.props.player.player[0] } />;
+      }
+
+      // DROPDOWN
+      if (this.state.dropdownIsActive) {
+        dropdown = " dropdown-active";
+      } else {
+        dropdown = "";
+      };
+
+      // PLAY DISPLAY
+        if (this.props.player.status === 'playing') {
+          firstPlayDisplay = (
+            <svg viewBox="0 0 21 24">
+              <path d="M4.5,0h-3C0.7,0,0,0.7,0,1.6v20.8C0,23.3,0.7,24,1.5,24h3C5.3,24,6,23.3,6,22.4V1.6C6,0.7,5.3,0,4.5,0z M16.5,0h-3C12.7,0,12,0.7,12,1.6v20.8c0,0.9,0.7,1.6,1.5,1.6h3c0.8,0,1.5-0.7,1.5-1.6V1.6C18,0.7,17.3,0,16.5,0z"/>
+            </svg>
+          );
+        } else {
+          firstPlayDisplay = (
+            <svg viewBox="0 0 21 24">
+              <path d="M0,21.6V2.4c0-2.2,1.7-3,3.9-1.9l15.5,9.6c2.1,1.1,2.1,2.8,0,3.9L3.9,23.5C1.8,24.6,0,23.7,0,21.6z"/>
+            </svg>
+          );
+        }
+
+
       return (
-        <section className="player-container">
+        <section className={"player-container" + dropdown }>
 
           <div className="player-container-top">
             <div className="player-container-left">
@@ -101,10 +153,9 @@ class Player extends React.Component {
                   <img src={ currentShow.image_url } />
                 </div>
                 <div className="first-queue-play-button"
-                  onClick={ this.playClick }>
-                  <svg viewBox="0 0 21 24">
-                    <path d="M0,21.6V2.4c0-2.2,1.7-3,3.9-1.9l15.5,9.6c2.1,1.1,2.1,2.8,0,3.9L3.9,23.5C1.8,24.6,0,23.7,0,21.6z"/>
-                  </svg>
+                  onClick={ this.handlePlayClick }>
+                  { firstPlayDisplay }
+
                 </div>
                 <div className="first-queue-play-detail">
                   <h2>{currentShow.title}</h2>
@@ -117,24 +168,22 @@ class Player extends React.Component {
               <div className="first-queue-bottons-box">
 
               </div>
-              <div className="first-queue-playback-countdown">
-                { counter }
-              </div>
             </div>
 
-            <div className="first-queue-playback-slider"></div>
+            { counter }
 
             <div className="player-container-right">
-              <div className="first-queue-playback-countup">
-
-              </div>
               <div className="first-queue-playback-vol-box">
-
+                <i className="fa fa-volume-up fa-2x" aria-hidden="true"></i>
+                <div className="f-q-vol-bar">
+                  <input className="f-q-vol-slider"type="range" />
+                </div>
               </div>
 
-              <div className="playback-queue-dropdown">
+              <div className={"playback-queue-dropdown" + dropdown}
+                onClick={ this.dropdownHandle }>
                 <h4>NEXT</h4>
-                  <i className="fa fa-chevron-down fa-lg"
+                  <i className="fa fa-chevron-down"
                     aria-hidden="true"
                     ></i>
               </div>

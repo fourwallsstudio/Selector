@@ -33,4 +33,8 @@ class Show < ActiveRecord::Base
     primary_key: :id
 
   has_many :queue_items
+
+  def plays
+    self.queue_items.length
+  end
 end

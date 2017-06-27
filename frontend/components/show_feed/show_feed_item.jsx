@@ -1,5 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import javascript_time_ago from 'javascript-time-ago';
+javascript_time_ago.locale(require('javascript-time-ago/locales/en'));
 
 class ShowFeedItem extends React.Component {
   constructor(props) {
@@ -34,6 +36,8 @@ class ShowFeedItem extends React.Component {
   render() {
     let show = this.props.show;
     let playDisplay;
+    let timeAgoJS = new javascript_time_ago('en-US');
+    let timeAgo = timeAgoJS.format(new Date(this.props.show.created_at));
 
     if (this.props.player.player.length && this.props.queue[0].show_id === show.id) {
       if (this.props.player.status === 'playing') {
@@ -60,8 +64,8 @@ class ShowFeedItem extends React.Component {
     return (
       <li id={ show.id } className="show-feed-item-container group">
         <div className="s-f-i-head">
-          <div>user</div>
-          <div>time_ago</div>
+          <div>^_^</div>
+          <div>{timeAgo}</div>
         </div>
 
         <div className="s-f-i-main">
@@ -71,8 +75,8 @@ class ShowFeedItem extends React.Component {
             </Link>
 
           </div>
-          <div className="play-box" onClick={ this.handlePlayClick }>
-            <div className="play-arrow">
+          <div className="play-box" >
+            <div className="play-arrow" onClick={ this.handlePlayClick }>
               { playDisplay }
             </div>
             <div className="play-head">
@@ -104,6 +108,7 @@ class ShowFeedItem extends React.Component {
               <div className="s-f-i-foot-right">
                 <div className="s-f-i-b-r hp">
                   <i className="fa fa-headphones" aria-hidden="true"></i>
+                  <p>{ show.plays }</p>
                 </div>
                 <div className="s-f-i-b-r clock">
                   <i className="fa fa-clock-o" aria-hidden="true"></i>

@@ -1,15 +1,16 @@
 import React from 'react';
-import javascript_time_ago from 'javascript-time-ago'
 import { withRouter, Link } from 'react-router-dom'
 import { Howl } from 'howler';
 import ShowProfileAside from './show_profile_aside';
+import javascript_time_ago from 'javascript-time-ago'
+javascript_time_ago.locale(require('javascript-time-ago/locales/en'));
+import english from 'javascript-time-ago/locales/en'
 
 class ShowProfile extends React.Component {
   constructor(props) {
     super(props)
 
     this.handleDelete = this.handleDelete.bind(this);
-    this.timeAgo = this.timeAgo.bind(this);
     this.handleEditClick = this.handleEditClick.bind(this);
     this.handlePlayClick = this.handlePlayClick.bind(this);
   }
@@ -22,11 +23,6 @@ class ShowProfile extends React.Component {
     if (this.props.showId !== newProps.showId ) {
       newProps.fetchSingleShow(newProps.showId);
     }
-  }
-
-  timeAgo() {
-    const show_date = this.props.show.created_at;
-    return javascript_time_ago.format(show_date);
   }
 
   handleDelete(e) {
@@ -73,7 +69,9 @@ class ShowProfile extends React.Component {
       const show = this.props.show;
       let userControls;
       let playDisplay;
-      
+      let timeAgoJS = new javascript_time_ago('en-US');
+      let timeAgo = timeAgoJS.format(new Date(this.props.show.created_at));
+
       if (this.props.player.player.length && this.props.queue[0].show_id === show.id) {
         if (this.props.player.status === 'playing') {
           playDisplay = (
@@ -162,13 +160,14 @@ class ShowProfile extends React.Component {
                     <div className="s-p-h-foot-right">
                       <div className="s-p-h-b-r hp">
                         <i className="fa fa-headphones fa-lg" aria-hidden="true"></i>
+                        <p className="s-p-h-b-r-plays">{ show.plays }</p>
                       </div>
                       <div className="s-p-h-b-r clock">
                         <i className="fa fa-clock-o fa-lg" aria-hidden="true"></i>
                       </div>
                       <div className="s-p-h-b-r cal">
                         <i className="fa fa-calendar fa-lg" aria-hidden="true"></i>
-                        { this.timeAgo }
+                        <p className="s-p-h-b-r-time-ago">{ timeAgo }</p>
                       </div>
                     </div>
                   </div>

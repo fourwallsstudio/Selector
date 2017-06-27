@@ -5,10 +5,15 @@
 
 .player-container {
   position: fixed;
-  bottom: 0px;
+  bottom: -50px;
   height: 100px;
   width: 100%;
   z-index: 100;
+  transition: bottom 0.3s ease-in-out;
+}
+
+.player-container.dropdown-active {
+  bottom: 0px;
 }
 
 .player-container-top {
@@ -98,6 +103,7 @@
   background-color: rgba(255, 255, 255, .1);
 }
 
+
 .first-queue-bottons-box {
   width: 180px;
   height: 50px;
@@ -105,23 +111,33 @@
   border-right: solid 1px black;
 }
 
-.first-queue-playback-countdown {
-  width: 50px;
-  height: 50px;
-}
 
 /*
   slider
 */
 
+.first-queue-playback {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.first-queue-playback-countup, .first-queue-playback-countdown {
+  width: 80px;
+  height: 50px;
+  font-size: 12px;
+  text-align: center;
+  line-height: 50px;
+}
+
+.first-queue-playback-slider {
+  width: 70%;
+}
+
 /*
   RIGHT
 */
 
-.first-queue-playback-countup {
-  width: 50px;
-  height: 50px;
-}
 
 .player-container-right {
   display: flex;
@@ -129,28 +145,72 @@
 }
 
 .first-queue-playback-vol-box {
+  position: relative;
   height: 50px;
   width: 60px;
+  text-align: center;
   border-left: solid 1px black;
   border-right: solid 1px black;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.first-queue-playback-vol-box:hover {
+  background-color: #1F3341;
+  curser: pointer;
+}
+
+.first-queue-playback-vol-box i {
+  position: absolute;
+  top: 12px;
+  left: 14px;
+}
+
+.first-queue-playback-vol-box:hover > .f-q-vol-bar {
+  display: block;
+}
+
+.f-q-vol-bar {
+  display: none;
+  position: absolute;
+  left: 0px;
+  bottom: 50px;
+  height: 160px;
+  width: 60px;
+  background-color: #1F3341;
+  border-radius: 5px 5px 0 0;
+}
+
+.f-q-vol-slider {
+  transform: rotate(90deg) translate(70px, 34px);
 }
 
 .playback-queue-dropdown {
   position: relative;
   height: 50px;
-  width: 90px;
+  width: 100px;
+}
+
+.playback-queue-dropdown:hover {
+  background-color: #1F3341;
+  curser: pointer;
 }
 
 .playback-queue-dropdown h4 {
   margin: 0;
+  font-size: 14px;
   line-height: 50px;
   padding: 0 20px;
 }
 
 .playback-queue-dropdown i {
   position: absolute;
-  top: 0;
-  right: 0;
+  top: 15px;
+  left: 70px;
+}
+
+.playback-queue-dropdown.dropdown-active i {
+  top: 20px;
+  transform: rotate(180deg);
 }
 
 /*

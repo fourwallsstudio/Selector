@@ -144,8 +144,8 @@
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
-  /*width: 400px;*/
-  width: 82%;
+  width: 472px;
+  // width: 84%;
   height: 20px;
   color: grey;
   margin-left: 10px;
@@ -154,7 +154,10 @@
 
 .play-title {
   font-size: 18px;
+  height: 30px;
+  width: 390px;
   color: #49596A;
+  overflow: scroll;
   transition: color 0.3s ease-in-out;
 }
 
@@ -235,16 +238,23 @@
 .s-f-i-foot-right {
   display: flex;
   justify-content: space-between;
-  width: 140px;
+  width: 160px;
   margin: 0;
 }
 
 .s-f-i-b-r {
   position: relative;
-  width: 50px;
+  width: 45px;
   height: 32px;
   // border: solid 1px #D8E2E6;
   border-radius: 5px;
+}
+
+.s-f-i-b-r p {
+  text-align: right;
+  line-height: 32px;
+  font-size: 14px;
+  color: grey;
 }
 
 .fa.fa-headphones, .fa.fa-clock-o, .fa.fa-calendar {
@@ -252,7 +262,7 @@
   width: 50px;
   height: 32px;
   top: 10px;
-  left: 14px;
+  left: 0px;
   color: #697F95;
 }
 

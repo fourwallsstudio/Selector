@@ -2,6 +2,7 @@ import * as APIUtil from '../util/queue_util';
 
 export const CREATE_QUEUE_ITEM = 'CREATE_QUEUE_ITEM';
 export const REMOVE_QUEUE_ITEM = 'REMOVE_QUEUE_ITEM';
+export const NEXT_QUEUE_ITEM = 'NEXT_QUEUE_ITEM';
 
 
 export const createQueueItem = queueItem => {
@@ -17,6 +18,12 @@ export const deleteQueueItem = id => {
       .then( queueItem  => {
         dispatch(removeQueueItem(queueItem))
       });
+  }
+}
+
+export const nextQueueItem = () => {
+  return {
+    type: NEXT_QUEUE_ITEM
   }
 }
 

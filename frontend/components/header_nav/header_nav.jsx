@@ -43,6 +43,14 @@ class HeaderNav extends React.Component {
 
   render() {
     let rightSideNav;
+    let dropdownActive;
+
+    if (this.state.dropdownActive) {
+      dropdownActive = " dropdown-active";
+    } else {
+      dropdownActive = "";
+    }
+
     if (!this.props.loggedIn) {
       rightSideNav = <div className="head-nav-right-login">
                       <Link to={`/login`}
@@ -60,7 +68,7 @@ class HeaderNav extends React.Component {
                       </div>
                       <Link to={`/user/${user.id}`}>{user.username}</Link>
                       <div className="user-dropdown-arrow">
-                        <i className="fa fa-chevron-down"
+                        <i className={"fa fa-chevron-down" + dropdownActive}
                             aria-hidden="true"
                             onClick={ this.handleClick }
                             ></i>

@@ -49,6 +49,7 @@
 }
 
 .i-h-links:hover > * {
+  cursor: pointer;
   color: #4FA6D3;
   transition: color 0.2s ease-in-out;
 }

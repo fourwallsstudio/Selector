@@ -62,13 +62,21 @@ class Countdown extends React.Component {
   }
 
   render() {
-
-
-
     return (
-      <div>
-        <p>{ "-" + this.stringify(this.state.countdown) }</p>
-        <p>{ this.stringify(this.state.countup) }</p>
+      <div className="first-queue-playback">
+        <div className="first-queue-playback-countup">
+          <p>{ this.stringify(this.state.countup) }</p>
+        </div>
+
+        <input type="range"
+          min="0"
+          max={`${ this.props.player._sounds[0]._stop }`}
+          value={ `${ this.state.countup }`}
+          className="first-queue-playback-slider" />
+
+        <div className="first-queue-playback-countdown">
+          <p>{ "-" + this.stringify(this.state.countdown) }</p>
+        </div>
       </div>
     )
   }
