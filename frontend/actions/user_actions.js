@@ -1,11 +1,10 @@
-import * as APIUtil from '../util/session_api_util';
+import * as APIUtil from '../util/user_api_util';
 
 export const RECEIVE_USER = 'RECEIVE_USER';
 export const RECEIVE_USERS = 'RECEIVE_USERS';
 export const UPDATE_USER = 'UPDATE_USER';
 
 export const fetchUser = id => {
-
   return dispatch => {
     return (
       APIUtil.fetchUser(id)
@@ -25,11 +24,11 @@ export const fetchUsers = users => {
   }
 }
 
-export const editUser = user => {
+export const editUser = (id, formData) => {
   return dispatch => {
     return (
-      APIUtil.editUser(user)
-      .then(users => dispatch(updateUser(user)),
+      APIUtil.editUser(id, formData)
+      .then(user => dispatch(updateUser(user)),
       err => dispatch(receiveErrors(err.responseJSON)))
     )
   }

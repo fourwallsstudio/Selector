@@ -304,6 +304,16 @@
   color: #697F95;
 }
 
+.s-p-comments-header {
+  border-bottom: solid 1px lightgrey;
+  margin: 40px 0;
+}
+
+.s-p-comments-header h2 {
+  font-size: 24px;
+  color: #697F95;
+  margin-bottom: 10px;
+}
 
 
 /*
@@ -407,12 +417,146 @@
   border-bottom: solid 1px lightgrey;
 }
 
-.s-p-a-listeners {
+.s-p-a-listeners h2 {
   height: 50px;
   border-bottom: solid 1px lightgrey;
+}
+
+.s-p-a-listeners-box {
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.listeners-thumb {
+  width: 50px;
+  height: 50px;
+  margin: 10px;
+  overflow: hidden;
+}
+
+.listeners-thumb img {
+  width: 100%;
+  height: auto;
 }
 
 .s-p-a-beatport {
   height: 50px;
   border-bottom: solid 1px lightgrey;
+}
+
+
+
+
+
+
+
+
+
+
+/*
+  Comment Form
+*/
+
+.comment-form-container {
+  display: flex;
+  justify-content: space-between;
+  // width: 85%;
+  margin: 0;
+  padding-bottom: 20px;
+  border-bottom: solid 1px #EBF0F2;
+}
+
+.comment-form-img-box {
+  width: 60px;
+  height: 60px;
+  border-radius: 5px;
+  margin-right: 20px;
+}
+
+.comment-form-img-box img {
+  border-radius: 5px;
+}
+
+.comment-form-form {
+  width: 580px;
+}
+
+.comment-form-input {
+  height: 90px;
+  width: 96%;
+  color: #B3BEC9;
+  background-color: #F5F9FC;
+  border: solid 1px lightgrey;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.comment-form-button-box {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.comment-form-form button {
+  color: white;
+  font-size: 14px;
+  height: 40px;
+  padding: 0 20px;
+  background-color: #4FA6D3;
+  text-align: center;
+  border-radius: 5px;
+  margin-top: 20px;
+}
+
+
+
+
+/*
+  Comment Feed
+*/
+
+.comment-feed-item {
+  display: flex;
+  justify-content: space-between;
+  margin: 20px 0;
+  padding-bottom: 20px;
+  border-bottom: solid 1px #EBF0F2;
+}
+
+.comment-feed-item-img-box {
+  width: 60px;
+  height: 60px;
+  border: solid 1px black;
+  border-radius: 5px;
+  margin-right: 20px;
+}
+
+.comment-feed-item-img-box img {
+  border-radius: 5px;
+}
+
+.comment-feed-item-content {
+  width: 580px;
+}
+
+.comment-feed-item-head {
+  display: flex;
+  font-size: 14px;
+}
+
+.comment-feed-item-head h4 {
+  margin: 0;
+  padding-right: 10px;
+  color: #5873A7;
+}
+
+.comment-feed-item-head p {
+  color: #8196AC;
+}
+
+.comment-feed-item-body {
+  padding: 10px 0;
+  color: #586573;
 }

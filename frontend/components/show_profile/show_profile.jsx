@@ -2,6 +2,8 @@ import React from 'react';
 import { withRouter, Link } from 'react-router-dom'
 import { Howl } from 'howler';
 import ShowProfileAside from './show_profile_aside';
+import CommentFeed from '../comments/comment_feed';
+import CommentForm from '../comments/comment_form';
 import javascript_time_ago from 'javascript-time-ago'
 javascript_time_ago.locale(require('javascript-time-ago/locales/en'));
 import english from 'javascript-time-ago/locales/en'
@@ -10,18 +12,34 @@ class ShowProfile extends React.Component {
   constructor(props) {
     super(props)
 
+    this.state = {
+      listenersData: []
+    }
+
+
     this.handleDelete = this.handleDelete.bind(this);
     this.handleEditClick = this.handleEditClick.bind(this);
     this.handlePlayClick = this.handlePlayClick.bind(this);
+    this.fetchUser = this.props.fetchUser.bind(this);
   }
 
   componentDidMount() {
-    this.props.fetchSingleShow(this.props.showId);
+    this.props.fetchSingleShow(this.props.showId)
+      .then( result => {
+        result.show.listeners.forEach( id => {
+          this.fetchUser(id)
+          .then( result =>
+            this.setState({
+              listenersData: this.state.listenersData.concat(result.user)
+          })
+        )
+      })
+    })
   }
 
   componentWillReceiveProps(newProps) {
     if (this.props.showId !== newProps.showId ) {
-      newProps.fetchSingleShow(newProps.showId);
+      newProps.fetchSingleShow(newProps.showId)
     }
   }
 
@@ -66,6 +84,7 @@ class ShowProfile extends React.Component {
         <div>loading</div>
       )
     } else {
+
       const show = this.props.show;
       let userControls;
       let playDisplay;
@@ -221,9 +240,19 @@ class ShowProfile extends React.Component {
                 </div>
               </div>
 
+              <div className="s-p-comments-header">
+                <h2>Comments</h2>
+              </div>
+
+              <CommentForm show={ show }
+                currentUser={this.props.currentUser}
+                createComment={this.props.createComment} />
+
+              <CommentFeed show={ show } fetchUser={ this.props.fetchUser }/>
+
             </div>
 
-            <ShowProfileAside show={ show } />
+            <ShowProfileAside show={ show } listenersData={ this.state.listenersData }/>
           </div>
 
           <div className="foot-filler"></div>

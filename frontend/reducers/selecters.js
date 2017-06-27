@@ -26,3 +26,13 @@ export const selectPlayerQueue = (shows, queue) => {
 
   return playerQueue;
 }
+
+export const selectListeners = ({ users }, ids) => {
+  let listeners = [];
+
+  ids.length && ids.forEach( (id) => {
+      listeners.push(users[id]);
+    });
+
+  return listeners;
+}

@@ -13,6 +13,9 @@
 #  avatar_content_type :string
 #  avatar_file_size    :integer
 #  avatar_updated_at   :datetime
+#  bio                 :text
+#  city                :string
+#  country             :string
 #
 
 class User < ActiveRecord::Base
@@ -29,6 +32,7 @@ class User < ActiveRecord::Base
   foreign_key: :author_id,
   primary_key: :id
   has_many :queue_items
+  has_many :comments
 
   has_attached_file :avatar, default_url: "default_bg.jpg"
   validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\Z/
@@ -53,6 +57,16 @@ class User < ActiveRecord::Base
     self.session_token = SecureRandom.urlsafe_base64(16)
     self.save!
     self.session_token
+  end
+
+  def show_ids
+    ids = []
+
+    self.shows.each do |show|
+      ids << show.id
+    end
+
+    ids
   end
 
   private

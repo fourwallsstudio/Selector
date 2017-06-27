@@ -172,11 +172,12 @@
 .f-q-vol-bar {
   display: none;
   position: absolute;
-  left: 0px;
+  left: -1px;
   bottom: 50px;
   height: 160px;
   width: 60px;
   background-color: #1F3341;
+  border: solid 1px black;
   border-radius: 5px 5px 0 0;
 }
 

@@ -9,6 +9,7 @@ import ShowProfileContainer from './show_profile/show_profile_container';
 import UploadFormContainer from './upload/upload_form_container';
 import EditFormContainer from './upload/edit_form_container';
 import PlayerContainer from './player/player_container';
+import UserFormContainer from './user_form/user_form_container';
 
 
 const App = () =>  {
@@ -26,6 +27,7 @@ const App = () =>  {
         <ProtectedRoute exact path='/home' component={ UserWelcomeContainer } />
         <ProtectedRoute exact path='/upload' component={ UploadFormContainer } />
         <ProtectedRoute exact path='/edit/:showId' component={ EditFormContainer } />
+        <ProtectedRoute exact path='/user/:userId/settings' component={ UserFormContainer } />
       </div>
     )
 };

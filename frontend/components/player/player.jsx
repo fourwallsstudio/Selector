@@ -117,7 +117,7 @@ class Player extends React.Component {
 
       // COUNTER
       if (this.props.player.player.length) {
-        counter = <Countdown player={ this.props.player.player[0] } />;
+        counter = <Countdown player={ this.props.player.player[0] } status={ this.props.player.status } />;
       }
 
       // DROPDOWN

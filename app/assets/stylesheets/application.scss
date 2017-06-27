@@ -29,6 +29,13 @@
    font-style: normal;
  }
 
+ @font-face {
+   font-family: 'OpenSans-Light';
+   src: url('OpenSans-Light.ttf') format('truetype');
+   font-weight: normal;
+   font-style: normal;
+ }
+
 @import "api/reset.css";
 
 @import "api/base.scss";

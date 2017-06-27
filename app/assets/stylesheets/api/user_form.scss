@@ -1,0 +1,130 @@
+.user-form-container {
+  display: flex;
+  flex-direction: column;
+  width: 85%;
+  margin: 20px auto;
+  // border: solid 2px black;
+}
+
+.user-header {
+  width: 100%;
+  border-bottom: solid 2px #EBF0F2;
+}
+
+.user-header h1 {
+  color: #697F95;
+  font-size: 20px;
+  padding: 10px 0;
+}
+
+.user-input-box {
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  width: 100%;
+  margin-top: 40px;
+}
+
+.user-input-image {
+  color: white;
+  text-align: center;
+  position: relative;
+  line-height: 40px;
+  width: 120px;
+  height: 40px;
+  background-color: #9FC5E2;
+  border-radius: 5px;
+  margin: 20px 0 10px 0;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.user-input-image:hover {
+  background-color: #9ABBD5;
+}
+
+.user-input-image {
+    top: 160px;
+    left: 90px;
+}
+
+.user-input-image input {
+  opacity: 0;
+  position: absolute;
+  top: 0px;
+  left: -85px;
+  width: 200px;
+  height: 40px;
+  font-size: 50px;
+}
+
+.user-input-audio input, .user-input-image input {
+  cursor: pointer;
+}
+
+.user-image-preview-box {
+  position: relative;
+  width: 300px;
+  height: 300px;
+  background-color: #F5F9FC;
+  border: solid 1px #EBF0F2;
+  overflow: hidden;
+}
+
+.avatar-preview {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: auto;
+}
+
+.fa-cloud-upload {
+  position: absolute;
+  top: 100px;
+  left: 112px;
+  width: 30px;
+  height: 30px;
+  color: #9FC5E2;
+  z-index: 1;
+}
+
+.user-input-lower-box-text-input-box {
+  width: 760px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.u-f-bio, .u-f-city, .u-f-country {
+  height: 24px;
+  background-color: white;
+  border: solid 1px lightgrey;
+  padding: 10px;
+  border-radius: 5px;
+  margin: 0 10px 10px 10px;
+}
+
+.u-f-bio {
+  height: 100px;
+}
+
+.user-form-button-box {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.user-form-button-box button {
+  color: white;
+  height: 40px;
+  width: 100px;
+  background-color: #50B348;
+  text-align: center;
+  border-radius: 5px;
+  margin: 20px;
+}
+
+.user-form-box button:hover {
+  background-color: #44A73D;
+}

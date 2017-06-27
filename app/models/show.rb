@@ -33,8 +33,17 @@ class Show < ActiveRecord::Base
     primary_key: :id
 
   has_many :queue_items
+  has_many :comments
 
   def plays
     self.queue_items.length
+  end
+
+  def listeners
+    listeners = []
+
+    self.queue_items.each { |q| listeners << q.user_id }
+
+    listeners.uniq
   end
 end

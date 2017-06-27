@@ -10,7 +10,7 @@ const rootReducer = combineReducers({
   users: userReducer,
   shows: showReducer,
   queue: queueReducer,
-  player: playerReducer
+  player: playerReducer,
 })
 
 export default rootReducer;

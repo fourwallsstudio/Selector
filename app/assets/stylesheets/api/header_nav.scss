@@ -254,12 +254,20 @@ nav links
   border-bottom: solid 1px lightgrey;
 }
 
+.user-nav-dropdown-row a {
+  color: #495973;
+}
+
 .user-nav-dropdown-row:first-child {
-  background-color: white;
   border-radius: 5px 5px 0 0;
 }
 
-.user-nav-dropdown-row:hover {
+.user-nav-dropdown-row:last-child {
+  border-bottom: none;
+  border-radius: 0 0 5px 5px;
+}
+
+.user-nav-dropdown-row:hover  {
   background-color: #EFFAFF;
   color: #6BACD4;
   transition: background-color 0.2s ease-in-out,
