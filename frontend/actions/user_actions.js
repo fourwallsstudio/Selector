@@ -28,8 +28,8 @@ export const editUser = (id, formData) => {
   return dispatch => {
     return (
       APIUtil.editUser(id, formData)
-      .then(user => dispatch(updateUser(user)),
-      err => dispatch(receiveErrors(err.responseJSON)))
+      .then(user => dispatch(updateUser(user)))
+      // err => dispatch(receiveErrors(err.responseJSON)))
     )
   }
 }
