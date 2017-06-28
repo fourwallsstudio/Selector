@@ -18,8 +18,10 @@ class CommentForm extends React.Component {
 
     this.props.createComment({
       body: this.state.body,
-      show_id: this.props.show.id 
+      show_id: this.props.show.id
     })
+
+    this.setState({ body: "" })
   }
 
   handelChange(e) {

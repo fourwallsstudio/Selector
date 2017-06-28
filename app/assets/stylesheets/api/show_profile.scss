@@ -528,12 +528,14 @@
 .comment-feed-item-img-box {
   width: 60px;
   height: 60px;
-  border: solid 1px black;
+  // border: solid 1px black;
   border-radius: 5px;
   margin-right: 20px;
 }
 
 .comment-feed-item-img-box img {
+  height: auto;
+  width: 100%;
   border-radius: 5px;
 }
 

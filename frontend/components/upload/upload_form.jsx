@@ -1,4 +1,6 @@
 import React from 'react';
+import MustBeLoggedIn from '../errors_notices/must_be_logged_in';
+import renderHTML from 'react-render-html';
 
 class UploadForm extends React.Component {
   constructor(props) {
@@ -9,6 +11,7 @@ class UploadForm extends React.Component {
       description: "",
       audio: null,
       image: null,
+      uploadInProgress: false
     },
     this.audioFileName = "";
     this.imagePreviewUrl = "";
@@ -41,6 +44,8 @@ class UploadForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
+    this.setState({ uploadInProgress: true });
+
     var file = this.state.imageFile;
     var formData = new FormData();
     formData.append("show[title]", this.state.title);
@@ -82,7 +87,6 @@ class UploadForm extends React.Component {
   updateAudio(e) {
     e.preventDefault();
     let file = e.target.files[0];
-    debugger
     this.audioFileName = file.name;
     this.setState({ audio: file });
   }
@@ -102,14 +106,16 @@ class UploadForm extends React.Component {
 
   render() {
     if (!this.props.currentUser) {
-      return (
-        <div>must be logged in to upload</div>
-      )
+      return <MustBeLoggedIn type="upload" />;
+
     } else {
       let imagePreview = "";
       let deleteButton = "";
       let formName = 'Upload';
       let buttonAction = 'Choose ';
+      let uploadInProgress = "";
+
+      if (this.state.uploadInProgress) { uploadInProgress = "upload-in-progress" };
 
       if (this.imagePreviewUrl !== "") {
         imagePreview = <img className="image-preview" src={this.imagePreviewUrl} />;
@@ -128,9 +134,12 @@ class UploadForm extends React.Component {
           </div>
 
           <div className="upload-banners-container">
-            <div className="upload-spinner-box">
+            <div className={`upload-spinner-box ${ uploadInProgress }`} >
               <i className="fa fa-refresh fa-5x" aria-hidden="true"></i>
             </div>
+            <p className={`loading-marquee ${ uploadInProgress }`}>
+              Loading, please wait...
+            </p>
           </div>
 
           <div className="upload-form-box">

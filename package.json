@@ -31,6 +31,7 @@
     "react-draggable": "^2.2.6",
     "react-fileupload-progress": "^0.4.0",
     "react-redux": "^5.0.5",
+    "react-render-html": "^0.2.0",
     "react-router-dom": "^4.1.1",
     "react-upload-file": "^2.0.0-beta.6",
     "redux": "^3.7.0",

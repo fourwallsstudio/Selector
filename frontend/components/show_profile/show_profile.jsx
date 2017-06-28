@@ -1,6 +1,7 @@
 import React from 'react';
 import { withRouter, Link } from 'react-router-dom'
 import { Howl } from 'howler';
+import { values, merge } from 'lodash';
 import ShowProfileAside from './show_profile_aside';
 import CommentFeed from '../comments/comment_feed';
 import CommentForm from '../comments/comment_form';
@@ -13,7 +14,7 @@ class ShowProfile extends React.Component {
     super(props)
 
     this.state = {
-      listenersData: []
+      listenersData: {}
     }
 
 
@@ -30,7 +31,7 @@ class ShowProfile extends React.Component {
           this.fetchUser(id)
           .then( result =>
             this.setState({
-              listenersData: this.state.listenersData.concat(result.user)
+              listenersData: merge({}, this.state.listenersData, { [result.user.id]: result.user })
           })
         )
       })
@@ -248,11 +249,11 @@ class ShowProfile extends React.Component {
                 currentUser={this.props.currentUser}
                 createComment={this.props.createComment} />
 
-              <CommentFeed show={ show } fetchUser={ this.props.fetchUser }/>
+              <CommentFeed show={ show } listenersData={ this.state.listenersData }/>
 
             </div>
 
-            <ShowProfileAside show={ show } listenersData={ this.state.listenersData }/>
+            <ShowProfileAside show={ show } listenersData={ values(this.state.listenersData) }/>
           </div>
 
           <div className="foot-filler"></div>

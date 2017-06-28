@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { merge, values } from 'lodash';
 import javascript_time_ago from 'javascript-time-ago';
 javascript_time_ago.locale(require('javascript-time-ago/locales/en'));
 import english from 'javascript-time-ago/locales/en';
@@ -9,38 +10,26 @@ class CommentFeed extends React.Component {
     super(props)
 
     this.state = {
-      comments: [],
+      comments: {},
       users: {}
     }
   }
 
-
-  componentDidMount() {
-    this.props.show.comments.forEach(comment => {
-      this.setState({
-        comments: this.state.comments.concat([comment])
-      })
-
-      this.props.fetchUser(comment.user_id)
-        .then( result => {
-          this.setState({
-            users: {
-              [result.user.id]: {
-              username: result.user.username,
-              avatar: result.user.avatar_url
-              }
-            }
-          })
-        })
+  componentWillReceiveProps(nextProps) {
+    this.setState({
+      comments: merge({}, this.state.comments, nextProps.show.comments),
+      users: merge({}, this.state.users, nextProps.listenersData)
     })
   }
 
 
   render() {
+    console.log("state", this.state)
     let timeAgoJS = new javascript_time_ago('en-US');
     let that = this;
-
-    let comments = this.state.comments.map(comment => {
+    let comments = values(this.state.comments).sort((a,b) => {
+      return b.id - a.id;
+    }).map(comment => {
       let timeAgo = timeAgoJS.format(new Date(comment.created_at));
       let user = that.state.users[comment.user_id];
 

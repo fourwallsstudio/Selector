@@ -1,4 +1,5 @@
 import React from 'react';
+import MustBeLoggedIn from '../errors_notices/must_be_logged_in';
 
 class UserForm extends React.Component {
   constructor(props) {
@@ -92,7 +93,7 @@ class UserForm extends React.Component {
     // debugger
     if (!this.props.currentUser || this.props.currentUser.id !== parseInt(this.props.userId)) {
       return (
-        <div>must be user to edit</div>
+        <MustBeLoggedIn type="edit" />
       )
     } else {
       let avatarPreview = "";
