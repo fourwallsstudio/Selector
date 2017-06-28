@@ -30,7 +30,6 @@ class HeaderNav extends React.Component {
         dropdownActive: true
       });
     }
-    console.log(this.state.dropdownActive);
   }
 
   isActive() {

@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 
 
 const UserNavDropdown = (props) => {
-  debugger
   return (
     <div className="user-nav-dropdown-container">
       <div className="user-nav-dropdown-arrow-up"></div>

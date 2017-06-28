@@ -75,7 +75,7 @@ class Player extends React.Component {
       onend: () => {
         this.props.nextQueueItem();
       },
-      onstop: () => { console.log("onstop") }
+      onstop: () => {  }
     });
 
     howlPlay.play();

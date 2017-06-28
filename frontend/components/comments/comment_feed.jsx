@@ -24,7 +24,6 @@ class CommentFeed extends React.Component {
 
 
   render() {
-    console.log("state", this.state)
     let timeAgoJS = new javascript_time_ago('en-US');
     let that = this;
     let comments = values(this.state.comments).sort((a,b) => {
