@@ -81,7 +81,6 @@ class UserForm extends React.Component {
 
 
   render() {
-    // debugger
     if (!this.props.currentUser || this.props.currentUser.id !== parseInt(this.props.userId)) {
       return (
         <MustBeLoggedIn type="edit" />

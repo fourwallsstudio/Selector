@@ -15,10 +15,6 @@ class CommentFeed extends React.Component {
     }
   }
 
-  // componentDidMount() {
-  //   debugger
-  // }
-
   componentWillReceiveProps(nextProps) {
     this.setState({
       comments: merge({}, this.state.comments, nextProps.show.comments),
@@ -30,7 +26,7 @@ class CommentFeed extends React.Component {
   render() {
     if (!values(this.state.users).length) {
       return <div>loading</div>;
-        
+
     } else {
 
       let timeAgoJS = new javascript_time_ago('en-US');
