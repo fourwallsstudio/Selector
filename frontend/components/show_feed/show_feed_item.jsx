@@ -64,7 +64,7 @@ class ShowFeedItem extends React.Component {
     return (
       <li id={ show.id } className="show-feed-item-container group">
         <div className="s-f-i-head">
-          <div>^_^</div>
+          <div></div>
           <div>{timeAgo}</div>
         </div>
 

@@ -15,6 +15,10 @@ class CommentFeed extends React.Component {
     }
   }
 
+  // componentDidMount() {
+  //   debugger
+  // }
+
   componentWillReceiveProps(nextProps) {
     this.setState({
       comments: merge({}, this.state.comments, nextProps.show.comments),
@@ -24,44 +28,51 @@ class CommentFeed extends React.Component {
 
 
   render() {
-    let timeAgoJS = new javascript_time_ago('en-US');
-    let that = this;
-    let comments = values(this.state.comments).sort((a,b) => {
-      return b.id - a.id;
-    }).map(comment => {
-      let timeAgo = timeAgoJS.format(new Date(comment.created_at));
-      let user = that.state.users[comment.user_id];
+    if (!values(this.state.users).length) {
+      return <div>loading</div>;
+        
+    } else {
+
+      let timeAgoJS = new javascript_time_ago('en-US');
+      let that = this;
+      let comments = values(this.state.comments).sort((a,b) => {
+        return b.id - a.id;
+      }).map(comment => {
+        let timeAgo = timeAgoJS.format(new Date(comment.created_at));
+        let user = that.state.users[comment.user_id];
 
 
-      return (
-        <li className="comment-feed-item" key={ comment.id }>
+        return (
+          <li className="comment-feed-item" key={ comment.id }>
 
-          <div className="comment-feed-item-img-box">
-            <Link to={`/user/${comment.user_id}`}>
-              <img src={ user.avatar_url } />
-            </Link>
-          </div>
-
-          <div className="comment-feed-item-content">
-            <div className="comment-feed-item-head">
-              <h4>{ user.username }</h4>
-              <p>{ timeAgo }</p>
+            <div className="comment-feed-item-img-box">
+              <Link to={`/user/${comment.user_id}`}>
+                <img src={ user.avatar_url } />
+              </Link>
             </div>
 
-            <p className="comment-feed-item-body">
-              { comment.body }
-            </p>
-          </div>
+            <div className="comment-feed-item-content">
+              <div className="comment-feed-item-head">
+                <h4>{ user.username }</h4>
+                <p>{ timeAgo }</p>
+              </div>
 
-        </li>
+              <p className="comment-feed-item-body">
+                { comment.body }
+              </p>
+            </div>
+
+          </li>
+        )
+      })
+
+      return (
+        <ul className="comment-feed-container">
+          { comments }
+        </ul>
       )
-    })
+    }
 
-    return (
-      <ul className="comment-feed-container">
-        { comments }
-      </ul>
-    )
   }
 }
 
