@@ -1,20 +1,36 @@
 import {
   CREATE_COMMENT,
-  REMOVE_COMMENT
-} from '../comments/comments';
+  REMOVE_COMMENT,
+  RECEIVE_COMMENTS,
+  RECEIVE_COMMENT
+} from '../actions/comment_actions';
+import { values } from 'lodash';
 
-const commentReducer = (state = [], action) => {
+
+const commentReducer = (state = {}, action) => {
   Object.freeze(state);
   let newState = state;
-  let updatedState;
 
   switch (action.type) {
     case CREATE_COMMENT:
-      updatedState = newState.concat([action.comment]);
+      newState[action.comment.id] = action.comment
+      return newState;
+
+    case RECEIVE_COMMENT:
+      updatedState = Object.assign({}, newState);
+      updatedState[action.comment.id] = action.comment;
       return updatedState;
+
     case REMOVE_COMMENT:
-      let i = newState.indexOf(action.comment);
-      updatedState = newState.splice(i,1);
+      updatedState = Object.assign({}, newState);
+      delete updatedState[action.comment.id]
+      return updatedState;
+
+    case RECEIVE_COMMENTS:
+      let updatedState = {}
+      values(action.comments).forEach( comment => {
+        updatedState[comment.id] = comment
+      })
       return updatedState;
     default:
       return state;

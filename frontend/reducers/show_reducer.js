@@ -34,7 +34,6 @@ const showReducer = (state = defaultState, action) => {
 
     case RECEIVE_SHOW:
     newState.entities[action.show.id] = action.show;
-    debugger
     return merge({}, newState)
 
     case REMOVE_SHOW:

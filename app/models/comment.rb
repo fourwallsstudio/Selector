@@ -13,7 +13,8 @@
 #
 
 class Comment < ActiveRecord::Base
-  validates :body, :show, :user, presence: true
+
+  validates :body, :show_id, :user_id, presence: true
 
   belongs_to :show
   belongs_to :user

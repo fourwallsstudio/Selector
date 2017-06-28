@@ -1,5 +1,11 @@
 class Api::CommentsController < ApplicationController
 
+
+  def index
+    @show = Show.find(params[:showId].to_i)
+    @comments = @show.comments
+  end
+
   def create
     @comment = Comment.new(comment_params)
     @comment.user_id = current_user.id
@@ -20,10 +26,11 @@ class Api::CommentsController < ApplicationController
     render :show
   end
 
+
+
   private
 
   def comment_params
     params.require(:comment).permit(:body, :show_id, :parent_comment_id)
   end
-
 end

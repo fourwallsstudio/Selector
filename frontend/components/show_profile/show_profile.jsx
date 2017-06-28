@@ -36,9 +36,15 @@ class ShowProfile extends React.Component {
         )
       })
     })
+
+    this.props.fetchComments(this.props.showId);
   }
 
   componentWillReceiveProps(newProps) {
+    // if (this.props.show.comments !== newProps.show.comments) {
+    //   this.props.fetchComments(newProps.showId);
+    // }
+
     if (this.props.showId !== newProps.showId ) {
       newProps.fetchSingleShow(newProps.showId)
     }
@@ -250,6 +256,7 @@ class ShowProfile extends React.Component {
                 createComment={this.props.createComment} />
 
               <CommentFeed show={ show }
+                comments={ this.props.comments }
                 listenersData={ this.state.listenersData }
                 currentUser={this.props.currentUser}
                 deleteComment={this.props.deleteComment} />

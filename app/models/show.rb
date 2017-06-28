@@ -19,6 +19,15 @@
 #
 
 class Show < ActiveRecord::Base
+  # include PgSearch
+  #
+  # pg_search_scope :search_by_title,
+  #                 :against => :title,
+  #                 :using => {
+  #                   :tsearch => {:prefix => true}
+  #                 }
+
+
   validates :title, :author, :audio, presence: true
   has_attached_file :image
   validates_attachment_content_type :image, content_type: /\Aimage\/.*\Z/
@@ -34,6 +43,10 @@ class Show < ActiveRecord::Base
 
   has_many :queue_items
   has_many :comments
+
+  def comment_ids
+    self.comments.map { |c| c.id }
+  end
 
   def plays
     self.queue_items.length

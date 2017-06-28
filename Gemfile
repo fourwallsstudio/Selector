@@ -30,6 +30,7 @@ gem "paperclip", '~> 5.0.0'
 gem "aws-sdk"
 gem 'figaro'
 gem 'font-awesome-sass'
+gem 'pg_search'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

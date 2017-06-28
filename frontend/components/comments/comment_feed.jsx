@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { merge, values } from 'lodash';
+import { selectComments } from '../../reducers/selecters';
 import javascript_time_ago from 'javascript-time-ago';
 javascript_time_ago.locale(require('javascript-time-ago/locales/en'));
 import english from 'javascript-time-ago/locales/en';
@@ -10,21 +11,20 @@ class CommentFeed extends React.Component {
     super(props)
 
     this.state = {
-      comments: {},
       users: {}
     }
 
-    this.handleClose = this.handleClose.bind(this)
+    this.handleDelete = this.handleDelete.bind(this)
   }
 
   componentWillReceiveProps(nextProps) {
     this.setState({
-      comments: merge({}, this.state.comments, nextProps.show.comments),
+      comments: nextProps.comments,
       users: merge({}, this.state.users, nextProps.listenersData)
     })
   }
 
-  handleClose(e) {
+  handleDelete(e) {
     e.preventDefault();
     this.props.deleteComment(e.target.id)
   }
@@ -46,7 +46,7 @@ class CommentFeed extends React.Component {
         let deleteButton = "";
 
         if (user.id === this.props.currentUser.id) {
-          deleteButton =  <div className="comment-delete-button" onClick={ this.handleClose }>
+          deleteButton =  <div className="comment-delete-button" onClick={ this.handleDelete }>
             <i className="fa fa-times" aria-hidden="true" id={comment.id} ></i>
           </div>;
         }

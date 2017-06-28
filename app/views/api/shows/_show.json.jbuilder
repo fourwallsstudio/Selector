@@ -1,5 +1,6 @@
 json.extract! show, :id, :title, :description,
-  :audio_file_size, :created_at, :plays, :listeners, :comments
+  :audio_file_size, :created_at, :plays, :listeners
+json.comments show.comment_ids
 json.author_id show.author.id
 json.author_username show.author.username
 json.audio_url asset_path(show.audio.url(:original))

@@ -36,3 +36,13 @@ export const selectListeners = ({ users }, ids) => {
 
   return listeners;
 }
+
+export const selectComments = ({ comments }, ids) => {
+  let allComments = {};
+
+  ids.forEach( id => {
+    allComments[id] = comments[id]
+  })
+
+  return allComments;
+}
