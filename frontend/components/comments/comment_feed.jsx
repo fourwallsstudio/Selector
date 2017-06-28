@@ -11,6 +11,7 @@ class CommentFeed extends React.Component {
     super(props)
 
     this.state = {
+      comments: {},
       users: {}
     }
 
@@ -20,7 +21,7 @@ class CommentFeed extends React.Component {
   componentWillReceiveProps(nextProps) {
     this.setState({
       comments: nextProps.comments,
-      users: merge({}, this.state.users, nextProps.listenersData)
+      users: nextProps.users
     })
   }
 
@@ -35,7 +36,6 @@ class CommentFeed extends React.Component {
       return <div>loading</div>;
 
     } else {
-
       let timeAgoJS = new javascript_time_ago('en-US');
 
       let comments = values(this.state.comments).sort((a,b) => {

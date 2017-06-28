@@ -8,7 +8,7 @@ class ShowFeed extends React.Component {
   }
 
   componentDidMount() {
-    this.props.fetchAllShows();
+    this.props.fetchAllShows(this.props.filter);
   }
 
 

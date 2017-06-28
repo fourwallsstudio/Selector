@@ -9,10 +9,11 @@ export const uploadShow = formData => {
   })
 }
 
-export const fetchAllShows = () => {
+export const fetchAllShows = filter => {
     return $.ajax({
     method: 'GET',
-    url: '/api/shows'
+    url: '/api/shows',
+    data: { filter: filter }
   })
 }
 

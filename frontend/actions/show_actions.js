@@ -17,10 +17,10 @@ export const uploadShow = show => {
   }
 }
 
-export const fetchAllShows = () => {
+export const fetchAllShows = filter => {
   return dipatch => {
     return (
-      APIUtil.fetchAllShows()
+      APIUtil.fetchAllShows(filter)
         .then(shows => dispatch(receiveAllShows(shows)),
           err => dispatch(receiveErrors(err.responseJSON)))
     )

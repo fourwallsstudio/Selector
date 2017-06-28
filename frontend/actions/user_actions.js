@@ -14,10 +14,10 @@ export const fetchUser = id => {
   }
 }
 
-export const fetchUsers = users => {
+export const fetchUsers = showId => {
   return dispatch => {
     return (
-      APIUtil.fetchUsers(users)
+      APIUtil.fetchUsers(showId)
       .then(users => dispatch(receiveUsers(users)),
       err => dispatch(receiveErrors(err.responseJSON)))
     )

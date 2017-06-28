@@ -9,7 +9,7 @@ const UserWelcome = () => {
       <InnerHeader />
       <div className="inner-header-clear"></div>
 
-      <ShowFeedContainer />
+      <ShowFeedContainer filter={ "most_recent" }/>
       <UserWelcomeAside />
     </section>
   )

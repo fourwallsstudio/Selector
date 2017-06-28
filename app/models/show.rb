@@ -27,7 +27,6 @@ class Show < ActiveRecord::Base
   #                   :tsearch => {:prefix => true}
   #                 }
 
-
   validates :title, :author, :audio, presence: true
   has_attached_file :image
   validates_attachment_content_type :image, content_type: /\Aimage\/.*\Z/
@@ -44,6 +43,10 @@ class Show < ActiveRecord::Base
   has_many :queue_items
   has_many :comments
 
+  def self.most_recent
+    order("created_at DESC").limit(10)
+  end
+
   def comment_ids
     self.comments.map { |c| c.id }
   end
@@ -59,4 +62,5 @@ class Show < ActiveRecord::Base
 
     listeners.uniq
   end
+
 end

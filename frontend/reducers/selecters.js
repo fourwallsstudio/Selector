@@ -5,7 +5,10 @@ export const selectUser = ({ users }, userId) => {
 }
 
 export const selectAllShows = ({ shows }) => {
-  return values(shows.entities);
+  let ordered = values(shows.entities).sort((a,b) => {
+    return new Date(b.created_at) - new Date(a.created_at)
+  });
+  return ordered;
 }
 
 export const selectShow = ({ shows }, showId) => {

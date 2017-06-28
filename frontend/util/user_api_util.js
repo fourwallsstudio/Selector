@@ -5,10 +5,11 @@ export const fetchUser = id => {
   });
 };
 
-export const fetchUsers = users => {
+export const fetchUsers = showId => {
   return $.ajax({
     method: 'GET',
-    url: `api/users`
+    url: `api/users`,
+    data: { showId: showId }
   });
 };
 

@@ -1,5 +1,19 @@
 class Api::UsersController < ApplicationController
 
+  def index
+    @show = Show.find(params[:showId].to_i)
+
+    comment_users = @show.comments.map do |comment|
+      User.find(comment.user_id)
+    end
+
+    listen_users = @show.listeners.map do |id|
+      User.find(id)
+    end
+
+    @users = comment_users + listen_users
+  end
+
   def show
     @user = User.find(params[:id])
   end

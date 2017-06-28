@@ -14,40 +14,28 @@ class ShowProfile extends React.Component {
     super(props)
 
     this.state = {
-      listenersData: {}
-    }
 
+    }
 
     this.handleDelete = this.handleDelete.bind(this);
     this.handleEditClick = this.handleEditClick.bind(this);
     this.handlePlayClick = this.handlePlayClick.bind(this);
-    this.fetchUser = this.props.fetchUser.bind(this);
+    this.fetchUsers = this.props.fetchUsers.bind(this);
   }
 
   componentDidMount() {
     this.props.fetchSingleShow(this.props.showId)
-      .then( result => {
-        result.show.listeners.forEach( id => {
-          this.fetchUser(id)
-          .then( result =>
-            this.setState({
-              listenersData: merge({}, this.state.listenersData, { [result.user.id]: result.user })
-          })
-        )
-      })
-    })
 
-    this.props.fetchComments(this.props.showId);
+    this.props.fetchComments(this.props.showId)
+
+    this.props.fetchUsers(this.props.showId)
   }
 
   componentWillReceiveProps(newProps) {
-    // if (this.props.show.comments !== newProps.show.comments) {
-    //   this.props.fetchComments(newProps.showId);
-    // }
-
     if (this.props.showId !== newProps.showId ) {
       newProps.fetchSingleShow(newProps.showId)
     }
+
   }
 
   handleDelete(e) {
@@ -90,6 +78,7 @@ class ShowProfile extends React.Component {
       return (
         <div>loading</div>
       )
+
     } else {
 
       const show = this.props.show;
@@ -97,6 +86,11 @@ class ShowProfile extends React.Component {
       let playDisplay;
       let timeAgoJS = new javascript_time_ago('en-US');
       let timeAgo = timeAgoJS.format(new Date(this.props.show.created_at));
+      let showAside;
+
+      if (values(this.props.users).length) {
+        showAside = <ShowProfileAside show={ show } users={ this.props.users }/>;
+      }
 
       if (this.props.player.player.length && this.props.queue[0].show_id === show.id) {
         if (this.props.player.status === 'playing') {
@@ -252,18 +246,18 @@ class ShowProfile extends React.Component {
               </div>
 
               <CommentForm show={ show }
-                currentUser={this.props.currentUser}
-                createComment={this.props.createComment} />
+                currentUser={ this.props.currentUser }
+                createComment={ this.props.createComment } />
 
               <CommentFeed show={ show }
                 comments={ this.props.comments }
-                listenersData={ this.state.listenersData }
-                currentUser={this.props.currentUser}
-                deleteComment={this.props.deleteComment} />
+                users={ this.props.users }
+                currentUser={ this.props.currentUser }
+                deleteComment={ this.props.deleteComment } />
 
             </div>
 
-            <ShowProfileAside show={ show } listenersData={ values(this.state.listenersData) }/>
+              { showAside }
           </div>
 
           <div className="foot-filler"></div>

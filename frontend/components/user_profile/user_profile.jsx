@@ -57,7 +57,7 @@ class UserProfile extends React.Component {
             <div className="u-p-main-container">
               <UserProfileAside user={ user } />
 
-              <ShowFeedContainer />
+              <ShowFeedContainer filter={ user.id }/>
             </div>
           </div>
 
