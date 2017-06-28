@@ -19,7 +19,7 @@ export const deleteComment = id => {
   return dispatch => {
     return APIUtil.deleteComment(id)
       .then( comment  => {
-        dispatch(fetchSingleShow(comment.show_id))
+        dispatch(fetchSingleShow(comment.show.id))
       });
   }
 }

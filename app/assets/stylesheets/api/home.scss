@@ -1,0 +1,21 @@
+
+.home-container {
+  height: 100vh;
+  width: 100vw;
+}
+
+.home-mask {
+  position: absolute;
+  height: 100vh;
+  width: 100vw;
+  z-index: 1;
+  background-color: #34495E;
+  opacity: .7;
+}
+
+.home-img-box {
+  height: 100%;
+  width: 100%;
+  background: image_url("recordplayerbg.jpg") no-repeat;
+  background-size: 100% auto;
+}

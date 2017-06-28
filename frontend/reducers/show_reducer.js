@@ -10,7 +10,6 @@ import { merge } from 'lodash';
 
 const defaultState = {
   entities: {},
-  currentShow: null,
   errors: []
 };
 
@@ -22,7 +21,6 @@ const showReducer = (state = defaultState, action) => {
     case CREATE_SHOW:
       return merge({}, state, {
         entities: { [action.show.id]: action.show },
-        currentShow: action.show.id,
         errors: []
       });
 
@@ -45,7 +43,6 @@ const showReducer = (state = defaultState, action) => {
 
     case RECEIVE_ERRORS:
       return merge({}, state, {
-        currentShow: null,
         errors: action.errors
       });
 

@@ -545,6 +545,7 @@
 
 .comment-feed-item-head {
   display: flex;
+  position: relative;
   font-size: 14px;
 }
 
@@ -556,6 +557,21 @@
 
 .comment-feed-item-head p {
   color: #8196AC;
+}
+
+.comment-delete-button {
+  position: absolute;
+  // border: solid 1px grey;
+  // border-radius: 5px;
+  right: 0px;
+  padding: 0 3px;
+  color: grey;
+  right: 20px;
+}
+
+.comment-delete-button:hover {
+  cursor: pointer;
+  top: 1px;
 }
 
 .comment-feed-item-body {

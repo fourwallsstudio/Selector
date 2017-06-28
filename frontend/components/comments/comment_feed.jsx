@@ -13,6 +13,8 @@ class CommentFeed extends React.Component {
       comments: {},
       users: {}
     }
+
+    this.handleClose = this.handleClose.bind(this)
   }
 
   componentWillReceiveProps(nextProps) {
@@ -20,6 +22,11 @@ class CommentFeed extends React.Component {
       comments: merge({}, this.state.comments, nextProps.show.comments),
       users: merge({}, this.state.users, nextProps.listenersData)
     })
+  }
+
+  handleClose(e) {
+    e.preventDefault();
+    this.props.deleteComment(e.target.id)
   }
 
 
@@ -30,13 +37,19 @@ class CommentFeed extends React.Component {
     } else {
 
       let timeAgoJS = new javascript_time_ago('en-US');
-      let that = this;
+
       let comments = values(this.state.comments).sort((a,b) => {
         return b.id - a.id;
       }).map(comment => {
         let timeAgo = timeAgoJS.format(new Date(comment.created_at));
-        let user = that.state.users[comment.user_id];
+        let user = this.state.users[comment.user_id];
+        let deleteButton = "";
 
+        if (user.id === this.props.currentUser.id) {
+          deleteButton =  <div className="comment-delete-button" onClick={ this.handleClose }>
+            <i className="fa fa-times" aria-hidden="true" id={comment.id} ></i>
+          </div>;
+        }
 
         return (
           <li className="comment-feed-item" key={ comment.id }>
@@ -49,8 +62,11 @@ class CommentFeed extends React.Component {
 
             <div className="comment-feed-item-content">
               <div className="comment-feed-item-head">
-                <h4>{ user.username }</h4>
+                <Link to={`/user/${comment.user_id}`}>
+                  <h4>{ user.username }</h4>
+                </Link>
                 <p>{ timeAgo }</p>
+                { deleteButton }
               </div>
 
               <p className="comment-feed-item-body">

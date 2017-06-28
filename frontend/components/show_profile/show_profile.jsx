@@ -249,7 +249,10 @@ class ShowProfile extends React.Component {
                 currentUser={this.props.currentUser}
                 createComment={this.props.createComment} />
 
-              <CommentFeed show={ show } listenersData={ this.state.listenersData }/>
+              <CommentFeed show={ show }
+                listenersData={ this.state.listenersData }
+                currentUser={this.props.currentUser}
+                deleteComment={this.props.deleteComment} />
 
             </div>
 
