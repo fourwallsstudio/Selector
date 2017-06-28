@@ -30,15 +30,6 @@ class UserForm extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    // let currentUser = nextProps.currentUser
-    // this.avatarPreviewUrl = currentUser.avatar_url
-    //
-    // this.setState({
-    //   bio: currentUser.bio || "",
-    //   city: currentUser.city || "",
-    //   country: currentUser.country || "",
-    //   image: currentUser.avatar_url
-    // });
   }
 
 

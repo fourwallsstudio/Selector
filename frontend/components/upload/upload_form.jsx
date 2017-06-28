@@ -50,8 +50,16 @@ class UploadForm extends React.Component {
     var formData = new FormData();
     formData.append("show[title]", this.state.title);
     formData.append("show[description]", this.state.description);
-    formData.append("show[image]", this.state.image);
-    formData.append("show[audio]", this.state.audio);
+    // formData.append("show[image]", this.state.image);
+    // formData.append("show[audio]", this.state.audio);
+
+    if (this.state.image) {
+      formData.append("show[image]", this.state.image);
+    }
+
+    if (this.state.audio) {
+      formData.append("show[audio]", this.state.audio);
+    }
 
     if (this.props.formType === 'upload') {
       this.props.uploadShow(formData)
