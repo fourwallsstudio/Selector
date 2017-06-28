@@ -15,6 +15,7 @@ const defaultState = {
 
 const showReducer = (state = defaultState, action) => {
   Object.freeze(state);
+  let newState = state;
 
   switch (action.type) {
 
@@ -27,19 +28,18 @@ const showReducer = (state = defaultState, action) => {
     case RECEIVE_SHOWS:
       let newEntities = {}
       action.shows.forEach((show) => { newEntities[show.id] = show } )
-      return merge({}, state, {
+      return merge({}, {
         entities: newEntities
       });
 
     case RECEIVE_SHOW:
-      return merge({}, state, {
-        entities: { [action.show.id]: action.show }
-      })
+    return merge({}, state, {
+      entities: { [action.show.id]: action.show }
+    })
 
     case REMOVE_SHOW:
-      const newState = state;
       delete newState.entities[action.show.id]
-      return merge({}, state, { newState });
+      return newState;
 
     case RECEIVE_ERRORS:
       return merge({}, state, {
