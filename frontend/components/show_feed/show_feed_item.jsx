@@ -8,10 +8,14 @@ class ShowFeedItem extends React.Component {
     super(props)
 
     this.handlePlayClick = this.handlePlayClick.bind(this);
+    this.handlePreview = this.handlePreview.bind(this);
+    this.handleStopPreview = this.handleStopPreview.bind(this);
   }
 
   handlePlayClick(e) {
     e.preventDefault();
+    this.props.stopPreview(this.props.preview.howlPreview);
+
     if (!this.props.player.player.length ||
       this.props.player.player[0]._sounds[0].show_id !== this.props.show.id) {
       const queueItem = {
@@ -33,11 +37,23 @@ class ShowFeedItem extends React.Component {
     }
   }
 
+  handlePreview() {
+    if (this.props.player.status !== 'playing' &&
+        this.props.preview.status !== 'previewing') {
+      this.props.startPreview(this.props.show.audio_url);
+    }
+  };
+
+  handleStopPreview() {
+    this.props.stopPreview(this.props.preview.howlPreview);
+  }
+
   render() {
     let show = this.props.show;
     let playDisplay;
     let timeAgoJS = new javascript_time_ago('en-US');
     let timeAgo = timeAgoJS.format(new Date(this.props.show.created_at));
+    
 
     if (this.props.player.player.length && this.props.queue[0].show_id === show.id) {
       if (this.props.player.status === 'playing') {
@@ -76,9 +92,16 @@ class ShowFeedItem extends React.Component {
 
           </div>
           <div className="play-box" >
-            <div className="play-arrow" onClick={ this.handlePlayClick }>
+            <div className="play-arrow"
+              onClick={ this.handlePlayClick }
+              onMouseOver={ this.handlePreview }
+              onMouseLeave={ this.handleStopPreview} >
+
               { playDisplay }
+
             </div>
+
+
             <div className="play-head">
               <Link to={`/show/${show.id}`} className="play-title">{ show.title }</Link>
               <div className="play-tag">#tag</div>

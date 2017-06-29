@@ -18,7 +18,6 @@ class Player extends React.Component {
     this.dropdownHandle = this.dropdownHandle.bind(this);
     this.handlePlayClick = this.handlePlayClick.bind(this);
     this.handleVolume = this.handleVolume.bind(this);
-    this.handlePreview = this.handlePreview.bind(this);
   }
 
 
@@ -61,20 +60,29 @@ class Player extends React.Component {
     const source = q.show.audio_url;
 
     const howlPlay = new Howl({
+
       src: source,
+
       onload: () => {
           howlPlay._sounds[0].show_id = q.show.id;
       },
+
       onplay: () => {
+        if (this.props.preview.status === 'previewing') {
+          console.log("hit");
+          this.props.stopPreview(this.props.preview.howlPreview)
+        }
         this.props.updateHowlerPlayer(
           howlPlay,
         );
       },
+
       onpause: () => {
         this.props.updatePlayStatus(
           howlPlay._sounds[0]._paused
         );
       },
+
       onend: () => {
         if (this.props.queue.length > 1) {
           this.props.nextQueueItem();
@@ -86,66 +94,6 @@ class Player extends React.Component {
 
     howlPlay.play();
   };
-
-
-  handlePreview(e) {
-    e.preventDefault();
-    // debugger
-    if (this.props.player.status === 'paused') {
-      const howlPreview = new Howl({
-        src: [e.target.audio]
-      })
-      howlPreview.play();
-      // var id1 = howlPreview.play();
-      // var id2;
-      // var id3;
-      // var id4;
-      //
-      // howlPreview.seek(30, id1);
-      // howlPreview.fade(0, 1, 2000, id1);
-      //
-      // setTimeout(() => {
-      //   howlPreview.fade(1, 0, 1000, id1);
-      // }, 4000)
-      //
-      // setTimeout(() => {
-      //   id2 = howlPreview.play();
-      //   howlPreview.seek(60, id2);
-      //   howlPreview.fade(0, 1, 2000, id2);
-      // }, 5000)
-      //
-      // setTimeout(() => {
-      //   howlPreview.fade(1, 0, 1000, id2);
-      // }, 10000)
-      //
-      // setTimeout(() => {
-      //   id3 = howlPreview.play();
-      //   howlPreview.seek(120, id3);
-      //   howlPreview.fade(0, 1, 2000, id3);
-      // }, 10000)
-      //
-      // setTimeout(() => {
-      //   howlPreview.fade(1, 0, 1000, id3);
-      // }, 15000)
-      //
-      // setTimeout(() => {
-      //   id4 = howlPreview.play();
-      //   howlPreview.seek(150, id4);
-      //   howlPreview.fade(0, 1, 2000, id4);
-      // }, 15000)
-      //
-      // setTimeout(() => {
-      //   howlPreview.fade(1, 0, 1000, id4);
-      // }, 20000)
-      //
-      // setTimeout(() => {
-      //   howlPreview.stop();
-      // }, 20000)
-
-    }
-
-  };
-
 
   dropdownHandle() {
     this.setState({
@@ -232,8 +180,7 @@ class Player extends React.Component {
                   <img src={ currentShow.image_url } />
                 </div>
                 <div className="first-queue-play-button"
-                  onClick={ this.handlePlayClick }
-                  onMouseOver={ this.handlePreview }>
+                  onClick={ this.handlePlayClick } >
 
                   { firstPlayDisplay }
 

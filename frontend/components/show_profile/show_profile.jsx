@@ -53,6 +53,8 @@ class ShowProfile extends React.Component {
 
   handlePlayClick(e) {
     e.preventDefault();
+    this.props.stopPreview(this.props.preview.howlPreview);
+
     if (!this.props.player.player.length ||
       this.props.player.player[0]._sounds[0].show_id !== this.props.showId) {
 
@@ -100,9 +102,14 @@ class ShowProfile extends React.Component {
       let timeAgoJS = new javascript_time_ago('en-US');
       let timeAgo = timeAgoJS.format(new Date(this.props.show.created_at));
       let showAside;
+      let previewActive = "";
 
       if (values(this.props.users).length) {
         showAside = <ShowProfileAside show={ show } users={ this.props.users }/>;
+      }
+
+      if (this.props.preview.status === 'previewing') {
+        previewActive = "preview-active";
       }
 
       if (this.props.player.player.length && this.props.queue[0].show_id === show.id) {
@@ -174,11 +181,12 @@ class ShowProfile extends React.Component {
                 <div className="play-circle-box"
                     onClick={ this.handlePlayClick }
                     onMouseOver={ this.handlePreview }
-                    onMouseLeave={ this.handleStopPreview}>
+                    onMouseLeave={ this.handleStopPreview} >
 
                     { playDisplay }
-
+                    <div className={`play-circle-preview-backfill ${previewActive}`}></div>
                 </div>
+                <p className={`play-circle-preview-notice ${previewActive}`}>preview</p>
 
                 <div className="s-p-head-items-right">
                   <h1>{ show.title }</h1>

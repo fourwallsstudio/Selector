@@ -49,6 +49,8 @@
 }
 
 .play-circle-box {
+  position: relative;
+  overflow: hidden;
   width: 90px;
   height: 90px;
   border: solid 2px #36393C;
@@ -61,8 +63,41 @@
 
 .play-circle-box:hover {
   cursor: pointer;
-  background-color: rgba(255, 255, 255, 0.2);
+  background-color: rgba(255, 255, 255, 0.05);
   border: solid 2px #9DA495;
+}
+
+.play-circle-preview-backfill {
+  position: absolute;
+  background-color: white;
+  filter: blur(3px);
+  opacity: .8;
+  width: 100px;
+  height: 100px;
+  top: -103px;
+  left: -5px;
+  transition: top 1s ease-out;
+}
+
+.play-circle-preview-backfill.preview-active {
+  top: -5px;
+  transition: top 20s ease-in;
+}
+
+.play-circle-preview-notice {
+  position: absolute;
+  bottom: 24px;
+  left: -3px;
+  height: 24px;
+  width: 100px;
+  text-align: center;
+  color: black;
+  opacity: 0;
+}
+
+.play-circle-preview-notice.preview-active {
+  opacity: 1;
+  transition: opacity 1s ease-in;
 }
 
 .play-circle-play {
@@ -72,6 +107,7 @@
   top: 30%;
   left: 32%;
   fill: #4E5151;
+  z-index: 1;
 }
 
 .play-circle-pause {
@@ -81,6 +117,7 @@
   top: 30%;
   left: 28%;
   fill: #4E5151;
+  z-index: 1;
 }
 
 .s-p-head-items-right {

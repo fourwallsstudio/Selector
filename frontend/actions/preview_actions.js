@@ -13,7 +13,7 @@ export const startPreview = src => {
 
 export const stopPreview = howl => {
   return dispatch => {
-    howl.stop();
+    if (howl) { howl.stop() }
     dispatch(removePreview());
   }
 }
