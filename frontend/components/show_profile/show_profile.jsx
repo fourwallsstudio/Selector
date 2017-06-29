@@ -21,6 +21,8 @@ class ShowProfile extends React.Component {
     this.handleEditClick = this.handleEditClick.bind(this);
     this.handlePlayClick = this.handlePlayClick.bind(this);
     this.fetchUsers = this.props.fetchUsers.bind(this);
+    this.handlePreview = this.handlePreview.bind(this);
+    this.handleStopPreview = this.handleStopPreview.bind(this);
   }
 
   componentDidMount() {
@@ -71,6 +73,17 @@ class ShowProfile extends React.Component {
         this.props.player.player[0].pause();
       }
     }
+  }
+
+  handlePreview() {
+    if (this.props.player.status !== 'playing' &&
+        this.props.preview.status !== 'previewing') {
+      this.props.startPreview(this.props.show.audio_url);
+    }
+  };
+
+  handleStopPreview() {
+    this.props.stopPreview(this.props.preview.howlPreview);
   }
 
   render() {
@@ -159,7 +172,9 @@ class ShowProfile extends React.Component {
             <div className="s-p-inside-header-box">
               <div className="s-p-head-items-box">
                 <div className="play-circle-box"
-                    onClick={ this.handlePlayClick }>
+                    onClick={ this.handlePlayClick }
+                    onMouseOver={ this.handlePreview }
+                    onMouseLeave={ this.handleStopPreview}>
 
                     { playDisplay }
 

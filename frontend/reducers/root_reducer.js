@@ -6,6 +6,7 @@ import queueReducer from './queue_reducer';
 import playerReducer from './player_reducer';
 import commentReducer from './comment_reducer';
 import searchReducer from './search_reducer';
+import previewReducer from './preview_reducer';
 
 const rootReducer = combineReducers({
   session: sessionReducer,
@@ -14,7 +15,8 @@ const rootReducer = combineReducers({
   queue: queueReducer,
   player: playerReducer,
   comments: commentReducer,
-  search: searchReducer
+  search: searchReducer,
+  preview: previewReducer
 })
 
 export default rootReducer;

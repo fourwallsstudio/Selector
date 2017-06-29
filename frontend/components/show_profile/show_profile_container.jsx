@@ -4,6 +4,7 @@ import javascript_time_ago from 'javascript-time-ago'
 import { fetchSingleShow, deleteShow } from '../../actions/show_actions';
 import { fetchUsers } from '../../actions/user_actions';
 import { createQueueItem } from '../../actions/queue_actions';
+import { startPreview, stopPreview } from '../../actions/preview_actions';
 import {
   createComment,
   deleteComment,
@@ -29,7 +30,8 @@ const mapStateToProps = (state, { match }) => {
     queue: state.queue,
     player: state.player,
     comments: state.comments,
-    users: state.users
+    users: state.users,
+    preview: state.preview
   }
 }
 
@@ -42,7 +44,9 @@ const mapDispatchToProps = dispatch => {
     fetchUsers: showId => dispatch(fetchUsers(showId)),
     createComment: comment => dispatch(createComment(comment)),
     deleteComment: id => dispatch(deleteComment(id)),
-    fetchComments: showId => dispatch(fetchComments(showId))
+    fetchComments: showId => dispatch(fetchComments(showId)),
+    startPreview: src => dispatch(startPreview(src)),
+    stopPreview: src => dispatch(stopPreview(src))
   }
 }
 
