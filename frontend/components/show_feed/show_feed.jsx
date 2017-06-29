@@ -1,5 +1,6 @@
 import React from 'react';
 import ShowFeedItem from './show_feed_item';
+import { values } from 'lodash';
 
 class ShowFeed extends React.Component {
   constructor(props) {
@@ -11,9 +12,15 @@ class ShowFeed extends React.Component {
     this.props.fetchAllShows(this.props.filter);
   }
 
+  shouldComponentUpdate(nextProps) {
+    if (Object.keys(this.props.shows) !== Object.keys(nextProps.shows)) {
+      return true;
+    } else {
+      return false;
+    }
+  }
 
   render() {
-
     if (!this.props.shows) {
       return (
         <div>no shows at this time</div>

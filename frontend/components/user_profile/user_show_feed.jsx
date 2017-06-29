@@ -6,6 +6,10 @@ class UserShowFeed extends React.Component {
     super(props)
   }
 
+  componentDidMount() {
+    this.props.fetchAllShows(this.props.filter);
+  }
+
   render() {
 
     return(
