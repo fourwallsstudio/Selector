@@ -7,6 +7,7 @@ import playerReducer from './player_reducer';
 import commentReducer from './comment_reducer';
 import searchReducer from './search_reducer';
 import previewReducer from './preview_reducer';
+import filterReducer from './filter_reducer';
 
 const rootReducer = combineReducers({
   session: sessionReducer,
@@ -16,7 +17,8 @@ const rootReducer = combineReducers({
   player: playerReducer,
   comments: commentReducer,
   search: searchReducer,
-  preview: previewReducer
+  preview: previewReducer,
+  filter: filterReducer
 })
 
 export default rootReducer;

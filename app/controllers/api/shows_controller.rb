@@ -1,8 +1,12 @@
 class Api::ShowsController < ApplicationController
 
   def index
-    if params["filter"] == "most_recent"
+    case params["filter"]
+      
+    when "most_recent"
       @shows = Show.most_recent
+    when "trending"
+      @shows = Show.trending
     else
       @shows = User.find(params["filter"].to_i).shows
     end

@@ -66,10 +66,11 @@ class HeaderNav extends React.Component {
                         <img src={user.avatar_url} onClick={() => this.props.history.push(`/user/${user.id}`)}/>
                       </div>
                       <Link to={`/user/${user.id}`}>{user.username}</Link>
-                      <div className="user-dropdown-arrow">
+                      <div className="user-dropdown-arrow"
+                        onClick={ this.handleClick }
+                        >
                         <i className={"fa fa-chevron-down" + dropdownActive}
                             aria-hidden="true"
-                            onClick={ this.handleClick }
                             ></i>
                         { this.isActive() }
                       </div>

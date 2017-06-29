@@ -8,7 +8,7 @@ import {
 
 const defaultState = {
   userResults: {},
-  showResults: {}
+  showResults: {},
 }
 
 const searchReducer = (state = defaultState, action) => {

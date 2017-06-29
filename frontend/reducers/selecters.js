@@ -12,8 +12,13 @@ export const selectAllShows = ({ shows }) => {
 }
 
 export const selectFilteredShows = (state, filter) => {
+  debugger
   if (filter === "most_recent") {
     return selectAllShows(state);
+
+  } else if (filter === 'trending') {
+    return trendingFilter(state);
+
   } else {
     let userShows = state.users[parseInt(filter)].show_ids;
     let filteredShows = [];
@@ -30,16 +35,24 @@ export const selectFilteredShows = (state, filter) => {
 
     return ordered;
   }
+}
 
+
+
+const trendingFilter = ({ shows }) => {
   let ordered = values(shows.entities).sort((a,b) => {
-    return new Date(b.created_at) - new Date(a.created_at)
+    return b.plays - a.plays
   });
+
   return ordered;
 }
+
+
 
 export const selectShow = ({ shows }, showId) => {
   return shows.entities[showId];
 }
+
 
 export const selectPlayerQueue = (shows, queue) => {
   let playerQueue = []

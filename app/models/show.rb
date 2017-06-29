@@ -42,9 +42,17 @@ class Show < ActiveRecord::Base
   has_many :queue_items
   has_many :comments
 
-  
+
   def self.most_recent
     order("created_at DESC").limit(10)
+  end
+
+  def self.trending
+    select("shows.*, COUNT(*)")
+      .joins(:queue_items)
+      .group("shows.id")
+      .order("COUNT(*) DESC")
+      .limit(10)
   end
 
   def comment_ids
