@@ -38,6 +38,11 @@ class Api::UsersController < ApplicationController
     end
   end
 
+  def search
+    @users = User.whose_name_starts_with(params["search"])
+    render :index
+  end
+
   private
 
   def user_params

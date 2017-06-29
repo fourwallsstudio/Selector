@@ -38,6 +38,11 @@ class Api::ShowsController < ApplicationController
     render :index
   end
 
+  def search
+    @shows = Show.whose_title_starts_with(params["search"])
+    render :index
+  end
+
   private
 
   def show_params

@@ -10,6 +10,7 @@ import UploadFormContainer from './upload/upload_form_container';
 import EditFormContainer from './upload/edit_form_container';
 import PlayerContainer from './player/player_container';
 import UserFormContainer from './user_form/user_form_container';
+import SearchResults from './search/search_results';
 import Home from './home/home';
 
 
@@ -23,6 +24,7 @@ const App = () =>  {
         <Route exact path="/" component={ Home } />
         <AuthRoute path="/login" component={ SessionFormContainer } />
         <AuthRoute path="/signup" component={ SessionFormContainer } />
+        <Route exact path="/search" component={ SearchResults } />
         <Route exact path="/user/:userId" component={ UserProfileContainer } />
         <Route exact path="/show/:showId" component={ ShowProfileContainer } />
         <ProtectedRoute exact path='/home' component={ UserWelcomeContainer } />

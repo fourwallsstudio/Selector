@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import Root from './components/root';
 import { makeShow } from './actions/show_actions';
 import configureStore from './store/store';
+import { searchUsers } from './util/user_api_util';
 
 document.addEventListener('DOMContentLoaded', () => {
   let store;
@@ -18,6 +19,7 @@ document.addEventListener('DOMContentLoaded', () => {
   window.makeShow = store.makeShow;
   window.getState = store.getState;
   window.dispatch = store.dispatch;
+  window.searchUsers = store.searchUsers;
 
 
   const root = document.getElementById('root');

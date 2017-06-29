@@ -19,13 +19,12 @@
 #
 
 class Show < ActiveRecord::Base
-  # include PgSearch
-  #
-  # pg_search_scope :search_by_title,
-  #                 :against => :title,
-  #                 :using => {
-  #                   :tsearch => {:prefix => true}
-  #                 }
+  include PgSearch
+  pg_search_scope :whose_title_starts_with,
+                  :against => :title,
+                  :using => {
+                    :tsearch => {:prefix => true}
+                  }
 
   validates :title, :author, :audio, presence: true
   has_attached_file :image
@@ -43,6 +42,7 @@ class Show < ActiveRecord::Base
   has_many :queue_items
   has_many :comments
 
+  
   def self.most_recent
     order("created_at DESC").limit(10)
   end

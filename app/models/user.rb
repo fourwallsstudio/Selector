@@ -19,6 +19,12 @@
 #
 
 class User < ActiveRecord::Base
+  include PgSearch
+  pg_search_scope :whose_name_starts_with,
+                  :against => :username,
+                  :using => {
+                    :tsearch => {:prefix => true}
+                  }
 
   attr_reader :password
 
@@ -38,6 +44,8 @@ class User < ActiveRecord::Base
   validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\Z/
 
   after_initialize :ensure_session_token
+
+  
 
   def self.find_by_credentials(username, password)
     user = User.find_by_username(username)

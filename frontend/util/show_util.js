@@ -25,7 +25,6 @@ export const fetchSingleShow = id => {
 }
 
 export const updateShow = (id, formData) => {
-  debugger
   return $.ajax({
     method: 'PATCH',
     url: `/api/shows/${id}`,
@@ -40,5 +39,13 @@ export const deleteShow = id => {
     return $.ajax({
     method: 'DELETE',
     url: `/api/shows/${id}`,
+  })
+}
+
+export const searchShows = search => {
+  return $.ajax({
+    method: 'GET',
+    url: 'api/shows/search',
+    data: { search: search }
   })
 }

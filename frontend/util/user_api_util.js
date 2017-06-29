@@ -23,3 +23,11 @@ export const editUser = (id, formData) => {
     data: formData
   });
 };
+
+export const searchUsers = search => {
+  return $.ajax({
+    method: 'GET',
+    url: 'api/users/search',
+    data: { search: search }
+  })
+}
