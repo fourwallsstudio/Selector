@@ -3,6 +3,7 @@ import { searchShows } from '../util/show_util';
 
 export const SEARCH_USERS = 'SEARCH_USERS';
 export const SEARCH_SHOWS = 'SEARCH_SHOWS';
+export const CLEAR_SEARCH = 'CLEAR_SEARCH';
 
 
 export const searchForUsers = search => {
@@ -34,5 +35,11 @@ export const receiveShowSearch = shows => {
   return {
     type: SEARCH_SHOWS,
     shows
+  }
+}
+
+export const clearSearch = () => {
+  return {
+    type: CLEAR_SEARCH
   }
 }

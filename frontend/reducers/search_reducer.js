@@ -1,6 +1,10 @@
-import { SEARCH_USERS } from '../actions/search_actions';
-import { SEARCH_SHOWS } from '../actions/search_actions';
 import { merge } from 'lodash';
+import {
+  SEARCH_USERS,
+  SEARCH_SHOWS,
+  CLEAR_SEARCH
+} from '../actions/search_actions';
+
 
 const defaultState = {
   userResults: {},
@@ -16,6 +20,9 @@ const searchReducer = (state = defaultState, action) => {
 
     case SEARCH_SHOWS:
     return merge({}, state, { showResults: action.shows })
+
+    case CLEAR_SEARCH:
+    return defaultState;
 
     default:
       return state;

@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { values } from 'lodash'
 import { Link } from 'react-router-dom';
+import { clearSearch } from '../../actions/search_actions';
 
 class SearchResults extends React.Component {
   constructor(props) {
@@ -16,6 +17,10 @@ class SearchResults extends React.Component {
     } else {
       return false;
     }
+  }
+
+  componentWillUnmount() {
+    this.props.clearSearch();
   }
 
   render () {
@@ -94,7 +99,13 @@ const mapStateToProps = state => {
   }
 }
 
+const mapDispatchToProps = dispatch => {
+  return {
+    clearSearch: () => dispatch(clearSearch())
+  }
+}
+
 export default connect(
   mapStateToProps,
-  null
+  mapDispatchToProps
 )(SearchResults);

@@ -2,7 +2,8 @@ import { connect } from 'react-redux';
 import Search from './search';
 import {
   searchForUsers,
-  searchForShows
+  searchForShows,
+  clearSearch
 } from '../../actions/search_actions';
 
 
