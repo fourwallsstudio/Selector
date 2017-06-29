@@ -10,6 +10,7 @@ class Countdown extends React.Component {
     }
 
     this.counter = this.counter.bind(this);
+    this.handleSeek = this.handleSeek.bind(this);
   }
 
   componentDidMount() {
@@ -21,18 +22,20 @@ class Countdown extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    let end = nextProps.player._sounds[0]._stop;
-    let seek = nextProps.player._sounds[0]._seek;
-    this.setState({
-      countdown: Math.round( end - seek ),
-      countup: Math.round( seek )
-     });
+    if (this.props.status !== nextProps.status) {
+      let end = nextProps.player._sounds[0]._stop;
+      let seek = nextProps.player._sounds[0]._seek;
+      this.setState({
+        countdown: Math.round( end - seek ),
+        countup: Math.round( seek )
+      });
 
-    if (nextProps.player._sounds[0]._paused) {
-      clearInterval(this.currentInterval);
-    } else {
-      clearInterval(this.currentInterval);
-      this.currentInterval = setInterval(this.counter, 1000);
+      if (nextProps.player._sounds[0]._paused) {
+        clearInterval(this.currentInterval);
+      } else {
+        clearInterval(this.currentInterval);
+        this.currentInterval = setInterval(this.counter, 1000);
+      }
     }
   }
 
@@ -63,6 +66,19 @@ class Countdown extends React.Component {
     return min + ":" + sec;
   }
 
+  handleSeek(e) {
+    e.preventDefault();
+    let end = this.props.player._sounds[0]._stop;
+    let seek = Math.floor(parseInt(e.target.value));
+
+    this.setState({
+      countdown: Math.round(end - seek),
+      countup: seek,
+    })
+
+    this.props.player.seek(this.state.countup);
+  }
+
   render() {
     return (
       <div className="first-queue-playback">
@@ -74,6 +90,7 @@ class Countdown extends React.Component {
           min="0"
           max={`${ this.props.player._sounds[0]._stop }`}
           value={ `${ this.state.countup }`}
+          onChange={ this.handleSeek }
           className="first-queue-playback-slider" />
 
         <div className="first-queue-playback-countdown">

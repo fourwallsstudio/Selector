@@ -10,12 +10,14 @@ class Player extends React.Component {
 
     this.state = {
       playerQueue: [],
-      dropdownIsActive: false
+      dropdownIsActive: false,
+      volume: 0
     }
 
     this.howlerPlayer = this.howlerPlayer.bind(this);
     this.dropdownHandle = this.dropdownHandle.bind(this);
     this.handlePlayClick = this.handlePlayClick.bind(this);
+    this.handleVolume = this.handleVolume.bind(this);
   }
 
 
@@ -73,9 +75,12 @@ class Player extends React.Component {
         );
       },
       onend: () => {
-        this.props.nextQueueItem();
-      },
-      onstop: () => {  }
+        if (this.props.queue.length > 1) {
+          this.props.nextQueueItem();
+        } else {
+          this.props.updatePlayStatus(true);
+        }
+      }
     });
 
     howlPlay.play();
@@ -99,25 +104,39 @@ class Player extends React.Component {
     }
   }
 
+  handleVolume(e) {
+    e.preventDefault();
+    let current = this.props.player.player[0];
+
+    this.setState({
+        volume: parseInt(e.target.value)
+    })
+
+    current.volume(this.state.volume / 10);
+  }
+
 
   render() {
     if (!this.state.playerQueue.length) {
       return <div></div>;
+
     } else {
 
       let currentShow = this.state.playerQueue[0].show;
       let counter;
       let dropdown;
       let firstPlayDisplay;
+      let volume;
 
       // QUEUE REST
       let rest = this.state.playerQueue.slice(1).map( queueItem => {
         return <QueueItem key={ queueItem.show_id } queueItem={ queueItem } />;
       })
 
-      // COUNTER
+      // COUNTER & VOLUME
       if (this.props.player.player.length) {
         counter = <Countdown player={ this.props.player.player[0] } status={ this.props.player.status } />;
+        volume = this.props.player.player[0]._volume * 10;
       }
 
       // DROPDOWN
@@ -176,7 +195,13 @@ class Player extends React.Component {
               <div className="first-queue-playback-vol-box">
                 <i className="fa fa-volume-up fa-2x" aria-hidden="true"></i>
                 <div className="f-q-vol-bar">
-                  <input className="f-q-vol-slider"type="range" />
+                  <input className="f-q-vol-slider"
+                    type="range"
+                    min="0"
+                    max="10"
+                    value={`${volume}`}
+                    onChange={ this.handleVolume }
+                     />
                 </div>
               </div>
 
