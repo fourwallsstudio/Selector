@@ -9,9 +9,9 @@ Selector is a web application inspired by MixCloud built using Ruby on Rails and
 
 Shows are stored in a db table with columns including "audio_url", "title",
 "description" and "image". Upon login, users can create, render, edit and remove shows.
-Shows can be displayed on the main feed and in various filtered feeds through out the site.
+Shows can be displayed on the main feed and in various filtered feeds throughout the site.
 In addition, a show also has its own profile page to display stats and links to
-the user, listeners, and tags. Users can comment on a shows profile. If the current user
+the author, listeners, and tags. Users can comment on a shows profile. If the current user
 is the author of the show, they will have links displayed to delete or redirect to the
 show's edit page.
 
@@ -20,7 +20,8 @@ show's edit page.
 
 Shows can be played from the profile page or any feed. Playback has controls for
 play, pause, scrub/seek, and volume. Once a show is played it will display in the
-bottom player footer. When a new song is played, the previous unfinished listens will
+bottom player footer. The user can navigate to anywhere on the site without
+interrupting play. When a new show is played, the previous unfinished listens will
 move back in the queue. The "next" dropdown will display these shows. When a
 show is finished it leaves the queue and the next show will start playing.
 
@@ -51,3 +52,5 @@ with a link to a settings page for editing the profile. Also the button
 By clicking on the search input on the header nav, users can search tags,
 shows, and users. Search is updated on each change of key, and will render
 for each field.
+
+![image of search](screenshots/search.png)
