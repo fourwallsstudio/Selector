@@ -28,7 +28,7 @@ class Api::ShowsController < ApplicationController
 
   def update
     @show = current_user.shows.find(params[:id])
-  
+
     if @show.update(show_params)
       render :show
     else

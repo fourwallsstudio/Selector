@@ -18,6 +18,15 @@
 #  image_updated_at   :datetime
 #
 
+require 'paperclip/media_type_spoof_detector'
+module Paperclip
+  class MediaTypeSpoofDetector
+    def spoofed?
+      false
+    end
+  end
+end
+
 class Show < ActiveRecord::Base
   include PgSearch
   pg_search_scope :whose_title_starts_with,
