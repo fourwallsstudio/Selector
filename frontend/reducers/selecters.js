@@ -12,7 +12,7 @@ export const selectAllShows = ({ shows }) => {
 }
 
 export const selectFilteredShows = (state, filter) => {
-  debugger
+
   if (filter === "most_recent") {
     return selectAllShows(state);
 

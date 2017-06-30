@@ -1,9 +1,21 @@
 import { searchUsers } from '../util/user_api_util';
 import { searchShows } from '../util/show_util';
+import { searchTags } from '../util/tag_util';
 
 export const SEARCH_USERS = 'SEARCH_USERS';
 export const SEARCH_SHOWS = 'SEARCH_SHOWS';
+export const SEARCH_TAGS = 'SEARCH_TAGS';
 export const CLEAR_SEARCH = 'CLEAR_SEARCH';
+
+
+export const searchForTags = search => {
+  return dispatch => {
+    return (
+      searchTags(search)
+        .then( result => dispatch(receiveTagSearch(result)) )
+    )
+  }
+}
 
 
 export const searchForUsers = search => {
@@ -21,6 +33,13 @@ export const searchForShows = search => {
       searchShows(search)
         .then( result => dispatch(receiveShowSearch(result)) )
     )
+  }
+}
+
+export const receiveTagSearch = tags => {
+  return {
+    type: SEARCH_TAGS,
+    tags
   }
 }
 

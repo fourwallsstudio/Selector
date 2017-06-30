@@ -5,6 +5,7 @@ import { fetchSingleShow, deleteShow } from '../../actions/show_actions';
 import { fetchUsers } from '../../actions/user_actions';
 import { createQueueItem } from '../../actions/queue_actions';
 import { startPreview, stopPreview } from '../../actions/preview_actions';
+import { fetchAllTags } from '../../actions/tag_actions';
 import {
   createComment,
   deleteComment,
@@ -31,7 +32,8 @@ const mapStateToProps = (state, { match }) => {
     player: state.player,
     comments: state.comments,
     users: state.users,
-    preview: state.preview
+    preview: state.preview,
+    tags: state.tags
   }
 }
 
@@ -46,7 +48,8 @@ const mapDispatchToProps = dispatch => {
     deleteComment: id => dispatch(deleteComment(id)),
     fetchComments: showId => dispatch(fetchComments(showId)),
     startPreview: src => dispatch(startPreview(src)),
-    stopPreview: src => dispatch(stopPreview(src))
+    stopPreview: src => dispatch(stopPreview(src)),
+    fetchAllTags: () => dispatch(fetchAllTags())
   }
 }
 

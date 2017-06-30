@@ -2,7 +2,7 @@ class Api::ShowsController < ApplicationController
 
   def index
     case params["filter"]
-      
+
     when "most_recent"
       @shows = Show.most_recent
     when "trending"
@@ -50,7 +50,7 @@ class Api::ShowsController < ApplicationController
   private
 
   def show_params
-    params.require(:show).permit(:title, :audio, :image, :description)
+    params.require(:show).permit(:title, :audio, :image, :description, tag_ids: [])
   end
 
 end

@@ -24,6 +24,7 @@ class Search extends React.Component {
 
     this.props.searchForUsers(search)
     this.props.searchForShows(search)
+    this.props.searchForTags(search)
   }
 
 

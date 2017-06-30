@@ -2,6 +2,7 @@ import { merge } from 'lodash';
 import {
   SEARCH_USERS,
   SEARCH_SHOWS,
+  SEARCH_TAGS,
   CLEAR_SEARCH
 } from '../actions/search_actions';
 
@@ -9,6 +10,7 @@ import {
 const defaultState = {
   userResults: {},
   showResults: {},
+  tagResults: {}
 }
 
 const searchReducer = (state = defaultState, action) => {
@@ -20,6 +22,9 @@ const searchReducer = (state = defaultState, action) => {
 
     case SEARCH_SHOWS:
     return merge({}, state, { showResults: action.shows })
+
+    case SEARCH_TAGS:
+    return merge({}, state, { tagResults: action.tags })
 
     case CLEAR_SEARCH:
     return defaultState;

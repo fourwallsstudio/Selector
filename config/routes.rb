@@ -10,6 +10,9 @@ Rails.application.routes.draw do
     end
     resources :comments, only: [:index, :create, :show, :destroy]
     resources :queue_items, only: [:create, :destroy]
+    resources :tags, only: [:index, :create] do
+      get :search, on: :collection
+    end
     resource :session, only: [:create, :destroy]
   end
 end

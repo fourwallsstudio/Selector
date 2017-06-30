@@ -31,6 +31,8 @@ class ShowProfile extends React.Component {
     this.props.fetchComments(this.props.showId)
 
     this.props.fetchUsers(this.props.showId)
+
+    this.props.fetchAllTags()
   }
 
   componentWillReceiveProps(newProps) {
@@ -103,6 +105,19 @@ class ShowProfile extends React.Component {
       let timeAgo = timeAgoJS.format(new Date(this.props.show.created_at));
       let showAside;
       let previewActive = "";
+      let tags = "";
+
+      if (show.tag_ids.length && values(this.props.tags).length) {
+        tags = show.tag_ids.map( id => {
+          let tag = this.props.tags[id]
+          return (
+            <div key={ tag.id } className="s-p-tag">
+              <p>{ tag.genre }</p>
+            </div>
+          )
+        })
+      }
+
 
       if (values(this.props.users).length) {
         showAside = <ShowProfileAside show={ show } users={ this.props.users }/>;
@@ -255,7 +270,7 @@ class ShowProfile extends React.Component {
               </div>
 
               <div className="s-p-about-head-under">
-
+                { tags }
               </div>
 
               <div className="s-p-about">

@@ -10,6 +10,7 @@ class ShowFeed extends React.Component {
 
   componentDidMount() {
     this.props.fetchAllShows(this.props.filter);
+    this.props.fetchAllTags();
   }
 
   shouldComponentUpdate(nextProps) {
@@ -29,8 +30,9 @@ class ShowFeed extends React.Component {
       const showItems = this.props.shows.map( show => {
         return (
           <ShowFeedItem
-            key={show.id}
-            show={show}
+            key={ show.id }
+            show={ show }
+            tags={ this.props.tags }
             queue={ this.props.queue }
             player={ this.props.player}
             createQueueItem={ this.props.createQueueItem }

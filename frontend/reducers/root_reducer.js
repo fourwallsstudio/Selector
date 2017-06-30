@@ -8,6 +8,7 @@ import commentReducer from './comment_reducer';
 import searchReducer from './search_reducer';
 import previewReducer from './preview_reducer';
 import filterReducer from './filter_reducer';
+import tagReducer from './tag_reducer';
 
 const rootReducer = combineReducers({
   session: sessionReducer,
@@ -18,7 +19,8 @@ const rootReducer = combineReducers({
   comments: commentReducer,
   search: searchReducer,
   preview: previewReducer,
-  filter: filterReducer
+  filter: filterReducer,
+  tags: tagReducer
 })
 
 export default rootReducer;

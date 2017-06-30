@@ -53,7 +53,7 @@ class ShowFeedItem extends React.Component {
     let playDisplay;
     let timeAgoJS = new javascript_time_ago('en-US');
     let timeAgo = timeAgoJS.format(new Date(this.props.show.created_at));
-    
+
 
     if (this.props.player.player.length && this.props.queue[0].show_id === show.id) {
       if (this.props.player.status === 'playing') {
@@ -104,7 +104,9 @@ class ShowFeedItem extends React.Component {
 
             <div className="play-head">
               <Link to={`/show/${show.id}`} className="play-title">{ show.title }</Link>
-              <div className="play-tag">#tag</div>
+              <div className="play-tag">{
+                  show.tag_ids.length ? this.props.tags[show.tag_ids[0].toString()].genre : "tag"
+                }</div>
               <div className="author_credit">by
                 <Link to={`/user/${show.author_id}`}>{ show.author_username }</Link>
               </div>

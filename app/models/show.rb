@@ -41,7 +41,8 @@ class Show < ActiveRecord::Base
 
   has_many :queue_items
   has_many :comments
-
+  has_many :taggings, dependent: :destroy, inverse_of: :show
+  has_many :tags, through: :taggings, source: :tag
 
   def self.most_recent
     order("created_at DESC").limit(10)

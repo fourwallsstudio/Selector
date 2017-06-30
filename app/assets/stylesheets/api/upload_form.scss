@@ -176,9 +176,135 @@
   margin: 0 10px 10px 10px;
 }
 
+
 .u-f-title .clicked {
   background-color: #F5F9FC;
 }
+
+// .u-f-tag {
+//   width: 50px;
+//   height: 50px;
+// }
+
+.u-f-tags-box {
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-wrap: wrap;
+  margin-left: 5px;
+  margin-top: 20px;
+  justify-content: center;
+}
+
+input[type=checkbox]
+{
+  /* Double-sized Checkboxes */
+  -ms-transform: scale(5); /* IE */
+  -moz-transform: scale(5); /* FF */
+  -webkit-transform: scale(5); /* Safari and Chrome */
+  -o-transform: scale(5); /* Opera */
+  padding: 10px;
+  z-index: 1;
+  opacity: 0;
+  position: absolute;
+  top: 40%;
+  right: 50%;
+}
+
+/* tag  */
+
+
+.u-f-tag {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  background-color: white;
+  height: 40px;
+  max-width: 120px;
+  margin: 10px 10px 10px 20px;
+  border-top: solid 1px #4FA6D3;
+  border-right: solid 1px #4FA6D3;
+  border-bottom: solid 1px #4FA6D3;
+  border-radius: 0 5px 5px 0;
+  transition: transform .4s .2s,opacity .4s ease-in-out,
+    background-color 0.2s ease-in-out;
+}
+
+.u-f-tag:before {
+  content: "";
+  position: absolute;
+  height: 29.28px;
+  width: 29.28px;
+  top: 4.9px;
+  left: -14.7px;
+  background-color: white;
+  /*background-color: #34495E;*/
+  border-left: solid 1px #4FA6D3;
+  border-bottom: solid 1px #4FA6D3;
+  border-radius: 5px 100px 5px 15px;
+  transform: rotate(45deg);
+  /*transform: .4s .2s,opacity .4s ease-in-out;*/
+  transition: background-color 0.2s ease-in-out;
+}
+
+.u-f-tag:after {
+  content: "";
+  position: absolute;
+  top: 14px;
+  left: -8px;
+  height: 10px;
+  width: 10px;
+  border: solid 1px #4FA6D3;
+  border-radius: 100%;
+  background-color: white;
+}
+
+.u-f-tag p {
+  color: #4FA6D3;
+  font-family: OpenSans-Light;
+  text-align: left;
+  padding-left: 10px;
+  padding-right: 20px;
+  font-size: 14px;
+  // line-height: 16px;
+  margin: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: clip;
+}
+
+.u-f-tag:hover {
+  background-color: #4FA6D3;
+  cursor: pointer;
+}
+
+.u-f-tag:hover > p {
+  color: white;
+}
+
+.u-f-tag:hover:before {
+  background-color: #4FA6D3;
+}
+
+.u-f-tag.checked {
+  background-color: #4FA6D3;
+}
+
+.u-f-tag.checked > p {
+  color: white;
+}
+
+.u-f-tag.checked:before {
+  background-color: #4FA6D3;
+}
+
+
+/* tag ^^^^ */
+
+
+
+
 
 .upload-form-box button {
   color: white;

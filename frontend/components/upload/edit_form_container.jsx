@@ -7,6 +7,7 @@ import { uploadShow,
   clearErrors
 } from '../../actions/show_actions';
 import { selectShow } from '../../reducers/selecters';
+import { fetchAllTags } from '../../actions/tag_actions';
 
 
 const mapStateToProps = (state, { match, location }) => {
@@ -17,7 +18,8 @@ const mapStateToProps = (state, { match, location }) => {
     errors: state.session.errors,
     currentUser: state.session.currentUser,
     show: selectShow(state, showId),
-    showId
+    showId,
+    tags: state.tags
   }
 }
 
@@ -26,7 +28,8 @@ const mapDispatchToProps = dispatch => {
     updateShow: (id, formData) => dispatch(updateShow(id, formData)),
     fetchSingleShow: showId => dispatch(fetchSingleShow(showId)),
     deleteShow: showId => dispatch(deleteShow(showId)),
-    clearErrors: () => dispatch(clearErrors())
+    clearErrors: () => dispatch(clearErrors()),
+    fetchAllTags: () => dispatch(fetchAllTags())
   }
 }
 

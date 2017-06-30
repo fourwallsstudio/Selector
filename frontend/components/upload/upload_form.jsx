@@ -1,6 +1,7 @@
 import React from 'react';
 import MustBeLoggedIn from '../errors_notices/must_be_logged_in';
 import renderHTML from 'react-render-html';
+import { values } from 'lodash';
 
 class UploadForm extends React.Component {
   constructor(props) {
@@ -11,8 +12,10 @@ class UploadForm extends React.Component {
       description: "",
       audio: null,
       image: null,
+      tagIds: [],
       uploadInProgress: false
     },
+
     this.audioFileName = "";
     this.imagePreviewUrl = "";
 
@@ -21,24 +24,29 @@ class UploadForm extends React.Component {
     this.update = this.update.bind(this);
     this.updateAudio = this.updateAudio.bind(this);
     this.updateImage = this.updateImage.bind(this);
+    this.handleCheckbox = this.handleCheckbox.bind(this);
   }
 
   componentDidMount() {
     if (this.props.formType === 'edit') {
       this.props.fetchSingleShow(this.props.showId);
     }
+    this.props.fetchAllTags();
   }
 
   componentWillReceiveProps(nextProps) {
-    this.imagePreviewUrl = nextProps.show.image_url
-    this.audioFileName = nextProps.show.title;
+    if (nextProps.show) {
+      this.imagePreviewUrl = nextProps.show.image_url
+      this.audioFileName = nextProps.show.title;
 
-    this.setState({
-      title: nextProps.show.title,
-      description: nextProps.show.description,
-      audio: nextProps.show.audio_url,
-      image: nextProps.show.image_url
-    });
+      this.setState({
+        title: nextProps.show.title,
+        description: nextProps.show.description,
+        audio: nextProps.show.audio_url,
+        image: nextProps.show.image_url,
+        tagIds: nextProps.show.tag_ids
+      });
+    }
   }
 
 
@@ -50,8 +58,7 @@ class UploadForm extends React.Component {
     var formData = new FormData();
     formData.append("show[title]", this.state.title);
     formData.append("show[description]", this.state.description);
-    // formData.append("show[image]", this.state.image);
-    // formData.append("show[audio]", this.state.audio);
+    formData.append("show[tag_ids][]", this.state.tagIds);
 
     if (this.state.image) {
       formData.append("show[image]", this.state.image);
@@ -112,6 +119,26 @@ class UploadForm extends React.Component {
     reader.readAsDataURL(file);
   }
 
+  handleCheckbox(e) {
+    e.preventDefault();
+
+    if (this.state.tagIds.includes(e.target.value)) {
+      let i = this.state.tagIds.indexOf(e.target.value)
+      let newState = this.state.tagIds
+      newState.splice(i, 1)
+
+      this.setState({
+        tagIds: newState
+      })
+    } else {
+
+      this.setState({
+        tagIds: this.state.tagIds.concat([e.target.value])
+      })
+    }
+
+  }
+
   render() {
     if (!this.props.currentUser) {
       return <MustBeLoggedIn type="upload" />;
@@ -122,6 +149,7 @@ class UploadForm extends React.Component {
       let formName = 'Upload';
       let buttonAction = 'Choose ';
       let uploadInProgress = "";
+      let tagCheckboxes;
 
       if (this.state.uploadInProgress) { uploadInProgress = "upload-in-progress" };
 
@@ -133,6 +161,20 @@ class UploadForm extends React.Component {
         deleteButton = <p onClick={ this.handleDelete } className="edit-form-delete-link">Delete</p>;
         formName = 'Update';
         buttonAction = 'Change ';
+      }
+
+      if (this.props.tags) {
+        console.log(values(this.props.tags));
+        tagCheckboxes = values(this.props.tags).map( tag => {
+          return (
+            <div key={ tag.id }
+              className={`u-f-tag ${ this.state.tagIds.includes(tag.id.toString()) ? "checked" : "" }`}>
+              <input type="checkbox" value={ tag.id }
+                  onChange={ this.handleCheckbox } />
+              <p>{ tag.genre }</p>
+            </div>
+          )
+        })
       }
 
       return (
@@ -194,6 +236,9 @@ class UploadForm extends React.Component {
                     className="u-f-descript"
                     onChange={this.update('description')}
                     />
+                  <div className="u-f-tags-box">
+                    { tagCheckboxes }
+                  </div>
                 </div>
               </div>
 

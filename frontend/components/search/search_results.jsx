@@ -11,8 +11,9 @@ class SearchResults extends React.Component {
   }
 
   shouldCompenentUpdate(nextProps) {
-    if (values(this.props.showResults).length
-      || values(this.props.userResults).length ) {
+    if (values(this.props.showResults).length ||
+      values(this.props.userResults).length ||
+      values(this.props.tagResults).length) {
       return true;
     } else {
       return false;
@@ -24,12 +25,22 @@ class SearchResults extends React.Component {
   }
 
   render () {
-
+    let tagResultFeed;
     let showResultFeed;
     let userResultFeed;
 
+    if (values(this.props.tagResults).length) {
+      tagResultFeed = this.props.tagResults.map( tag => {
+        return (
+          <li key={ tag.id } className="search-result-tag-item">
+            <p>{ tag.genre }</p>
+          </li>
+        )
+      })
+    }
+
+
     if (values(this.props.showResults).length) {
-      console.log("hit")
       showResultFeed = this.props.showResults.map( show => {
         return (
           <li key={ show.id } className="search-result-show-item">
@@ -64,6 +75,15 @@ class SearchResults extends React.Component {
 
           <div className="search-results-container">
 
+            <div className="search-results-tags-box">
+              <div className="search-results-tags-head">
+                <h2>Tags</h2>
+              </div>
+              <ul className="search-results-tags-feed">
+                { tagResultFeed }
+              </ul>
+            </div>
+
             <div className="search-results-shows-box">
               <div className="search-results-shows-head">
                 <h2>Shows</h2>
@@ -95,7 +115,8 @@ class SearchResults extends React.Component {
 const mapStateToProps = state => {
   return {
     userResults: state.search.userResults,
-    showResults: state.search.showResults
+    showResults: state.search.showResults,
+    tagResults: state.search.tagResults
   }
 }
 
