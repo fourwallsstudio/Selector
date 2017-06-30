@@ -48,7 +48,8 @@
   position: relative;
 }
 
-.i-h-links:hover > * {
+.i-h-links:first-of-type:hover > *,
+.i-h-links:last-of-type:hover > * {
   cursor: pointer;
   color: #4FA6D3;
   transition: color 0.2s ease-in-out;

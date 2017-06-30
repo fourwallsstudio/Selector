@@ -38,12 +38,11 @@ class UploadForm extends React.Component {
     if (nextProps.show) {
       this.imagePreviewUrl = nextProps.show.image_url
       this.audioFileName = nextProps.show.title;
-
       this.setState({
         title: nextProps.show.title,
         description: nextProps.show.description,
-        audio: nextProps.show.audio_url,
-        image: nextProps.show.image_url,
+        // audio: nextProps.show.audio_url,
+        // image: nextProps.show.image_url,
         tagIds: nextProps.show.tag_ids
       });
     }
@@ -121,9 +120,8 @@ class UploadForm extends React.Component {
 
   handleCheckbox(e) {
     e.preventDefault();
-
-    if (this.state.tagIds.includes(e.target.value)) {
-      let i = this.state.tagIds.indexOf(e.target.value)
+    if (this.state.tagIds.includes(parseInt(e.target.value))) {
+      let i = this.state.tagIds.indexOf(parseInt(e.target.value))
       let newState = this.state.tagIds
       newState.splice(i, 1)
 
@@ -131,9 +129,11 @@ class UploadForm extends React.Component {
         tagIds: newState
       })
     } else {
+      let nextState = this.state.tagIds
+      nextState.push(parseInt(e.target.value))
 
       this.setState({
-        tagIds: this.state.tagIds.concat([e.target.value])
+        tagIds: nextState
       })
     }
 
@@ -164,11 +164,10 @@ class UploadForm extends React.Component {
       }
 
       if (this.props.tags) {
-        console.log(values(this.props.tags));
         tagCheckboxes = values(this.props.tags).map( tag => {
           return (
             <div key={ tag.id }
-              className={`u-f-tag ${ this.state.tagIds.includes(tag.id.toString()) ? "checked" : "" }`}>
+              className={`u-f-tag ${ this.state.tagIds.includes(tag.id) ? "checked" : "" }`}>
               <input type="checkbox" value={ tag.id }
                   onChange={ this.handleCheckbox } />
               <p>{ tag.genre }</p>

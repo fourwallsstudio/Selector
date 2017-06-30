@@ -69,7 +69,6 @@ class Player extends React.Component {
 
       onplay: () => {
         if (this.props.preview.status === 'previewing') {
-          console.log("hit");
           this.props.stopPreview(this.props.preview.howlPreview)
         }
         this.props.updateHowlerPlayer(
@@ -138,7 +137,11 @@ class Player extends React.Component {
 
       // QUEUE REST
       let rest = this.state.playerQueue.slice(1).map( queueItem => {
-        return <QueueItem key={ queueItem.show_id } queueItem={ queueItem } />;
+        return <QueueItem key={ queueItem.show_id } queueItem={ queueItem }
+                    player={ this.props.player } stopPreview={ this.props.stopPreview }
+                    createQueueItem={ this.props.createQueueItem }
+                    preview={ this.props.preview } show={ this.props.show }
+                    currentUser={ this.props.currentUser } />;
       })
 
       // COUNTER & VOLUME

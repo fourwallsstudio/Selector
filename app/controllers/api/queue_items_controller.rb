@@ -23,7 +23,6 @@ class Api::QueueItemsController < ApplicationController
   # end
 
   def destroy
-    # debugger
     @queue_item = QueueItem.find(params[:id])
     @queue_item.destroy
     render :show

@@ -14,18 +14,13 @@ document.addEventListener('DOMContentLoaded', () => {
     store = configureStore();
   }
 
-
-  window.makeShow = store.makeShow;
-  window.getState = store.getState;
   window.dispatch = store.dispatch;
-
 
   const root = document.getElementById('root');
   ReactDOM.render(<Root store={ store } />, root);
 });
 
 
-// window.addEventListener("beforeunload", (ev) => {
-//   ev.preventDefault();
-//   return ev.returnValue = 'Are you sure you want to close?';
-// });
+
+// window.makeShow = store.makeShow;
+// window.getState = store.getState;

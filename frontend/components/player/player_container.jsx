@@ -3,7 +3,8 @@ import Player from './player';
 import { startPreview, stopPreview } from '../../actions/preview_actions';
 import {
   deleteQueueItem,
-  nextQueueItem
+  nextQueueItem,
+  createQueueItem
 } from '../../actions/queue_actions';
 import {
   updateHowlerPlayer,
@@ -17,7 +18,8 @@ const mapStateToProps = state => {
     queue: state.queue,
     shows: state.shows.entities,
     player: state.player,
-    preview: state.preview
+    preview: state.preview,
+    currentUser: state.session.currentUser
   }
 }
 
@@ -28,7 +30,8 @@ const mapDispatchToProps = dispatch => {
     updatePlayStatus: (s) => dispatch(updatePlayStatus(s)),
     nextQueueItem: () => dispatch(nextQueueItem()),
     startPreview: src => dispatch(startPreview(src)),
-    stopPreview: src => dispatch(startPreview(src))
+    stopPreview: src => dispatch(startPreview(src)),
+    createQueueItem: q => dispatch(createQueueItem(q))
   }
 }
 
