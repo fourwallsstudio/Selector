@@ -41,8 +41,8 @@ class UploadForm extends React.Component {
       this.setState({
         title: nextProps.show.title,
         description: nextProps.show.description,
-        // audio: nextProps.show.audio_url,
-        // image: nextProps.show.image_url,
+        audio: nextProps.show.audio_url,
+        image: nextProps.show.image_url,
         tagIds: nextProps.show.tag_ids
       });
     }
