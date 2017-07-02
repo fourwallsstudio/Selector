@@ -17,7 +17,7 @@ export const uploadShow = show => {
 }
 
 export const fetchAllShows = filter => {
-  return dipatch => {
+  return dispatch => {
     return (
       APIUtil.fetchAllShows(filter)
         .then(shows => dispatch(receiveAllShows(shows)),
@@ -27,7 +27,7 @@ export const fetchAllShows = filter => {
 }
 
 export const fetchSingleShow = showId => {
-  return dipatch => {
+  return dispatch => {
     return (
       APIUtil.fetchSingleShow(showId)
         .then(show => dispatch(receiveSingleShow(show)),
@@ -47,7 +47,7 @@ export const updateShow = (showId, formData) => {
 }
 
 export const deleteShow = showId => {
-  return dipatch => {
+  return dispatch => {
     return (
       APIUtil.deleteShow(showId)
         .then(show => dispatch(removeShow(show)),

@@ -148,10 +148,10 @@ class ShowProfile extends React.Component {
           </svg>
         );
       }
-      debugger
+      
       if (this.props.currentUser &&
         this.props.currentUser.id === show.author_id) {
-          
+
         userControls = <div className="show-user-controls-container">
                         <Link to={`/edit/${show.id}`} className="s-u-c-b edit">
                           <i className="fa fa-toggle-on fa-lg" aria-hidden="true"></i>

@@ -253,7 +253,7 @@ class UploadForm extends React.Component {
               </div>
 
               { this.renderErrors() }
-              
+
               <button>Publish</button>
             </form>
             { deleteButton }

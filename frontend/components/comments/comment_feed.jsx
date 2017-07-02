@@ -32,8 +32,10 @@ class CommentFeed extends React.Component {
 
 
   render() {
-    if (!values(this.state.users).length) {
-      return <div>loading</div>;
+    if (!this.state.comments.length &&
+      !values(this.state.users).length) {
+
+      return <div></div>;
 
     } else {
       let timeAgoJS = new javascript_time_ago('en-US');
@@ -47,7 +49,7 @@ class CommentFeed extends React.Component {
 
         if (this.props.currentUser &&
           user.id === this.props.currentUser.id) {
-            
+
           deleteButton =  <div className="comment-delete-button" onClick={ this.handleDelete }>
             <i className="fa fa-times" aria-hidden="true" id={comment.id} ></i>
           </div>;
