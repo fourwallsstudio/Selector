@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 
 
 const UserNavDropdown = (props) => {
@@ -7,15 +7,16 @@ const UserNavDropdown = (props) => {
     <div className="user-nav-dropdown-container">
       <div className="user-nav-dropdown-arrow-up"></div>
       <ul className="user-nav-dropdown">
-        <li className="user-nav-dropdown-row">
-          <button onClick={() => props.logout()}>Logout</button>
+        <li className="user-nav-dropdown-row" onClick={() => props.logout()} >
+          Logout
         </li>
-        <li className="user-nav-dropdown-row">
-          <Link to={`/user/${props.currentUser.id}/settings`}>Settings</Link>
+        <li className="user-nav-dropdown-row"
+            onClick={() => props.history.push(`/user/${props.currentUser.id}/settings`)}>
+          Settings
         </li>
       </ul>
     </div>
   )
 }
 
-export default UserNavDropdown;
+export default withRouter(UserNavDropdown);
