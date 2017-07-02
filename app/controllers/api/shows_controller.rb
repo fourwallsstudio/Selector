@@ -17,7 +17,7 @@ class Api::ShowsController < ApplicationController
   end
 
   def create
-    # debugger
+    debugger
     @show = Show.new(show_params)
     @show.author_id = current_user.id
     if @show.save

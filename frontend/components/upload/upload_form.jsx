@@ -42,7 +42,6 @@ class UploadForm extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    console.log(this.state);
 
     if (nextProps.errors.length) {
       this.setState({
@@ -60,7 +59,14 @@ class UploadForm extends React.Component {
     var formData = new FormData();
     formData.append("show[title]", this.state.title);
     formData.append("show[description]", this.state.description);
-    formData.append("show[tag_ids][]", this.state.tagIds);
+
+    if (this.state.tagIds.length) {
+      this.state.tagIds.forEach(id => {
+        formData.append("show[tag_ids][]", id);
+      })
+    } else {
+      formData.append("show[tag_ids][]", "");
+    }
 
     if (this.state.image) {
       formData.append("show[image]", this.state.image);
@@ -132,7 +138,6 @@ class UploadForm extends React.Component {
 
   handleCheckbox(e) {
     e.preventDefault();
-    console.log(e.currentTarget.value)
     if (this.state.tagIds.includes(parseInt(e.currentTarget.value))) {
       let i = this.state.tagIds.indexOf(parseInt(e.currentTarget.value))
       let newState = this.state.tagIds
