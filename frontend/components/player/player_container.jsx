@@ -8,7 +8,8 @@ import {
 } from '../../actions/queue_actions';
 import {
   updateHowlerPlayer,
-  updatePlayStatus
+  updatePlayStatus,
+  removeHowlerPlay
  } from '../../actions/player_actions';
 
 
@@ -25,9 +26,10 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    deleteQueueItem: () => dispatch(deleteQueueItem()),
+    deleteQueueItem: id => dispatch(deleteQueueItem(id)),
     updateHowlerPlayer: (hp) => dispatch(updateHowlerPlayer(hp)),
     updatePlayStatus: (s) => dispatch(updatePlayStatus(s)),
+    removeHowlerPlay: () => dispatch(removeHowlerPlay()),
     nextQueueItem: () => dispatch(nextQueueItem()),
     startPreview: src => dispatch(startPreview(src)),
     stopPreview: src => dispatch(startPreview(src)),

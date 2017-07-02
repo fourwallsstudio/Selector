@@ -1,14 +1,6 @@
-// export const UPDATE_CURRENT_PLAY = 'UPDATE_CURRENT_PLAY';
 export const UPDATE_HOWLER_PLAYER = 'UPDATE_HOWLER_PLAYER';
 export const UPDATE_PLAY_STATUS = 'UPDATE_PLAY_STATUS';
-
-// export const updateCurrentPlay = (currentPlay, paused) => {
-//   return {
-//     type: UPDATE_CURRENT_PLAY,
-//     currentPlay,
-//     paused
-//   }
-// }
+export const REMOVE_HOWLER_PLAY = 'REMOVE_HOWLER_PLAY';
 
 export const updateHowlerPlayer = (howlPlay) => {
   return {
@@ -21,5 +13,11 @@ export const updatePlayStatus = (status) => {
   return {
     type: UPDATE_PLAY_STATUS,
     status
+  }
+}
+
+export const removeHowlerPlay = () => {
+  return {
+    type: REMOVE_HOWLER_PLAY
   }
 }

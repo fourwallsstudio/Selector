@@ -48,9 +48,19 @@ class Player extends React.Component {
     }
   }
 
+  componentWillUpdate(nextProps, nextState) {
+
+  }
+
   componentDidUpdate(prevProps, prevState) {
-    if (prevState.playerQueue.length !== this.state.playerQueue.length) {
-      if (this.props.player.player.length) { prevProps.player.player[0].pause() }
+    if (this.state.playerQueue.length &&
+      prevState.playerQueue.length !== this.state.playerQueue.length) {
+
+      if (this.props.player.player.length) {
+        prevProps.player.player[0].pause();
+        prevProps.removeHowlerPlay();
+      }
+
       this.howlerPlayer();
     }
   }
@@ -84,9 +94,12 @@ class Player extends React.Component {
 
       onend: () => {
         if (this.props.queue.length > 1) {
+          this.props.removeHowlerPlay();
           this.props.nextQueueItem();
         } else {
-          this.props.updatePlayStatus(true);
+          this.props.removeHowlerPlay();
+          console.log(this.props.queue[0].id);
+          this.props.deleteQueueItem(this.props.queue[0].id);
         }
       }
     });
