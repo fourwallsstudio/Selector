@@ -33,33 +33,37 @@ class CommentForm extends React.Component {
   }
 
   render() {
-    let show = this.props.show;
-    let currentUser = this.props.currentUser;
+    if (!this.props.currentUser) {
+      return <div></div>;
+    } else {
+      let show = this.props.show;
+      let currentUser = this.props.currentUser;
 
-    return (
-      <div className="comment-form-container">
+      return (
+        <div className="comment-form-container">
 
-        <div className="comment-form-img-box">
-          <Link to={`/user/${currentUser.id}`}>
-            <img src={ currentUser.avatar_url } />
-          </Link>
-        </div>
+          <div className="comment-form-img-box">
+            <Link to={`/user/${currentUser.id}`}>
+              <img src={ currentUser.avatar_url } />
+            </Link>
+          </div>
 
-        <form className="comment-form-form"
-          onSubmit={ this.handelSubmit }>
-          <textarea className="comment-form-input"
+          <form className="comment-form-form"
+            onSubmit={ this.handelSubmit }>
+            <textarea className="comment-form-input"
               onChange={ this.handelChange }
               value={ this.state.body }
               placeholder={`What did you think of ${show.author_username}'s ${show.title}?`}>
 
-          </textarea>
-          <div className="comment-form-button-box" >
-            <button>Post comment</button>
-          </div>
-        </form>
+            </textarea>
+            <div className="comment-form-button-box" >
+              <button>Post comment</button>
+            </div>
+          </form>
 
-      </div>
-    )
+        </div>
+      )
+    }
   }
 
 }

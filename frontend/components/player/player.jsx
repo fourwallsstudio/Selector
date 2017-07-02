@@ -98,8 +98,10 @@ class Player extends React.Component {
           this.props.nextQueueItem();
         } else {
           this.props.removeHowlerPlay();
-          console.log(this.props.queue[0].id);
           this.props.deleteQueueItem(this.props.queue[0].id);
+          this.setState({
+            dropdownIsActive: false
+          })
         }
       }
     });

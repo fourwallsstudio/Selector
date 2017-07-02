@@ -45,7 +45,9 @@ class CommentFeed extends React.Component {
         let user = this.state.users[comment.user_id];
         let deleteButton = "";
 
-        if (user.id === this.props.currentUser.id) {
+        if (this.props.currentUser &&
+          user.id === this.props.currentUser.id) {
+            
           deleteButton =  <div className="comment-delete-button" onClick={ this.handleDelete }>
             <i className="fa fa-times" aria-hidden="true" id={comment.id} ></i>
           </div>;
