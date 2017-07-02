@@ -36,7 +36,7 @@
 
 .first-queue-box {
   display: flex;
-  width: 250px;
+  width: 280px;
 }
 
 .first-queue-image-box {
@@ -69,12 +69,12 @@
   display: flex;
   flex-wrap: wrap;
   align-items: baseline;
-  width: 160px;
+  width: 180px;
   padding: 5px 0;
 }
 
 .first-queue-play-detail h2 {
-  width: 150px;
+  width: 180px;
   height: 18px;
   overflow: hidden;
 }
@@ -82,6 +82,7 @@
 .first-queue-play-detail h4 {
   font-size: 14px;
   margin: 0 5px;
+  max-width: 120px;
   overflow: hidden;
 }
 
@@ -105,7 +106,7 @@
 
 
 .first-queue-bottons-box {
-  width: 180px;
+  width: 120px;
   height: 50px;
   border-left: solid 1px black;
   border-right: solid 1px black;
@@ -229,7 +230,8 @@
 
 .rest-queue-box {
   display: flex;
-  width: 250px;
+  justify-content: space-between;
+  width: 280px;
 }
 
 .rest-queue-box:hover {
@@ -252,7 +254,7 @@
 }
 
 .rest-queue-play-detail h2 {
-  width: 150px;
+  width: 180px;
   height: 18px;
   overflow: hidden;
 }
@@ -260,6 +262,7 @@
 .rest-queue-play-detail h4 {
   font-size: 14px;
   margin: 0 5px;
+  max-width: 120px;
   overflow: hidden;
 }
 

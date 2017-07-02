@@ -35,7 +35,7 @@ Shows can be previewed by hovering over the play button in the show preview,
 show feeds, or playback footer. The preview will play 5 seconds from
 4 different positions of the show. If the play button is clicked at anytime
 during playback, the preview will stop and the show will begin playing in the
-playback.
+playback. Preview is disabled during playback.
 
 ![image of preview](screenshots/preview.png)
 
