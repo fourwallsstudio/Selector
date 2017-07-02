@@ -28,23 +28,26 @@ class UploadForm extends React.Component {
   }
 
   componentDidMount() {
-    if (this.props.formType === 'edit') {
-      this.props.fetchSingleShow(this.props.showId);
+    if (this.props.show) {
+      this.imagePreviewUrl = this.props.show.image_url
+      this.audioFileName = this.props.show.title;
+      this.setState({
+        title: this.props.show.title,
+        description: this.props.show.description,
+        tagIds: this.props.show.tag_ids
+      });
     }
+
     this.props.fetchAllTags();
   }
 
   componentWillReceiveProps(nextProps) {
-    if (nextProps.show) {
-      this.imagePreviewUrl = nextProps.show.image_url
-      this.audioFileName = nextProps.show.title;
+    console.log(this.state);
+
+    if (nextProps.errors.length) {
       this.setState({
-        title: nextProps.show.title,
-        description: nextProps.show.description,
-        audio: nextProps.show.audio_url,
-        image: nextProps.show.image_url,
-        tagIds: nextProps.show.tag_ids
-      });
+        uploadInProgress: false
+      })
     }
   }
 
@@ -84,7 +87,7 @@ class UploadForm extends React.Component {
 
   renderErrors() {
     return(
-      <div className="upload-form-errors">{this.props.errors}</div>
+      <div className="upload-form-errors">{this.props.errors[0]}</div>
     );
   }
 
@@ -103,10 +106,18 @@ class UploadForm extends React.Component {
     let file = e.target.files[0];
     this.audioFileName = file.name;
     this.setState({ audio: file });
+    if (this.props.errors) {
+      this.props.clearErrors();
+    }
   }
 
   updateImage(e) {
     e.preventDefault();
+
+    if (this.props.errors) {
+      this.props.clearErrors();
+    }
+
     let reader = new FileReader();
     let file = e.target.files[0];
 
@@ -115,13 +126,15 @@ class UploadForm extends React.Component {
       this.setState({ image: file });
     }
 
+
     reader.readAsDataURL(file);
   }
 
   handleCheckbox(e) {
     e.preventDefault();
-    if (this.state.tagIds.includes(parseInt(e.target.value))) {
-      let i = this.state.tagIds.indexOf(parseInt(e.target.value))
+    console.log(e.currentTarget.value)
+    if (this.state.tagIds.includes(parseInt(e.currentTarget.value))) {
+      let i = this.state.tagIds.indexOf(parseInt(e.currentTarget.value))
       let newState = this.state.tagIds
       newState.splice(i, 1)
 
@@ -130,7 +143,7 @@ class UploadForm extends React.Component {
       })
     } else {
       let nextState = this.state.tagIds
-      nextState.push(parseInt(e.target.value))
+      nextState.push(parseInt(e.currentTarget.value))
 
       this.setState({
         tagIds: nextState
@@ -166,12 +179,12 @@ class UploadForm extends React.Component {
       if (this.props.tags) {
         tagCheckboxes = values(this.props.tags).map( tag => {
           return (
-            <div key={ tag.id }
-              className={`u-f-tag ${ this.state.tagIds.includes(tag.id) ? "checked" : "" }`}>
-              <input type="checkbox" value={ tag.id }
-                  onChange={ this.handleCheckbox } />
+            <li key={ tag.id }
+              className={`u-f-tag ${ this.state.tagIds.includes(tag.id) ? "checked" : "" }`}
+              value={ tag.id }
+              onClick={ this.handleCheckbox } >
               <p>{ tag.genre }</p>
-            </div>
+            </li>
           )
         })
       }
@@ -192,8 +205,6 @@ class UploadForm extends React.Component {
           </div>
 
           <div className="upload-form-box">
-
-            { this.renderErrors() }
 
             <form onSubmit={ this.handleSubmit }>
               <div className="upload-input-audio">
@@ -235,12 +246,14 @@ class UploadForm extends React.Component {
                     className="u-f-descript"
                     onChange={this.update('description')}
                     />
-                  <div className="u-f-tags-box">
+                  <ul className="u-f-tags-box">
                     { tagCheckboxes }
-                  </div>
+                  </ul>
                 </div>
               </div>
 
+              { this.renderErrors() }
+              
               <button>Publish</button>
             </form>
             { deleteButton }

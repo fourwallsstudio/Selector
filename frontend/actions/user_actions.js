@@ -1,4 +1,5 @@
 import * as APIUtil from '../util/user_api_util';
+import { receiveErrors } from './error_actions';
 
 export const RECEIVE_USER = 'RECEIVE_USER';
 export const RECEIVE_USERS = 'RECEIVE_USERS';
@@ -28,8 +29,8 @@ export const editUser = (id, formData) => {
   return dispatch => {
     return (
       APIUtil.editUser(id, formData)
-      .then(user => dispatch(updateUser(user)))
-      // err => dispatch(receiveErrors(err.responseJSON)))
+      .then(user => dispatch(updateUser(user)),
+      err => dispatch(receiveErrors(err.responseJSON)))
     )
   }
 }

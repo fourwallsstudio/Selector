@@ -1,6 +1,7 @@
 import UploadForm from './upload_form';
 import { connect } from 'react-redux';
-import { uploadShow, clearErrors } from '../../actions/show_actions';
+import { uploadShow } from '../../actions/show_actions';
+import { clearErrors } from '../../actions/error_actions';
 import { fetchAllTags } from '../../actions/tag_actions';
 
 
@@ -9,7 +10,7 @@ const mapStateToProps = state => {
   return {
     formType: "upload",
     loggedIn: Boolean(session.currentUser),
-    errors: session.errors,
+    errors: state.errors,
     currentUser: session.currentUser,
     tags: state.tags
   }

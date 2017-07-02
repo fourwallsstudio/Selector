@@ -3,9 +3,9 @@ import { connect } from 'react-redux';
 import { uploadShow,
   fetchSingleShow,
   deleteShow,
-  updateShow,
-  clearErrors
+  updateShow
 } from '../../actions/show_actions';
+import { clearErrors } from '../../actions/error_actions';
 import { selectShow } from '../../reducers/selecters';
 import { fetchAllTags } from '../../actions/tag_actions';
 
@@ -15,7 +15,7 @@ const mapStateToProps = (state, { match, location }) => {
   return {
     formType: "edit",
     loggedIn: Boolean(state.session.currentUser),
-    errors: state.session.errors,
+    errors: state.errors,
     currentUser: state.session.currentUser,
     show: selectShow(state, showId),
     showId,

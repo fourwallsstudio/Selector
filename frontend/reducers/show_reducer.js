@@ -3,14 +3,11 @@ import {
   RECEIVE_SHOWS,
   RECEIVE_SHOW,
   REMOVE_SHOW,
-  RECEIVE_ERRORS,
-  CLEAR_ERRORS
 } from '../actions/show_actions';
 import { merge } from 'lodash';
 
 const defaultState = {
-  entities: {},
-  errors: []
+  entities: {}
 };
 
 const showReducer = (state = defaultState, action) => {
@@ -21,9 +18,7 @@ const showReducer = (state = defaultState, action) => {
 
     case CREATE_SHOW:
       return merge({}, state, {
-        entities: { [action.show.id]: action.show },
-        errors: []
-      });
+        entities: { [action.show.id]: action.show } });
 
     case RECEIVE_SHOWS:
       let newEntities = {}
@@ -39,16 +34,6 @@ const showReducer = (state = defaultState, action) => {
     case REMOVE_SHOW:
       delete newState.entities[action.show.id]
       return newState;
-
-    case RECEIVE_ERRORS:
-      return merge({}, state, {
-        errors: action.errors
-      });
-
-    case CLEAR_ERRORS:
-      return merge({}, state, {
-        errors: []
-      });
 
     default:
       return state;

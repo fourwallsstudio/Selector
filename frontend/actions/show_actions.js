@@ -2,9 +2,8 @@ export const CREATE_SHOW = 'CREATE_SHOW';
 export const RECEIVE_SHOWS = 'RECEIVE_SHOWS';
 export const RECEIVE_SHOW = 'RECEIVE_SHOW';
 export const REMOVE_SHOW = 'REMOVE_SHOW';
-export const RECEIVE_ERRORS = 'RECEIVE_ERRORS';
-export const CLEAR_ERRORS = 'CLEAR_ERRORS';
 import * as APIUtil from '../util/show_util';
+import { receiveErrors } from './error_actions';
 
 
 export const uploadShow = show => {
@@ -83,18 +82,5 @@ export const removeShow = show => {
   return {
     type: REMOVE_SHOW,
     show
-  }
-}
-
-export const receiveErrors = errors => {
-  return {
-    type: RECEIVE_ERRORS,
-    errors
-  }
-}
-
-export const clearErrors = errors => {
-  return {
-    type: CLEAR_ERRORS
   }
 }

@@ -36,7 +36,7 @@ class Show < ActiveRecord::Base
                   }
 
   validates :title, :author, :audio, presence: true
-  has_attached_file :image
+  has_attached_file :image, default_url: "default_bg.jpg"
   validates_attachment_content_type :image, content_type: /\Aimage\/.*\Z/
   has_attached_file :audio
   validates_attachment_content_type :audio, content_type: [ 'audio/mpeg',

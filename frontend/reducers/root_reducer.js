@@ -9,9 +9,11 @@ import searchReducer from './search_reducer';
 import previewReducer from './preview_reducer';
 import filterReducer from './filter_reducer';
 import tagReducer from './tag_reducer';
+import errorReducer from './error_reducer';
 
 const rootReducer = combineReducers({
   session: sessionReducer,
+  errors: errorReducer,
   users: userReducer,
   shows: showReducer,
   queue: queueReducer,
@@ -20,7 +22,7 @@ const rootReducer = combineReducers({
   search: searchReducer,
   preview: previewReducer,
   filter: filterReducer,
-  tags: tagReducer
+  tags: tagReducer,
 })
 
 export default rootReducer;
