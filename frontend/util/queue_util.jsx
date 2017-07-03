@@ -8,6 +8,15 @@ export const createQueueItem = queueItem => {
   })
 };
 
+export const updateQueueItem = queueItem => {
+  return $.ajax({
+    method: 'PATCH',
+    url: `/api/queue_items/${queueItem.id}`,
+    dataType: 'json',
+    data: { queue_item: queueItem }
+  })
+};
+
 
 export const deleteQueueItem = id => {
   return $.ajax({

@@ -57,7 +57,7 @@ class ShowFeedItem extends React.Component {
     let timeAgo = timeAgoJS.format(new Date(this.props.show.created_at));
 
 
-    if (this.props.player.player.length && this.props.queue[0].show_id === show.id) {
+    if (this.props.queue.length && this.props.queue[0].show_id === show.id) {
       if (this.props.player.status === 'playing') {
         playDisplay = (
           <svg className="show-feed-play-circle-pause">

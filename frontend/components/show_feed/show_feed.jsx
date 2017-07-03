@@ -12,7 +12,6 @@ class ShowFeed extends React.Component {
     if (this.props.filter !== 'tag') {
       this.props.fetchAllShows(this.props.filter);
     }
-    this.props.fetchAllTags();
   }
 
   shouldComponentUpdate(nextProps) {

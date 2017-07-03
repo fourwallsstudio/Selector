@@ -38,7 +38,7 @@ class UploadForm extends React.Component {
       });
     }
 
-    this.props.fetchAllTags();
+    // this.props.fetchAllTags();
   }
 
   componentWillReceiveProps(nextProps) {

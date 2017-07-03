@@ -78,9 +78,12 @@ class Player extends React.Component {
       },
 
       onplay: () => {
+        howlPlay.seek(q.seek);
+
         if (this.props.preview.status === 'previewing') {
           this.props.stopPreview(this.props.preview.howlPreview)
         }
+
         this.props.updateHowlerPlayer(
           howlPlay,
         );
@@ -90,19 +93,26 @@ class Player extends React.Component {
         this.props.updatePlayStatus(
           howlPlay._sounds[0]._paused
         );
+        this.props.queue[0].seek = howlPlay._sounds[0]._seek;
+        this.props.updateQueueItem(this.props.queue[0]);
       },
 
       onend: () => {
-        if (this.props.queue.length > 1) {
-          this.props.removeHowlerPlay();
-          this.props.nextQueueItem();
-        } else {
-          this.props.removeHowlerPlay();
-          this.props.deleteQueueItem(this.props.queue[0].id);
-          this.setState({
-            dropdownIsActive: false
+        this.props.queue[0].seek = 0;
+        this.props.updateQueueItem(this.props.queue[0])
+          .then(() => {
+            if (this.props.queue.length > 1) {
+              this.props.removeHowlerPlay();
+              this.props.nextQueueItem();
+            } else {
+              this.props.removeHowlerPlay();
+              this.props.removeQueueItem();
+              this.setState({
+                dropdownIsActive: false
+              })
+            }
           })
-        }
+          
       }
     });
 

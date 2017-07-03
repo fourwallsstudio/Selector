@@ -6,6 +6,13 @@ class Api::QueueItemsController < ApplicationController
   def create
     @queue_item = QueueItem.new(queue_item_params)
 
+    show_id = queue_item_params[:show_id].to_i
+    prev_queue = User.find(queue_item_params[:user_id]).queue_hash_by_show[show_id]
+
+    if prev_queue
+      @queue_item.seek = prev_queue.seek
+    end
+
     if @queue_item.save
       render :show
     else
@@ -13,14 +20,17 @@ class Api::QueueItemsController < ApplicationController
     end
   end
 
-  # def update
-  #   @queue_item = QueueItem.find(:id)
-  #   if @queue_item.update(queue_item_params)
-  #
-  #   else
-  #     render json: @queue_item.errors.full_messages, status: 422
-  #   end
-  # end
+
+  def update
+    @queue_item = QueueItem.find(params[:id])
+
+    if @queue_item.update(queue_item_params)
+      render :show
+    else
+      render json: @queue_item.errors.full_messages, status: 422
+    end
+  end
+
 
   def destroy
     @queue_item = QueueItem.find(params[:id])

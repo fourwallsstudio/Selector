@@ -45,7 +45,7 @@ class User < ActiveRecord::Base
 
   after_initialize :ensure_session_token
 
-  
+
 
   def self.find_by_credentials(username, password)
     user = User.find_by_username(username)
@@ -75,6 +75,20 @@ class User < ActiveRecord::Base
     end
 
     ids
+  end
+
+  def queue_hash_by_show
+    recent_queue = Hash.new()
+
+    self.queue_items.each { |q|
+      if !recent_queue[q.show_id] ||
+        q.created_at > recent_queue[q.show_id].created_at
+
+        recent_queue[q.show_id] = q
+      end
+    }
+
+    recent_queue
   end
 
   private

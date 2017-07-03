@@ -1,5 +1,6 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
+import { values } from 'lodash';
 
 class Search extends React.Component {
   constructor(props) {
@@ -16,7 +17,9 @@ class Search extends React.Component {
   }
 
   componentDidMount() {
-    this.props.fetchAllTags();
+    if (!values(this.props.tags).length) {
+      this.props.fetchAllTags();
+    }
   }
 
   handleSearch(e) {

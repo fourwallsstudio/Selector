@@ -15,8 +15,11 @@ class Countdown extends React.Component {
 
   componentDidMount() {
     let end = this.props.player._sounds[0]._stop;
+    let seek = this.props.player._sounds[0]._seek;
 
-    this.setState({ countdown: Math.round( end ) });
+    this.setState({ countdown: Math.round( end - seek ),
+      countup: Math.round( seek )
+     });
 
     this.currentInterval = setInterval(this.counter, 1000);
   }
