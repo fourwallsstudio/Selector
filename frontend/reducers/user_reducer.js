@@ -5,8 +5,6 @@ import {
 } from '../actions/user_actions';
 import { merge, values } from 'lodash';
 
-
-
 const userReducer = (state = {}, action) => {
   Object.freeze(state);
 
@@ -20,7 +18,7 @@ const userReducer = (state = {}, action) => {
       action.users.forEach( user => {
         updatedState[user.id] = user
       })
-    return updatedState;
+    return merge({}, state, updatedState);
 
     case UPDATE_USER:
     return merge({}, state, { [action.user.id]: action.user })

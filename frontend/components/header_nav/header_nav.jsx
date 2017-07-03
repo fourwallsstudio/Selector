@@ -16,8 +16,23 @@ class HeaderNav extends React.Component {
     this.isActive = this.isActive.bind(this);
   }
 
-  componentWillReceiveProps() {
+
+  componentWillReceiveProps(nextProps) {
     this.state.dropdownActive = false;
+  }
+
+  shouldComponentUpdate(nextProps, nextState) {
+    if (nextState.dropdownActive !== this.state.dropdownActive) {
+      return true;
+    }
+
+    if (!this.props.currentUser || !nextProps.currentUser) {
+      return true
+
+    } else {
+
+      return false
+    }
   }
 
   handleClick() {
@@ -50,7 +65,7 @@ class HeaderNav extends React.Component {
       dropdownActive = "";
     }
 
-    if (!this.props.loggedIn) {
+    if (!this.props.loggedIn && !this.props.currentUser) {
       rightSideNav = <div className="head-nav-right-login">
                       <Link to={`/login`}
                         className="head-nav-button-login">Log in</Link>
@@ -59,22 +74,23 @@ class HeaderNav extends React.Component {
                         className="head-nav-button-signin">Sign up</Link>
                     </div>;
     } else {
-      let user = this.props.currentUser;
-      let logout = this.props.logout;
-      rightSideNav = <div className="head-nav-user">
-                      <div className="header-nav-user-img-box">
-                        <img src={user.avatar_url} onClick={() => this.props.history.push(`/user/${user.id}`)}/>
-                      </div>
-                      <Link to={`/user/${user.id}`}>{user.username}</Link>
-                      <div className="user-dropdown-arrow"
-                        onClick={ this.handleClick }
-                        >
-                        <i className={"fa fa-chevron-down" + dropdownActive}
-                            aria-hidden="true"
-                            ></i>
-                        { this.isActive() }
-                      </div>
-                    </div>;
+        let user = this.props.currentUser;
+        let logout = this.props.logout;
+
+        rightSideNav = <div className="head-nav-user">
+          <div className="header-nav-user-img-box">
+            <img src={user.avatar_url} onClick={() => this.props.history.push(`/user/${user.id}`)}/>
+          </div>
+          <Link to={`/user/${user.id}`}>{user.username}</Link>
+          <div className="user-dropdown-arrow"
+            onClick={ this.handleClick }
+            >
+            <i className={"fa fa-chevron-down" + dropdownActive}
+              aria-hidden="true"
+              ></i>
+            { this.isActive() }
+          </div>
+        </div>;
     }
 
     return (

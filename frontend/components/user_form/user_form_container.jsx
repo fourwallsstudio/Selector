@@ -3,11 +3,12 @@ import { connect } from 'react-redux';
 import { editUser } from '../../actions/user_actions';
 
 
-const mapStateToProps = ({ session }, { match }) => {
+const mapStateToProps = (state, { match }) => {
+  let session = state.session;
   return {
     loggedIn: Boolean(session.currentUser),
     errors: session.errors,
-    currentUser: session.currentUser,
+    currentUser: state.users[session.currentUser],
     userId: match.params.userId
   }
 }

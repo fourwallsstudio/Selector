@@ -26,6 +26,16 @@ export const fetchAllShows = filter => {
   }
 }
 
+export const fetchShowsByTag = (tagId) => {
+  return dispatch => {
+    return (
+      APIUtil.fetchShowsByTag(tagId)
+        .then(shows => dispatch(receiveAllShows(shows)),
+          err => dispatch(receiveErrors(err.responseJSON)))
+    )
+  }
+}
+
 export const fetchSingleShow = showId => {
   return dispatch => {
     return (

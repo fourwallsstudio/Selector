@@ -20,4 +20,8 @@ class Tag < ActiveRecord::Base
 
   has_many :taggings, dependent: :destroy, inverse_of: :tag
   has_many :shows, through: :taggings, source: :show
+
+  def show_ids
+    self.shows.map { |s| s.id }
+  end
 end

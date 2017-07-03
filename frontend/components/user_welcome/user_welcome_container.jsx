@@ -6,7 +6,8 @@ import { updateFilter } from '../../actions/filter_actions';
 const mapStateToProps = state => {
   return {
     loggedIn: Boolean(state.session.currentUser),
-    filter: state.filter
+    filter: state.filter,
+    currentTag: state.tags.currentTag
   }
 }
 

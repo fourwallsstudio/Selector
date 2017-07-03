@@ -32,9 +32,7 @@ class CommentFeed extends React.Component {
 
 
   render() {
-    if (!this.state.comments.length &&
-      !values(this.state.users).length) {
-
+    if (!values(this.state.comments).length) {
       return <div></div>;
 
     } else {

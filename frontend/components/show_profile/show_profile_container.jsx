@@ -1,11 +1,12 @@
 import { connect } from 'react-redux';
 import ShowProfile from './show_profile';
 import javascript_time_ago from 'javascript-time-ago'
-import { fetchSingleShow, deleteShow } from '../../actions/show_actions';
+import { fetchSingleShow, deleteShow, fetchShowsByTag } from '../../actions/show_actions';
 import { fetchUsers } from '../../actions/user_actions';
 import { createQueueItem } from '../../actions/queue_actions';
 import { startPreview, stopPreview } from '../../actions/preview_actions';
-import { fetchAllTags } from '../../actions/tag_actions';
+import { fetchAllTags, updateCurrentTag } from '../../actions/tag_actions';
+import { updateFilter } from '../../actions/filter_actions';
 import {
   createComment,
   deleteComment,
@@ -20,9 +21,10 @@ import {
 } from '../../reducers/selecters';
 
 
+
 const mapStateToProps = (state, { match }) => {
   const showId = parseInt(match.params.showId);
-  const currentUser = state.session.currentUser;
+  const currentUser = state.users[state.session.currentUser];
   return {
     formType: "upload",
     show: selectShow(state, showId),
@@ -33,7 +35,7 @@ const mapStateToProps = (state, { match }) => {
     comments: state.comments,
     users: state.users,
     preview: state.preview,
-    tags: state.tags
+    tags: state.tags.entities
   }
 }
 
@@ -49,7 +51,10 @@ const mapDispatchToProps = dispatch => {
     fetchComments: showId => dispatch(fetchComments(showId)),
     startPreview: src => dispatch(startPreview(src)),
     stopPreview: src => dispatch(stopPreview(src)),
-    fetchAllTags: () => dispatch(fetchAllTags())
+    fetchAllTags: () => dispatch(fetchAllTags()),
+    fetchShowsByTag: (filter, tagId) => dispatch(fetchShowsByTag(filter, tagId)),
+    updateCurrentTag: tagId => dispatch(updateCurrentTag(tagId)),
+    updateFilter: filter => dispatch(updateFilter(filter))
   }
 }
 

@@ -12,7 +12,7 @@ const mapStateToProps = state => {
     loggedIn: Boolean(session.currentUser),
     errors: state.errors,
     currentUser: session.currentUser,
-    tags: state.tags
+    tags: state.tags.entities
   }
 }
 

@@ -17,6 +17,14 @@ export const fetchAllShows = filter => {
   })
 }
 
+export const fetchShowsByTag = tagId => {
+  return $.ajax({
+    method: 'GET',
+    url: '/api/shows',
+    data: { filter: "tag", tagId: tagId }
+  })
+}
+
 export const fetchSingleShow = id => {
     return $.ajax({
     method: 'GET',

@@ -48,6 +48,24 @@ const trendingFilter = ({ shows }) => {
 }
 
 
+export const selectShowsByTag = (state, tagId) => {
+  let filteredShows = [];
+
+  let tagShows = state.tags.entities[tagId].show_ids;
+  tagShows.forEach( id => {
+    if(Object.keys(state.shows.entities).includes(id.toString())) {
+      filteredShows.push(state.shows.entities[id]);
+    }
+  })
+
+  let ordered = filteredShows.sort((a,b) => {
+    return new Date(b.created_at) - new Date(a.created_at)
+  });
+
+  return ordered;
+}
+
+
 
 export const selectShow = ({ shows }, showId) => {
   return shows.entities[showId];

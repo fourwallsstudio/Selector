@@ -7,6 +7,8 @@ class Api::ShowsController < ApplicationController
       @shows = Show.most_recent
     when "trending"
       @shows = Show.trending
+    when "tag"
+      @shows = Tag.find(params["tagId"].to_i).shows
     else
       @shows = User.find(params["filter"].to_i).shows
     end
@@ -17,7 +19,6 @@ class Api::ShowsController < ApplicationController
   end
 
   def create
-    debugger
     @show = Show.new(show_params)
     @show.author_id = current_user.id
     if @show.save

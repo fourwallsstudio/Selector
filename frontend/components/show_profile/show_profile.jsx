@@ -23,6 +23,7 @@ class ShowProfile extends React.Component {
     this.fetchUsers = this.props.fetchUsers.bind(this);
     this.handlePreview = this.handlePreview.bind(this);
     this.handleStopPreview = this.handleStopPreview.bind(this);
+    this.handleClickTag = this.handleClickTag.bind(this);
   }
 
   componentDidMount() {
@@ -35,9 +36,9 @@ class ShowProfile extends React.Component {
     this.props.fetchAllTags()
   }
 
-  componentWillReceiveProps(newProps) {
-    if (this.props.showId !== newProps.showId ) {
-      newProps.fetchSingleShow(newProps.showId)
+  componentWillReceiveProps(nextProps) {
+    if (this.props.showId !== nextProps.showId ) {
+      nextProps.fetchSingleShow(nextProps.showId)
     }
 
   }
@@ -90,6 +91,17 @@ class ShowProfile extends React.Component {
     this.props.stopPreview(this.props.preview.howlPreview);
   }
 
+  handleClickTag(e) {
+    e.preventDefault();
+    this.props.updateCurrentTag(e.currentTarget.value)
+    this.props.fetchShowsByTag(e.currentTarget.value)
+      .then( () => {
+        this.props.updateFilter('tag')
+        this.props.history.push('/home')
+      })
+  }
+
+
   render() {
     if (!this.props.show) {
       return (
@@ -111,9 +123,12 @@ class ShowProfile extends React.Component {
         tags = show.tag_ids.map( id => {
           let tag = this.props.tags[id]
           return (
-            <div key={ tag.id } className="s-p-tag">
+            <li key={ tag.id }
+              value={ tag.id }
+              className="s-p-tag"
+              onClick={ this.handleClickTag }>
               <p>{ tag.genre }</p>
-            </div>
+            </li>
           )
         })
       }
@@ -148,7 +163,7 @@ class ShowProfile extends React.Component {
           </svg>
         );
       }
-      
+
       if (this.props.currentUser &&
         this.props.currentUser.id === show.author_id) {
 
@@ -271,9 +286,9 @@ class ShowProfile extends React.Component {
                 <h2>About the show</h2>
               </div>
 
-              <div className="s-p-about-head-under">
+              <ul className="s-p-about-head-under">
                 { tags }
-              </div>
+              </ul>
 
               <div className="s-p-about">
                 <div className="s-p-about-description">

@@ -19,7 +19,7 @@ const mapStateToProps = (state, { match, location }) => {
     currentUser: state.session.currentUser,
     show: selectShow(state, showId),
     showId,
-    tags: state.tags
+    tags: state.tags.entities
   }
 }
 

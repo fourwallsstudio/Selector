@@ -1,13 +1,17 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { values } from 'lodash'
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import { clearSearch } from '../../actions/search_actions';
+import { fetchShowsByTag } from '../../actions/show_actions';
+import { updateCurrentTag } from '../../actions/tag_actions';
+import { updateFilter } from '../../actions/filter_actions';
 
 class SearchResults extends React.Component {
   constructor(props) {
     super(props)
 
+    this.handleClickTag = this.handleClickTag.bind(this);
   }
 
   shouldCompenentUpdate(nextProps) {
@@ -24,15 +28,26 @@ class SearchResults extends React.Component {
     this.props.clearSearch();
   }
 
+  handleClickTag(e) {
+    e.preventDefault();
+    this.props.updateCurrentTag(e.currentTarget.value)
+    this.props.fetchShowsByTag(e.currentTarget.value)
+      .then( () => {
+        this.props.updateFilter('tag')
+        this.props.history.push('/home')
+      })
+  }
+
   render () {
     let tagResultFeed;
     let showResultFeed;
     let userResultFeed;
-
     if (values(this.props.tagResults).length) {
       tagResultFeed = this.props.tagResults.map( tag => {
         return (
-          <li key={ tag.id } className="search-result-tag-item">
+          <li key={ tag.id } className="search-result-tag-item"
+            onClick={ this.handleClickTag }
+            value={ tag.id } >
             <p>{ tag.genre }</p>
           </li>
         )
@@ -122,11 +137,14 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    clearSearch: () => dispatch(clearSearch())
+    clearSearch: () => dispatch(clearSearch()),
+    fetchShowsByTag: (filter, tagId) => dispatch(fetchShowsByTag(filter, tagId)),
+    updateCurrentTag: tagId => dispatch(updateCurrentTag(tagId)),
+    updateFilter: filter => dispatch(updateFilter(filter))
   }
 }
 
-export default connect(
+export default withRouter(connect(
   mapStateToProps,
   mapDispatchToProps
-)(SearchResults);
+)(SearchResults));

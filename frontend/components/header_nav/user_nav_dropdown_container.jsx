@@ -3,9 +3,9 @@ import { connect } from 'react-redux';
 import UserNavDropdown from './user_nav_dropdown';
 import { logout } from '../../actions/session_actions';
 
-const mapStateToProps = ({session}) => {
+const mapStateToProps = state => {
     return {
-      currentUser: session.currentUser
+      currentUser: state.users[state.session.currentUser]
     }
 }
 

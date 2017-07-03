@@ -11,7 +11,9 @@ const UserWelcome = props => {
         updateFilter={ props.updateFilter} />
       <div className="inner-header-clear"></div>
 
-      <ShowFeedContainer filter={ props.filter }/>
+      <ShowFeedContainer
+        filter={ props.filter } />
+
       <UserWelcomeAside />
     </section>
   )
