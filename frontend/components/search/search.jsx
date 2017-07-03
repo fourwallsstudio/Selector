@@ -15,6 +15,10 @@ class Search extends React.Component {
     this.handleClose = this.handleClose.bind(this);
   }
 
+  componentDidMount() {
+    this.props.fetchAllTags();
+  }
+
   handleSearch(e) {
     let search = e.target.value;
 
