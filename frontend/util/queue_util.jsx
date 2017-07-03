@@ -1,5 +1,6 @@
 
 export const createQueueItem = queueItem => {
+  debugger
   return $.ajax({
     method: 'POST',
     url: '/api/queue_items',

@@ -14,6 +14,7 @@ class ShowFeedItem extends React.Component {
 
   handlePlayClick(e) {
     e.preventDefault();
+    debugger
     this.props.stopPreview(this.props.preview.howlPreview);
 
     if (!this.props.player.player.length ||

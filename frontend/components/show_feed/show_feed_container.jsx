@@ -12,7 +12,7 @@ const mapStateToProps = (state, ownProps) => {
       selectShowsByTag(state, state.tags.currentTag) : selectFilteredShows(state, ownProps.filter),
     queue: state.queue,
     player: state.player,
-    currentUser: state.session.currentUser,
+    currentUser: state.users[state.session.currentUser],
     filter: ownProps.filter,
     preview: state.preview,
     tags: state.tags.entities
