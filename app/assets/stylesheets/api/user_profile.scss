@@ -190,3 +190,23 @@
   font-size: 24px;
   color: #697F95;
 }
+
+.u-p-a-following-box {
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.followings-thumb {
+  width: 50px;
+  height: 50px;
+  margin: 10px;
+  overflow: hidden;
+}
+
+.followings-thumb img {
+  width: 100%;
+  height: auto;
+  border-radius: 5px;
+}

@@ -24,6 +24,7 @@ class ShowProfile extends React.Component {
     this.handlePreview = this.handlePreview.bind(this);
     this.handleStopPreview = this.handleStopPreview.bind(this);
     this.handleClickTag = this.handleClickTag.bind(this);
+    this.handleFollow = this.handleFollow.bind(this);
   }
 
   componentDidMount() {
@@ -99,6 +100,14 @@ class ShowProfile extends React.Component {
         this.props.updateFilter('tag')
         this.props.history.push('/home')
       })
+  }
+
+  handleFollow(e) {
+    e.preventDefault();
+    this.props.createFollowing({
+      follower_id: this.props.currentUser.id,
+      following_id: this.props.show.author_id
+    })
   }
 
 
@@ -229,7 +238,8 @@ class ShowProfile extends React.Component {
                         <p>by</p>
                         <Link to={ `/user/${show.author_id}` }>{ show.author_username }</Link>
                       </div>
-                      <button className="s-p-h-follow-b">Follow</button>
+                      <button className="s-p-h-follow-b"
+                        onClick={ this.handleFollow }>Follow</button>
                     </div>
 
                     <div className="s-p-h-foot-right">

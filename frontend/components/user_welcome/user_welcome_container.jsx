@@ -7,7 +7,9 @@ const mapStateToProps = state => {
   return {
     loggedIn: Boolean(state.session.currentUser),
     filter: state.filter,
-    currentTag: state.tags.currentTag
+    currentTag: state.tags.currentTag,
+    users: state.users,
+    currentUser: state.users[state.session.currentUser]
   }
 }
 

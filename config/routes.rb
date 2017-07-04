@@ -13,6 +13,7 @@ Rails.application.routes.draw do
     resources :tags, only: [:index, :create] do
       get :search, on: :collection
     end
+    resources :followings, only: [:create, :destroy]
     resource :session, only: [:create, :destroy]
   end
 end

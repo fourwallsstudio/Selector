@@ -14,7 +14,8 @@ const UserWelcome = props => {
       <ShowFeedContainer
         filter={ props.filter } />
 
-      <UserWelcomeAside />
+      <UserWelcomeAside users={ props.users }
+        currentUser={ props.currentUser} />
     </section>
   )
 };

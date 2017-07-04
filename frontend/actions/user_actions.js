@@ -19,8 +19,18 @@ export const fetchUsers = showId => {
   return dispatch => {
     return (
       APIUtil.fetchUsers(showId)
-      .then(users => dispatch(receiveUsers(users)),
-      err => dispatch(receiveErrors(err.responseJSON)))
+        .then(users => dispatch(receiveUsers(users)),
+        err => dispatch(receiveErrors(err.responseJSON)))
+    )
+  }
+}
+
+export const fetchUserFollowings = userId => {
+  return dispatch => {
+    return (
+      APIUtil.fetchUserFollowings(userId)
+        .then( users => dispatch(receiveUsers(users)),
+        err => dispatch(receiveErrors(err.responseJSON)))
     )
   }
 }

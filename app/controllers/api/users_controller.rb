@@ -1,25 +1,29 @@
 class Api::UsersController < ApplicationController
 
   def index
-    @show = Show.find(params[:showId].to_i)
+    if params[:showId]
 
-    comment_users = @show.comments.map do |comment|
-      User.find(comment.user_id)
+      @show = Show.find(params[:showId].to_i)
+      comment_users = @show.comments.map { |comment| User.find(comment.user_id) }
+      listen_users = @show.listeners.map { |id| User.find(id) }
+      @users = comment_users + listen_users
+
+    elsif params[:userId]
+      following_ids = User.find(params[:userId]).followings
+      @users = following_ids.map { |id| User.find(id) }
+
     end
-
-    listen_users = @show.listeners.map do |id|
-      User.find(id)
-    end
-
-    @users = comment_users + listen_users
   end
+
 
   def show
     @user = User.find(params[:id])
   end
 
+
   def create
     @user = User.new(user_params)
+
     if @user.save
       login(@user)
       render :show
@@ -27,6 +31,7 @@ class Api::UsersController < ApplicationController
       render json: @user.errors.full_messages, status: 422
     end
   end
+
 
   def update
     @user = current_user
@@ -37,6 +42,7 @@ class Api::UsersController < ApplicationController
       render json: @user.errors.full_messages, status: 422
     end
   end
+
 
   def search
     @users = User.whose_name_starts_with(params["search"])

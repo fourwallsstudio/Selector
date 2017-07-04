@@ -13,6 +13,14 @@ export const fetchUsers = showId => {
   });
 };
 
+export const fetchUserFollowings = userId => {
+  return $.ajax({
+    method: 'GET',
+    url: `api/users`,
+    data: { userId: userId }
+  });
+};
+
 export const editUser = (id, formData) => {
   return $.ajax({
     method: 'PATCH',

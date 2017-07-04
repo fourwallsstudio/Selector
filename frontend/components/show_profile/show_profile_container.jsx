@@ -7,6 +7,7 @@ import { createQueueItem } from '../../actions/queue_actions';
 import { startPreview, stopPreview } from '../../actions/preview_actions';
 import { fetchAllTags, updateCurrentTag } from '../../actions/tag_actions';
 import { updateFilter } from '../../actions/filter_actions';
+import { createFollowing } from '../../actions/following_actions';
 import {
   createComment,
   deleteComment,
@@ -54,7 +55,8 @@ const mapDispatchToProps = dispatch => {
     fetchAllTags: () => dispatch(fetchAllTags()),
     fetchShowsByTag: (filter, tagId) => dispatch(fetchShowsByTag(filter, tagId)),
     updateCurrentTag: tagId => dispatch(updateCurrentTag(tagId)),
-    updateFilter: filter => dispatch(updateFilter(filter))
+    updateFilter: filter => dispatch(updateFilter(filter)),
+    createFollowing: f => dispatch(createFollowing(f))
   }
 }
 

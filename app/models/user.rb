@@ -34,17 +34,25 @@ class User < ActiveRecord::Base
   validates :password, length: { minimum: 6, allow_nil: true }
 
   has_many :shows,
-  class_name: :Show,
-  foreign_key: :author_id,
-  primary_key: :id
+    class_name: :Show,
+    foreign_key: :author_id,
+    primary_key: :id
+    
   has_many :queue_items
   has_many :comments
+
+  has_many :followers,
+    class_name: :Following,
+    foreign_key: :following_id
+
+  has_many :followings,
+    class_name: :Following,
+    foreign_key: :follower_id
 
   has_attached_file :avatar, default_url: "default_bg.jpg"
   validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\Z/
 
   after_initialize :ensure_session_token
-
 
 
   def self.find_by_credentials(username, password)
@@ -89,6 +97,14 @@ class User < ActiveRecord::Base
     }
 
     recent_queue
+  end
+
+  def followers_ids
+    self.followers.map { |f| f.follower_id }
+  end
+
+  def followings_ids
+    self.followings.map { |f| f.following_id }
   end
 
   private

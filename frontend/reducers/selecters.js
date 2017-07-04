@@ -4,6 +4,16 @@ export const selectUser = ({ users }, userId) => {
   return users[userId];
 }
 
+export const selectFollowings = ({ users }, userId) => {
+  let followings = [];
+  if ( Object.keys(users).includes(userId) ) {
+    followings = users[userId].followings_ids.map(id => {
+      if ( Object.keys(users).includes(id) ) { users[id] }
+    })
+  }
+  return followings;
+}
+
 export const selectAllShows = ({ shows }) => {
   let ordered = values(shows.entities).sort((a,b) => {
     return new Date(b.created_at) - new Date(a.created_at)

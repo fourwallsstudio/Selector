@@ -8,7 +8,6 @@ const ShowProfileAside = ({ show, users }) => {
 
   } else {
     const listeners = values(users).map( user => {
-
       return (
         <li className="listeners-thumb" key={ user.id }>
           <Link to={ `/user/${user.id}` }>
