@@ -28,9 +28,9 @@ interrupting play. When a new show is played, the previous unfinished listens wi
 move back in the queue. The "next" dropdown will display these shows. When a
 show is finished it leaves the queue and the next show will start playing.
 
-![image of show edit](screenshots/show_edit.png)
+![image of show edit](docs/screenshots/show_edit.png)
 
-![image of comments](screenshots/comments.png)
+![image of comments](docs/screenshots/comments.png)
 
 ### Show Preview
 
@@ -40,7 +40,7 @@ show feeds, or playback footer. The preview will play 5 seconds from
 during playback, the preview will stop and the show will begin playing in the
 playback. Preview is disabled during playback.
 
-![image of preview](screenshots/preview.png)
+![image of preview](docs/screenshots/preview.png)
 
 ### User Profiles
 
@@ -56,4 +56,4 @@ By clicking on the search input on the header nav, users can search tags,
 shows, and users. Search is updated on each change of key, and will render
 for each field.
 
-![image of search](screenshots/search.png)
+![image of search](docs/screenshots/search.png)
