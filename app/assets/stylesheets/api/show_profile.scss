@@ -158,37 +158,16 @@
   width: 140px;
 }
 
-.s-p-h-infobar p {
-  width: 12px;
-  color: grey;
-}
-
 .s-p-h-infobar a {
   color: black;
-  // text-shadow: .5px .5px 3px grey;
   max-width: 110px;
   overflow: hidden;
   padding: 0 10px 0 15px;
 }
 
-.s-p-h-follow-b {
-  font-size: 12px;
-  background-color:rgba(255, 255, 255, 0.2);
-  padding: 3px 7px;
-  border: solid 2px #36393C;
-  border-radius: 5px;
-  transition: background-color 0.3s ease-in-out;
-}
-
-.s-p-h-follow-b:hover {
-  background-color:rgba(255, 255, 255, 0.3);
-}
-
 
 .s-p-h-foot-right {
   display: flex;
-  // width: 240px;
-  margin: 0 0 0 20px;
 }
 
 .s-p-h-b-r {
@@ -198,42 +177,23 @@
   height: 32px;
   // border: solid 1px #D8E2E6;
   border-radius: 5px;
+  margin-right: 10px;
 }
 
-.fa-headphones, .fa-clock-o, .fa-calendar {
-  // position: absolute;
-  // width: 50px;
-  // height: 32px;
-  // top: 10px;
-  // left: -10px;
-  color: #697F95;
+.fa-headphones, .fa-calendar {
 }
 
-.fa-headphones:hover {
-  cursor: pointer;
-}
 
-.s-p-h-b-r.hp {
-  text-align: right;
-  width: 100px;
-}
-
-.s-p-h-b-r-plays {
-  font-size: 14px;
+.s-p-h-b-r p {
   line-height: 32px;
+  font-size: 14px;
   color: grey;
+  margin-left: 5px;
+  padding-left: 10px;
 }
 
 .s-p-h-b-r.cal {
-  text-align: right;
-  width: 160px;
-}
-
-.s-p-h-b-r-time-ago {
-    display: inline;
-    font-size: 14px;
-    line-height: 32px;
-    color: grey;
+  width: 100px;
 }
 
 .show-image-box {
@@ -242,7 +202,6 @@
   height: 300px;
   width: 300px;
   top: 30px;
-  // right: 40px;
   z-index: 1;
 }
 
@@ -313,12 +272,14 @@
 }
 
 .s-p-about-head {
+  height: 50px;
   border-bottom: solid 1px lightgrey;
 }
 
 .s-p-about-head h2 {
   font-size: 24px;
   color: #697F95;
+  line-height: 50px;
   margin-bottom: 10px;
 }
 
@@ -382,7 +343,8 @@
   transition: background-color 0.2s ease-in-out;
 }
 
-.s-u-c-b:hover {
+.edit:hover,
+.delete:hover {
   cursor: pointer;
   background-color: #E0E3E4;
 }
@@ -398,19 +360,23 @@
 }
 
 .s-u-c-b.embed {
-  color: #697F95;
+  // color: #697F95;
+  color: grey;
 }
 
 .s-u-c-b.stats {
-  color: #697F95;
+  // color: #697F95;
+  color: grey;
 }
 
 .s-u-c-b.boost {
-  color: #50B348;
+  // color: #50B348;
+  color: grey;
 }
 
 .s-u-c-b.share {
-  color: #697F95;
+  // color: #697F95;
+  color: grey;
 }
 
 .s-u-c-b .fa-upload {
@@ -538,6 +504,7 @@
 .show-profile-aside-container h2 {
   font-size: 24px;
   color: #697F95;
+  line-height: 50px;
 }
 
 .s-p-a-favorited {
@@ -560,7 +527,7 @@
 .listeners-thumb {
   width: 50px;
   height: 50px;
-  margin: 10px;
+  margin: 10px 10px 10px 0;
   overflow: hidden;
 }
 
@@ -569,19 +536,6 @@
   height: auto;
   border-radius: 5px;
 }
-
-.s-p-a-beatport {
-  height: 50px;
-  border-bottom: solid 1px lightgrey;
-}
-
-
-
-
-
-
-
-
 
 
 /*

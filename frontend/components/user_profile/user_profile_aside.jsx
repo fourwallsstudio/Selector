@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { values } from 'lodash';
+import ContactFooter from '../contact_footer/contact_footer';
 
 const UserProfileAside = ({ user, followings }) => {
   let followingUsers;
@@ -42,7 +43,9 @@ const UserProfileAside = ({ user, followings }) => {
         <p>{ user.city }, { user.country }</p>
       </div>
       <div className="u-p-a-bio">
-        <h2>Bio</h2>
+        <div className="u-p-a-bio-head">
+          <h2>Bio</h2>
+        </div>
         <p>{user.bio}</p>
       </div>
 
@@ -54,6 +57,7 @@ const UserProfileAside = ({ user, followings }) => {
           { followingUsers }
         </ul>
       </div>
+      <ContactFooter />
     </section>
   )
 }

@@ -45,9 +45,6 @@ class ShowFeed extends React.Component {
         )});
       return (
         <section className="show-feed-container group">
-          <div className="show-feed-head">
-            <h2>Feed</h2>
-          </div>
           <ul>
             { showItems }
           </ul>

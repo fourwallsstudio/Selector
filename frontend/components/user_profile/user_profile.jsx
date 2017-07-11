@@ -8,16 +8,39 @@ class UserProfile extends React.Component {
   constructor(props) {
     super(props)
 
+    this.handleFollow = this.handleFollow.bind(this);
   }
 
   componentDidMount() {
     this.props.fetchUser(this.props.userId)
+    this.props.fetchUser(this.props.currentUserId)
     this.props.fetchUserFollowings(this.props.userId);
   }
 
   componentWillReceiveProps(nextProps) {
     if (this.props.userId !== nextProps.userId)
       this.props.fetchUser(nextProps.userId);
+
+    // if (this.props.currentUser && this.props.currentUser.followers_ids.length
+    //   !== nextProps.currentUser.followers_ids.length) {
+    //     this.props.fetchUser(nextProps.userId)
+    //   }
+  }
+
+
+  handleFollow(e) {
+    e.preventDefault();
+    if (e.target.value === "follow") {
+      this.props.createFollowing({
+        follower_id: this.props.currentUser.id,
+        following_id: this.props.userId
+      })
+    } else {
+      this.props.deleteFollowing({
+        follower_id: this.props.currentUser.id,
+        following_id: this.props.userId
+      })
+    }
   }
 
   render() {
@@ -28,6 +51,19 @@ class UserProfile extends React.Component {
       )
     } else {
       const user = this.props.user
+      let updateOrFollow;
+      console.log(user)
+
+      if (user.id === this.props.currentUser.id) {
+        updateOrFollow = <Link className="update-user-image"
+          to={`/user/${user.id}/settings`} >Update cover image</Link>;
+      } else if (this.props.currentUser.followings_ids.includes(user.id)) {
+        updateOrFollow = <button className="u-p-follow-b"
+          onClick={ this.handleFollow } value="unfollow">Unfollow</button>;
+      } else {
+        updateOrFollow = <button className="u-p-follow-b"
+          onClick={ this.handleFollow } value="follow">Follow</button>;
+      }
 
       return (
         <section className="user-profile-container">
@@ -39,8 +75,7 @@ class UserProfile extends React.Component {
               </div>
               <div className="u-p-title-box">
                 <h1>{ user.username }</h1>
-                <Link className="update-user-image"
-                  to={`/user/${user.id}/settings`} >Update cover image</Link>
+                { updateOrFollow }
 
               </div>
             </div>

@@ -82,8 +82,6 @@ class ShowFeedItem extends React.Component {
     return (
       <li id={ show.id } className="show-feed-item-container group">
         <div className="s-f-i-head">
-          <div></div>
-          <div>{timeAgo}</div>
         </div>
 
         <div className="s-f-i-main">
@@ -137,11 +135,9 @@ class ShowFeedItem extends React.Component {
                   <i className="fa fa-headphones" aria-hidden="true"></i>
                   <p>{ show.plays }</p>
                 </div>
-                <div className="s-f-i-b-r clock">
-                  <i className="fa fa-clock-o" aria-hidden="true"></i>
-                </div>
                 <div className="s-f-i-b-r cal">
                   <i className="fa fa-calendar" aria-hidden="true"></i>
+                  <p>{timeAgo}</p>
                 </div>
               </div>
 
@@ -156,3 +152,7 @@ class ShowFeedItem extends React.Component {
 };
 
 export default ShowFeedItem;
+
+// <div className="s-f-i-b-r clock">
+//   <i className="fa fa-clock-o" aria-hidden="true"></i>
+// </div>

@@ -10,3 +10,13 @@ export const createFollowing = following => {
       })
   }
 }
+
+export const deleteFollowing = following => {
+  return dispatch => {
+    return APIUtil.deleteFollowing(following)
+      .then(following => {
+        dispatch(fetchUser(following.following_id));
+        dispatch(fetchUser(following.follower_id))
+      })
+  }
+}

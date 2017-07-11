@@ -11,7 +11,10 @@ const userReducer = (state = {}, action) => {
   switch (action.type) {
 
     case RECEIVE_USER:
-      return merge({}, state, { [action.user.id]: action.user })
+      let newState = merge({}, state, { [action.user.id]: action.user })
+      newState[action.user.id].followers_ids = action.user.followers_ids
+      newState[action.user.id].followings_ids = action.user.followings_ids
+      return newState
 
     case RECEIVE_USERS:
       let updatedState = {}

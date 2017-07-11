@@ -24,7 +24,6 @@ class ShowProfile extends React.Component {
     this.handlePreview = this.handlePreview.bind(this);
     this.handleStopPreview = this.handleStopPreview.bind(this);
     this.handleClickTag = this.handleClickTag.bind(this);
-    this.handleFollow = this.handleFollow.bind(this);
   }
 
   componentDidMount() {
@@ -102,14 +101,6 @@ class ShowProfile extends React.Component {
       })
   }
 
-  handleFollow(e) {
-    e.preventDefault();
-    this.props.createFollowing({
-      follower_id: this.props.currentUser.id,
-      following_id: this.props.show.author_id
-    })
-  }
-
 
   render() {
     if (!this.props.show) {
@@ -182,6 +173,11 @@ class ShowProfile extends React.Component {
                           <h2>Edit</h2>
                         </Link>
 
+                        <div className="s-u-c-b delete" onClick={ this.handleDelete }>
+                          <i className="fa fa-trash-o fa-lg" aria-hidden="true"></i>
+                          <h2>Delete</h2>
+                        </div>
+
                         <div className="s-u-c-b embed">
                           <i className="fa fa-trash-o fa-lg" aria-hidden="true"></i>
                           <h2>Embed</h2>
@@ -202,10 +198,6 @@ class ShowProfile extends React.Component {
                           <h2>Share</h2>
                         </div>
 
-                        <div className="s-u-c-b delete" onClick={ this.handleDelete }>
-                          <i className="fa fa-trash-o fa-lg" aria-hidden="true"></i>
-                          <h2>Delete</h2>
-                        </div>
                       </div>;
       }
       return (
@@ -238,21 +230,16 @@ class ShowProfile extends React.Component {
                         <p>by</p>
                         <Link to={ `/user/${show.author_id}` }>{ show.author_username }</Link>
                       </div>
-                      <button className="s-p-h-follow-b"
-                        onClick={ this.handleFollow }>Follow</button>
                     </div>
 
                     <div className="s-p-h-foot-right">
                       <div className="s-p-h-b-r hp">
                         <i className="fa fa-headphones fa-lg" aria-hidden="true"></i>
-                        <p className="s-p-h-b-r-plays">{ show.plays }</p>
-                      </div>
-                      <div className="s-p-h-b-r clock">
-                        <i className="fa fa-clock-o fa-lg" aria-hidden="true"></i>
+                        <p>{ show.plays }</p>
                       </div>
                       <div className="s-p-h-b-r cal">
                         <i className="fa fa-calendar fa-lg" aria-hidden="true"></i>
-                        <p className="s-p-h-b-r-time-ago">{ timeAgo }</p>
+                        <p>{ timeAgo }</p>
                       </div>
                     </div>
                   </div>

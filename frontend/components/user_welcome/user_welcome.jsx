@@ -11,8 +11,14 @@ const UserWelcome = props => {
         updateFilter={ props.updateFilter} />
       <div className="inner-header-clear"></div>
 
-      <ShowFeedContainer
-        filter={ props.filter } />
+      <div className="user-welcome-feed">
+        <div className="user-welcome-feed-head">
+          <h2>Feed</h2>
+        </div>
+        <ShowFeedContainer
+          filter={ props.filter } />
+      </div>
+
 
       <UserWelcomeAside users={ props.users }
         currentUser={ props.currentUser} />

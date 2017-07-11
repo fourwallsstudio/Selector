@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { values } from 'lodash';
+import ContactFooter from '../contact_footer/contact_footer';
 
 const ShowProfileAside = ({ show, users }) => {
   if (!values(users).length) {
@@ -28,12 +29,10 @@ const ShowProfileAside = ({ show, users }) => {
             { listeners }
           </ul>
         </div>
-        <div className="s-p-a-beatport">
-          <h2>More from Beatport</h2>
-        </div>
         <div className="s-p-a-footer">
 
         </div>
+        <ContactFooter />
       </section>
     )
 

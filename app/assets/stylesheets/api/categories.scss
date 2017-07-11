@@ -1,0 +1,114 @@
+
+.categories-container {
+  width: 60%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 0 auto;
+}
+
+.categories-head {
+  width: 85%;
+  height: 50px;
+  border-bottom: solid 1px lightgrey;
+  margin: 40px auto;
+}
+
+.categories-head h2 {
+  font-size: 24px;
+  color: #697F95;
+  line-height: 50px;
+}
+
+/* tag  */
+
+
+.categories-tag {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  background-color: white;
+  height: 60px;
+  max-width: 180px;
+  margin: 10px 10px 10px 40px;
+  box-sizing: border-box;
+  border-top: solid 1px #34495E;
+  border-right: solid 1px #34495E;
+  border-bottom: solid 1px #34495E;
+  border-radius: 0 5px 5px 0;
+  transition: transform .4s .2s,opacity .4s ease-in-out,
+    background-color 0.2s ease-in-out;
+}
+
+.categories-tag:before {
+  content: "";
+  position: absolute;
+  height: 42.43px;
+  width: 42.43px;
+  // top: 4.9px;
+  left: -21.215px;
+  background-color: white;
+  /*background-color: #34495E;*/
+  box-sizing: border-box;
+  border-left: solid 1px #34495E;
+  border-bottom: solid 1px #34495E;
+  border-radius: 4px 100px 4px 15px;
+  transform: rotate(45deg);
+  /*transform: .4s .2s,opacity .4s ease-in-out;*/
+  transition: background-color 0.2s ease-in-out;
+}
+
+.categories-tag:after {
+  content: "";
+  position: absolute;
+  top: 22px;
+  left: -8px;
+  height: 10px;
+  width: 10px;
+  border: solid 1px #34495E;
+  border-radius: 100%;
+  background-color: white;
+}
+
+.categories-tag p {
+  color: #34495E;
+  font-family: OpenSans;
+  text-align: left;
+  padding-left: 20px;
+  padding-right: 20px;
+  font-size: 18px;
+  // line-height: 16px;
+  margin: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: clip;
+}
+
+.categories-tag:hover {
+  background-color: #34495E;
+  cursor: pointer;
+}
+
+.categories-tag:hover > p {
+  color: white;
+}
+
+.categories-tag:hover:before {
+  background-color: #34495E;
+}
+
+.categories-tag.checked {
+  background-color: #34495E;
+}
+
+.categories-tag.checked > p {
+  color: white;
+}
+
+.categories-tag.checked:before {
+  background-color: #34495E;
+}
+
+
+/* tag ^^^^ */

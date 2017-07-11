@@ -3,21 +3,8 @@
   height: auto;
   /*margin: 0 auto;*/
   // border: solid 1px black;
-  padding: 0 20px;
+  // padding: 0 20px;
   margin-top: 20px;
-}
-
-.show-feed-head, .user-show-head {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-  border-bottom: solid 2px #E7E7E7;
-}
-
-.show-feed-head h2 {
-  color: grey;
-  font-size: 20px;
 }
 
 
@@ -171,6 +158,7 @@
   border: solid 1px #D8E2E6;
   border-radius: 5px;
 }
+
 .play-tag::after {
   content: " ...";
 }
@@ -222,9 +210,9 @@
   border-radius: 5px;
 }
 
-.s-f-i-b:hover {
-  cursor: pointer;
-}
+// .s-f-i-b:hover {
+//   cursor: pointer;
+// }
 
 .fa-heart-o, .fa-retweet, .fa-recycle, .fa-music {
   position: absolute;
@@ -237,17 +225,18 @@
 
 .s-f-i-foot-right {
   display: flex;
-  justify-content: space-between;
-  width: 160px;
+  justify-content: flex-end;
+  width: 180px;
   margin: 0;
 }
 
 .s-f-i-b-r {
   position: relative;
-  width: 45px;
+  // width: 80px;
   height: 32px;
   // border: solid 1px #D8E2E6;
   border-radius: 5px;
+  margin-left: 24px;
 }
 
 .s-f-i-b-r p {
@@ -255,15 +244,17 @@
   line-height: 32px;
   font-size: 14px;
   color: grey;
+  margin-left: 5px;
 }
 
 .fa.fa-headphones, .fa.fa-clock-o, .fa.fa-calendar {
   position: absolute;
-  width: 50px;
-  height: 32px;
-  top: 10px;
-  left: 0px;
+  width: 14px;
+  height: 14px;
+  // top: 10px;
+  left: -16px;
   color: #697F95;
+  line-height: 32px
 }
 
 .show-feed-foot {

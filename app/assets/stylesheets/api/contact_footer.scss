@@ -1,0 +1,52 @@
+.contact-footer-contianer {
+}
+
+.c-f-head {
+  height: 50px;
+  border-bottom: solid 1px lightgrey;
+}
+
+.contact-footer-contianer h2 {
+  font-size: 24px;
+  color: #697F95;
+  line-height: 50px;
+}
+
+.contact-footer-contianer > a {
+  font-family: OpenSans;
+  font-size: 16px;
+  display: block;
+  margin: 5px 0;
+  color: grey;
+}
+
+.c-f-link-icons-box {
+  display: flex;
+  margin-top: 10px;
+  padding-bottom: 10px;
+  border-bottom: solid 1px lightgrey;
+}
+
+.github-img {
+  width: 25px;
+  height: 25px;
+  background: image_url("github.png") no-repeat;
+  background-size: 100% auto;
+  margin-right: 10px;
+}
+
+.angellist-img {
+  width: 25px;
+  height: 25px;
+  background: image_url("angellist.jpg") no-repeat;
+  background-size: 100% auto;
+  margin-right: 10px;
+}
+
+.linkedin-img {
+  width: 25px;
+  height: 25px;
+  background: image_url("linkedin.png") no-repeat;
+  background-size: 100% auto;
+  color: grey;
+}

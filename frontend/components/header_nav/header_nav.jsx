@@ -106,10 +106,10 @@ class HeaderNav extends React.Component {
                 <i className="fa fa-level-up fa-lg" aria-hidden="true"></i>
                 <h4>UPLOAD</h4>
               </Link>
-              <div className='categories'>
+              <Link to={'/categories'} className='categories'>
                 <i className="fa fa-th-large fa-lg" aria-hidden="true"></i>
                 <h4>CATEGORIES</h4>
-              </div>
+              </Link>
             </div>
           </div>
 

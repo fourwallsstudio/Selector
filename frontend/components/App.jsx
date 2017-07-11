@@ -11,6 +11,7 @@ import EditFormContainer from './upload/edit_form_container';
 import PlayerContainer from './player/player_container';
 import UserFormContainer from './user_form/user_form_container';
 import SearchResults from './search/search_results';
+import Categories from './categories/categories';
 import Home from './home/home';
 
 
@@ -29,6 +30,7 @@ const App = () =>  {
         <Route exact path="/show/:showId" component={ ShowProfileContainer } />
         <ProtectedRoute exact path='/home' component={ UserWelcomeContainer } />
         <Route exact path='/upload' component={ UploadFormContainer } />
+        <Route exact path='/categories' component={ Categories } />
         <ProtectedRoute exact path='/edit/:showId' component={ EditFormContainer } />
         <ProtectedRoute exact path='/user/:userId/settings' component={ UserFormContainer } />
       </div>

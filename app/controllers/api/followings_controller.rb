@@ -14,7 +14,9 @@ class Api::FollowingsController < ApplicationController
   end
 
   def destroy
-    @following = Following.find(params[:id])
+    follower_id = params[:following][:follower_id]
+    following_id = params[:following][:following_id]
+    @following = Following.where("follower_id = #{follower_id} AND following_id = #{following_id}").first
     @following.destroy
     render :show
   end
