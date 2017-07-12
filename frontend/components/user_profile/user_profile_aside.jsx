@@ -49,17 +49,19 @@ const UserProfileAside = ({ user, followings }) => {
         <p>{user.bio}</p>
       </div>
 
-      <div className="u-p-a-following-display">
-        <div className="u-p-a-following-display-head">
-          <h2>Following</h2>
-        </div>
-        <ul className="u-p-a-following-box">
-          { followingUsers }
-        </ul>
-      </div>
       <ContactFooter />
     </section>
   )
 }
 
 export default UserProfileAside;
+
+
+// <div className="u-p-a-following-display">
+//   <div className="u-p-a-following-display-head">
+//     <h2>Following</h2>
+//   </div>
+//   <ul className="u-p-a-following-box">
+//     { followingUsers }
+//   </ul>
+// </div>

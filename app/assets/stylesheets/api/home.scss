@@ -1,21 +1,26 @@
 
 .home-container {
-  height: 100vh;
+  height: 100%;
   width: 100vw;
 }
 
 .home-mask {
   position: absolute;
-  height: 100vh;
-  width: 100vw;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
   z-index: 1;
   background-color: #34495E;
   opacity: .7;
 }
 
 .home-img-box {
-  height: 100%;
-  width: 100%;
+  position: absolute;
+  top: 50px;
+  bottom: 0;
+  left: 0;
+  right: 0;
   background: image_url("recordplayerbg.jpg") no-repeat;
   background-size: 100% auto;
 }
