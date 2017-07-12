@@ -1,6 +1,7 @@
 # Selector
 
-[Live]: https://selectorapp.herokuapp.com/#/
+[Selector][live]
+[live]: https://selectorapp.herokuapp.com/#/
 
 Selector is a web application inspired by MixCloud built using Ruby on Rails and React/Redux.
 
