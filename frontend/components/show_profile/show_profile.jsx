@@ -173,6 +173,11 @@ class ShowProfile extends React.Component {
                           <h2>Edit</h2>
                         </Link>
 
+                        <Link to={`/stats/${show.id}`} className="s-u-c-b stats">
+                          <i className="fa fa-trophy fa-lg" aria-hidden="true"></i>
+                          <h2>Stats</h2>
+                        </Link>
+
                         <div className="s-u-c-b delete" onClick={ this.handleDelete }>
                           <i className="fa fa-trash-o fa-lg" aria-hidden="true"></i>
                           <h2>Delete</h2>
@@ -183,10 +188,6 @@ class ShowProfile extends React.Component {
                           <h2>Embed</h2>
                         </div>
 
-                        <div className="s-u-c-b stats">
-                          <i className="fa fa-trophy fa-lg" aria-hidden="true"></i>
-                          <h2>Stats</h2>
-                        </div>
 
                         <div className="s-u-c-b boost">
                           <i className="fa fa-bullhorn fa-lg" aria-hidden="true"></i>

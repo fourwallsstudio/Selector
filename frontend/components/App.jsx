@@ -12,6 +12,7 @@ import PlayerContainer from './player/player_container';
 import UserFormContainer from './user_form/user_form_container';
 import SearchResults from './search/search_results';
 import Categories from './categories/categories';
+import Stats from './stats/stats';
 import Home from './home/home';
 
 
@@ -28,6 +29,7 @@ const App = () =>  {
         <Route exact path="/search" component={ SearchResults } />
         <Route exact path="/user/:userId" component={ UserProfileContainer } />
         <Route exact path="/show/:showId" component={ ShowProfileContainer } />
+        <Route exact path="/stats/:showId" component={ Stats } />
         <ProtectedRoute exact path='/home' component={ UserWelcomeContainer } />
         <Route exact path='/upload' component={ UploadFormContainer } />
         <Route exact path='/categories' component={ Categories } />

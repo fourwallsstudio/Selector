@@ -344,6 +344,7 @@
 }
 
 .edit:hover,
+.stats:hover,
 .delete:hover {
   cursor: pointer;
   background-color: #E0E3E4;
@@ -366,7 +367,8 @@
 
 .s-u-c-b.stats {
   // color: #697F95;
-  color: grey;
+  color: #50B348;
+  // color: grey;
 }
 
 .s-u-c-b.boost {

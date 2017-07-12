@@ -10,6 +10,7 @@ import previewReducer from './preview_reducer';
 import filterReducer from './filter_reducer';
 import tagReducer from './tag_reducer';
 import errorReducer from './error_reducer';
+import graphDataReducer from './graph_data_reducer';
 
 const rootReducer = combineReducers({
   session: sessionReducer,
@@ -23,6 +24,7 @@ const rootReducer = combineReducers({
   preview: previewReducer,
   filter: filterReducer,
   tags: tagReducer,
+  graphData: graphDataReducer
 })
 
 export default rootReducer;

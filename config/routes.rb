@@ -14,6 +14,7 @@ Rails.application.routes.draw do
       get :search, on: :collection
     end
     resources :followings, only: [:create, :destroy]
+    resources :graph_data, only: [:show]
     resource :session, only: [:create, :destroy]
   end
 end
