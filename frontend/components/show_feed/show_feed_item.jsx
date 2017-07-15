@@ -45,12 +45,12 @@ class ShowFeedItem extends React.Component {
   handlePreview() {
     if (this.props.player.status !== 'playing' &&
         this.props.preview.status !== 'previewing') {
-      // this.props.startPreview(this.props.show.audio_url);
+      this.props.startPreview(this.props.show.audio_url);
     }
   };
 
   handleStopPreview() {
-    // this.props.stopPreview(this.props.preview.howlPreview);
+    this.props.stopPreview(this.props.preview.howlPreview);
   }
 
   render() {
