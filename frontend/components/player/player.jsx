@@ -78,11 +78,15 @@ class Player extends React.Component {
       },
 
       onplay: () => {
-        howlPlay.seek(q.seek);
+        // howlPlay.seek(q.seek);
+        howlPlay.seek(this.props.queue[0].seek);
+
 
         if (this.props.preview.status === 'previewing') {
           this.props.stopPreview(this.props.preview.howlPreview)
         }
+
+        this.props.queueDisabled(false);
 
         this.props.updateHowlerPlayer(
           howlPlay,
@@ -112,7 +116,7 @@ class Player extends React.Component {
               })
             }
           })
-          
+
       }
     });
 

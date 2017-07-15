@@ -2,6 +2,7 @@ import { connect } from 'react-redux';
 import Player from './player';
 import { startPreview, stopPreview } from '../../actions/preview_actions';
 import {
+  queueDisabled,
   removeQueueItem,
   nextQueueItem,
   createQueueItem,
@@ -17,7 +18,7 @@ import {
 
 const mapStateToProps = state => {
   return {
-    queue: state.queue,
+    queue: state.queue.queue,
     shows: state.shows.entities,
     player: state.player,
     preview: state.preview,
@@ -27,6 +28,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
+    queueDisabled: status => dispatch(queueDisabled(status)),
     removeQueueItem: id => dispatch(removeQueueItem(id)),
     updateHowlerPlayer: (hp) => dispatch(updateHowlerPlayer(hp)),
     updatePlayStatus: (s) => dispatch(updatePlayStatus(s)),

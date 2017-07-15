@@ -1,15 +1,19 @@
 import * as APIUtil from '../util/queue_util';
 
+export const QUEUE_DISABLED = 'QUEUE_DISABLED';
 export const CREATE_QUEUE_ITEM = 'CREATE_QUEUE_ITEM';
 export const REMOVE_QUEUE_ITEM = 'REMOVE_QUEUE_ITEM';
 export const NEXT_QUEUE_ITEM = 'NEXT_QUEUE_ITEM';
 export const UPDATE_QUEUE_ITEM = 'UPDATE_QUEUE_ITEM';
+export const RECEIVE_ERRORS = 'RECEIVE_ERRORS';
 
 
 export const createQueueItem = queueItem => {
   return dispatch => {
+    dispatch(queueDisabled(true));
     return APIUtil.createQueueItem(queueItem)
-      .then( queueItem => dispatch(makeQueueItem(queueItem)) );
+      .then( queueItem => dispatch(makeQueueItem(queueItem)),
+      err => dispatch({ type: RECEIVE_ERRORS }) );
   };
 }
 
@@ -26,6 +30,13 @@ export const deleteQueueItem = id => {
       .then( ()  => {
         dispatch(removeQueueItem())
       });
+  }
+}
+
+export const queueDisabled = status => {
+  return {
+    type: QUEUE_DISABLED,
+    status
   }
 }
 

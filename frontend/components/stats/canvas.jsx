@@ -25,10 +25,8 @@ class Canvas extends React.Component {
 
     for (let i = 0; i <= totalDays; i ++) {
       if (ppd[i]) {
-        console.log(xUnit * i, yUnit * ppd[i]);
         ctx.lineTo(xUnit * i, yUnit * ppd[i]);
       } else {
-        console.log(xUnit * i, 0);
         ctx.lineTo(xUnit * i, 0);
       }
     }

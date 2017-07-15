@@ -26,12 +26,8 @@ class ShowProfile extends React.Component {
   }
 
   componentDidMount() {
-
     this.props.fetchSingleShow(this.props.showId)
-
     this.props.fetchComments(this.props.showId)
-
-    this.props.fetchAllTags()
   }
 
   componentWillReceiveProps(nextProps) {
@@ -59,12 +55,16 @@ class ShowProfile extends React.Component {
     if (!this.props.player.player.length ||
       this.props.player.player[0]._sounds[0].show_id !== this.props.showId) {
 
-      const queueItem = {
-        show_id: this.props.showId,
-        user_id: this.props.currentUser.id,
-        seek: 0
+      if (!this.props.queue.queueDisabled) {
+
+        const queueItem = {
+          show_id: this.props.showId,
+          user_id: this.props.currentUser.id,
+          seek: 0
+        }
+
+        this.props.createQueueItem(queueItem);
       }
-      this.props.createQueueItem(queueItem);
 
     } else {
 
@@ -116,7 +116,7 @@ class ShowProfile extends React.Component {
       let previewActive = "";
       let tags = "";
 
-      if (show.tag_ids.length && values(this.props.tags).length) {
+      if (show.tag_ids.length) {
         tags = show.tag_ids.map( id => {
           let tag = this.props.tags[id]
           return (
@@ -134,7 +134,7 @@ class ShowProfile extends React.Component {
         previewActive = "preview-active";
       }
 
-      if (this.props.player.player.length && this.props.queue[0].show_id === show.id) {
+      if (this.props.player.player.length && this.props.queue.queue[0].show_id === show.id) {
         if (this.props.player.status === 'playing') {
           playDisplay = (
             <svg className="play-circle-pause" viewBox="0 0 16 20">
