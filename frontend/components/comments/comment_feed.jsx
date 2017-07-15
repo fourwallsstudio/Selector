@@ -10,20 +10,9 @@ class CommentFeed extends React.Component {
   constructor(props) {
     super(props)
 
-    this.state = {
-      comments: {},
-      users: {}
-    }
-
     this.handleDelete = this.handleDelete.bind(this)
   }
 
-  componentWillReceiveProps(nextProps) {
-    this.setState({
-      comments: nextProps.comments,
-      users: nextProps.users
-    })
-  }
 
   handleDelete(e) {
     e.preventDefault();
@@ -32,21 +21,20 @@ class CommentFeed extends React.Component {
 
 
   render() {
-    if (!values(this.state.comments).length) {
+    if (!values(this.props.comments).length) {
       return <div></div>;
 
     } else {
       let timeAgoJS = new javascript_time_ago('en-US');
 
-      let comments = values(this.state.comments).sort((a,b) => {
+      let comments = values(this.props.comments).sort((a,b) => {
         return b.id - a.id;
       }).map(comment => {
         let timeAgo = timeAgoJS.format(new Date(comment.created_at));
-        let user = this.state.users[comment.user_id];
         let deleteButton = "";
 
         if (this.props.currentUser &&
-          user.id === this.props.currentUser.id) {
+          comment.user_id === this.props.currentUser.id) {
 
           deleteButton =  <div className="comment-delete-button" onClick={ this.handleDelete }>
             <i className="fa fa-times" aria-hidden="true" id={comment.id} ></i>
@@ -58,14 +46,14 @@ class CommentFeed extends React.Component {
 
             <div className="comment-feed-item-img-box">
               <Link to={`/user/${comment.user_id}`}>
-                <img src={ user.avatar_url } />
+                <img src={ comment.user_avatar } />
               </Link>
             </div>
 
             <div className="comment-feed-item-content">
               <div className="comment-feed-item-head">
                 <Link to={`/user/${comment.user_id}`}>
-                  <h4>{ user.username }</h4>
+                  <h4>{ comment.user_name }</h4>
                 </Link>
                 <p>{ timeAgo }</p>
                 { deleteButton }

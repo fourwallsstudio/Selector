@@ -20,18 +20,16 @@ class ShowProfile extends React.Component {
     this.handleDelete = this.handleDelete.bind(this);
     this.handleEditClick = this.handleEditClick.bind(this);
     this.handlePlayClick = this.handlePlayClick.bind(this);
-    this.fetchUsers = this.props.fetchUsers.bind(this);
     this.handlePreview = this.handlePreview.bind(this);
     this.handleStopPreview = this.handleStopPreview.bind(this);
     this.handleClickTag = this.handleClickTag.bind(this);
   }
 
   componentDidMount() {
+
     this.props.fetchSingleShow(this.props.showId)
 
     this.props.fetchComments(this.props.showId)
-
-    this.props.fetchUsers(this.props.showId)
 
     this.props.fetchAllTags()
   }
@@ -115,7 +113,6 @@ class ShowProfile extends React.Component {
       let playDisplay;
       let timeAgoJS = new javascript_time_ago('en-US');
       let timeAgo = timeAgoJS.format(new Date(this.props.show.created_at));
-      let showAside;
       let previewActive = "";
       let tags = "";
 
@@ -131,11 +128,6 @@ class ShowProfile extends React.Component {
             </li>
           )
         })
-      }
-
-
-      if (values(this.props.users).length) {
-        showAside = <ShowProfileAside show={ show } users={ this.props.users }/>;
       }
 
       if (this.props.preview.status === 'previewing') {
@@ -304,13 +296,12 @@ class ShowProfile extends React.Component {
 
               <CommentFeed show={ show }
                 comments={ this.props.comments }
-                users={ this.props.users }
                 currentUser={ this.props.currentUser }
                 deleteComment={ this.props.deleteComment } />
 
             </div>
 
-              { showAside }
+            <ShowProfileAside show={ show } />
           </div>
 
           <div className="foot-filler"></div>

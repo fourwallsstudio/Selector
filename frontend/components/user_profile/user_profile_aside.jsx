@@ -3,25 +3,24 @@ import { Link } from 'react-router-dom';
 import { values } from 'lodash';
 import ContactFooter from '../contact_footer/contact_footer';
 
-const UserProfileAside = ({ user, followings }) => {
+const UserProfileAside = ({ user, users, followings }) => {
   let followingUsers;
 
-  if (!values(followings).length) {
+  if (!values(followings).length === user.followings_ids.length) {
     followingUsers = <div></div>;
 
-  } else {
-    let followingUsers = user.followings_ids.map( id => {
-      let following = followings[id];
+    } else {
 
-      return (
-        <li className="followings-thumb" key={ id }>
-          <Link to={ `/user/${id}` }>
-            <img src={ following.avatar_url } />
-          </Link>
-        </li>
-      )
-    })
-  }
+      followingUsers = followings.map( following => {
+        return (
+          <li className="followings-thumb" key={ following.id }>
+            <Link to={ `/user/${following.id}` }>
+              <img src={ following.avatar_url } />
+            </Link>
+          </li>
+        )
+      })
+    }
 
   return (
     <section className="user-profile-aside-container">
@@ -48,6 +47,14 @@ const UserProfileAside = ({ user, followings }) => {
         </div>
         <p>{user.bio}</p>
       </div>
+      <div className="u-p-a-following-display">
+        <div className="u-p-a-following-display-head">
+          <h2>Following</h2>
+        </div>
+        <ul className="u-p-a-following-box">
+          { followingUsers }
+        </ul>
+      </div>
 
       <ContactFooter />
     </section>
@@ -55,13 +62,3 @@ const UserProfileAside = ({ user, followings }) => {
 }
 
 export default UserProfileAside;
-
-
-// <div className="u-p-a-following-display">
-//   <div className="u-p-a-following-display-head">
-//     <h2>Following</h2>
-//   </div>
-//   <ul className="u-p-a-following-box">
-//     { followingUsers }
-//   </ul>
-// </div>

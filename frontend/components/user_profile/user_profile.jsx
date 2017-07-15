@@ -20,11 +20,6 @@ class UserProfile extends React.Component {
   componentWillReceiveProps(nextProps) {
     if (this.props.userId !== nextProps.userId)
       this.props.fetchUser(nextProps.userId);
-
-    // if (this.props.currentUser && this.props.currentUser.followers_ids.length
-    //   !== nextProps.currentUser.followers_ids.length) {
-    //     this.props.fetchUser(nextProps.userId)
-    //   }
   }
 
 
@@ -52,7 +47,6 @@ class UserProfile extends React.Component {
     } else {
       const user = this.props.user
       let updateOrFollow;
-      console.log(user)
 
       if (user.id === this.props.currentUser.id) {
         updateOrFollow = <Link className="update-user-image"
@@ -86,7 +80,7 @@ class UserProfile extends React.Component {
 
           <div className="u-p-main-container-background">
             <div className="u-p-main-container">
-              <UserProfileAside user={ user } followings={ this.props.followings } />
+              <UserProfileAside user={ user } users={ this.props.users } followings={ this.props.followings } />
 
               <ShowFeedContainer filter={ user.id }/>
             </div>

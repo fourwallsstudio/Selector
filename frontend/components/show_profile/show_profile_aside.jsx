@@ -3,16 +3,16 @@ import { Link } from 'react-router-dom';
 import { values } from 'lodash';
 import ContactFooter from '../contact_footer/contact_footer';
 
-const ShowProfileAside = ({ show, users }) => {
-  if (!values(users).length) {
+const ShowProfileAside = ({ show }) => {
+  if (!show) {
     return <div>loading...</div>
 
   } else {
-    const listeners = values(users).map( user => {
+    const listeners = values(show.listeners).map( listener => {
       return (
-        <li className="listeners-thumb" key={ user.id }>
-          <Link to={ `/user/${user.id}` }>
-            <img src={ user.avatar_url } />
+        <li className="listeners-thumb" key={ listener.id }>
+          <Link to={ `/user/${listener.id}` }>
+            <img src={ listener.user_avatar } />
           </Link>
         </li>
       )

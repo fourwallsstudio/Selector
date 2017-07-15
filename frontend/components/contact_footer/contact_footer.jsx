@@ -7,7 +7,7 @@ const ContactFooter = () => {
         <h2>Contact</h2>
       </div>
       <a href="http://calvinmcelroy.us/">calvinmcelroy.us</a>
-      <a href="mailto:fourwallsstudio@gmail.com">fourwallsstuio@gmail.com</a>
+      <a href="mailto:fourwallsstudio@gmail.com">fourwallsstudio@gmail.com</a>
       <div className="c-f-link-icons-box">
         <a href="https://github.com/fourwallsstudio" className="github-img"></a>
         <a href="https://angel.co/calvin-mcelroy-1" className="angellist-img"></a>

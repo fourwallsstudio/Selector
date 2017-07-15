@@ -29,7 +29,9 @@ export const fetchUserFollowings = userId => {
   return dispatch => {
     return (
       APIUtil.fetchUserFollowings(userId)
-        .then( users => dispatch(receiveUsers(users)),
+        .then( users => {
+          dispatch(receiveUsers(users))
+        } ,
         err => dispatch(receiveErrors(err.responseJSON)))
     )
   }

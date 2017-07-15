@@ -1,6 +1,7 @@
 import React from 'react';
 import { Route } from 'react-router-dom';
 import { AuthRoute, ProtectedRoute } from '../util/route_util.jsx';
+// import ScrollToTopRoute from '../util/scroll_route_util.jsx';
 import HeaderNavContainer from './header_nav/header_nav_container';
 import SessionFormContainer from './session/session_form_container';
 import UserWelcomeContainer from './user_welcome/user_welcome_container';

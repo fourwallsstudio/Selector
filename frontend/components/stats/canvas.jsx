@@ -22,8 +22,7 @@ class Canvas extends React.Component {
     const yUnit = 300 / maxPlays;
     const xUnit = 500 / totalDays;
     ctx.beginPath();
-    console.log(ppd)
-    console.log("y",yUnit)
+
     for (let i = 0; i <= totalDays; i ++) {
       if (ppd[i]) {
         console.log(xUnit * i, yUnit * ppd[i]);

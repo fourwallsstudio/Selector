@@ -74,11 +74,13 @@ class Show < ActiveRecord::Base
   end
 
   def listeners
-    listeners = []
+    listeners = {}
 
-    self.queue_items.each { |q| listeners << q.user_id }
+    self.queue_items.each do |q|
+      listeners[q.user_id] = { id: q.user_id, user_avatar: User.find(q.user_id).avatar.url }
+    end
 
-    listeners.uniq
+    listeners
   end
 
 end

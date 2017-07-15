@@ -6,9 +6,12 @@ export const selectUser = ({ users }, userId) => {
 
 export const selectFollowings = ({ users }, userId) => {
   let followings = [];
-  if ( Object.keys(users).includes(userId) ) {
-    followings = users[userId].followings_ids.map(id => {
-      if ( Object.keys(users).includes(id) ) { users[id] }
+
+  if ( Object.keys(users).includes(userId.toString()) ) {
+    users[userId].followings_ids.forEach(id => {
+      if ( Object.keys(users).includes(id.toString()) ) {
+        followings.push(users[id])
+      }
     })
   }
   return followings;

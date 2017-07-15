@@ -18,4 +18,12 @@ class Comment < ActiveRecord::Base
 
   belongs_to :show
   belongs_to :user
+
+  def user_avatar
+    user.avatar.url
+  end
+
+  def user_name
+    user.username
+  end
 end
