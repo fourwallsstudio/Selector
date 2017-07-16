@@ -4,7 +4,7 @@ import { selectPlayerQueue } from '../../reducers/selecters';
 import QueueItem from './queue_item';
 import Countdown from './countdown';
 
-class Player extends React.Component {
+class PlayerDisplay extends React.Component {
   constructor(props) {
     super(props)
 
@@ -13,102 +13,12 @@ class Player extends React.Component {
       volume: 0
     }
 
-    this.howlerPlayer = this.howlerPlayer.bind(this);
     this.dropdownHandle = this.dropdownHandle.bind(this);
     this.handlePlayClick = this.handlePlayClick.bind(this);
     this.handleVolume = this.handleVolume.bind(this);
   }
 
 
-  shouldComponentUpdate(nextProps, nextState) {
-    if (this.state.dropdownIsActive !== nextState.dropdownIsActive) {
-      return true;
-    }
-
-    if (nextProps.queue.length &&
-      this.props.queue.length !== nextProps.queue.length) {
-
-      return true;
-    } else {
-
-      if (!this.props.player.length ||
-        this.props.player[0].paused !== nextProps.player[0].paused) {
-        return true;
-      }
-
-      return false;
-    }
-  }
-
-  componentDidUpdate(prevProps, prevState) {
-    if (this.props.queue.length &&
-      prevProps.queue.length !== this.props.queue.length) {
-
-      if (this.props.player.player.length) {
-        prevProps.player.player[0].pause();
-        prevProps.removeHowlerPlay();
-      }
-      this.howlerPlayer();
-    }
-  }
-
-  howlerPlayer() {
-    const q = this.props.shows[this.props.queue[0].show_id];
-    const source = q.audio_url;
-
-    const howlPlay = new Howl({
-
-      src: source,
-
-      onload: () => {
-          howlPlay._sounds[0].show_id = q.id;
-      },
-
-      onplay: () => {
-        console.log("onplay queue", this.props.queue);
-        howlPlay.seek(this.props.queue[0].seek);
-
-
-        if (this.props.preview.status === 'previewing') {
-          this.props.stopPreview(this.props.preview.howlPreview)
-        }
-
-        this.props.queueDisabled(false);
-
-        this.props.updateHowlerPlayer(
-          howlPlay,
-        );
-      },
-
-      onpause: () => {
-        this.props.updatePlayStatus(
-          howlPlay._sounds[0]._paused
-        );
-        this.props.queue[0].seek = howlPlay._sounds[0]._seek;
-        this.props.updateQueueItem(this.props.queue[0]);
-      },
-
-      onend: () => {
-        this.props.queue[0].seek = 0;
-        this.props.updateQueueItem(this.props.queue[0])
-          .then(() => {
-            if (this.props.queue.length > 1) {
-              this.props.removeHowlerPlay();
-              this.props.nextQueueItem();
-            } else {
-              this.props.removeHowlerPlay();
-              this.props.removeQueueItem(0);
-              this.setState({
-                dropdownIsActive: false
-              })
-            }
-          })
-
-      }
-    });
-
-    howlPlay.play();
-  };
 
   dropdownHandle() {
     this.setState({
@@ -118,18 +28,20 @@ class Player extends React.Component {
 
   handlePlayClick(e) {
     e.preventDefault();
-    let current = this.props.player.player[0]._sounds[0];
+    let current = this.props.player.playerQueue[0].show._sounds[0];
 
     if (current._paused) {
-      this.props.player.player[0].play();
+      this.props.player.playerQueue[0].show.play();
     } else {
-      this.props.player.player[0].pause();
+      this.props.player.playerQueue[0].show.pause();
     }
+
+    this.props.updatePlayStatus(current._paused);
   }
 
   handleVolume(e) {
     e.preventDefault();
-    let current = this.props.player.player[0];
+    let current = this.props.player.playerQueue[0].show;
 
     this.setState({
         volume: parseInt(e.target.value)
@@ -140,44 +52,34 @@ class Player extends React.Component {
 
 
   render() {
-    // if (!this.state.playerQueue.length) {
-    if (!this.props.queue.length) {
+    let playerQueue = this.props.player.playerQueue;
+    if (!playerQueue.length) {
       return <div></div>;
 
     } else {
 
-      // let currentShow = this.state.playerQueue[0].show;
-      let currentShow = this.props.shows[this.props.queue[0].show_id];
+      let currentShow = this.props.shows[playerQueue[0].show_id];
       let counter;
       let dropdown;
       let firstPlayDisplay;
       let volume;
 
       // QUEUE REST
-
-      let restOfQueue = this.props.queue.slice(1).map( q => this.props.shows[q.show_id] );
+      let restOfQueue = playerQueue.slice(1).map( q => this.props.shows[q.show_id] );
       let rest = restOfQueue.map( show => {
 
         return <QueueItem key={ show.id }
-                    player={ this.props.player } stopPreview={ this.props.stopPreview }
+                    player={ this.props.player.playerQueue[0] } stopPreview={ this.props.stopPreview }
                     createQueueItem={ this.props.createQueueItem }
                     preview={ this.props.preview } show={ show }
                     currentUser={ this.props.currentUser } />;
       })
 
-      // let rest = this.state.playerQueue.slice(1).map( queueItem => {
-      //   return <QueueItem key={ queueItem.show.id } queueItem={ queueItem }
-      //               player={ this.props.player } stopPreview={ this.props.stopPreview }
-      //               createQueueItem={ this.props.createQueueItem }
-      //               preview={ this.props.preview } show={ this.props.show }
-      //               currentUser={ this.props.currentUser } />;
-      // })
-
 
       // COUNTER & VOLUME
-      if (this.props.player.player.length) {
-        counter = <Countdown player={ this.props.player.player[0] } status={ this.props.player.status } />;
-        volume = this.props.player.player[0]._volume * 10;
+      if (playerQueue.length) {
+        counter = <Countdown player={ playerQueue[0] } status={ this.props.player.status } />;
+        volume = playerQueue[0].show._volume * 10;
       }
 
       // DROPDOWN
@@ -241,7 +143,7 @@ class Player extends React.Component {
                     type="range"
                     min="0"
                     max="10"
-                    value={`${volume}`}
+                    value={`${ volume }`}
                     onChange={ this.handleVolume }
                      />
                 </div>
@@ -266,4 +168,4 @@ class Player extends React.Component {
   }
 }
 
-export default Player;
+export default PlayerDisplay;

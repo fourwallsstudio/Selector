@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import Player from './player';
+import PlayerDisplay from './player_display';
 import { startPreview, stopPreview } from '../../actions/preview_actions';
 import {
   queueDisabled,
@@ -44,4 +44,4 @@ const mapDispatchToProps = dispatch => {
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(Player);
+)(PlayerDisplay);

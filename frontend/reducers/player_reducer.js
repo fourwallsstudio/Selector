@@ -1,14 +1,17 @@
 import {
+  ADD_HOWLER_PLAY,
   UPDATE_CURRENT_PLAY,
   UPDATE_HOWLER_PLAYER,
   UPDATE_PLAY_STATUS,
-  REMOVE_HOWLER_PLAY
+  REMOVE_HOWLER_PLAY,
+  LOADING_HOWLER
 } from '../actions/player_actions';
 import { merge } from 'lodash';
 
 const defaultState = {
-  player: [],
-  status: ""
+  playerQueue: [],
+  status: "",
+  loading: false
 }
 
 const playerReducer = (state = defaultState, action) => {
@@ -18,10 +21,20 @@ const playerReducer = (state = defaultState, action) => {
   let paused = action.status ? "paused" : "playing"
 
   switch (action.type) {
+
+    case ADD_HOWLER_PLAY:
+    newState = state;
+    updatedState = {
+      playerQueue: [action.howlPlay].concat(newState.playerQueue),
+      status: "playing",
+      loading: false
+    };
+    return merge({}, state, updatedState);
+
     case UPDATE_HOWLER_PLAYER:
       newState = state;
       updatedState = {
-        player: [action.howlPlay],
+        playerQueue: [action.howlPlay],
         status: paused
       };
       return merge({}, state, updatedState);
@@ -32,10 +45,13 @@ const playerReducer = (state = defaultState, action) => {
     case REMOVE_HOWLER_PLAY:
       newState = state;
       updatedState = {
-        player: newState.player.slice(1),
+        playerQueue: newState.playerQueue.slice(1),
         status: "paused"
       };
       return updatedState;
+
+    case LOADING_HOWLER:
+      return merge({}, state, { loading: action.loadStatus });
 
     default:
       return state;

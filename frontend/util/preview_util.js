@@ -45,7 +45,7 @@ export const previewPlayer = src => {
 
       }
     })
-
+    
     howlPreview.play();
     return howlPreview;
 };

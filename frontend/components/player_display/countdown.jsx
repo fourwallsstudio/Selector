@@ -14,11 +14,14 @@ class Countdown extends React.Component {
   }
 
   componentDidMount() {
-    let end = this.props.player._sounds[0]._stop;
-    let seek = this.props.player._sounds[0]._seek;
+    let end = this.props.player.show._sounds[0]._stop;
+    let seek = this.props.player.show._sounds[0]._seek;
 
-    this.setState({ countdown: Math.round( end - seek ),
-      countup: Math.round( seek )
+    end = end ? Math.round( end - seek ) : 0;
+
+    this.setState({
+      countdown: end,
+      countup: Math.round( seek ),
      });
 
     this.currentInterval = setInterval(this.counter, 1000);
@@ -26,14 +29,15 @@ class Countdown extends React.Component {
 
   componentWillReceiveProps(nextProps) {
     if (this.props.status !== nextProps.status) {
-      let end = nextProps.player._sounds[0]._stop;
-      let seek = nextProps.player._sounds[0]._seek;
+      console.log("counter recieve props");
+      let end = nextProps.player.show._sounds[0]._stop;
+      let seek = nextProps.player.show._sounds[0]._seek;
       this.setState({
         countdown: Math.round( end - seek ),
         countup: Math.round( seek )
       });
 
-      if (nextProps.player._sounds[0]._paused) {
+      if (nextProps.player.show._sounds[0]._paused) {
         clearInterval(this.currentInterval);
       } else {
         clearInterval(this.currentInterval);
@@ -71,7 +75,7 @@ class Countdown extends React.Component {
 
   handleSeek(e) {
     e.preventDefault();
-    let end = this.props.player._sounds[0]._stop;
+    let end = this.props.player.show._sounds[0]._stop;
     let seek = Math.floor(parseInt(e.target.value));
 
     this.setState({
@@ -79,7 +83,7 @@ class Countdown extends React.Component {
       countup: seek,
     })
 
-    this.props.player.seek(this.state.countup);
+    this.props.player.show.seek(this.state.countup);
   }
 
   render() {
@@ -91,7 +95,7 @@ class Countdown extends React.Component {
 
         <input type="range"
           min="0"
-          max={`${ this.props.player._sounds[0]._stop }`}
+          max={`${ this.props.player.show._sounds[0]._stop }`}
           value={ `${ this.state.countup }`}
           onChange={ this.handleSeek }
           className="first-queue-playback-slider" />

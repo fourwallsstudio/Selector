@@ -51,30 +51,32 @@ class ShowProfile extends React.Component {
   handlePlayClick(e) {
     e.preventDefault();
     this.props.stopPreview(this.props.preview.howlPreview);
+    let playerQueue = this.props.player.playerQueue;
 
-    if (!this.props.player.player.length ||
-      this.props.player.player[0]._sounds[0].show_id !== this.props.showId) {
+    if (!this.props.player.loading) {
 
-      if (!this.props.queue.queueDisabled) {
+      if (!playerQueue.length ||
+        playerQueue[0].show_id !== this.props.show.id) {
 
-        const queueItem = {
-          show_id: this.props.showId,
-          user_id: this.props.currentUser.id,
-          seek: 0
+          if (playerQueue.length) {
+            playerQueue[0].show.pause();
+            this.props.updatePlayStatus(playerQueue[0].show._sounds[0]._paused);
+          }
+
+          this.props.createNewPlay(this.props.show);
+
+        } else {
+
+          let current = playerQueue[0].show._sounds[0];
+
+          if (current._paused) {
+            playerQueue[0].show.play();
+          } else {
+            playerQueue[0].show.pause();
+          }
+
+          this.props.updatePlayStatus(current._paused);
         }
-
-        this.props.createQueueItem(queueItem);
-      }
-
-    } else {
-
-      let current = this.props.player.player[0]._sounds[0];
-
-      if (current._paused) {
-        this.props.player.player[0].play();
-      } else {
-        this.props.player.player[0].pause();
-      }
     }
   }
 
@@ -115,8 +117,9 @@ class ShowProfile extends React.Component {
       let timeAgo = timeAgoJS.format(new Date(this.props.show.created_at));
       let previewActive = "";
       let tags = "";
+      let playerQueue = this.props.player.playerQueue;
 
-      if (show.tag_ids.length) {
+      if (show.tag_ids.length && this.props.tags) {
         tags = show.tag_ids.map( id => {
           let tag = this.props.tags[id]
           return (
@@ -134,7 +137,7 @@ class ShowProfile extends React.Component {
         previewActive = "preview-active";
       }
 
-      if (this.props.player.player.length && this.props.queue.queue[0].show_id === show.id) {
+      if (playerQueue.length && playerQueue[0].show_id === show.id) {
         if (this.props.player.status === 'playing') {
           playDisplay = (
             <svg className="play-circle-pause" viewBox="0 0 16 20">

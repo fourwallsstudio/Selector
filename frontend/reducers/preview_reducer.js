@@ -12,13 +12,16 @@ const defaultState = {
 const previewReducer = (state = defaultState, action) => {
 
   switch (action.type) {
+    
     case CREATE_PREVIEW:
       return {
         howlPreview: action.howlPreview,
         status: "previewing"
       }
+
     case REMOVE_PREVIEW:
       return defaultState;
+
     default:
       return state
   }

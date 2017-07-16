@@ -1,7 +1,6 @@
 import React from 'react';
 import { Route } from 'react-router-dom';
 import { AuthRoute, ProtectedRoute } from '../util/route_util.jsx';
-// import ScrollToTopRoute from '../util/scroll_route_util.jsx';
 import HeaderNavContainer from './header_nav/header_nav_container';
 import SessionFormContainer from './session/session_form_container';
 import UserWelcomeContainer from './user_welcome/user_welcome_container';
@@ -9,7 +8,7 @@ import UserProfileContainer from './user_profile/user_profile_container';
 import ShowProfileContainer from './show_profile/show_profile_container';
 import UploadFormContainer from './upload/upload_form_container';
 import EditFormContainer from './upload/edit_form_container';
-import PlayerContainer from './player/player_container';
+import PlayerDisplayContainer from './player_display/player_display_container';
 import UserFormContainer from './user_form/user_form_container';
 import SearchResults from './search/search_results';
 import Categories from './categories/categories';
@@ -23,7 +22,7 @@ const App = () =>  {
         <HeaderNavContainer />
         <div className="head-filler"></div>
 
-        <PlayerContainer />
+        <PlayerDisplayContainer />
         <Route exact path="/" component={ Home } />
         <AuthRoute path="/login" component={ SessionFormContainer } />
         <AuthRoute path="/signup" component={ SessionFormContainer } />

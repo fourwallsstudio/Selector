@@ -12,7 +12,9 @@ import {
   fetchComments } from '../../actions/comment_actions';
 import {
   updateCurrentPlay,
-  updateHowlerPlayer
+  updateHowlerPlayer,
+  updatePlayStatus,
+  createNewPlay
  } from '../../actions/player_actions';
 import {
   selectShow,
@@ -42,6 +44,8 @@ const mapDispatchToProps = dispatch => {
     fetchSingleShow: showId => dispatch(fetchSingleShow(showId)),
     deleteShow: showId => dispatch(deleteShow(showId)),
     createQueueItem: q => dispatch(createQueueItem(q)),
+    createNewPlay: show => dispatch(createNewPlay(show)),
+    updatePlayStatus: status => dispatch(updatePlayStatus(status)),
     updateHowlerPlayer: hp => dispatch(updateHowlerPlayer(hp)),
     createComment: comment => dispatch(createComment(comment)),
     deleteComment: id => dispatch(deleteComment(id)),

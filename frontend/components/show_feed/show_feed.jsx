@@ -36,6 +36,8 @@ class ShowFeed extends React.Component {
             tags={ this.props.tags }
             queue={ this.props.queue }
             player={ this.props.player}
+            createNewPlay={ this.props.createNewPlay }
+            updatePlayStatus={ this.props.updatePlayStatus }
             createQueueItem={ this.props.createQueueItem }
             currentUser={ this.props.currentUser }
             startPreview={ this.props.startPreview }

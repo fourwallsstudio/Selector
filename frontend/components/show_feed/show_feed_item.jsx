@@ -14,53 +14,61 @@ class ShowFeedItem extends React.Component {
 
   handlePlayClick(e) {
     e.preventDefault();
-    this.props.stopPreview(this.props.preview.howlPreview);
+    if (this.props.preview.status !== 'off') {
+      this.props.stopPreview(this.props.preview.howlPreview);
+    }
 
-    if (!this.props.player.player.length ||
-      this.props.player.player[0]._sounds[0].show_id !== this.props.show.id) {
+    let playerQueue = this.props.player.playerQueue;
 
-        if (!this.props.queue.queueDisabled) {
+    if (!this.props.player.loading) {
 
-          const queueItem = {
-            show_id: this.props.show.id,
-            user_id: this.props.currentUser.id,
-            seek: 0
+      if (!playerQueue.length ||
+        playerQueue[0].show_id !== this.props.show.id) {
+
+          if (playerQueue.length) {
+            playerQueue[0].show.pause();
+            this.props.updatePlayStatus(playerQueue[0].show._sounds[0]._paused);
           }
 
-          this.props.createQueueItem(queueItem);
+          this.props.createNewPlay(this.props.show);
+
+        } else {
+
+          let current = playerQueue[0].show._sounds[0];
+
+          if (current._paused) {
+            playerQueue[0].show.play();
+          } else {
+            playerQueue[0].show.pause();
+          }
+
+          this.props.updatePlayStatus(current._paused);
         }
-
-    } else {
-
-      let current = this.props.player.player[0]._sounds[0];
-
-      if (current._paused) {
-        this.props.player.player[0].play();
-      } else {
-        this.props.player.player[0].pause();
-      }
     }
   }
 
   handlePreview() {
-    if (this.props.player.status !== 'playing' &&
+    if (!this.props.player.loading &&
+        this.props.player.status !== 'playing' &&
         this.props.preview.status !== 'previewing') {
       this.props.startPreview(this.props.show.audio_url);
     }
   };
 
   handleStopPreview() {
-    this.props.stopPreview(this.props.preview.howlPreview);
+    if (this.props.preview.status !== "off") {
+      this.props.stopPreview(this.props.preview.howlPreview);
+    }
   }
 
   render() {
     let show = this.props.show;
+    let playerQueue = this.props.player.playerQueue;
     let playDisplay;
     let timeAgoJS = new javascript_time_ago('en-US');
     let timeAgo = timeAgoJS.format(new Date(this.props.show.created_at));
 
-
-    if (this.props.queue.queue.length && this.props.queue.queue[0].show_id === show.id) {
+    if (playerQueue.length && playerQueue[0].show_id === show.id) {
       if (this.props.player.status === 'playing') {
         playDisplay = (
           <svg className="show-feed-play-circle-pause">
@@ -155,7 +163,3 @@ class ShowFeedItem extends React.Component {
 };
 
 export default ShowFeedItem;
-
-// <div className="s-f-i-b-r clock">
-//   <i className="fa fa-clock-o" aria-hidden="true"></i>
-// </div>
