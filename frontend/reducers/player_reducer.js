@@ -21,7 +21,7 @@ const playerReducer = (state = defaultState, action) => {
     case UPDATE_HOWLER_PLAYER:
       newState = state;
       updatedState = {
-        player: [action.howlPlay].concat(newState.player),
+        player: [action.howlPlay],
         status: paused
       };
       return merge({}, state, updatedState);

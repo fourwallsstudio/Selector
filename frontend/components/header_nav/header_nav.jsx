@@ -16,6 +16,10 @@ class HeaderNav extends React.Component {
     this.isActive = this.isActive.bind(this);
   }
 
+  componentWillMount() {
+    this.props.fetchAllTags();
+  }
+
 
   componentWillReceiveProps(nextProps) {
     this.state.dropdownActive = false;

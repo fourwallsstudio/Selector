@@ -9,7 +9,6 @@ class Player extends React.Component {
     super(props)
 
     this.state = {
-      playerQueue: [],
       dropdownIsActive: false,
       volume: 0
     }
@@ -18,13 +17,6 @@ class Player extends React.Component {
     this.dropdownHandle = this.dropdownHandle.bind(this);
     this.handlePlayClick = this.handlePlayClick.bind(this);
     this.handleVolume = this.handleVolume.bind(this);
-  }
-
-
-  componentWillReceiveProps(nextProps) {
-    this.setState({
-      playerQueue: selectPlayerQueue(nextProps.shows, nextProps.queue)
-    });
   }
 
 
@@ -48,37 +40,32 @@ class Player extends React.Component {
     }
   }
 
-  componentWillUpdate(nextProps, nextState) {
-
-  }
-
   componentDidUpdate(prevProps, prevState) {
-    if (this.state.playerQueue.length &&
-      prevState.playerQueue.length !== this.state.playerQueue.length) {
+    if (this.props.queue.length &&
+      prevProps.queue.length !== this.props.queue.length) {
 
       if (this.props.player.player.length) {
         prevProps.player.player[0].pause();
         prevProps.removeHowlerPlay();
       }
-
       this.howlerPlayer();
     }
   }
 
   howlerPlayer() {
-    const q = this.state.playerQueue[0];
-    const source = q.show.audio_url;
+    const q = this.props.shows[this.props.queue[0].show_id];
+    const source = q.audio_url;
 
     const howlPlay = new Howl({
 
       src: source,
 
       onload: () => {
-          howlPlay._sounds[0].show_id = q.show.id;
+          howlPlay._sounds[0].show_id = q.id;
       },
 
       onplay: () => {
-        // howlPlay.seek(q.seek);
+        console.log("onplay queue", this.props.queue);
         howlPlay.seek(this.props.queue[0].seek);
 
 
@@ -110,7 +97,7 @@ class Player extends React.Component {
               this.props.nextQueueItem();
             } else {
               this.props.removeHowlerPlay();
-              this.props.removeQueueItem();
+              this.props.removeQueueItem(0);
               this.setState({
                 dropdownIsActive: false
               })
@@ -153,25 +140,39 @@ class Player extends React.Component {
 
 
   render() {
-    if (!this.state.playerQueue.length) {
+    // if (!this.state.playerQueue.length) {
+    if (!this.props.queue.length) {
       return <div></div>;
 
     } else {
 
-      let currentShow = this.state.playerQueue[0].show;
+      // let currentShow = this.state.playerQueue[0].show;
+      let currentShow = this.props.shows[this.props.queue[0].show_id];
       let counter;
       let dropdown;
       let firstPlayDisplay;
       let volume;
 
       // QUEUE REST
-      let rest = this.state.playerQueue.slice(1).map( queueItem => {
-        return <QueueItem key={ queueItem.show_id } queueItem={ queueItem }
+
+      let restOfQueue = this.props.queue.slice(1).map( q => this.props.shows[q.show_id] );
+      let rest = restOfQueue.map( show => {
+
+        return <QueueItem key={ show.id }
                     player={ this.props.player } stopPreview={ this.props.stopPreview }
                     createQueueItem={ this.props.createQueueItem }
-                    preview={ this.props.preview } show={ this.props.show }
+                    preview={ this.props.preview } show={ show }
                     currentUser={ this.props.currentUser } />;
       })
+
+      // let rest = this.state.playerQueue.slice(1).map( queueItem => {
+      //   return <QueueItem key={ queueItem.show.id } queueItem={ queueItem }
+      //               player={ this.props.player } stopPreview={ this.props.stopPreview }
+      //               createQueueItem={ this.props.createQueueItem }
+      //               preview={ this.props.preview } show={ this.props.show }
+      //               currentUser={ this.props.currentUser } />;
+      // })
+
 
       // COUNTER & VOLUME
       if (this.props.player.player.length) {

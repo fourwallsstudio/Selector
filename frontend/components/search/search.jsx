@@ -17,9 +17,9 @@ class Search extends React.Component {
   }
 
   componentDidMount() {
-    if (!values(this.props.tags).length) {
-      this.props.fetchAllTags();
-    }
+    // if (!values(this.props.tags).length) {
+    //   this.props.fetchAllTags();
+    // }
   }
 
   handleSearch(e) {

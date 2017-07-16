@@ -28,7 +28,8 @@ const queueReducer = (state = defaultState, action) => {
       return merge({}, state, { queue: updatedQueue });
 
     case REMOVE_QUEUE_ITEM:
-      updatedQueue = newState.queue.slice(1);
+      newState.queue.splice(action.idx, 1);
+      updatedQueue = newState;
       return { queueDisabled: false, queue: updatedQueue }
 
     case NEXT_QUEUE_ITEM:

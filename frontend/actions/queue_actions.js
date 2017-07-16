@@ -60,8 +60,9 @@ export const receiveQueueItem = queueItem => {
   }
 }
 
-export const removeQueueItem = () => {
+export const removeQueueItem = idx => {
   return {
-    type: REMOVE_QUEUE_ITEM
+    type: REMOVE_QUEUE_ITEM,
+    idx
   }
 }
