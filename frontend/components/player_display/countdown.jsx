@@ -87,7 +87,6 @@ class Countdown extends React.Component {
   }
 
   render() {
-    console.log("counter", this.props.playerQueue[0].show_id);
     return (
       <div className="first-queue-playback">
         <div className="first-queue-playback-countup">

@@ -88,15 +88,19 @@ class User < ActiveRecord::Base
   def queue_hash_by_show
     recent_queue = Hash.new()
 
-    self.queue_items.each { |q|
+    self.queue_items.each do |q|
       if !recent_queue[q.show_id] ||
         q.created_at > recent_queue[q.show_id].created_at
 
         recent_queue[q.show_id] = q
       end
-    }
+    end
 
     recent_queue
+  end
+
+  def play_history
+    queue_hash_by_show
   end
 
   def followers_ids

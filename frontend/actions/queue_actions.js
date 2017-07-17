@@ -1,4 +1,5 @@
 import * as APIUtil from '../util/queue_util';
+import { fetchUser } from './user_actions';
 
 export const QUEUE_DISABLED = 'QUEUE_DISABLED';
 export const CREATE_QUEUE_ITEM = 'CREATE_QUEUE_ITEM';
@@ -10,17 +11,15 @@ export const RECEIVE_ERRORS = 'RECEIVE_ERRORS';
 
 export const createQueueItem = queueItem => {
   return dispatch => {
-    dispatch(queueDisabled(true));
     return APIUtil.createQueueItem(queueItem)
-      .then( queueItem => dispatch(makeQueueItem(queueItem)),
-      err => dispatch({ type: RECEIVE_ERRORS }) );
+      .then( queueItem => dispatch(fetchUser(queueItem.user_id)) )
   };
 }
 
 export const updateQueueItem = queueItem => {
   return dispatch => {
     return APIUtil.updateQueueItem(queueItem)
-      .then( queueItem => dispatch(receiveQueueItem(queueItem)))
+      .then( queueItem => dispatch(fetchUser(queueItem.user_id)) )
   }
 }
 

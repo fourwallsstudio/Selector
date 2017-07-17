@@ -9,7 +9,6 @@ import {
 import { merge } from 'lodash';
 
 const defaultState = {
-  queueDisabled: false,
   queue: []
 }
 
@@ -30,16 +29,16 @@ const queueReducer = (state = defaultState, action) => {
     case REMOVE_QUEUE_ITEM:
       newState.queue.splice(action.idx, 1);
       updatedQueue = newState;
-      return { queueDisabled: false, queue: updatedQueue }
+      return { queue: updatedQueue }
 
     case NEXT_QUEUE_ITEM:
       updatedQueue = newState.queue.slice(1);
-      return { queueDisabled: false, queue: updatedQueue }
+      return { queue: updatedQueue }
 
     case UPDATE_QUEUE_ITEM:
       updatedQueue = Object.assign([], newState.queue)
       updatedQueue[0] = action.queueItem;
-      return { queueDisabled: false, queue: updatedQueue }
+      return { queue: updatedQueue }
 
     case RECEIVE_ERRORS:
       return merge({}, state, { queueDisabled: false });

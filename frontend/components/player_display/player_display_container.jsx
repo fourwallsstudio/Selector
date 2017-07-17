@@ -22,7 +22,7 @@ const mapStateToProps = state => {
     shows: state.shows.entities,
     player: state.player,
     preview: state.preview,
-    currentUser: state.session.currentUser
+    currentUser: state.users[state.session.currentUser]
   }
 }
 

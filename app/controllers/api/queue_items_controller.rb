@@ -22,7 +22,10 @@ class Api::QueueItemsController < ApplicationController
 
 
   def update
-    @queue_item = QueueItem.find(params[:id])
+    @queue_item = QueueItem.where({
+      user_id: queue_item_params[:user_id],
+      show_id: queue_item_params[:show_id]
+    }).order("created_at DESC").limit(1).first
 
     if @queue_item.update(queue_item_params)
       render :show

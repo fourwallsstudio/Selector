@@ -17,21 +17,35 @@ class PlayerDisplay extends React.Component {
     this.handlePlayClick = this.handlePlayClick.bind(this);
     this.handleVolume = this.handleVolume.bind(this);
     this.handleShowOnEnd = this.handleShowOnEnd.bind(this);
+    this.handleShowOnPause = this.handleShowOnPause.bind(this);
   }
 
   componentWillReceiveProps(nextProps) {
     if (nextProps.player.playerQueue.length) {
       if (!this.props.player.playerQueue.length ||
         this.props.player.playerQueue[0].show_id !== nextProps.player.playerQueue[0].show_id) {
-          this.handleShowOnEnd(nextProps.player.playerQueue);
+          this.handleShowOnEnd(nextProps.player.playerQueue, nextProps.currentUser);
+          this.handleShowOnPause(nextProps.player.playerQueue, nextProps.currentUser);
         }
     }
   }
 
 
-  handleShowOnEnd(playerQueue) {
+  handleShowOnEnd(playerQueue, currentUser) {
     playerQueue[0].show.on('end', () => {
+      let userId = currentUser.id
+      let showId = playerQueue[0].show_id
+      this.props.updateQueueItem({ user_id: userId, show_id: showId, seek: 0 });
       this.props.removeHowlerPlay(playerQueue);
+    })
+  }
+
+  handleShowOnPause(playerQueue, currentUser) {
+    playerQueue[0].show.on('pause', () => {
+      let newSeek = playerQueue[0].show._sounds[0]._seek;
+      let userId = currentUser.id
+      let showId = playerQueue[0].show_id
+      this.props.updateQueueItem({ user_id: userId, show_id: showId, seek: newSeek });
     })
   }
 
@@ -87,7 +101,7 @@ class PlayerDisplay extends React.Component {
                     player={ this.props.player.playerQueue[0] } stopPreview={ this.props.stopPreview }
                     createQueueItem={ this.props.createQueueItem }
                     preview={ this.props.preview } show={ show }
-                    currentUser={ this.props.currentUser } />;
+                    currentUser={ this.props.currentUser.id } />;
       })
 
 
