@@ -25,7 +25,7 @@ const mapDispatchToProps = dispatch => {
     createQueueItem: q => dispatch(createQueueItem(q)),
     startPreview: src => dispatch(startPreview(src)),
     stopPreview: src => dispatch(stopPreview(src)),
-    createNewPlay: show => dispatch(createNewPlay(show)),
+    createNewPlay: (show, currentUser) => dispatch(createNewPlay(show, currentUser)),
     updatePlayStatus: status => dispatch(updatePlayStatus(status))
   }
 }

@@ -4,14 +4,16 @@ import {
   UPDATE_HOWLER_PLAYER,
   UPDATE_PLAY_STATUS,
   REMOVE_HOWLER_PLAY,
-  LOADING_HOWLER
+  LOADING_HOWLER,
+  RESTORED_PLAY_POSITION
 } from '../actions/player_actions';
 import { merge } from 'lodash';
 
 const defaultState = {
   playerQueue: [],
   status: "",
-  loading: false
+  loading: false,
+  restoredPlayPosition: false
 }
 
 const playerReducer = (state = defaultState, action) => {
@@ -52,6 +54,9 @@ const playerReducer = (state = defaultState, action) => {
 
     case LOADING_HOWLER:
       return merge({}, state, { loading: action.loadStatus });
+
+    case RESTORED_PLAY_POSITION:
+      return merge({}, state, { restoredPlayPosition: action.status });
 
     default:
       return state;

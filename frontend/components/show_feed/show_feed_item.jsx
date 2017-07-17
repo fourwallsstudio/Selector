@@ -30,7 +30,7 @@ class ShowFeedItem extends React.Component {
             this.props.updatePlayStatus(playerQueue[0].show._sounds[0]._paused);
           }
 
-          this.props.createNewPlay([this.props.show, this.props.currentUser]);
+          this.props.createNewPlay(this.props.show, this.props.currentUser);
 
         } else {
 

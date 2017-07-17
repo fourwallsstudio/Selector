@@ -26,6 +26,12 @@ class Countdown extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
+    if (nextProps.restoredPlayStatus) {
+      setTimeout(() => {
+        this.props.restoredPlayPosition(false);
+      }, 5000)
+    }
+
     if (this.props.status !== nextProps.status ||
       this.props.playerQueue[0].show_id !== nextProps.playerQueue[0].show_id) {
 
@@ -48,7 +54,7 @@ class Countdown extends React.Component {
 
 
 
-  componentDidUpdate() {
+  componentDidUpdate(prevProps) {
     if (this.state.countdown === 0) {
       clearInterval(this.currentInterval);
     }
@@ -87,12 +93,23 @@ class Countdown extends React.Component {
   }
 
   render() {
+    let restorePlayPopUp;
+    console.log(this.props.restoredPlayStatus);
+    if (this.props.restoredPlayStatus) {
+      restorePlayPopUp = <div className="retore-play-pop-box">
+        <p>restored play position</p>
+        <div className="retore-play-pop-box-pointer"></div>
+      </div>;
+    } else {
+      restorePlayPopUp = "";
+    }
+
     return (
       <div className="first-queue-playback">
+        { restorePlayPopUp }
         <div className="first-queue-playback-countup">
           <p>{ this.stringify(this.state.countup) }</p>
         </div>
-
         <input type="range"
           min="0"
           max={`${ this.props.playerQueue[0].show._sounds[0]._stop }`}

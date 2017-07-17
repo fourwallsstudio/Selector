@@ -39,6 +39,11 @@ class ShowProfile extends React.Component {
 
   handleDelete(e) {
     e.preventDefault();
+    if (this.props.player.playerQueue[0].show_id === this.props.showId) {
+      this.props.player.playerQueue[0].show.pause();
+      this.props.removeHowlerPlay(this.props.player.playerQueue);
+    }
+
     this.props.deleteShow(this.props.show.id)
       .then( () => this.props.history.push('/home') );
   }

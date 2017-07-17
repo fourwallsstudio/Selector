@@ -6,14 +6,13 @@ export const UPDATE_HOWLER_PLAYER = 'UPDATE_HOWLER_PLAYER';
 export const UPDATE_PLAY_STATUS = 'UPDATE_PLAY_STATUS';
 export const REMOVE_HOWLER_PLAY = 'REMOVE_HOWLER_PLAY';
 export const LOADING_HOWLER = 'LOADING_HOWLER';
+export const RESTORED_PLAY_POSITION = 'RESTORED_PLAY_POSITION';
 
 
-export const createNewPlay = (args) => {
+export const createNewPlay = (show, currentUser) => {
   return dispatch => {
     dispatch(loadingHowler(true));
 
-    let show = args[0];
-    let currentUser = args[1]
     let seek = currentUser.play_history[show.id] ? currentUser.play_history[show.id].seek : 0
 
     const queueItem = {
@@ -43,6 +42,10 @@ export const createNewPlay = (args) => {
     howlPromise.then(result => {
       let newShow = result[0];
       let queueParams = result[1];
+
+      if (queueParams.seek !== 0) {
+        dispatch(restoredPlayPosition(true));
+      }
 
       newShow.show.play();
       newShow.show.seek(queueParams.seek);
@@ -102,5 +105,12 @@ export const loadingHowler = loadStatus => {
   return {
     type: LOADING_HOWLER,
     loadStatus
+  }
+}
+
+export const restoredPlayPosition = status => {
+  return {
+    type: RESTORED_PLAY_POSITION,
+    status
   }
 }

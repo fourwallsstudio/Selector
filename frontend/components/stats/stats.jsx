@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import Canvas from './canvas';
-import { fetchShowData } from '../../actions/graph_data_actions';
+import { fetchShowData, removeShowData } from '../../actions/graph_data_actions';
 import { values } from 'lodash';
 
 class Stats extends React.Component {
@@ -12,6 +12,10 @@ class Stats extends React.Component {
 
   componentDidMount() {
     this.props.fetchShowData(this.props.showId);
+  }
+
+  componentWillUnmount() {
+    this.props.removeShowData();
   }
 
 
@@ -65,7 +69,8 @@ const mapStateToProps = (state, { match }) => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    fetchShowData: showId => dispatch(fetchShowData(showId))
+    fetchShowData: showId => dispatch(fetchShowData(showId)),
+    removeShowData: () => dispatch(removeShowData())
   }
 }
 

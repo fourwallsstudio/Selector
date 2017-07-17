@@ -107,7 +107,10 @@ class PlayerDisplay extends React.Component {
 
       // COUNTER & VOLUME
       if (playerQueue.length) {
-        counter = <Countdown playerQueue={ playerQueue } status={ this.props.player.status } />;
+        counter = <Countdown playerQueue={ playerQueue }
+                      status={ this.props.player.status }
+                      restoredPlayStatus={ this.props.player.restoredPlayPosition }
+                      restoredPlayPosition={ this.props.restoredPlayPosition } />;
         volume = playerQueue[0].show._volume * 10;
       }
 

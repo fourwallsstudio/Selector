@@ -117,6 +117,32 @@
   slider
 */
 
+.retore-play-pop-box {
+  position: absolute;
+  top: -36px;
+  left: 400px;
+  background-color: #2D4050;
+  border: solid 1px black;
+  border-radius: 5px;
+}
+
+.retore-play-pop-box p {
+  padding: 5px;
+  color: white;
+  font-size: 10px;
+}
+
+.retore-play-pop-box-pointer {
+  position: absolute;
+  bottom: -10px;
+  left: 30px;
+  width: 0;
+  height: 0;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-top: 10px solid #2D4050;
+}
+
 .first-queue-playback {
   display: flex;
   justify-content: space-between;
