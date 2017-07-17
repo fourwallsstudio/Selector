@@ -14,13 +14,11 @@ class Countdown extends React.Component {
   }
 
   componentDidMount() {
-    let end = this.props.player.show._sounds[0]._stop;
-    let seek = this.props.player.show._sounds[0]._seek;
-
-    end = end ? Math.round( end - seek ) : 0;
+    let end = this.props.playerQueue[0].show._sounds[0]._stop;
+    let seek = this.props.playerQueue[0].show._sounds[0]._seek;
 
     this.setState({
-      countdown: end,
+      countdown: Math.round( end - seek ),
       countup: Math.round( seek ),
      });
 
@@ -28,16 +26,18 @@ class Countdown extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    if (this.props.status !== nextProps.status) {
-      console.log("counter recieve props");
-      let end = nextProps.player.show._sounds[0]._stop;
-      let seek = nextProps.player.show._sounds[0]._seek;
+    if (this.props.status !== nextProps.status ||
+      this.props.playerQueue[0].show_id !== nextProps.playerQueue[0].show_id) {
+
+      let end = nextProps.playerQueue[0].show._sounds[0]._stop;
+      let seek = nextProps.playerQueue[0].show._sounds[0]._seek;
+
       this.setState({
         countdown: Math.round( end - seek ),
         countup: Math.round( seek )
       });
 
-      if (nextProps.player.show._sounds[0]._paused) {
+      if (nextProps.playerQueue[0].show._sounds[0]._paused) {
         clearInterval(this.currentInterval);
       } else {
         clearInterval(this.currentInterval);
@@ -75,7 +75,7 @@ class Countdown extends React.Component {
 
   handleSeek(e) {
     e.preventDefault();
-    let end = this.props.player.show._sounds[0]._stop;
+    let end = this.props.playerQueue[0].show._sounds[0]._stop;
     let seek = Math.floor(parseInt(e.target.value));
 
     this.setState({
@@ -83,10 +83,11 @@ class Countdown extends React.Component {
       countup: seek,
     })
 
-    this.props.player.show.seek(this.state.countup);
+    this.props.playerQueue[0].show.seek(this.state.countup);
   }
 
   render() {
+    console.log("counter", this.props.playerQueue[0].show_id);
     return (
       <div className="first-queue-playback">
         <div className="first-queue-playback-countup">
@@ -95,7 +96,7 @@ class Countdown extends React.Component {
 
         <input type="range"
           min="0"
-          max={`${ this.props.player.show._sounds[0]._stop }`}
+          max={`${ this.props.playerQueue[0].show._sounds[0]._stop }`}
           value={ `${ this.state.countup }`}
           onChange={ this.handleSeek }
           className="first-queue-playback-slider" />

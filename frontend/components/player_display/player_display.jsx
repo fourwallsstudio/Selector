@@ -16,9 +16,24 @@ class PlayerDisplay extends React.Component {
     this.dropdownHandle = this.dropdownHandle.bind(this);
     this.handlePlayClick = this.handlePlayClick.bind(this);
     this.handleVolume = this.handleVolume.bind(this);
+    this.handleShowOnEnd = this.handleShowOnEnd.bind(this);
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.player.playerQueue.length) {
+      if (!this.props.player.playerQueue.length ||
+        this.props.player.playerQueue[0].show_id !== nextProps.player.playerQueue[0].show_id) {
+          this.handleShowOnEnd(nextProps.player.playerQueue);
+        }
+    }
   }
 
 
+  handleShowOnEnd(playerQueue) {
+    playerQueue[0].show.on('end', () => {
+      this.props.removeHowlerPlay(playerQueue);
+    })
+  }
 
   dropdownHandle() {
     this.setState({
@@ -78,7 +93,7 @@ class PlayerDisplay extends React.Component {
 
       // COUNTER & VOLUME
       if (playerQueue.length) {
-        counter = <Countdown player={ playerQueue[0] } status={ this.props.player.status } />;
+        counter = <Countdown playerQueue={ playerQueue } status={ this.props.player.status } />;
         volume = playerQueue[0].show._volume * 10;
       }
 

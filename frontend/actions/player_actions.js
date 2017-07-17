@@ -40,6 +40,19 @@ export const createNewPlay = show => {
 
 
 
+export const removeHowlerPlay = queue => {
+  return dispatch => {
+    let status = "paused";
+    if (queue.length > 1) {
+      queue[1].show.play();
+      status = "playing";
+    }
+    dispatch(removeHowlerPlayFromQueue(status))
+  }
+}
+
+
+
 export const addHowlerPlay = howlPlay => {
   return {
     type: ADD_HOWLER_PLAY,
@@ -61,9 +74,10 @@ export const updatePlayStatus = status => {
   }
 }
 
-export const removeHowlerPlay = () => {
+export const removeHowlerPlayFromQueue = status => {
   return {
-    type: REMOVE_HOWLER_PLAY
+    type: REMOVE_HOWLER_PLAY,
+    status
   }
 }
 

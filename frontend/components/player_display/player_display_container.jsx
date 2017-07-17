@@ -32,7 +32,7 @@ const mapDispatchToProps = dispatch => {
     removeQueueItem: id => dispatch(removeQueueItem(id)),
     updateHowlerPlayer: (hp) => dispatch(updateHowlerPlayer(hp)),
     updatePlayStatus: (s) => dispatch(updatePlayStatus(s)),
-    removeHowlerPlay: () => dispatch(removeHowlerPlay()),
+    removeHowlerPlay: q => dispatch(removeHowlerPlay(q)),
     nextQueueItem: () => dispatch(nextQueueItem()),
     startPreview: src => dispatch(startPreview(src)),
     stopPreview: src => dispatch(startPreview(src)),

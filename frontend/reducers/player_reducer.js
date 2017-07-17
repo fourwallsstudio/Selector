@@ -46,7 +46,7 @@ const playerReducer = (state = defaultState, action) => {
       newState = state;
       updatedState = {
         playerQueue: newState.playerQueue.slice(1),
-        status: "paused"
+        status: action.status
       };
       return updatedState;
 
