@@ -68,7 +68,15 @@ class ShowProfile extends React.Component {
             this.props.updatePlayStatus(playerQueue[0].show._sounds[0]._paused);
           }
 
-          this.props.createNewPlay(this.props.show, this.props.currentUser);
+          let showQueue = playerQueue.map( q => q.show_id )
+
+          if (showQueue.includes(this.props.show.id)) {
+            playerQueue[0].show.pause()
+            this.props.updatePlayStatus(true);
+            this.props.changePlayerOrder(playerQueue, showQueue.indexOf(this.props.show.id))
+          } else {
+            this.props.createNewPlay(this.props.show, this.props.currentUser);
+          }
 
         } else {
 

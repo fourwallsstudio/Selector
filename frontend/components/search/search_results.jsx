@@ -6,6 +6,7 @@ import { clearSearch } from '../../actions/search_actions';
 import { fetchShowsByTag } from '../../actions/show_actions';
 import { updateCurrentTag } from '../../actions/tag_actions';
 import { updateFilter } from '../../actions/filter_actions';
+import MustBeLoggedIn from '../errors_notices/must_be_logged_in';
 
 class SearchResults extends React.Component {
   constructor(props) {
@@ -82,46 +83,53 @@ class SearchResults extends React.Component {
       })
     }
 
+    if (!this.props.currentUser) {
 
-    return (
-      <section className="search-container">
-        <div className="search-bg-img-box">
-          <div className="search-mask"></div>
+      return <MustBeLoggedIn />
 
-          <div className="search-results-container">
+    } else {
 
-            <div className="search-results-tags-box">
-              <div className="search-results-tags-head">
-                <h2>Tags</h2>
+      return (
+        <section className="search-container">
+          <div className="search-bg-img-box">
+            <div className="search-mask"></div>
+
+            <div className="search-results-container">
+
+              <div className="search-results-tags-box">
+                <div className="search-results-tags-head">
+                  <h2>Tags</h2>
+                </div>
+                <ul className="search-results-tags-feed">
+                  { tagResultFeed }
+                </ul>
               </div>
-              <ul className="search-results-tags-feed">
-                { tagResultFeed }
-              </ul>
-            </div>
 
-            <div className="search-results-shows-box">
-              <div className="search-results-shows-head">
-                <h2>Shows</h2>
+              <div className="search-results-shows-box">
+                <div className="search-results-shows-head">
+                  <h2>Shows</h2>
+                </div>
+                <ul className="search-results-shows-feed">
+                  { showResultFeed }
+                </ul>
               </div>
-              <ul className="search-results-shows-feed">
-                { showResultFeed }
-              </ul>
-            </div>
 
-            <div className="search-results-users-box">
-              <div className="search-results-users-head">
-                <h2>Users</h2>
+              <div className="search-results-users-box">
+                <div className="search-results-users-head">
+                  <h2>Users</h2>
+                </div>
+                <ul className="search-results-users-feed">
+                  { userResultFeed }
+                </ul>
               </div>
-              <ul className="search-results-users-feed">
-                { userResultFeed }
-              </ul>
+
             </div>
 
           </div>
+        </section>
+      )
+    }
 
-        </div>
-      </section>
-    )
 
   }
 }
@@ -129,6 +137,7 @@ class SearchResults extends React.Component {
 
 const mapStateToProps = state => {
   return {
+    currentUser: state.session.currentUser,
     userResults: state.search.userResults,
     showResults: state.search.showResults,
     tagResults: state.search.tagResults

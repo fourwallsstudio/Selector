@@ -5,7 +5,8 @@ import {
   UPDATE_PLAY_STATUS,
   REMOVE_HOWLER_PLAY,
   LOADING_HOWLER,
-  RESTORED_PLAY_POSITION
+  RESTORED_PLAY_POSITION,
+  CHANGE_PLAYER_ORDER
 } from '../actions/player_actions';
 import { merge } from 'lodash';
 
@@ -21,6 +22,7 @@ const playerReducer = (state = defaultState, action) => {
   let newState;
   let updatedState;
   let paused = action.status ? "paused" : "playing"
+  let newPlayerQueue = Object.assign([], state.playerQueue);
 
   switch (action.type) {
 
@@ -45,18 +47,34 @@ const playerReducer = (state = defaultState, action) => {
       return merge({}, state, { status: paused });
 
     case REMOVE_HOWLER_PLAY:
-      newState = state;
-      updatedState = {
-        playerQueue: newState.playerQueue.slice(1),
-        status: action.status
+      let newStatus = action.status;
+      if (state.playerQueue.length > 1) {
+        state.playerQueue[1].show.play();
+        newStatus = "playing";
+      }
+      let removedPlay = newPlayerQueue[0];
+      newPlayerQueue = newPlayerQueue.slice(1);
+      delete removedPlay.show;
+
+      newState = {
+        playerQueue: newPlayerQueue,
+        status: newStatus,
+        loading: state.loading,
+        restoredPlayPosition: state.restoredPlayPosition
       };
-      return updatedState;
+      return newState;
 
     case LOADING_HOWLER:
       return merge({}, state, { loading: action.loadStatus });
 
     case RESTORED_PLAY_POSITION:
       return merge({}, state, { restoredPlayPosition: action.status });
+
+    case CHANGE_PLAYER_ORDER:
+      let newFirstPos = newPlayerQueue[action.idx]
+      newPlayerQueue.splice(action.idx, 1);
+      newPlayerQueue.unshift(newFirstPos);
+      return merge({}, state, { status: "playing", playerQueue: newPlayerQueue })
 
     default:
       return state;

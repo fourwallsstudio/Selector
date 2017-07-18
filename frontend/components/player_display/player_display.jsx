@@ -22,21 +22,28 @@ class PlayerDisplay extends React.Component {
 
   componentWillReceiveProps(nextProps) {
     if (nextProps.player.playerQueue.length) {
-      if (!this.props.player.playerQueue.length ||
-        this.props.player.playerQueue[0].show_id !== nextProps.player.playerQueue[0].show_id) {
-          this.handleShowOnEnd(nextProps.player.playerQueue, nextProps.currentUser);
-          this.handleShowOnPause(nextProps.player.playerQueue, nextProps.currentUser);
-        }
+
+      if (nextProps.player.playerQueue[0].show._onend.length === 0) {
+        this.handleShowOnEnd(nextProps.player.playerQueue, nextProps.currentUser);
+      }
+
+      if (nextProps.player.playerQueue[0].show._onpause.length === 0) {
+        this.handleShowOnPause(nextProps.player.playerQueue, nextProps.currentUser);
+      }
+    } else {
+      this.setState({
+        dropdownIsActive: false
+      })
     }
   }
-
 
   handleShowOnEnd(playerQueue, currentUser) {
     playerQueue[0].show.on('end', () => {
       let userId = currentUser.id
       let showId = playerQueue[0].show_id
+
       this.props.updateQueueItem({ user_id: userId, show_id: showId, seek: 0 });
-      this.props.removeHowlerPlay(playerQueue);
+      this.props.removeHowlerPlay();
     })
   }
 
@@ -45,6 +52,7 @@ class PlayerDisplay extends React.Component {
       let newSeek = playerQueue[0].show._sounds[0]._seek;
       let userId = currentUser.id
       let showId = playerQueue[0].show_id
+
       this.props.updateQueueItem({ user_id: userId, show_id: showId, seek: newSeek });
     })
   }
@@ -82,7 +90,9 @@ class PlayerDisplay extends React.Component {
 
   render() {
     let playerQueue = this.props.player.playerQueue;
+
     if (!playerQueue.length) {
+
       return <div></div>;
 
     } else {
@@ -98,8 +108,9 @@ class PlayerDisplay extends React.Component {
       let rest = restOfQueue.map( show => {
 
         return <QueueItem key={ show.id }
-                    player={ this.props.player.playerQueue[0] } stopPreview={ this.props.stopPreview }
-                    createQueueItem={ this.props.createQueueItem }
+                    player={ this.props.player } stopPreview={ this.props.stopPreview }
+                    changePlayerOrder={ this.props.changePlayerOrder }
+                    updatePlayStatus={ this.props.updatePlayStatus }
                     preview={ this.props.preview } show={ show }
                     currentUser={ this.props.currentUser.id } />;
       })
@@ -107,18 +118,24 @@ class PlayerDisplay extends React.Component {
 
       // COUNTER & VOLUME
       if (playerQueue.length) {
+
         counter = <Countdown playerQueue={ playerQueue }
                       status={ this.props.player.status }
                       restoredPlayStatus={ this.props.player.restoredPlayPosition }
                       restoredPlayPosition={ this.props.restoredPlayPosition } />;
+
         volume = playerQueue[0].show._volume * 10;
       }
 
       // DROPDOWN
       if (this.state.dropdownIsActive) {
+
         dropdown = " dropdown-active";
+
       } else {
+
         dropdown = "";
+
       };
 
       // PLAY DISPLAY

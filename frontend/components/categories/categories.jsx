@@ -5,6 +5,7 @@ import { values } from 'lodash';
 import { updateCurrentTag } from '../../actions/tag_actions';
 import { fetchShowsByTag } from '../../actions/show_actions';
 import { updateFilter } from '../../actions/filter_actions';
+import MustBeLoggedIn from '../errors_notices/must_be_logged_in';
 
 
 class Categories extends React.Component {
@@ -40,23 +41,31 @@ class Categories extends React.Component {
       })
     }
 
-    return (
-      <div>
-        <div className="categories-head">
-          <h2>Categories</h2>
+    if (!this.props.currentUser) {
+
+      return <MustBeLoggedIn />
+
+    } else {
+
+      return (
+        <div>
+          <div className="categories-head">
+            <h2>Categories</h2>
+          </div>
+          <ul className="categories-container">
+            { bigTags }
+          </ul>
         </div>
-        <ul className="categories-container">
-          { bigTags }
-        </ul>
-      </div>
-    )
+      )
+    }
   }
 }
 
 
 const mapStateToProps = state => {
   return {
-    tags: state.tags.entities
+    tags: state.tags.entities,
+    currentUser: state.session.currentUser
   }
 }
 

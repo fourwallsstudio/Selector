@@ -3,29 +3,18 @@ import React from 'react';
 const QueueItem = (props) => {
 
   const handlePlayClick = (e) => {
-    e.preventDefault();
-    props.stopPreview(props.preview.howlPreview);
-
-    if (props.player.player[0]._sounds[0].show_id !== props.show.id) {
-
-
-      const queueItem = {
-        show_id: props.show.id,
-        user_id: props.currentUser,
-        seek: 0
-      }
-      props.createQueueItem(queueItem);
-
-    } else {
-
-      let current = props.player.player[0]._sounds[0];
-
-      if (current._paused) {
-        props.player.player[0].play();
-      } else {
-        props.player.player[0].pause();
-      }
+    e.preventDefault()
+    if (props.preview.status !== 'off') {
+      props.stopPreview(props.preview.howlPreview)
     }
+
+    if (!props.player.playerQueue[0].show._sounds[0]._paused) {
+      props.player.playerQueue[0].show.pause()
+      props.updatePlayStatus(props.player.playerQueue[0].show._sounds[0]._paused)
+    }
+
+    let showQueue = props.player.playerQueue.map( q => q.show_id )
+    props.changePlayerOrder(props.player.playerQueue, showQueue.indexOf(props.show.id))
   }
 
   const show = props.show;

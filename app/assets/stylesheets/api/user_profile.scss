@@ -37,7 +37,8 @@
 .avatar-box {
   width: 160px;
   height: 160px;
-  background-color: #EFFAFF;
+  // background-color: #EFFAFF;
+  z-index: 1;
 }
 
 .u-p-title-box {
@@ -109,6 +110,7 @@
   width: 100%;
   height: 80px;
   background-color: #EEEFF9;
+  opacity: .5;
 }
 
 

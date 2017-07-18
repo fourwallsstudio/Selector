@@ -7,6 +7,7 @@ export const UPDATE_PLAY_STATUS = 'UPDATE_PLAY_STATUS';
 export const REMOVE_HOWLER_PLAY = 'REMOVE_HOWLER_PLAY';
 export const LOADING_HOWLER = 'LOADING_HOWLER';
 export const RESTORED_PLAY_POSITION = 'RESTORED_PLAY_POSITION';
+export const CHANGE_PLAYER_ORDER = 'CHANGE_PLAYER_ORDER';
 
 
 export const createNewPlay = (show, currentUser) => {
@@ -60,14 +61,15 @@ export const createNewPlay = (show, currentUser) => {
 
 
 
-export const removeHowlerPlay = queue => {
-  return dispatch => {
-    let status = "paused";
-    if (queue.length > 1) {
-      queue[1].show.play();
-      status = "playing";
-    }
-    dispatch(removeHowlerPlayFromQueue(status))
+
+
+export const changePlayerOrder = (queue, idx) => {
+  queue[0].show.pause();
+  queue[idx].show.play();
+
+  return {
+    type: CHANGE_PLAYER_ORDER,
+    idx
   }
 }
 
@@ -94,10 +96,10 @@ export const updatePlayStatus = status => {
   }
 }
 
-export const removeHowlerPlayFromQueue = status => {
+export const removeHowlerPlay = () => {
   return {
     type: REMOVE_HOWLER_PLAY,
-    status
+    status: 'paused'
   }
 }
 

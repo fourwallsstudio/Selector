@@ -94,7 +94,7 @@ class Countdown extends React.Component {
 
   render() {
     let restorePlayPopUp;
-    console.log(this.props.restoredPlayStatus);
+
     if (this.props.restoredPlayStatus) {
       restorePlayPopUp = <div className="retore-play-pop-box">
         <p>restored play position</p>

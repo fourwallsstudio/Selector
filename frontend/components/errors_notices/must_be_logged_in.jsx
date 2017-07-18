@@ -15,9 +15,13 @@ const MustBeLoggedIn = type => {
   }
 
   return (
-    <div className="must-be-logged-in">
-      <h1>MUST BE LOGGED IN{ action }</h1>
-    </div>
+    <section className="home-container">
+      <div className="home-mask"></div>
+      <div className="home-img-box"></div>
+      <div className="must-be-logged-in">
+        <h1>MUST BE LOGGED IN{ action }</h1>
+      </div>
+    </section>
   )
 };
 

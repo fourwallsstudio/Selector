@@ -4,7 +4,7 @@ import { fetchAllShows } from '../../actions/show_actions';
 import { selectFilteredShows, selectShowsByTag } from '../../reducers/selecters';
 import { createQueueItem } from '../../actions/queue_actions';
 import { startPreview, stopPreview } from '../../actions/preview_actions';
-import { createNewPlay, updatePlayStatus } from '../../actions/player_actions';
+import { createNewPlay, updatePlayStatus, changePlayerOrder } from '../../actions/player_actions';
 
 const mapStateToProps = (state, ownProps) => {
   return {
@@ -26,7 +26,8 @@ const mapDispatchToProps = dispatch => {
     startPreview: src => dispatch(startPreview(src)),
     stopPreview: src => dispatch(stopPreview(src)),
     createNewPlay: (show, currentUser) => dispatch(createNewPlay(show, currentUser)),
-    updatePlayStatus: status => dispatch(updatePlayStatus(status))
+    updatePlayStatus: status => dispatch(updatePlayStatus(status)),
+    changePlayerOrder: (queue, idx) => dispatch(changePlayerOrder(queue, idx))
   }
 }
 

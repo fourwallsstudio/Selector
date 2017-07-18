@@ -12,7 +12,8 @@ import {
   updateHowlerPlayer,
   updatePlayStatus,
   removeHowlerPlay,
-  restoredPlayPosition
+  restoredPlayPosition,
+  changePlayerOrder
  } from '../../actions/player_actions';
 
 
@@ -33,8 +34,9 @@ const mapDispatchToProps = dispatch => {
     removeQueueItem: id => dispatch(removeQueueItem(id)),
     updateHowlerPlayer: (hp) => dispatch(updateHowlerPlayer(hp)),
     updatePlayStatus: (s) => dispatch(updatePlayStatus(s)),
-    removeHowlerPlay: q => dispatch(removeHowlerPlay(q)),
+    removeHowlerPlay: () => dispatch(removeHowlerPlay()),
     restoredPlayPosition: status => dispatch(restoredPlayPosition(status)),
+    changePlayerOrder: (queue, idx) => dispatch(changePlayerOrder(queue, idx)),
     nextQueueItem: () => dispatch(nextQueueItem()),
     startPreview: src => dispatch(startPreview(src)),
     stopPreview: src => dispatch(startPreview(src)),

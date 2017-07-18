@@ -54,6 +54,7 @@ class UploadForm extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     this.setState({ uploadInProgress: true });
+    window.scrollTo(0, 0);
 
     var file = this.state.imageFile;
     var formData = new FormData();
@@ -209,6 +210,8 @@ class UploadForm extends React.Component {
             </p>
           </div>
 
+          { this.renderErrors() }
+
           <div className="upload-form-box">
 
             <form onSubmit={ this.handleSubmit }>
@@ -256,8 +259,6 @@ class UploadForm extends React.Component {
                   </ul>
                 </div>
               </div>
-
-              { this.renderErrors() }
 
               <button>Publish</button>
             </form>
