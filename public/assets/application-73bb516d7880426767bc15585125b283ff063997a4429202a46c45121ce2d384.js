@@ -57161,6 +57161,7 @@ var PlayerDisplay = function (_React$Component) {
     value: function handleShowOnEnd(playerQueue, currentUser) {
       var _this2 = this;
 
+      console.log("onend", playerQueue[0].show_id);
       playerQueue[0].show.on('end', function () {
         var userId = currentUser.id;
         var showId = playerQueue[0].show_id;
@@ -60829,13 +60830,17 @@ var playerReducer = function playerReducer() {
       return (0, _lodash.merge)({}, state, { status: paused });
 
     case _player_actions.REMOVE_HOWLER_PLAY:
+      console.log("reducer queue", state.playerQueue);
+
       var newStatus = action.status;
       if (state.playerQueue.length > 1) {
         state.playerQueue[1].show.play();
         newStatus = "playing";
       }
       var removedPlay = newPlayerQueue[0];
+
       console.log("removed play", removedPlay.show_id);
+
       newPlayerQueue = newPlayerQueue.slice(1);
       // delete removedPlay.show;
 
