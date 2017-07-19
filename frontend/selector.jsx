@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
     delete window.currentUser;
 
   } else {
-    store = configureStore();
+    store = configureStore()
   }
 
   const root = document.getElementById('root');
