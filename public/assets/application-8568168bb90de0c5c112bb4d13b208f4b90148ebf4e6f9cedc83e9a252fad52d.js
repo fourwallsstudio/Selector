@@ -57162,6 +57162,8 @@ var PlayerDisplay = function (_React$Component) {
       var _this2 = this;
 
       console.log("onend", playerQueue[0].show_id);
+      console.log("onend function", playerQueue[0].show._onend);
+
       playerQueue[0].show.on('end', function () {
 
         console.log("onend fired", playerQueue[0].show_id);
