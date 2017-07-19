@@ -57162,11 +57162,10 @@ var PlayerDisplay = function (_React$Component) {
       var _this2 = this;
 
       console.log("onend", playerQueue[0].show_id);
-      console.log("onend function", playerQueue[0].show._onend);
 
       playerQueue[0].show.on('end', function () {
 
-        console.log("onend fired", playerQueue[0].show_id);
+        console.log("onend fired", playerQueue[0].show_id, playerQueue[0].show._sounds[0]._id);
 
         var userId = currentUser.id;
         var showId = playerQueue[0].show_id;
@@ -60843,11 +60842,12 @@ var playerReducer = function playerReducer() {
         newStatus = "playing";
       }
       var removedPlay = newPlayerQueue[0];
-
-      console.log("removed play", removedPlay.show_id);
+      removedPlay.show._onend = [];
+      console.log("removed play onend", removedPlay.show._onend);
+      console.log("removed play show id howl id", removedPlay.show_id, removedPlay.show._sounds[0]._id);
 
       newPlayerQueue = newPlayerQueue.slice(1);
-      delete removedPlay.show;
+      // delete removedPlay.show;
 
       newState = {
         playerQueue: newPlayerQueue,

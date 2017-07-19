@@ -55,11 +55,12 @@ const playerReducer = (state = defaultState, action) => {
         newStatus = "playing";
       }
       let removedPlay = newPlayerQueue[0];
-
-      console.log("removed play", removedPlay.show_id);
+      removedPlay.show._onend = [];
+      console.log("removed play onend", removedPlay.show._onend);
+      console.log("removed play show id howl id", removedPlay.show_id, removedPlay.show._sounds[0]._id);
 
       newPlayerQueue = newPlayerQueue.slice(1);
-      delete removedPlay.show;
+      // delete removedPlay.show;
 
       newState = {
         playerQueue: newPlayerQueue,

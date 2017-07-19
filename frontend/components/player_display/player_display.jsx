@@ -39,11 +39,10 @@ class PlayerDisplay extends React.Component {
 
   handleShowOnEnd(playerQueue, currentUser) {
     console.log("onend", playerQueue[0].show_id);
-    console.log("onend function", playerQueue[0].show._onend);
 
     playerQueue[0].show.on('end', () => {
 
-      console.log("onend fired", playerQueue[0].show_id);
+      console.log("onend fired", playerQueue[0].show_id, playerQueue[0].show._sounds[0]._id );
 
       let userId = currentUser.id
       let showId = playerQueue[0].show_id
