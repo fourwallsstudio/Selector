@@ -47,7 +47,7 @@ const playerReducer = (state = defaultState, action) => {
       return merge({}, state, { status: paused });
 
     case REMOVE_HOWLER_PLAY:
-      console.log("reducer queue", state.playerQueue);
+      // console.log("reducer queue", state.playerQueue);
 
       let newStatus = action.status;
       if (state.playerQueue.length > 1) {
@@ -56,8 +56,8 @@ const playerReducer = (state = defaultState, action) => {
       }
       let removedPlay = newPlayerQueue[0];
       removedPlay.show._onend = [];
-      console.log("removed play onend", removedPlay.show._onend);
-      console.log("removed play show id howl id", removedPlay.show_id, removedPlay.show._sounds[0]._id);
+      // console.log("removed play onend", removedPlay.show._onend);
+      // console.log("removed play show id howl id", removedPlay.show_id, removedPlay.show._sounds[0]._id);
 
       newPlayerQueue = newPlayerQueue.slice(1);
       // delete removedPlay.show;
