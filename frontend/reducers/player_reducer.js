@@ -53,8 +53,9 @@ const playerReducer = (state = defaultState, action) => {
         newStatus = "playing";
       }
       let removedPlay = newPlayerQueue[0];
+      console.log("removed play", removedPlay.show_id);
       newPlayerQueue = newPlayerQueue.slice(1);
-      delete removedPlay.show;
+      // delete removedPlay.show;
 
       newState = {
         playerQueue: newPlayerQueue,
