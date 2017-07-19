@@ -47,13 +47,17 @@ const playerReducer = (state = defaultState, action) => {
       return merge({}, state, { status: paused });
 
     case REMOVE_HOWLER_PLAY:
+      console.log("reducer queue", state.playerQueue);
+
       let newStatus = action.status;
       if (state.playerQueue.length > 1) {
         state.playerQueue[1].show.play();
         newStatus = "playing";
       }
       let removedPlay = newPlayerQueue[0];
+
       console.log("removed play", removedPlay.show_id);
+
       newPlayerQueue = newPlayerQueue.slice(1);
       // delete removedPlay.show;
 
