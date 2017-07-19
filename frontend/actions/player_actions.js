@@ -35,7 +35,6 @@ export const createNewPlay = (show, currentUser) => {
       })
 
       howlPlay.show.on("loaderror", (id, err) => {
-        console.log(err);
         return reject(id, err);
       })
     })
