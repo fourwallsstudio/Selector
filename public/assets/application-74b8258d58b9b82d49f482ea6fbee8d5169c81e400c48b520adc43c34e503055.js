@@ -60847,7 +60847,7 @@ var playerReducer = function playerReducer() {
       console.log("removed play", removedPlay.show_id);
 
       newPlayerQueue = newPlayerQueue.slice(1);
-      // delete removedPlay.show;
+      delete removedPlay.show;
 
       newState = {
         playerQueue: newPlayerQueue,
