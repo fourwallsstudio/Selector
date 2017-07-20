@@ -57005,9 +57005,15 @@ var Countdown = function (_React$Component) {
     value: function stringify(n) {
       var sec = (n % 60).toString();
       var min = Math.floor(n / 60).toString();
+      var hour = Math.floor(n / 3600).toString();
 
-      sec = sec.length === 1 ? '0' + sec : sec;
-      return min + ":" + sec;
+      var secStr = sec.length === 1 ? '0' + sec : sec;
+      var minStr = min.length === 1 ? '0' + min : min;
+      var hourStr = hour.length === 1 ? '0' + hour : hour;
+
+      var display = hour > 0 ? [hourStr, minStr, secStr].join(":") : [minStr, secStr].join(":");
+
+      return display;
     }
   }, {
     key: 'handleSeek',

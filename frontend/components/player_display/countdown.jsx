@@ -74,9 +74,15 @@ class Countdown extends React.Component {
   stringify(n) {
     let sec = (n % 60).toString();
     let min = (Math.floor(n / 60)).toString();
+    let hour = (Math.floor(n / 3600)).toString();
 
-    sec = (sec.length === 1) ? '0' + sec : sec;
-    return min + ":" + sec;
+    let secStr = (sec.length === 1) ? '0' + sec : sec;
+    let minStr = (min.length === 1) ? '0' + min : min;
+    let hourStr = (hour.length === 1) ? '0' + hour : hour;
+
+    let display = hour > 0 ? [hourStr, minStr, secStr].join(":") : [minStr, secStr].join(":")
+
+    return display;
   }
 
   handleSeek(e) {
