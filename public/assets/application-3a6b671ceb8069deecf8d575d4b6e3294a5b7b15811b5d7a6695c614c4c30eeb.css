@@ -1626,7 +1626,7 @@ input[type="submit"] {
 .s-f-i-foot-right {
   display: flex;
   justify-content: flex-end;
-  width: 180px;
+  width: 200px;
   margin: 0;
 }
 

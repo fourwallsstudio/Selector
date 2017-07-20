@@ -6,6 +6,7 @@ export const howlerPlayer = show => {
     src: source,
     html5: true,
     preload: true
+
   });
 
   return { show_id: show.id, show: howlPlay };
