@@ -1046,8 +1046,8 @@ nav links
   display: flex;
   flex-wrap: wrap;
   align-items: baseline;
-  width: 160px;
-  padding: 5px 10px;
+  width: 180px;
+  padding: 5px 0;
 }
 
 /* line 286, /Users/calvinmcelroy/Documents/webstuff/app_course/final_project/Selector/app/assets/stylesheets/api/player.scss */
