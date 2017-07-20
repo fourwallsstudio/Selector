@@ -57004,7 +57004,7 @@ var Countdown = function (_React$Component) {
     key: 'stringify',
     value: function stringify(n) {
       var sec = (n % 60).toString();
-      var min = Math.floor(n / 60).toString();
+      var min = (Math.floor(n / 60) % 60).toString();
       var hour = Math.floor(n / 3600).toString();
 
       var secStr = sec.length === 1 ? '0' + sec : sec;
