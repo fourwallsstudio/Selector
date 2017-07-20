@@ -1,8 +1,8 @@
 .user-welcome-container {
-  width: 90%;
+  width: 85%;
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-around;
+  justify-content: space-between;
   margin: 0 auto;
 }
 
@@ -80,4 +80,10 @@
   font-size: 24px;
   color: #697F95;
   line-height: 50px;
+}
+
+@media screen and (min-width: 1600px) {
+  .user-welcome-container {
+    width: 70%;
+  }
 }

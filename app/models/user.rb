@@ -49,7 +49,7 @@ class User < ActiveRecord::Base
     class_name: :Following,
     foreign_key: :follower_id
 
-  has_attached_file :avatar, default_url: "default_bg.jpg"
+  has_attached_file :avatar, default_url: "https://s3.us-east-2.amazonaws.com/imagehost1234/BlueSquiggle1.jpg"
   validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\Z/
 
   after_initialize :ensure_session_token

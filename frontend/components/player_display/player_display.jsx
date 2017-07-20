@@ -36,14 +36,16 @@ class PlayerDisplay extends React.Component {
       })
     }
 
-    if (nextProps.player.playerQueue.length > 1) {
-      this.setState({
-        dropdownIsActive: true
-      })
-    } else {
-      this.setState({
-        dropdownIsActive: false
-      })
+    if (this.props.player.playerQueue.length != nextProps.player.playerQueue.length) {
+      if (nextProps.player.playerQueue.length === 2) {
+        this.setState({
+          dropdownIsActive: true
+        })
+      } else if (nextProps.player.playerQueue.length === 1) {
+        this.setState({
+          dropdownIsActive: false
+        })
+      }
     }
   }
 
