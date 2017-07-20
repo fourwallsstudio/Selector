@@ -42,7 +42,8 @@
 .first-queue-image-box {
   width: 50px;
   height: 50px;
-  background-color: #2D4050;
+  // background-color: #2D4050;
+  background-color: white;
   overflow: hidden;
 }
 
@@ -75,8 +76,9 @@
 
 .first-queue-play-detail h2 {
   width: 180px;
-  height: 18px;
+  height: 22px;
   overflow: hidden;
+  padding-right: 5px;
 }
 
 .first-queue-play-detail h4 {
@@ -91,6 +93,7 @@
 }
 
 .first-queue-play-detail button {
+  display: none;
   height: 12px;
   font-size: 8px;
   padding: 2px 6px;
@@ -267,7 +270,8 @@
 .rest-queue-image-box {
   width: 50px;
   height: 50px;
-  background-color: #1F3341;
+  // background-color: #1F3341;
+  background-color: white;
   overflow: hidden;
 }
 
@@ -281,7 +285,7 @@
 
 .rest-queue-play-detail h2 {
   width: 180px;
-  height: 18px;
+  height: 22px;
   overflow: hidden;
 }
 

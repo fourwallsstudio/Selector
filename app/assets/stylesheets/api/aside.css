@@ -1,5 +1,6 @@
 .user-welcome-aside-container {
-  width: 300px;
+  /*width: 300px;*/
+  width: 30%;
   margin: 20px 0;
   /*border: solid 1px grey;*/
 }

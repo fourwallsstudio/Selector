@@ -140,7 +140,8 @@
 */
 
 .user-profile-aside-container {
-  width: 300px;
+  // width: 300px;
+  width: 30%;
   // border: solid 1px grey;
 }
 
@@ -223,4 +224,11 @@
   width: 100%;
   height: auto;
   border-radius: 5px;
+}
+
+
+@media screen and (min-width: 1600px) {
+  .show-feed-container {
+    margin-right: 10%;
+  }
 }

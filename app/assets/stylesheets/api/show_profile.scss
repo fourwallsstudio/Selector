@@ -36,7 +36,8 @@
   align-items: flex-end;
   width: 85%;
   height: 320px;
-  margin-left: -544px;
+  // margin-left: -544px;
+  transform: translateX(-50%);
 }
 
 
@@ -269,6 +270,7 @@
 
 .s-p-about-container {
   width: 60%;
+  // width: 654px;
 }
 
 .s-p-about-head {
@@ -501,6 +503,7 @@
 
 .show-profile-aside-container {
   width: 300px;
+  width: 30%;
 }
 
 .show-profile-aside-container h2 {
@@ -565,16 +568,19 @@
 }
 
 .comment-form-form {
-  width: 580px;
+  // width: 580px;
+  width: 90%;
 }
 
 .comment-form-input {
+  // float: right;
   height: 90px;
-  width: 96%;
+  // width: 96%;
+  width: 99%;
   color: #B3BEC9;
   background-color: #F5F9FC;
   border: solid 1px lightgrey;
-  padding: 10px;
+  padding: 10px 0 10px 10px;
   border-radius: 5px;
 }
 
@@ -625,7 +631,8 @@
 }
 
 .comment-feed-item-content {
-  width: 580px;
+  // width: 580px;
+  width: 90%;
 }
 
 .comment-feed-item-head {
