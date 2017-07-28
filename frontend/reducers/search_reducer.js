@@ -17,6 +17,7 @@ const searchReducer = (state = defaultState, action) => {
   Object.freeze(state);
 
   switch (action.type) {
+    
     case SEARCH_USERS:
     return merge({}, state, { userResults: action.users })
 

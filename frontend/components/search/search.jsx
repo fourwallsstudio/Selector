@@ -17,17 +17,12 @@ class Search extends React.Component {
   }
 
   componentDidMount() {
-    // if (!values(this.props.tags).length) {
-    //   this.props.fetchAllTags();
-    // }
   }
 
   handleSearch(e) {
     let search = e.target.value;
 
-    this.setState({
-      searchVal: search
-    })
+    this.setState({ searchVal: search })
 
     this.props.searchForUsers(search)
     this.props.searchForShows(search)
@@ -37,28 +32,19 @@ class Search extends React.Component {
 
   handleClick(e) {
     e.preventDefault();
-
-    this.setState({
-      active: true
-    })
-
+    this.setState({ active: true })
     this.props.history.push("/search");
   }
 
   handleClose(e) {
     e.preventDefault();
-
-    this.setState({
-      active: false
-    })
-
-    // this.props.history.push("/");
+    this.setState({ active: false })
   }
 
   render() {
-    let searchActive = "";
+    let searchActive = this.state.active ? "search-active" : "";
 
-    if (this.state.active) { searchActive = "search-active" }
+    // if (this.state.active) { searchActive = "search-active" }
 
     return (
       <div className={`header-search-bar ${searchActive}`}>

@@ -56,9 +56,7 @@ class SessionForm extends React.Component {
   update(stateKey) {
     return e => {
 			this.setState({ [stateKey]: e.target.value });
-			if (this.props.errors.length) {
-				this.props.clearErrors();
-			}
+			if (this.props.errors.length) this.props.clearErrors();
 		}
   }
 

@@ -9,8 +9,8 @@ export const signup = user => {
     return (
       APIUtil.signup(user)
         .then(user => dispatch(receiveUser(user)))
-          .then(result => dispatch(receiveCurrentUser(result.user.id)),
-            err => dispatch(receiveErrors(err.responseJSON)))
+        .then(result => dispatch(receiveCurrentUser(result.user.id)),
+          err => dispatch(receiveErrors(err.responseJSON)))
     )
   }
 }
@@ -19,7 +19,7 @@ export const login = user => {
   return dispatch => {
     return (
       APIUtil.login(user)
-      .then(user => dispatch(receiveUser(user)))
+        .then(user => dispatch(receiveUser(user)))
         .then(result => dispatch(receiveCurrentUser(result.user.id)),
           err => dispatch(receiveErrors(err.responseJSON)))
     )

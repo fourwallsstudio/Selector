@@ -17,19 +17,19 @@ class Countdown extends React.Component {
     let end = this.props.playerQueue[0].show._sounds[0]._stop;
     let seek = this.props.playerQueue[0].show._sounds[0]._seek;
 
-    this.setState({
-      countdown: Math.round( end - seek ),
-      countup: Math.round( seek ),
-     });
+    this.setState(
+      {
+        countdown: Math.round( end - seek ),
+        countup: Math.round( seek ),
+      }
+    );
 
     this.currentInterval = setInterval(this.counter, 1000);
   }
 
   componentWillReceiveProps(nextProps) {
     if (nextProps.restoredPlayStatus) {
-      setTimeout(() => {
-        this.props.restoredPlayPosition(false);
-      }, 5000)
+      setTimeout(() => this.props.restoredPlayPosition(false), 5000)
     }
 
     if (this.props.status !== nextProps.status ||
@@ -38,10 +38,12 @@ class Countdown extends React.Component {
       let end = nextProps.playerQueue[0].show._sounds[0]._stop;
       let seek = nextProps.playerQueue[0].show._sounds[0]._seek;
 
-      this.setState({
-        countdown: Math.round( end - seek ),
-        countup: Math.round( seek )
-      });
+      this.setState(
+        {
+          countdown: Math.round( end - seek ),
+          countup: Math.round( seek )
+        }
+      );
 
       if (nextProps.playerQueue[0].show._sounds[0]._paused) {
         clearInterval(this.currentInterval);
@@ -65,10 +67,12 @@ class Countdown extends React.Component {
   }
 
   counter() {
-    this.setState({
-      countdown: this.state.countdown - 1,
-      countup: this.state.countup + 1,
-    });
+    this.setState(
+      {
+        countdown: this.state.countdown - 1,
+        countup: this.state.countup + 1,
+      }
+    );
   }
 
   stringify(n) {
@@ -80,7 +84,9 @@ class Countdown extends React.Component {
     let minStr = (min.length === 1) ? '0' + min : min;
     let hourStr = (hour.length === 1) ? '0' + hour : hour;
 
-    let display = hour > 0 ? [hourStr, minStr, secStr].join(":") : [minStr, secStr].join(":")
+    let display = hour > 0
+      ? [hourStr, minStr, secStr].join(":")
+      : [minStr, secStr].join(":")
 
     return display;
   }
@@ -90,10 +96,12 @@ class Countdown extends React.Component {
     let end = this.props.playerQueue[0].show._sounds[0]._stop;
     let seek = Math.floor(parseInt(e.target.value));
 
-    this.setState({
-      countdown: Math.round(end - seek),
-      countup: seek,
-    })
+    this.setState(
+      {
+        countdown: Math.round(end - seek),
+        countup: seek,
+      }
+    )
 
     this.props.playerQueue[0].show.seek(this.state.countup);
   }

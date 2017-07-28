@@ -4,12 +4,15 @@ const MustBeLoggedIn = type => {
   let action;
 
   switch (type) {
+
     case "upload":
       action = " TO UPLOAD";
     break;
+
     case "edit":
       action = " TO EDIT";
     break;
+
     default:
       action = "";
   }

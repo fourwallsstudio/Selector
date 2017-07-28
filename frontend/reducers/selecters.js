@@ -21,6 +21,7 @@ export const selectAllShows = ({ shows }) => {
   let ordered = values(shows.entities).sort((a,b) => {
     return new Date(b.created_at) - new Date(a.created_at)
   });
+
   return ordered;
 }
 
@@ -53,9 +54,7 @@ export const selectFilteredShows = (state, filter) => {
 
 
 const trendingFilter = ({ shows }) => {
-  let ordered = values(shows.entities).sort((a,b) => {
-    return b.plays - a.plays
-  });
+  let ordered = values(shows.entities).sort((a,b) => b.plays - a.plays);
 
   return ordered;
 }
@@ -88,12 +87,15 @@ export const selectShow = ({ shows }, showId) => {
 export const selectPlayerQueue = (shows, queue) => {
   let playerQueue = []
   let keys = Object.keys(shows);
+
   keys.length && queue.forEach( (queueItem) => {
     if (keys.includes(queueItem.show_id.toString())) {
-      playerQueue.push({
+      playerQueue.push(
+        {
         show: shows[queueItem.show_id],
         seek: queueItem.seek,
-      })
+        }
+      )
     }
   })
 
@@ -113,9 +115,7 @@ export const selectListeners = ({ users }, ids) => {
 export const selectComments = ({ comments }, ids) => {
   let allComments = {};
 
-  ids.forEach( id => {
-    allComments[id] = comments[id]
-  })
+  ids.forEach( id => allComments[id] = comments[id] )
 
   return allComments;
 }

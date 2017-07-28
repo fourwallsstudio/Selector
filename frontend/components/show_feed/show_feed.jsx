@@ -9,9 +9,7 @@ class ShowFeed extends React.Component {
   }
 
   componentDidMount() {
-    if (this.props.filter !== 'tag') {
-      this.props.fetchAllShows(this.props.filter);
-    }
+    if (this.props.filter !== 'tag') this.props.fetchAllShows(this.props.filter);
   }
 
   shouldComponentUpdate(nextProps) {

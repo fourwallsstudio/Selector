@@ -24,11 +24,13 @@ class Canvas extends React.Component {
     ctx.beginPath();
 
     for (let i = 0; i <= totalDays; i ++) {
-      if (ppd[i]) {
-        ctx.lineTo(xUnit * i, yUnit * ppd[i]);
-      } else {
-        ctx.lineTo(xUnit * i, 0);
-      }
+      ppd[i] ? ctx.lineTo(xUnit * i, yUnit * ppd[i]) : ctx.lineTo(xUnit * i, 0)
+
+      // if (ppd[i]) {
+      //   ctx.lineTo(xUnit * i, yUnit * ppd[i]);
+      // } else {
+      //   ctx.lineTo(xUnit * i, 0);
+      // }
     }
 
     ctx.strokeStyle = '#34495E';

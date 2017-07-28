@@ -4,6 +4,7 @@ const QueueItem = (props) => {
 
   const handlePlayClick = (e) => {
     e.preventDefault()
+
     if (props.preview.status !== 'off') {
       props.stopPreview(props.preview.howlPreview)
     }

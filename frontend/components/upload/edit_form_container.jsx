@@ -12,6 +12,7 @@ import { fetchAllTags } from '../../actions/tag_actions';
 
 const mapStateToProps = (state, { match, location }) => {
   const showId = parseInt(match.params.showId);
+  
   return {
     formType: "edit",
     loggedIn: Boolean(state.session.currentUser),

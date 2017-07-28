@@ -7,9 +7,7 @@ export const REMOVE_SHOW_DATA = 'REMOVE_SHOW_DATA';
 export const fetchShowData = showId => {
   return dispatch => {
     APIUtil.fetchShowData(showId)
-      .then( data => {
-        return dispatch(receiveShowData(data))
-      })
+      .then( data => dispatch(receiveShowData(data)) )
   }
 }
 

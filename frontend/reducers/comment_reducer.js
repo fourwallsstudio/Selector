@@ -12,6 +12,7 @@ const commentReducer = (state = {}, action) => {
   let newState = state;
 
   switch (action.type) {
+
     case CREATE_COMMENT:
       newState[action.comment.id] = action.comment
       return newState;
@@ -26,12 +27,15 @@ const commentReducer = (state = {}, action) => {
       delete updatedState[action.comment.id]
       return updatedState;
 
-    case RECEIVE_COMMENTS:
+    case RECEIVE_COMMENTS: {
       let updatedState = {}
       values(action.comments).forEach( comment => {
         updatedState[comment.id] = comment
       })
+      
       return updatedState;
+    }
+
     default:
       return state;
   }

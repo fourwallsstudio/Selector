@@ -26,28 +26,25 @@ class HeaderNav extends React.Component {
   }
 
   shouldComponentUpdate(nextProps, nextState) {
-    if (nextState.dropdownActive !== this.state.dropdownActive) {
-      return true;
-    }
+    if (nextState.dropdownActive !== this.state.dropdownActive) true;
+    if (!this.props.currentUser || !nextProps.currentUser) true;
 
-    if (!this.props.currentUser || !nextProps.currentUser) {
-      return true
-
-    } else {
-
-      return false
-    }
+    return false
   }
 
   handleClick() {
     if (this.state.dropdownActive) {
-      this.setState({
-        dropdownActive: false
-      });
+      this.setState(
+        {
+          dropdownActive: false
+        }
+      );
     } else {
-      this.setState({
-        dropdownActive: true
-      });
+      this.setState(
+        {
+          dropdownActive: true
+        }
+      );
     }
   }
 
@@ -61,13 +58,13 @@ class HeaderNav extends React.Component {
 
   render() {
     let rightSideNav;
-    let dropdownActive;
+    let dropdownActive = this.state.dropdownActive ? " dropdown-active" : ""
 
-    if (this.state.dropdownActive) {
-      dropdownActive = " dropdown-active";
-    } else {
-      dropdownActive = "";
-    }
+    // if (this.state.dropdownActive) {
+    //   dropdownActive = " dropdown-active";
+    // } else {
+    //   dropdownActive = "";
+    // }
 
     if (!this.props.loggedIn && !this.props.currentUser) {
       rightSideNav = <div className="head-nav-right-login">

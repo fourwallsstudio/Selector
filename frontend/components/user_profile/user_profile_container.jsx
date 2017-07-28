@@ -6,6 +6,7 @@ import { createFollowing, deleteFollowing } from '../../actions/following_action
 
 const mapStateToProps = (state, { match }) => {
   const userId = parseInt(match.params.userId);
+  
   return {
     user: selectUser(state, userId),
     userId,

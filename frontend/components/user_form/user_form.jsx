@@ -11,6 +11,7 @@ class UserForm extends React.Component {
       country: "",
       avatar: null,
     },
+
     this.avatarPreviewUrl = "";
 
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -22,16 +23,14 @@ class UserForm extends React.Component {
     let currentUser = this.props.currentUser
     this.avatarPreviewUrl = currentUser.avatar_url
 
-    this.setState({
-      bio: currentUser.bio || "",
-      city: currentUser.city || "",
-      country: currentUser.country || ""
-    });
+    this.setState(
+      {
+        bio: currentUser.bio || "",
+        city: currentUser.city || "",
+        country: currentUser.country || ""
+      }
+    );
   }
-
-  componentWillReceiveProps(nextProps) {
-  }
-
 
   handleSubmit(e) {
     e.preventDefault();
@@ -59,10 +58,7 @@ class UserForm extends React.Component {
   update(stateKey) {
     return e => {
 			this.setState({ [stateKey]: e.target.value });
-
-      if (this.props.errors) {
-        this.props.clearErrors();
-      }
+      if (this.props.errors) this.props.clearErrors();
 		}
   }
 

@@ -46,21 +46,17 @@ const playerReducer = (state = defaultState, action) => {
     case UPDATE_PLAY_STATUS:
       return merge({}, state, { status: paused });
 
-    case REMOVE_HOWLER_PLAY:
-      // console.log("reducer queue", state.playerQueue);
-
+    case REMOVE_HOWLER_PLAY: {
       let newStatus = action.status;
+
       if (state.playerQueue.length > 1) {
         state.playerQueue[1].show.play();
         newStatus = "playing";
       }
       let removedPlay = newPlayerQueue[0];
       removedPlay.show._onend = [];
-      // console.log("removed play onend", removedPlay.show._onend);
-      // console.log("removed play show id howl id", removedPlay.show_id, removedPlay.show._sounds[0]._id);
 
       newPlayerQueue = newPlayerQueue.slice(1);
-      // delete removedPlay.show;
 
       newState = {
         playerQueue: newPlayerQueue,
@@ -69,6 +65,7 @@ const playerReducer = (state = defaultState, action) => {
         restoredPlayPosition: state.restoredPlayPosition
       };
       return newState;
+    }
 
     case LOADING_HOWLER:
       return merge({}, state, { loading: action.loadStatus });
@@ -76,11 +73,12 @@ const playerReducer = (state = defaultState, action) => {
     case RESTORED_PLAY_POSITION:
       return merge({}, state, { restoredPlayPosition: action.status });
 
-    case CHANGE_PLAYER_ORDER:
+    case CHANGE_PLAYER_ORDER: {
       let newFirstPos = newPlayerQueue[action.idx]
       newPlayerQueue.splice(action.idx, 1);
       newPlayerQueue.unshift(newFirstPos);
       return merge({}, state, { status: "playing", playerQueue: newPlayerQueue })
+    }
 
     default:
       return state;

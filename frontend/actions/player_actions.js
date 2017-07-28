@@ -14,7 +14,8 @@ export const createNewPlay = (show, currentUser) => {
   return dispatch => {
     dispatch(loadingHowler(true));
 
-    let seek = currentUser.play_history[show.id] ? currentUser.play_history[show.id].seek : 0
+    let seek = currentUser.play_history[show.id]
+      ? currentUser.play_history[show.id].seek : 0
 
     const queueItem = {
       show_id: show.id,
@@ -24,7 +25,8 @@ export const createNewPlay = (show, currentUser) => {
 
     const howlPlay = howlerPlayer(show);
 
-    // check if src loaded, refactor into checkIfLoaded util
+    // check if src loaded
+    // TODO: refactor into checkIfLoaded util
     const howlPromise = new Promise((resolve, reject) => {
       if (howlPlay.show._state === 'loaded') {
         return resolve([howlPlay, queueItem]);
@@ -43,18 +45,15 @@ export const createNewPlay = (show, currentUser) => {
       let newShow = result[0];
       let queueParams = result[1];
 
-      if (queueParams.seek !== 0) {
-        dispatch(restoredPlayPosition(true));
-      }
+      if (queueParams.seek !== 0) dispatch(restoredPlayPosition(true));
 
       newShow.show.play();
       newShow.show.seek(queueParams.seek);
 
       dispatch(addHowlerPlay(newShow));
       dispatch(createQueueItem(queueParams))
-    }).catch(() => {
-      dispatch(loadingHowler(false))
     })
+      .catch( () => dispatch(loadingHowler(false)) )
   }
 }
 

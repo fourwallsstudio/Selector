@@ -26,9 +26,7 @@ export const updateQueueItem = queueItem => {
 export const deleteQueueItem = id => {
   return dispatch => {
     return APIUtil.deleteQueueItem(id)
-      .then( ()  => {
-        dispatch(removeQueueItem())
-      });
+      .then( () => dispatch(removeQueueItem()) );
   }
 }
 

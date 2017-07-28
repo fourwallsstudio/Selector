@@ -22,8 +22,10 @@ class ShowFeedItem extends React.Component {
 
     if (!this.props.player.loading) {
 
-      if (!playerQueue.length ||
-        playerQueue[0].show_id !== this.props.show.id) {
+      if (
+        !playerQueue.length ||
+        playerQueue[0].show_id !== this.props.show.id
+      ) {
 
           if (playerQueue.length) {
             playerQueue[0].show.pause();
@@ -57,9 +59,11 @@ class ShowFeedItem extends React.Component {
   }
 
   handlePreview() {
-    if (!this.props.player.loading &&
-        this.props.player.status !== 'playing' &&
-        this.props.preview.status !== 'previewing') {
+    if (
+      !this.props.player.loading &&
+      this.props.player.status !== 'playing' &&
+      this.props.preview.status !== 'previewing'
+    ) {
       this.props.startPreview(this.props.show.audio_url);
     }
   };

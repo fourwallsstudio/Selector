@@ -26,24 +26,27 @@ class UserProfile extends React.Component {
   handleFollow(e) {
     e.preventDefault();
     if (e.target.value === "follow") {
-      this.props.createFollowing({
-        follower_id: this.props.currentUser.id,
-        following_id: this.props.userId
-      })
+      this.props.createFollowing(
+        {
+          follower_id: this.props.currentUser.id,
+          following_id: this.props.userId
+        }
+      )
     } else {
-      this.props.deleteFollowing({
-        follower_id: this.props.currentUser.id,
-        following_id: this.props.userId
-      })
+      this.props.deleteFollowing(
+        {
+          follower_id: this.props.currentUser.id,
+          following_id: this.props.userId
+        }
+      )
     }
   }
 
   render() {
 
     if (!this.props.user) {
-      return (
-        <h1>Loading</h1>
-      )
+      return <h1>Loading</h1>;
+
     } else {
       const user = this.props.user
       let updateOrFollow;
@@ -51,9 +54,11 @@ class UserProfile extends React.Component {
       if (user.id === this.props.currentUser.id) {
         updateOrFollow = <Link className="update-user-image"
           to={`/user/${user.id}/settings`} >Update cover image</Link>;
+
       } else if (this.props.currentUser.followings_ids.includes(user.id)) {
         updateOrFollow = <button className="u-p-follow-b"
           onClick={ this.handleFollow } value="unfollow">Unfollow</button>;
+          
       } else {
         updateOrFollow = <button className="u-p-follow-b"
           onClick={ this.handleFollow } value="follow">Follow</button>;

@@ -7,6 +7,7 @@ import { fetchAllTags } from '../../actions/tag_actions';
 
 const mapStateToProps = state => {
   let session = state.session
+  
   return {
     formType: "upload",
     loggedIn: Boolean(session.currentUser),

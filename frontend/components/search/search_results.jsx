@@ -43,7 +43,8 @@ class SearchResults extends React.Component {
     let tagResultFeed;
     let showResultFeed;
     let userResultFeed;
-    if (values(this.props.tagResults).length) {
+
+    if (values(this.props.tagResults).length > 0) {
       tagResultFeed = this.props.tagResults.map( tag => {
         return (
           <li key={ tag.id } className="search-result-tag-item"
@@ -56,7 +57,7 @@ class SearchResults extends React.Component {
     }
 
 
-    if (values(this.props.showResults).length) {
+    if (values(this.props.showResults).length > 0) {
       showResultFeed = this.props.showResults.map( show => {
         return (
           <li key={ show.id } className="search-result-show-item">
@@ -70,7 +71,7 @@ class SearchResults extends React.Component {
       })
     }
 
-    if (values(this.props.userResults).length) {
+    if (values(this.props.userResults).length > 0) {
       userResultFeed = this.props.userResults.map( user => {
         return (
           <li key={ user.id } className="search-result-user-item">

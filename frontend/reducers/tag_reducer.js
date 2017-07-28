@@ -11,12 +11,15 @@ const defaultState = {
 
 const tagReducer = (state = {}, action) => {
   switch (action.type) {
+
     case RECEIVE_TAGS:
       let tags = {}
       action.tags.forEach( tag => tags[tag.id] = tag )
       return merge({}, state, { entities: tags });
+
     case UPDATE_CURRENT_TAG:
       return merge({}, state, { currentTag: action.tagId });
+      
     default:
       return state;
   }

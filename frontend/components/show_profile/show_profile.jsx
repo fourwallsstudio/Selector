@@ -60,8 +60,10 @@ class ShowProfile extends React.Component {
 
     if (!this.props.player.loading) {
 
-      if (!playerQueue.length ||
-        playerQueue[0].show_id !== this.props.show.id) {
+      if (
+        !playerQueue.length ||
+        playerQueue[0].show_id !== this.props.show.id
+      ) {
 
           if (playerQueue.length) {
             playerQueue[0].show.pause();
@@ -73,20 +75,25 @@ class ShowProfile extends React.Component {
           if (showQueue.includes(this.props.show.id)) {
             playerQueue[0].show.pause()
             this.props.updatePlayStatus(true);
-            this.props.changePlayerOrder(playerQueue, showQueue.indexOf(this.props.show.id))
+            this.props.changePlayerOrder(
+              playerQueue,
+              showQueue.indexOf(this.props.show.id),
+            )
           } else {
             this.props.createNewPlay(this.props.show, this.props.currentUser);
           }
 
         } else {
 
-          let current = playerQueue[0].show._sounds[0];
+          let current = playerQueue[0].show;
 
-          if (current._paused) {
-            playerQueue[0].show.play();
-          } else {
-            playerQueue[0].show.pause();
-          }
+          current._sounds[0]._paused ? current.play() : current.pause();
+
+          // if (current._paused) {
+          //   playerQueue[0].show.play();
+          // } else {
+          //   playerQueue[0].show.pause();
+          // }
 
           this.props.updatePlayStatus(current._paused);
         }
@@ -94,8 +101,10 @@ class ShowProfile extends React.Component {
   }
 
   handlePreview() {
-    if (this.props.player.status !== 'playing' &&
-        this.props.preview.status !== 'previewing') {
+    if (
+      this.props.player.status !== 'playing' &&
+      this.props.preview.status !== 'previewing'
+    ) {
       this.props.startPreview(this.props.show.audio_url);
     }
   };
@@ -117,9 +126,7 @@ class ShowProfile extends React.Component {
 
   render() {
     if (!this.props.show) {
-      return (
-        <div>loading</div>
-      )
+      return <div>loading</div>;
 
     } else {
 
@@ -172,8 +179,10 @@ class ShowProfile extends React.Component {
         );
       }
 
-      if (this.props.currentUser &&
-        this.props.currentUser.id === show.author_id) {
+      if (
+        this.props.currentUser &&
+        this.props.currentUser.id === show.author_id
+      ) {
 
         userControls = <div className="show-user-controls-container">
                         <Link to={`/edit/${show.id}`} className="s-u-c-b edit">

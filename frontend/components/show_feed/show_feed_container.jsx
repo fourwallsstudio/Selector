@@ -8,14 +8,15 @@ import { createNewPlay, updatePlayStatus, changePlayerOrder } from '../../action
 
 const mapStateToProps = (state, ownProps) => {
   return {
-    shows: ownProps.filter === 'tag' ?
-      selectShowsByTag(state, state.tags.currentTag) : selectFilteredShows(state, ownProps.filter),
+    shows: ownProps.filter === 'tag'
+      ? selectShowsByTag(state, state.tags.currentTag)
+      : selectFilteredShows(state, ownProps.filter),
     queue: state.queue,
     player: state.player,
     currentUser: state.users[state.session.currentUser],
     filter: ownProps.filter,
     preview: state.preview,
-    tags: state.tags.entities
+    tags: state.tags.entities,
   }
 }
 
@@ -27,7 +28,7 @@ const mapDispatchToProps = dispatch => {
     stopPreview: src => dispatch(stopPreview(src)),
     createNewPlay: (show, currentUser) => dispatch(createNewPlay(show, currentUser)),
     updatePlayStatus: status => dispatch(updatePlayStatus(status)),
-    changePlayerOrder: (queue, idx) => dispatch(changePlayerOrder(queue, idx))
+    changePlayerOrder: (queue, idx) => dispatch(changePlayerOrder(queue, idx)),
   }
 }
 

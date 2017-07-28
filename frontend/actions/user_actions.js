@@ -9,8 +9,8 @@ export const fetchUser = id => {
   return dispatch => {
     return (
       APIUtil.fetchUser(id)
-      .then(user => dispatch(receiveUser(user)),
-      err => dispatch(receiveErrors(err.responseJSON)))
+        .then(user => dispatch(receiveUser(user)),
+          err => dispatch(receiveErrors(err.responseJSON)))
     )
   }
 }
@@ -20,7 +20,7 @@ export const fetchUsers = showId => {
     return (
       APIUtil.fetchUsers(showId)
         .then(users => dispatch(receiveUsers(users)),
-        err => dispatch(receiveErrors(err.responseJSON)))
+          err => dispatch(receiveErrors(err.responseJSON)))
     )
   }
 }
@@ -29,10 +29,8 @@ export const fetchUserFollowings = userId => {
   return dispatch => {
     return (
       APIUtil.fetchUserFollowings(userId)
-        .then( users => {
-          dispatch(receiveUsers(users))
-        } ,
-        err => dispatch(receiveErrors(err.responseJSON)))
+        .then( users => dispatch(receiveUsers(users)),
+          err => dispatch(receiveErrors(err.responseJSON)))
     )
   }
 }
@@ -41,8 +39,8 @@ export const editUser = (id, formData) => {
   return dispatch => {
     return (
       APIUtil.editUser(id, formData)
-      .then(user => dispatch(updateUser(user)),
-      err => dispatch(receiveErrors(err.responseJSON)))
+        .then(user => dispatch(updateUser(user)),
+          err => dispatch(receiveErrors(err.responseJSON)))
     )
   }
 }

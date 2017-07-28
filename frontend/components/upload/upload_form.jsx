@@ -31,23 +31,18 @@ class UploadForm extends React.Component {
     if (this.props.show) {
       this.imagePreviewUrl = this.props.show.image_url
       this.audioFileName = this.props.show.title;
-      this.setState({
-        title: this.props.show.title,
-        description: this.props.show.description,
-        tagIds: this.props.show.tag_ids
-      });
+      this.setState(
+        {
+          title: this.props.show.title,
+          description: this.props.show.description,
+          tagIds: this.props.show.tag_ids
+        }
+      );
     }
-
-    // this.props.fetchAllTags();
   }
 
   componentWillReceiveProps(nextProps) {
-
-    if (nextProps.errors.length) {
-      this.setState({
-        uploadInProgress: false
-      })
-    }
+    if (nextProps.errors.length) this.setState({ uploadInProgress: false })
   }
 
 
@@ -113,17 +108,13 @@ class UploadForm extends React.Component {
     let file = e.target.files[0];
     this.audioFileName = file.name;
     this.setState({ audio: file });
-    if (this.props.errors) {
-      this.props.clearErrors();
-    }
+    if (this.props.errors) this.props.clearErrors();
   }
 
   updateImage(e) {
     e.preventDefault();
 
-    if (this.props.errors) {
-      this.props.clearErrors();
-    }
+    if (this.props.errors) this.props.clearErrors();
 
     let reader = new FileReader();
     let file = e.target.files[0];
@@ -132,7 +123,6 @@ class UploadForm extends React.Component {
       this.imagePreviewUrl = reader.result;
       this.setState({ image: file });
     }
-
 
     reader.readAsDataURL(file);
   }
@@ -144,16 +134,12 @@ class UploadForm extends React.Component {
       let newState = this.state.tagIds
       newState.splice(i, 1)
 
-      this.setState({
-        tagIds: newState
-      })
+      this.setState({ tagIds: newState })
+
     } else {
       let nextState = this.state.tagIds
       nextState.push(parseInt(e.currentTarget.value))
-
-      this.setState({
-        tagIds: nextState
-      })
+      this.setState({ tagIds: nextState })
     }
 
   }
@@ -170,7 +156,7 @@ class UploadForm extends React.Component {
       let uploadInProgress = "";
       let tagCheckboxes;
 
-      if (this.state.uploadInProgress) { uploadInProgress = "upload-in-progress" };
+      if (this.state.uploadInProgress) uploadInProgress = "upload-in-progress";
 
       if (this.imagePreviewUrl !== "") {
         imagePreview = <img className="image-preview" src={this.imagePreviewUrl} />;
