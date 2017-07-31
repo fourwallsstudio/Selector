@@ -4,15 +4,15 @@ import { fetchUser, fetchUserFollowings } from '../../actions/user_actions';
 import { selectUser, selectFollowings } from '../../reducers/selecters';
 import { createFollowing, deleteFollowing } from '../../actions/following_actions';
 
-const mapStateToProps = (state, { match }) => {
-  const userId = parseInt(match.params.userId);
-  
+const mapStateToProps = (state, ownProps) => {
+  const userId = parseInt(ownProps.match.params.userId);
+
   return {
     user: selectUser(state, userId),
     userId,
-    followings: selectFollowings(state, userId),
+    followings: selectFollowings(state, ownProps),
     users: state.users,
-    currentUser: selectUser(state, state.session.currentUser),
+    currentUser: state.users[state.session.currentUser],
     currentUserId: state.session.currentUser
   }
 }

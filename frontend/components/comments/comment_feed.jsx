@@ -1,7 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { merge, values } from 'lodash';
-import { selectComments } from '../../reducers/selecters';
+import { values } from 'lodash';
 import javascript_time_ago from 'javascript-time-ago';
 javascript_time_ago.locale(require('javascript-time-ago/locales/en'));
 import english from 'javascript-time-ago/locales/en';

@@ -18,10 +18,7 @@ import {
   removeHowlerPlay,
   changePlayerOrder
  } from '../../actions/player_actions';
-import {
-  selectShow,
-  selectComments
-} from '../../reducers/selecters';
+import { selectShow } from '../../reducers/selecters';
 
 
 

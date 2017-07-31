@@ -10,6 +10,7 @@ import { values } from 'lodash';
 const commentReducer = (state = {}, action) => {
   Object.freeze(state);
   let newState = state;
+  let updatedState;
 
   switch (action.type) {
 
@@ -32,7 +33,7 @@ const commentReducer = (state = {}, action) => {
       values(action.comments).forEach( comment => {
         updatedState[comment.id] = comment
       })
-      
+
       return updatedState;
     }
 

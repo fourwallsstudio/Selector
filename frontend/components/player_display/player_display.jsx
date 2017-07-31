@@ -1,6 +1,5 @@
 import React from 'react';
 import { values } from 'lodash';
-import { selectPlayerQueue } from '../../reducers/selecters';
 import QueueItem from './queue_item';
 import Countdown from './countdown';
 

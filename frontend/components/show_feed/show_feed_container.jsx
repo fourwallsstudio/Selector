@@ -9,8 +9,8 @@ import { createNewPlay, updatePlayStatus, changePlayerOrder } from '../../action
 const mapStateToProps = (state, ownProps) => {
   return {
     shows: ownProps.filter === 'tag'
-      ? selectShowsByTag(state, state.tags.currentTag)
-      : selectFilteredShows(state, ownProps.filter),
+      ? selectShowsByTag(state)
+      : selectFilteredShows(state, ownProps),
     queue: state.queue,
     player: state.player,
     currentUser: state.users[state.session.currentUser],

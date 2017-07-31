@@ -1,31 +1,37 @@
+import { createSelector } from 'reselect';
 import { values } from 'lodash';
 
 export const selectUser = ({ users }, userId) => {
   return users[userId];
 }
 
-export const selectFollowings = ({ users }, userId) => {
-  let followings = [];
+const getUsers = state => state.users
+const getUserId = (state, props) => parseInt(props.match.params.userId)
 
-  if ( Object.keys(users).includes(userId.toString()) ) {
-    users[userId].followings_ids.forEach(id => {
-      if ( Object.keys(users).includes(id.toString()) ) {
-        followings.push(users[id])
-      }
-    })
+export const selectFollowings = createSelector(
+  [ getUsers, getUserId ],
+  (users, userId) => {
+    if (users[userId]) {
+      return users[userId].followings_ids.filter(id => users[id]).map(id => users[id])
+    } else {
+      return []
+    }
   }
-  return followings;
-}
+)
 
-export const selectAllShows = ({ shows }) => {
-  let ordered = values(shows.entities).sort((a,b) => {
-    return new Date(b.created_at) - new Date(a.created_at)
-  });
 
-  return ordered;
-}
+const getShows = state => state.shows
 
-export const selectFilteredShows = (state, filter) => {
+export const selectAllShows = createSelector(
+  getShows,
+  shows => {
+    return values(shows.entities).sort((a,b) => new Date(b.created_at) - new Date(a.created_at))
+  }
+)
+
+
+export const selectFilteredShows = (state, props) => {
+  const filter = props.filter
 
   if (filter === "most_recent") {
     return selectAllShows(state);
@@ -60,7 +66,8 @@ const trendingFilter = ({ shows }) => {
 }
 
 
-export const selectShowsByTag = (state, tagId) => {
+export const selectShowsByTag = state => {
+  const tagId = state.tags.currentTag
   let filteredShows = [];
 
   let tagShows = state.tags.entities[tagId].show_ids;
@@ -81,41 +88,4 @@ export const selectShowsByTag = (state, tagId) => {
 
 export const selectShow = ({ shows }, showId) => {
   return shows.entities[showId];
-}
-
-
-export const selectPlayerQueue = (shows, queue) => {
-  let playerQueue = []
-  let keys = Object.keys(shows);
-
-  keys.length && queue.forEach( (queueItem) => {
-    if (keys.includes(queueItem.show_id.toString())) {
-      playerQueue.push(
-        {
-        show: shows[queueItem.show_id],
-        seek: queueItem.seek,
-        }
-      )
-    }
-  })
-
-  return playerQueue;
-}
-
-export const selectListeners = ({ users }, ids) => {
-  let listeners = [];
-
-  ids.length && ids.forEach( (id) => {
-      listeners.push(users[id]);
-    });
-
-  return listeners;
-}
-
-export const selectComments = ({ comments }, ids) => {
-  let allComments = {};
-
-  ids.forEach( id => allComments[id] = comments[id] )
-
-  return allComments;
 }
