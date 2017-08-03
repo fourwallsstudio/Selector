@@ -8,7 +8,6 @@ import {
   RESTORED_PLAY_POSITION,
   CHANGE_PLAYER_ORDER
 } from '../actions/player_actions';
-import { merge } from 'lodash';
 
 const defaultState = {
   playerQueue: [],
@@ -33,7 +32,7 @@ const playerReducer = (state = defaultState, action) => {
       status: "playing",
       loading: false
     };
-    return merge({}, state, updatedState);
+    return { ...state, ...updatedState };
 
     case UPDATE_HOWLER_PLAYER:
       newState = state;
@@ -41,10 +40,10 @@ const playerReducer = (state = defaultState, action) => {
         playerQueue: [action.howlPlay],
         status: paused
       };
-      return merge({}, state, updatedState);
+      return { ...state, ...updatedState };
 
     case UPDATE_PLAY_STATUS:
-      return merge({}, state, { status: paused });
+      return { ...state, status: paused };
 
     case REMOVE_HOWLER_PLAY: {
       let newStatus = action.status;
@@ -68,16 +67,16 @@ const playerReducer = (state = defaultState, action) => {
     }
 
     case LOADING_HOWLER:
-      return merge({}, state, { loading: action.loadStatus });
+      return { ...state, loading: action.loadStatus };
 
     case RESTORED_PLAY_POSITION:
-      return merge({}, state, { restoredPlayPosition: action.status });
+      return { ...state, restoredPlayPosition: action.status };
 
     case CHANGE_PLAYER_ORDER: {
       let newFirstPos = newPlayerQueue[action.idx]
       newPlayerQueue.splice(action.idx, 1);
       newPlayerQueue.unshift(newFirstPos);
-      return merge({}, state, { status: "playing", playerQueue: newPlayerQueue })
+      return { ...state, status: "playing", playerQueue: newPlayerQueue }
     }
 
     default:

@@ -3,7 +3,7 @@ import {
   RECEIVE_USERS,
   UPDATE_USER
 } from '../actions/user_actions';
-import { merge, values } from 'lodash';
+import { values } from 'lodash';
 
 const userReducer = (state = {}, action) => {
   Object.freeze(state);
@@ -11,7 +11,7 @@ const userReducer = (state = {}, action) => {
   switch (action.type) {
 
     case RECEIVE_USER:
-      let newState = merge({}, state, { [action.user.id]: action.user })
+      let newState = { ...state, [action.user.id]: action.user }
       newState[action.user.id].followers_ids = action.user.followers_ids
       newState[action.user.id].followings_ids = action.user.followings_ids
       return newState
@@ -21,10 +21,10 @@ const userReducer = (state = {}, action) => {
       action.users.forEach( user => {
         updatedState[user.id] = user
       })
-    return merge({}, state, updatedState);
+    return { ...state, ...updatedState }
 
     case UPDATE_USER:
-    return merge({}, state, { [action.user.id]: action.user })
+    return { ...state, [action.user.id]: action.user }
 
     default:
       return state;

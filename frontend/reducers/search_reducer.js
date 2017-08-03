@@ -1,4 +1,3 @@
-import { merge } from 'lodash';
 import {
   SEARCH_USERS,
   SEARCH_SHOWS,
@@ -17,15 +16,15 @@ const searchReducer = (state = defaultState, action) => {
   Object.freeze(state);
 
   switch (action.type) {
-    
+
     case SEARCH_USERS:
-    return merge({}, state, { userResults: action.users })
+    return { ...state, userResults: action.users }
 
     case SEARCH_SHOWS:
-    return merge({}, state, { showResults: action.shows })
+    return { ...state, showResults: action.shows }
 
     case SEARCH_TAGS:
-    return merge({}, state, { tagResults: action.tags })
+    return { ...state, tagResults: action.tags }
 
     case CLEAR_SEARCH:
     return defaultState;

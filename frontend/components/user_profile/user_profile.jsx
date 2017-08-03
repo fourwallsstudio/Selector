@@ -14,7 +14,7 @@ class UserProfile extends React.Component {
   componentDidMount() {
     this.props.fetchUser(this.props.userId)
     this.props.fetchUser(this.props.currentUserId)
-    this.props.fetchUserFollowings(this.props.userId);
+    this.props.fetchUserFollowings(this.props.userId)
   }
 
   componentWillReceiveProps(nextProps) {
@@ -58,7 +58,7 @@ class UserProfile extends React.Component {
       } else if (this.props.currentUser.followings_ids.includes(user.id)) {
         updateOrFollow = <button className="u-p-follow-b"
           onClick={ this.handleFollow } value="unfollow">Unfollow</button>;
-          
+
       } else {
         updateOrFollow = <button className="u-p-follow-b"
           onClick={ this.handleFollow } value="follow">Follow</button>;
@@ -85,7 +85,11 @@ class UserProfile extends React.Component {
 
           <div className="u-p-main-container-background">
             <div className="u-p-main-container">
-              <UserProfileAside user={ user } users={ this.props.users } followings={ this.props.followings } />
+
+              <UserProfileAside
+                user={ user }
+                users={ this.props.users }
+                followings={ this.props.followings } />
 
               <ShowFeedContainer filter={ user.id }/>
             </div>

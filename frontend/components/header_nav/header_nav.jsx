@@ -60,12 +60,6 @@ class HeaderNav extends React.Component {
     let rightSideNav;
     let dropdownActive = this.state.dropdownActive ? " dropdown-active" : ""
 
-    // if (this.state.dropdownActive) {
-    //   dropdownActive = " dropdown-active";
-    // } else {
-    //   dropdownActive = "";
-    // }
-
     if (!this.props.loggedIn && !this.props.currentUser) {
       rightSideNav = <div className="head-nav-right-login">
                       <Link to={`/login`}

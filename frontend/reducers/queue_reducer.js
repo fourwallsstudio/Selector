@@ -6,7 +6,6 @@ import {
   UPDATE_QUEUE_ITEM,
   RECEIVE_ERRORS
 } from '../actions/queue_actions';
-import { merge } from 'lodash';
 
 const defaultState = {
   queue: []
@@ -20,11 +19,11 @@ const queueReducer = (state = defaultState, action) => {
   switch (action.type) {
 
     case QUEUE_DISABLED:
-      return merge({}, state, { queueDisabled: action.status });
+      return { ...state, queueDisabled: action.status };
 
     case CREATE_QUEUE_ITEM:
       updatedQueue = [action.queueItem].concat(newState["queue"]);
-      return merge({}, state, { queue: updatedQueue });
+      return { ...state, queue: updatedQueue };
 
     case REMOVE_QUEUE_ITEM:
       newState.queue.splice(action.idx, 1);
@@ -41,7 +40,7 @@ const queueReducer = (state = defaultState, action) => {
       return { queue: updatedQueue }
 
     case RECEIVE_ERRORS:
-      return merge({}, state, { queueDisabled: false });
+      return { ...state, queueDisabled: false };
 
     default:
       return state;

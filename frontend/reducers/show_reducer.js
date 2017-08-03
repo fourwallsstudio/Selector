@@ -4,7 +4,6 @@ import {
   RECEIVE_SHOW,
   REMOVE_SHOW,
 } from '../actions/show_actions';
-import { merge } from 'lodash';
 
 const defaultState = {
   entities: {}
@@ -17,21 +16,18 @@ const showReducer = (state = defaultState, action) => {
   switch (action.type) {
 
     case CREATE_SHOW:
-      return merge({}, state, {
-        entities: { [action.show.id]: action.show } });
+      return { ...state, entities: { [action.show.id]: action.show } };
 
     case RECEIVE_SHOWS: {
       let newEntities = {}
       action.shows.forEach((show) => { newEntities[show.id] = show } )
-      
-      return merge({}, state, {
-        entities: newEntities
-      });
+
+      return { ...state, entities: newEntities };
     }
 
     case RECEIVE_SHOW:
     newState.entities[action.show.id] = action.show;
-    return merge({}, newState)
+    return { ...newState }
 
     case REMOVE_SHOW:
       delete newState.entities[action.show.id]

@@ -19,12 +19,12 @@ const commentReducer = (state = {}, action) => {
       return newState;
 
     case RECEIVE_COMMENT:
-      updatedState = Object.assign({}, newState);
+      updatedState = { ...newState };
       updatedState[action.comment.id] = action.comment;
       return updatedState;
 
     case REMOVE_COMMENT:
-      updatedState = Object.assign({}, newState);
+      updatedState = { ...newState };
       delete updatedState[action.comment.id]
       return updatedState;
 

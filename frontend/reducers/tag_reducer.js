@@ -2,7 +2,6 @@ import {
   RECEIVE_TAGS,
   UPDATE_CURRENT_TAG
 } from '../actions/tag_actions';
-import { merge } from 'lodash';
 
 const defaultState = {
   entities: {},
@@ -15,11 +14,11 @@ const tagReducer = (state = {}, action) => {
     case RECEIVE_TAGS:
       let tags = {}
       action.tags.forEach( tag => tags[tag.id] = tag )
-      return merge({}, state, { entities: tags });
+      return { ...state, entities: tags }
 
     case UPDATE_CURRENT_TAG:
-      return merge({}, state, { currentTag: action.tagId });
-      
+      return { ...state, currentTag: action.tagId }
+
     default:
       return state;
   }
