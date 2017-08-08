@@ -1,22 +1,27 @@
-import { connect } from 'react-redux';
 import ShowFeed from './show_feed';
+import { connect } from 'react-redux';
 import { fetchAllShows } from '../../actions/show_actions';
-import { selectFilteredShows, selectShowsByTag } from '../../reducers/selecters';
 import { createQueueItem } from '../../actions/queue_actions';
 import { startPreview, stopPreview } from '../../actions/preview_actions';
+import { selectFilteredShows, selectShowsByTag, selectUser } from '../../reducers/selecters';
 import { createNewPlay, updatePlayStatus, changePlayerOrder } from '../../actions/player_actions';
 
+
 const mapStateToProps = (state, ownProps) => {
+  const { queue, player, preview, tags } = state
+  const { filter } = ownProps
+  const shows = filter === 'tag'
+    ? selectShowsByTag(state)
+    : selectFilteredShows(state, ownProps)
+
   return {
-    shows: ownProps.filter === 'tag'
-      ? selectShowsByTag(state)
-      : selectFilteredShows(state, ownProps),
-    queue: state.queue,
-    player: state.player,
-    currentUser: state.users[state.session.currentUser],
-    filter: ownProps.filter,
-    preview: state.preview,
-    tags: state.tags.entities,
+    currentUser: selectUser(state, state.session.currentUser),
+    tags: tags.entities,
+    shows,
+    queue,
+    player,
+    filter,
+    preview,
   }
 }
 

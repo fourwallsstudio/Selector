@@ -4,8 +4,8 @@ import { editUser } from '../../actions/user_actions';
 
 
 const mapStateToProps = (state, { match }) => {
-  let session = state.session;
-  
+  const session = state.session;
+
   return {
     loggedIn: Boolean(session.currentUser),
     errors: session.errors,

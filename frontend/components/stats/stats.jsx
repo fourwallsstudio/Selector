@@ -1,14 +1,10 @@
 import React from 'react';
-import { connect } from 'react-redux';
 import Canvas from './canvas';
-import { fetchShowData, removeShowData } from '../../actions/graph_data_actions';
 import { values } from 'lodash';
+import { connect } from 'react-redux';
+import { fetchShowData, removeShowData } from '../../actions/graph_data_actions';
 
 class Stats extends React.Component {
-  constructor(props) {
-    super(props)
-
-  }
 
   componentDidMount() {
     this.props.fetchShowData(this.props.showId);

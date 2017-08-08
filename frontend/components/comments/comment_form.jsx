@@ -5,9 +5,7 @@ class CommentForm extends React.Component {
   constructor(props) {
     super(props)
 
-    this.state = {
-      body: ""
-    }
+    this.state = { body: "" }
 
     this.handelSubmit = this.handelSubmit.bind(this);
     this.handelChange = this.handelChange.bind(this);
@@ -27,17 +25,14 @@ class CommentForm extends React.Component {
   handelChange(e) {
     e.preventDefault();
 
-    this.setState({
-      body: e.target.value
-    })
+    this.setState({ body: e.target.value })
   }
 
   render() {
     if (!this.props.currentUser) {
       return <div></div>;
     } else {
-      let show = this.props.show;
-      let currentUser = this.props.currentUser;
+      const { show, currentUser } = this.props
 
       return (
         <div className="comment-form-container">

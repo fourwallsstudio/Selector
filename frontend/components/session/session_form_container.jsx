@@ -5,11 +5,13 @@ import { clearErrors } from '../../actions/error_actions';
 
 
 const mapStateToProps = (state, { location }) => {
-  let session = state.session;
+  const { session, errors } = state
+  const formType = location.pathname === '/login' ? 'login' : 'signup'
+
   return {
     loggedIn: Boolean(session.currentUser),
-    errors: state.errors,
-    formType: location.pathname === '/login' ? 'login' : 'signup'
+    formType,
+    errors,
   }
 }
 

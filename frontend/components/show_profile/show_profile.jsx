@@ -1,21 +1,17 @@
-import React from 'react';
+import React from 'react'
+import { Howl } from 'howler'
+import { values, merge } from 'lodash'
 import { withRouter, Link } from 'react-router-dom'
-import { Howl } from 'howler';
-import { values, merge } from 'lodash';
-import ShowProfileAside from './show_profile_aside';
-import CommentFeed from '../comments/comment_feed';
-import CommentForm from '../comments/comment_form';
-import javascript_time_ago from 'javascript-time-ago'
-javascript_time_ago.locale(require('javascript-time-ago/locales/en'));
+import CommentFeed from '../comments/comment_feed'
+import CommentForm from '../comments/comment_form'
+import ShowProfileAside from './show_profile_aside'
 import english from 'javascript-time-ago/locales/en'
+import javascript_time_ago from 'javascript-time-ago'
+javascript_time_ago.locale(require('javascript-time-ago/locales/en'))
 
 class ShowProfile extends React.Component {
   constructor(props) {
     super(props)
-
-    this.state = {
-
-    }
 
     this.handleDelete = this.handleDelete.bind(this);
     this.handleEditClick = this.handleEditClick.bind(this);
@@ -34,11 +30,11 @@ class ShowProfile extends React.Component {
     if (this.props.showId !== nextProps.showId ) {
       nextProps.fetchSingleShow(nextProps.showId)
     }
-
   }
 
   handleDelete(e) {
     e.preventDefault();
+
     if (this.props.player.playerQueue[0].show_id === this.props.showId) {
       this.props.player.playerQueue[0].show.pause();
       this.props.removeHowlerPlay(this.props.player.playerQueue);
@@ -56,7 +52,7 @@ class ShowProfile extends React.Component {
   handlePlayClick(e) {
     e.preventDefault();
     this.props.stopPreview(this.props.preview.howlPreview);
-    let playerQueue = this.props.player.playerQueue;
+    const playerQueue = this.props.player.playerQueue;
 
     if (!this.props.player.loading) {
 
@@ -85,15 +81,9 @@ class ShowProfile extends React.Component {
 
         } else {
 
-          let current = playerQueue[0].show;
+          const current = playerQueue[0].show;
 
           current._sounds[0]._paused ? current.play() : current.pause();
-
-          // if (current._paused) {
-          //   playerQueue[0].show.play();
-          // } else {
-          //   playerQueue[0].show.pause();
-          // }
 
           this.props.updatePlayStatus(current._paused);
         }
@@ -131,13 +121,13 @@ class ShowProfile extends React.Component {
     } else {
 
       const show = this.props.show;
-      let userControls;
-      let playDisplay;
       let timeAgoJS = new javascript_time_ago('en-US');
       let timeAgo = timeAgoJS.format(new Date(this.props.show.created_at));
-      let previewActive = "";
-      let tags = "";
       let playerQueue = this.props.player.playerQueue;
+      let previewActive = "";
+      let userControls;
+      let playDisplay;
+      let tags = "";
 
       if (show.tag_ids.length && this.props.tags) {
         tags = show.tag_ids.map( id => {
@@ -218,6 +208,7 @@ class ShowProfile extends React.Component {
 
                       </div>;
       }
+      
       return (
         <section className="show-profile-container">
           <div className="show-profile-header">

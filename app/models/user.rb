@@ -111,6 +111,10 @@ class User < ActiveRecord::Base
     self.followings.map { |f| f.following_id }
   end
 
+  def non_followings
+    User.all.select { |u| !followings_ids.include?(u.id) }
+  end
+
   private
 
   def ensure_session_token

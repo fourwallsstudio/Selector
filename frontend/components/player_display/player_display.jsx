@@ -30,26 +30,14 @@ class PlayerDisplay extends React.Component {
         this.handleShowOnPause(nextProps.player.playerQueue, nextProps.currentUser);
       }
     } else {
-      this.setState(
-        {
-          dropdownIsActive: false
-        }
-      )
+      this.setState({ dropdownIsActive: false })
     }
 
     if (this.props.player.playerQueue.length != nextProps.player.playerQueue.length) {
       if (nextProps.player.playerQueue.length === 2) {
-        this.setState(
-          {
-            dropdownIsActive: true
-          }
-        )
+        this.setState({ dropdownIsActive: true })
       } else if (nextProps.player.playerQueue.length === 1) {
-        this.setState(
-          {
-            dropdownIsActive: false
-          }
-        )
+        this.setState({ dropdownIsActive: false })
       }
     }
   }
@@ -68,25 +56,21 @@ class PlayerDisplay extends React.Component {
 
   handleShowOnPause(playerQueue, currentUser) {
     playerQueue[0].show.on('pause', () => {
-      let newSeek = playerQueue[0].show._sounds[0]._seek;
-      let userId = currentUser.id
-      let showId = playerQueue[0].show_id
+      const newSeek = playerQueue[0].show._sounds[0]._seek;
+      const userId = currentUser.id
+      const showId = playerQueue[0].show_id
 
       this.props.updateQueueItem({ user_id: userId, show_id: showId, seek: newSeek });
     })
   }
 
   dropdownHandle() {
-    this.setState(
-      {
-        dropdownIsActive: !this.state.dropdownIsActive
-      }
-    )
+    this.setState({ dropdownIsActive: !this.state.dropdownIsActive })
   }
 
   handlePlayClick(e) {
     e.preventDefault();
-    let current = this.props.player.playerQueue[0].show._sounds[0];
+    const current = this.props.player.playerQueue[0].show._sounds[0];
 
     if (current._paused) {
       this.props.player.playerQueue[0].show.play();
@@ -101,11 +85,7 @@ class PlayerDisplay extends React.Component {
     e.preventDefault();
     let current = this.props.player.playerQueue[0].show;
 
-    this.setState(
-      {
-        volume: parseInt(e.target.value)
-      }
-    )
+    this.setState({ volume: parseInt(e.target.value) })
 
     current.volume(this.state.volume / 10);
   }
@@ -149,17 +129,6 @@ class PlayerDisplay extends React.Component {
 
         volume = playerQueue[0].show._volume * 10;
       }
-
-      // DROPDOWN
-      // if (this.state.dropdownIsActive) {
-      //
-      //   dropdown = " dropdown-active";
-      //
-      // } else {
-      //
-      //   dropdown = "";
-      //
-      // };
 
       // PLAY DISPLAY
         if (this.props.player.status === 'playing') {

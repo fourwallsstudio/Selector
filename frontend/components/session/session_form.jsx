@@ -5,6 +5,7 @@ import Draggable from 'react-draggable';
 class SessionForm extends React.Component {
 	constructor(props) {
 		super(props);
+
 		this.state = {
 			username: "",
       email: "",
@@ -19,7 +20,8 @@ class SessionForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    const user = Object.assign({}, this.state);
+    const user = { ...this.state }
+
     if (this.props.formType === 'login') {
       this.props.login(user)
 				.then(() => this.props.history.push('/home'))

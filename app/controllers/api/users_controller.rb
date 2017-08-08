@@ -13,6 +13,13 @@ class Api::UsersController < ApplicationController
       following_ids = User.find(params[:userId]).followings_ids
       @users = following_ids.map { |id| User.find(id) }
 
+    elsif params[:nonFollowingUserId]
+
+      @users = User.find(params[:nonFollowingUserId]).non_followings
+
+    else
+
+      @users = User.all
     end
   end
 

@@ -16,9 +16,6 @@ class Search extends React.Component {
     this.handleClose = this.handleClose.bind(this);
   }
 
-  componentDidMount() {
-  }
-
   handleSearch(e) {
     let search = e.target.value;
 
@@ -43,8 +40,6 @@ class Search extends React.Component {
 
   render() {
     let searchActive = this.state.active ? "search-active" : "";
-
-    // if (this.state.active) { searchActive = "search-active" }
 
     return (
       <div className={`header-search-bar ${searchActive}`}>

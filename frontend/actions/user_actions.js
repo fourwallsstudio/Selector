@@ -35,6 +35,27 @@ export const fetchUserFollowings = userId => {
   }
 }
 
+export const fetchNonFollowings = userId => {
+  return dispatch => {
+    return (
+      APIUtil.fetchNonFollowings(userId)
+        .then( users => dispatch(receiveUsers(users)),
+          err => dispatch(receiveErrors(err.responseJSON)))
+    )
+  }
+}
+
+
+export const fetchAllUsers = () => {
+  return dispatch => {
+    return (
+      APIUtil.fetchAllUsers()
+        .then( users => dispatch(receiveUsers(users)),
+          err => dispatch(receiveErrors(err.responseJSON)))
+    )
+  }
+}
+
 export const editUser = (id, formData) => {
   return dispatch => {
     return (

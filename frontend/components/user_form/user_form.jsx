@@ -20,7 +20,7 @@ class UserForm extends React.Component {
   }
 
   componentDidMount() {
-    let currentUser = this.props.currentUser
+    const currentUser = this.props.currentUser
     this.avatarPreviewUrl = currentUser.avatar_url
 
     this.setState(
@@ -34,8 +34,8 @@ class UserForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    var file = this.state.imageFile;
-    var formData = new FormData();
+    let file = this.state.imageFile;
+    let formData = new FormData();
     formData.append("user[bio]", this.state.bio);
     formData.append("user[city]", this.state.city);
     formData.append("user[country]", this.state.country);

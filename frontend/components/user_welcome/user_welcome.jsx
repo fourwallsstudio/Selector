@@ -1,7 +1,7 @@
 import React from 'react';
-import ShowFeedContainer from '../show_feed/show_feed_container';
-import UserWelcomeAside from './user_welcome_aside';
 import InnerHeader from './inner_header';
+import UserWelcomeAside from './user_welcome_aside';
+import ShowFeedContainer from '../show_feed/show_feed_container';
 
 const UserWelcome = props => {
   return (
@@ -21,7 +21,7 @@ const UserWelcome = props => {
 
 
       <UserWelcomeAside users={ props.users }
-        currentUser={ props.currentUser} />
+        currentUser={ props.currentUser } />
     </section>
   )
 };

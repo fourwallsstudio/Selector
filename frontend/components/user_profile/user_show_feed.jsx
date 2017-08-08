@@ -1,10 +1,7 @@
-import React from 'react';
+import React, { Component } from 'react';
 import ShowFeedItem from '../show_feed/show_feed_item';
 
-class UserShowFeed extends React.Component {
-  constructor(props) {
-    super(props)
-  }
+class UserShowFeed extends Component {
 
   componentDidMount() {
     this.props.fetchAllShows(this.props.filter);

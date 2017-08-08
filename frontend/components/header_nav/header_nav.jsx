@@ -8,43 +8,29 @@ class HeaderNav extends React.Component {
   constructor(props) {
     super(props)
 
-    this.state = {
-      dropdownActive: false
-    }
+    this.state = { dropdownActive: false }
 
     this.handleClick = this.handleClick.bind(this);
     this.isActive = this.isActive.bind(this);
   }
 
   componentWillMount() {
-    this.props.fetchAllTags();
+    // this.props.fetchAllUsers()
+    this.props.fetchAllTags()
+    this.props.fetchNonFollowings(this.props.currentUserId)
   }
 
 
   componentWillReceiveProps(nextProps) {
-    this.state.dropdownActive = false;
-  }
-
-  shouldComponentUpdate(nextProps, nextState) {
-    if (nextState.dropdownActive !== this.state.dropdownActive) true;
-    if (!this.props.currentUser || !nextProps.currentUser) true;
-
-    return false
+    this.setState({ dropdownActive: false })
   }
 
   handleClick() {
     if (this.state.dropdownActive) {
-      this.setState(
-        {
-          dropdownActive: false
-        }
-      );
+      this.setState({ dropdownActive: false })
+
     } else {
-      this.setState(
-        {
-          dropdownActive: true
-        }
-      );
+      this.setState({ dropdownActive: true })
     }
   }
 
@@ -69,14 +55,13 @@ class HeaderNav extends React.Component {
                         className="head-nav-button-signin">Sign up</Link>
                     </div>;
     } else {
-        let user = this.props.currentUser;
-        let logout = this.props.logout;
+        const { currentUser, logout } = this.props
 
         rightSideNav = <div className="head-nav-user">
           <div className="header-nav-user-img-box">
-            <img src={user.avatar_url} onClick={() => this.props.history.push(`/user/${user.id}`)}/>
+            <img src={currentUser.avatar_url} onClick={() => this.props.history.push(`/user/${currentUser.id}`)}/>
           </div>
-          <Link to={`/user/${user.id}`}>{user.username}</Link>
+          <Link to={`/user/${currentUser.id}`}>{currentUser.username}</Link>
           <div className="user-dropdown-arrow"
             onClick={ this.handleClick }
             >

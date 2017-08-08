@@ -1,6 +1,6 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import { values } from 'lodash';
+import { Link } from 'react-router-dom';
 import ContactFooter from '../contact_footer/contact_footer';
 
 const ShowProfileAside = ({ show }) => {

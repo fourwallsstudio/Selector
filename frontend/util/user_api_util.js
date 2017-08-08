@@ -5,6 +5,13 @@ export const fetchUser = id => {
   });
 };
 
+export const fetchAllUsers = () => {
+  return $.ajax({
+    method: 'GET',
+    url: `api/users`
+  });
+}
+
 export const fetchUsers = showId => {
   return $.ajax({
     method: 'GET',
@@ -18,6 +25,14 @@ export const fetchUserFollowings = userId => {
     method: 'GET',
     url: `api/users`,
     data: { userId: userId }
+  });
+};
+
+export const fetchNonFollowings = userId => {
+  return $.ajax({
+    method: 'GET',
+    url: `api/users`,
+    data: { nonFollowingUserId: userId }
   });
 };
 

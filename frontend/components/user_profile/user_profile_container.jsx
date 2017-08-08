@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import UserProfile from './user_profile';
-import { fetchUser, fetchUserFollowings } from '../../actions/user_actions';
 import { selectUser, selectFollowings } from '../../reducers/selecters';
+import { fetchUserFollowings, fetchUser } from '../../actions/user_actions'
 import { createFollowing, deleteFollowing } from '../../actions/following_actions';
 
 const mapStateToProps = (state, ownProps) => {
@@ -9,20 +9,20 @@ const mapStateToProps = (state, ownProps) => {
 
   return {
     user: selectUser(state, userId),
-    userId,
     followings: selectFollowings(state, ownProps),
     users: state.users,
     currentUser: state.users[state.session.currentUser],
-    currentUserId: state.session.currentUser
+    currentUserId: state.session.currentUser,
+    userId,
   }
 }
 
 const mapDispatchToProps = dispatch => {
   return {
-    fetchUser: user => dispatch(fetchUser(user)),
-    fetchUserFollowings: userId => dispatch(fetchUserFollowings(userId)),
     createFollowing: f => dispatch(createFollowing(f)),
-    deleteFollowing: f => dispatch(deleteFollowing(f))
+    deleteFollowing: f => dispatch(deleteFollowing(f)),
+    fetchUser: id => dispatch(fetchUser(id)),
+    fetchUserFollowings: id => dispatch(fetchUserFollowings(id)),
   }
 }
 

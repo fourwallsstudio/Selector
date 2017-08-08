@@ -15,16 +15,19 @@ import {
   restoredPlayPosition,
   changePlayerOrder
  } from '../../actions/player_actions';
+ import { selectUser } from '../../reducers/selecters'
 
 
 
 const mapStateToProps = state => {
+  const { player, preview, shows, queue } = state
+  
   return {
-    queue: state.queue.queue,
-    shows: state.shows.entities,
-    player: state.player,
-    preview: state.preview,
-    currentUser: state.users[state.session.currentUser]
+    currentUser: selectUser(state, state.session.currentUser),
+    queue: queue.queue,
+    shows: shows.entities,
+    player,
+    preview,
   }
 }
 

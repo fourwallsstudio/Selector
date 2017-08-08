@@ -1,19 +1,19 @@
-import UploadForm from './upload_form';
 import { connect } from 'react-redux';
+import UploadForm from './upload_form';
 import { uploadShow } from '../../actions/show_actions';
-import { clearErrors } from '../../actions/error_actions';
 import { fetchAllTags } from '../../actions/tag_actions';
+import { clearErrors } from '../../actions/error_actions';
 
 
 const mapStateToProps = state => {
-  let session = state.session
-  
+  const { errors, session, tags } = state
+
   return {
-    formType: "upload",
     loggedIn: Boolean(session.currentUser),
-    errors: state.errors,
     currentUser: session.currentUser,
-    tags: state.tags.entities
+    tags: tags.entities,
+    formType: "upload",
+    errors,
   }
 }
 

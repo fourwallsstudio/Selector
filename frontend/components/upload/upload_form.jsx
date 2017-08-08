@@ -1,7 +1,7 @@
 import React from 'react';
-import MustBeLoggedIn from '../errors_notices/must_be_logged_in';
-import renderHTML from 'react-render-html';
 import { values } from 'lodash';
+import renderHTML from 'react-render-html';
+import MustBeLoggedIn from '../errors_notices/must_be_logged_in';
 
 class UploadForm extends React.Component {
   constructor(props) {
@@ -64,13 +64,9 @@ class UploadForm extends React.Component {
       formData.append("show[tag_ids][]", "");
     }
 
-    if (this.state.image) {
-      formData.append("show[image]", this.state.image);
-    }
+    if (this.state.image) formData.append("show[image]", this.state.image)
 
-    if (this.state.audio) {
-      formData.append("show[audio]", this.state.audio);
-    }
+    if (this.state.audio) formData.append("show[audio]", this.state.audio)
 
     if (this.props.formType === 'upload') {
       this.props.uploadShow(formData)
@@ -97,9 +93,7 @@ class UploadForm extends React.Component {
     return e => {
 			this.setState({ [stateKey]: e.target.value });
 
-      if (this.props.errors) {
-        this.props.clearErrors();
-      }
+      if (this.props.errors) this.props.clearErrors()
 		}
   }
 
@@ -149,14 +143,14 @@ class UploadForm extends React.Component {
       return <MustBeLoggedIn type="upload" />;
 
     } else {
+      let tagCheckboxes;
       let imagePreview = "";
       let deleteButton = "";
       let formName = 'Upload';
       let buttonAction = 'Choose ';
-      let uploadInProgress = "";
-      let tagCheckboxes;
+      let uploadInProgress = this.state.uploadInProgress ? "upload-in-progress" : "";
 
-      if (this.state.uploadInProgress) uploadInProgress = "upload-in-progress";
+      // if (this.state.uploadInProgress) uploadInProgress = "upload-in-progress";
 
       if (this.imagePreviewUrl !== "") {
         imagePreview = <img className="image-preview" src={this.imagePreviewUrl} />;

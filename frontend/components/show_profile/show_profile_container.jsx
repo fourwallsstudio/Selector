@@ -1,15 +1,4 @@
 import { connect } from 'react-redux';
-import ShowProfile from './show_profile';
-import javascript_time_ago from 'javascript-time-ago'
-import { fetchSingleShow, deleteShow, fetchShowsByTag } from '../../actions/show_actions';
-import { createQueueItem } from '../../actions/queue_actions';
-import { startPreview, stopPreview } from '../../actions/preview_actions';
-import { updateCurrentTag } from '../../actions/tag_actions';
-import { updateFilter } from '../../actions/filter_actions';
-import {
-  createComment,
-  deleteComment,
-  fetchComments } from '../../actions/comment_actions';
 import {
   updateCurrentPlay,
   updateHowlerPlayer,
@@ -18,23 +7,36 @@ import {
   removeHowlerPlay,
   changePlayerOrder
  } from '../../actions/player_actions';
+ import ShowProfile from './show_profile';
+import javascript_time_ago from 'javascript-time-ago'
 import { selectShow } from '../../reducers/selecters';
+import {
+  createComment,
+  deleteComment,
+  fetchComments } from '../../actions/comment_actions';
+import { updateFilter } from '../../actions/filter_actions';
+import { updateCurrentTag } from '../../actions/tag_actions';
+import { createQueueItem } from '../../actions/queue_actions';
+import { startPreview, stopPreview } from '../../actions/preview_actions';
+import { fetchSingleShow, deleteShow, fetchShowsByTag } from '../../actions/show_actions';
 
 
 
 const mapStateToProps = (state, { match }) => {
   const showId = parseInt(match.params.showId);
   const currentUser = state.users[state.session.currentUser];
+  const { queue, player, comments, preview, tags } = state
+  
   return {
-    formType: "upload",
     show: selectShow(state, showId),
-    showId,
+    tags: tags.entities,
+    formType: "upload",
     currentUser,
-    queue: state.queue,
-    player: state.player,
-    comments: state.comments,
-    preview: state.preview,
-    tags: state.tags.entities
+    comments,
+    preview,
+    showId,
+    player,
+    queue,
   }
 }
 
