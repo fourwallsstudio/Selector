@@ -82,5 +82,4 @@ class Show < ActiveRecord::Base
 
     listeners
   end
-
 end

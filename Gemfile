@@ -48,6 +48,8 @@ group :test do
   gem 'shoulda-matchers'
   gem 'faker'
   gem 'launchy'
+  gem 'database_cleaner'
+  # gem 'fixture_file_upload'
 end
 
 group :development do

@@ -26,7 +26,7 @@ const mapStateToProps = (state, { match }) => {
   const showId = parseInt(match.params.showId);
   const currentUser = state.users[state.session.currentUser];
   const { queue, player, comments, preview, tags } = state
-  
+
   return {
     show: selectShow(state, showId),
     tags: tags.entities,

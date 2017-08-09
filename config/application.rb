@@ -22,7 +22,7 @@ module Selector
 
     # Do not swallow errors in after_commit/after_rollback callbacks.
 
-     config.assets.paths << Rails.root.join("app", "assets", "fonts")
+    config.assets.paths << Rails.root.join("app", "assets", "fonts")
 
     config.paperclip_defaults = {
       :storage => :s3,
