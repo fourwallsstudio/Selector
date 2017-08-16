@@ -9,24 +9,31 @@
   width: 100%;
   border-bottom: solid 1px lightgrey;
   margin: 40px auto;
+
+  h2 {
+    font-size: 24px;
+    color: #697F95;
+    line-height: 50px;
+  }
 }
 
-.stats-head h2 {
-  font-size: 24px;
-  color: #697F95;
-  line-height: 50px;
-}
 
 .stats-graph {
   width: 759px;
   margin: 0 auto;
   display: flex;
   flex-wrap: wrap;
+
+  p {
+    color: grey;
+  }
+
+  h3 {
+    margin: 0;
+    color: #34495E;
+  }
 }
 
-.stats-graph p {
-  color: grey;
-}
 
 .stats-graph-y-label {
   height: 300px;
@@ -35,10 +42,6 @@
   margin-right: 20px;
 }
 
-.stats-graph h3 {
-  margin: 0;
-  color: #34495E;
-}
 
 .stats-graph-y {
   display: flex;

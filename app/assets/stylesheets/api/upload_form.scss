@@ -3,19 +3,19 @@
   flex-direction: column;
   width: 85%;
   margin: 20px auto;
-  // border: solid 2px black;
 }
 
 .upload-header {
   width: 100%;
   border-bottom: solid 2px #EBF0F2;
+
+  h1 {
+    color: #697F95;
+    font-size: 20px;
+    padding: 10px 0;
+  }
 }
 
-.upload-header h1 {
-  color: #697F95;
-  font-size: 20px;
-  padding: 10px 0;
-}
 
 .upload-banners-container {
   display: flex;
@@ -63,9 +63,6 @@
   left: 10px;
   color: #9FC5E2;
   margin: 0 auto;
-}
-
-.upoad-form-box {
 }
 
 .upload-form-errors {
@@ -186,11 +183,6 @@
 .u-f-title .clicked {
   background-color: #F5F9FC;
 }
-
-// .u-f-tag {
-//   width: 50px;
-//   height: 50px;
-// }
 
 .u-f-tags-box {
   width: 100%;
@@ -322,31 +314,19 @@ input[type=checkbox]
   text-align: center;
   border-radius: 5px;
   margin: 20px;
+
+  &:hover {
+    background-color: #44A73D;
+  }
 }
 
-.upload-form-box button:hover {
-  background-color: #44A73D;
-}
 
 .edit-form-delete-link {
   color: #E59095;
   text-align: center;
   cursor: pointer;
+
+  &:hover {
+    text-decoration: underline;
+  }
 }
-
-
-
-.edit-form-delete-link:hover {
-  text-decoration: underline;
-}
-
-
-
-
-
-
-
-
-
-/*
-*/

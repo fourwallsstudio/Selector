@@ -1,3 +1,5 @@
+@import 'settings';
+
 .must-be-logged-in {
   position: absolute;
   width: 400px;
@@ -5,12 +7,12 @@
   margin: 50px auto;
   z-index: 100;
   transform: translateX(-200px);
-}
 
-.must-be-logged-in h1 {
-  color: #E59095;
-  font-size: 28px;
-  text-align: center;
-  border: solid 1px black;
-  background: #34495E;
+  h1 {
+    color: #E59095;
+    font-size: 28px;
+    text-align: center;
+    border: solid 1px black;
+    background: $dark-blue;
+  }
 }

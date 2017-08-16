@@ -2,6 +2,8 @@ import React from 'react'
 import { Howl } from 'howler'
 import { values, merge } from 'lodash'
 import { withRouter, Link } from 'react-router-dom'
+import { scaleImg } from '../../util/img_util';
+import { renderLog, nextPropsLog, fired } from '../../util/debugging_util';
 import CommentFeed from '../comments/comment_feed'
 import CommentForm from '../comments/comment_form'
 import ShowProfileAside from './show_profile_aside'
@@ -27,6 +29,7 @@ class ShowProfile extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
+
     if (this.props.showId !== nextProps.showId ) {
       nextProps.fetchSingleShow(nextProps.showId)
     }
@@ -37,7 +40,7 @@ class ShowProfile extends React.Component {
 
     if (this.props.player.playerQueue.length &&
       this.props.player.playerQueue[0].show_id === this.props.showId) {
-        
+
       this.props.player.playerQueue[0].show.pause();
       this.props.removeHowlerPlay(this.props.player.playerQueue);
     }
@@ -123,9 +126,10 @@ class ShowProfile extends React.Component {
     } else {
 
       const show = this.props.show;
-      let timeAgoJS = new javascript_time_ago('en-US');
-      let timeAgo = timeAgoJS.format(new Date(this.props.show.created_at));
-      let playerQueue = this.props.player.playerQueue;
+      const newImgSize = scaleImg(300, show)
+      const timeAgoJS = new javascript_time_ago('en-US');
+      const timeAgo = timeAgoJS.format(new Date(this.props.show.created_at));
+      const playerQueue = this.props.player.playerQueue;
       let previewActive = "";
       let userControls;
       let playDisplay;
@@ -278,7 +282,7 @@ class ShowProfile extends React.Component {
               </div>
 
               <div className="show-image-box">
-                <img src={ show.image_url } />
+                <img src={ show.image_url } style={{ width: newImgSize['width'], height: newImgSize['height'] }}/>
               </div>
             </div>
 

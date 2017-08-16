@@ -3,19 +3,19 @@
   flex-direction: column;
   width: 85%;
   margin: 20px auto;
-  // border: solid 2px black;
 }
 
 .user-header {
   width: 100%;
   border-bottom: solid 2px #EBF0F2;
+
+  h1 {
+    color: #697F95;
+    font-size: 20px;
+    padding: 10px 0;
+  }
 }
 
-.user-header h1 {
-  color: #697F95;
-  font-size: 20px;
-  padding: 10px 0;
-}
 
 .user-input-box {
   display: flex;
@@ -114,17 +114,18 @@
     width: 100%;
     display: flex;
     justify-content: center;
+
+    button {
+      color: white;
+      height: 40px;
+      width: 100px;
+      background-color: #50B348;
+      text-align: center;
+      border-radius: 5px;
+      margin: 20px;
+    }
 }
 
-.user-form-button-box button {
-  color: white;
-  height: 40px;
-  width: 100px;
-  background-color: #50B348;
-  text-align: center;
-  border-radius: 5px;
-  margin: 20px;
-}
 
 .user-form-box button:hover {
   background-color: #44A73D;

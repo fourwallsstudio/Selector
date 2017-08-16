@@ -1,3 +1,5 @@
+@import 'settings';
+
 .auth-modal-background {
   position: absolute;
   height: 100%;
@@ -21,7 +23,7 @@
   top: 50%;
   left: 50%;
   margin: -200px -180px;
-  background-color: #F5F9FC;
+  background-color: $lighter-blue;
   border-radius: 5px;
 }
 
@@ -91,7 +93,7 @@
   position: absolute;
   bottom: -8px;
   left: 44%;
-  background-color: #F5F9FC;
+  background-color: $lighter-blue;
   padding: 0 10px;
 }
 

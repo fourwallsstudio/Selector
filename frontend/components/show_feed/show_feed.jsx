@@ -1,6 +1,7 @@
 import React from 'react';
 import ShowFeedItem from './show_feed_item';
 import { values } from 'lodash';
+import { renderLog } from '../../util/debugging_util';
 
 class ShowFeed extends React.Component {
   constructor(props) {

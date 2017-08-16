@@ -32,12 +32,20 @@
   height: 160px;
   /*border: solid 1px grey;*/
   margin-left: 100px;
+
+  h1 {
+    font-family: OpenSans-Light;
+    color: white;
+    font-size: 32px;
+    // width: 60%;
+    text-shadow: .5px .5px 3px grey;
+    margin-bottom: 10px;
+  }
 }
 
 .avatar-box {
   width: 160px;
   height: 160px;
-  // background-color: #EFFAFF;
   z-index: 1;
 }
 
@@ -45,14 +53,6 @@
   margin: 0 40px;
 }
 
-.u-p-head-items-box h1 {
-  font-family: OpenSans-Light;
-  color: white;
-  font-size: 32px;
-  // width: 60%;
-  text-shadow: .5px .5px 3px grey;
-  margin-bottom: 10px;
-}
 
 .user-profile-feed-play-all {
   position: relative;
@@ -63,24 +63,24 @@
   border-radius: 5px;
   margin-right: 10px;
   transition: background-color 0.3s ease-in-out;
-}
 
-.user-profile-feed-play-all:hover {
-  background-color: #3A9634;
-}
+  &:hover {
+    background-color: #3A9634;
+  }
 
-.user-profile-feed-play-all p {
-  color: white;
-  font-size: 12px;
-  padding-left: 20px;
-}
+  p {
+    color: white;
+    font-size: 12px;
+    padding-left: 20px;
+  }
 
-.user-profile-feed-play-all svg {
-  position: absolute;
-  top: 10px;
-  width: 11px;
-  height: 12px;
-  fill: white;
+  svg {
+    position: absolute;
+    top: 10px;
+    width: 11px;
+    height: 12px;
+    fill: white;
+  }
 }
 
 
@@ -91,11 +91,12 @@
   border-radius: 5px;
   border: solid 1px black;
   background-color: rgba(0, 0, 0, .2);
+
+  &:hover {
+    background-color: rgba(0, 0, 0, .3);
+  }
 }
 
-.update-user-image:hover {
-  background-color: rgba(0, 0, 0, .3);
-}
 
 .u-p-follow-b {
   font-size: 12px;
@@ -152,28 +153,28 @@
   width: 100%;
   margin: 20px 0;
   text-align: center;
+
+  div {
+    width: 33.3%;
+    border-right: solid 1px lightgrey;
+  }
+
+  &:last-of-type {
+    border-right: none;
+  }
+
+  h3 {
+    font-family: OpenSans-Light;
+    margin: 0;
+  }
+
+  p {
+    font-family: OpenSans;
+    font-size: 14px;
+    color: #727F95;
+  }
 }
 
-.u-p-a-stats-box div {
-  width: 33.3%;
-  border-right: solid 1px lightgrey;
-}
-
-.u-p-a-stats-box div:last-of-type {
-  border-right: none;
-}
-
-
-.u-p-a-stats-box h3 {
-  font-family: OpenSans-Light;
-  margin: 0;
-}
-
-.u-p-a-stats-box p {
-  font-family: OpenSans;
-  font-size: 14px;
-  color: #727F95;
-}
 
 .u-p-a-location p {
   padding: 10px 0;
@@ -182,12 +183,13 @@
 
 .u-p-a-bio {
   margin: 20px 0;
+
+  p {
+    color: grey;
+    margin-top: 10px;
+  }
 }
 
-.u-p-a-bio p {
-  color: grey;
-  margin-top: 10px;
-}
 
 .u-p-a-following-display {
   margin: 20px 0;
@@ -218,13 +220,14 @@
   height: 50px;
   margin: 10px 10px 10px 0;
   overflow: hidden;
+
+  img {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+  }
 }
 
-.followings-thumb img {
-  width: 100%;
-  height: auto;
-  border-radius: 5px;
-}
 
 
 @media screen and (min-width: 1600px) {

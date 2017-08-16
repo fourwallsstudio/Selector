@@ -39,10 +39,10 @@ class Search extends React.Component {
   }
 
   render() {
-    let searchActive = this.state.active ? "search-active" : "";
+    const active = this.state.active
 
     return (
-      <div className={`header-search-bar ${searchActive}`}>
+      <div className={`header-search-bar ${ active && "search-active" }`}>
         <input
           type="text"
           value={this.state.searchVal}
@@ -50,7 +50,7 @@ class Search extends React.Component {
           onChange={ this.handleSearch }
           onClick={ this.handleClick }
           />
-        <div className={`search-exit ${searchActive}`}
+        <div className={`search-exit ${ active && "search-active" }`}
           onClick={ this.handleClose }>
           <i className="fa fa-times" aria-hidden="true"></i>
         </div>

@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { scaleImg } from '../../util/img_util';
 import javascript_time_ago from 'javascript-time-ago';
 javascript_time_ago.locale(require('javascript-time-ago/locales/en'));
 
@@ -81,6 +82,8 @@ class ShowFeedItem extends React.Component {
     let timeAgoJS = new javascript_time_ago('en-US');
     let timeAgo = timeAgoJS.format(new Date(this.props.show.created_at));
 
+    const newImgSize = scaleImg(160, show)
+
     if (playerQueue.length && playerQueue[0].show_id === show.id) {
       if (this.props.player.status === 'playing') {
         playDisplay = (
@@ -111,7 +114,7 @@ class ShowFeedItem extends React.Component {
         <div className="s-f-i-main">
           <div className="img-box">
             <Link to={`/show/${show.id}`} className="play-title">
-              <img src={ show.image_url } />
+              <img src={ show.image_url } style={{ width: newImgSize['width'], height: newImgSize['height'] }} />
             </Link>
 
           </div>

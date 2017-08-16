@@ -1,3 +1,5 @@
+@import 'settings';
+
 .user-welcome-container {
   width: 85%;
   display: flex;
@@ -9,8 +11,8 @@
 
 /*
   inner-header-container
-
 */
+
 .inner-header-clear {
   width: 100vw;
   height: 42px;
@@ -23,7 +25,14 @@
   left: 0;
   width: 100vw;
   z-index: 1;
-  background-color: #EFFAFF;
+  background-color: $light-blue;
+
+  p {
+    display: inline-block;
+    line-height: 42px;
+    font-size: 12px;
+    color: #8196A7;
+  }
 }
 
 .inner-header-width-box {
@@ -35,12 +44,6 @@
   margin: 0 auto;
 }
 
-.inner-header-container p {
-  display: inline-block;
-  line-height: 42px;
-  font-size: 12px;
-  color: #8196A7;
-}
 
 .i-h-links {
   margin-right: 60px;
@@ -74,13 +77,14 @@
 .user-welcome-feed-head {
   height: 50px;
   border-bottom: solid 1px lightgrey;
+
+  h2 {
+    font-size: 24px;
+    color: #697F95;
+    line-height: 50px;
+  }
 }
 
-.user-welcome-feed-head h2 {
-  font-size: 24px;
-  color: #697F95;
-  line-height: 50px;
-}
 
 @media screen and (min-width: 1600px) {
   .user-welcome-container {

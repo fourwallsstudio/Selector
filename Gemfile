@@ -27,6 +27,8 @@ gem 'bcrypt', '~> 3.1.7'
 # gem 'unicorn'
 
 gem "paperclip", '~> 5.0.0'
+gem 'paperclip-meta'
+gem 'miro'
 gem "aws-sdk"
 gem 'figaro'
 gem 'font-awesome-sass'

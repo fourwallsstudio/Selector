@@ -1,13 +1,10 @@
+@import 'settings';
+
 .show-feed-container, .user-show-feed-container {
   width: 740px;
-  // width: 60%;
   height: auto;
-  /*margin: 0 auto;*/
-  // border: solid 1px black;
-  // padding: 0 20px;
   margin-top: 20px;
 }
-
 
 .show-feed-play-all, .user-show-feed-play-all {
   position: relative;
@@ -70,15 +67,15 @@
   /*float: left;*/
   width: 160px;
   height: 160px;
-  // background-color: #EFFAFF;
   background-color: white;
   overflow: hidden;
   margin: 5px 5px 5px 0;
+
+  &:hover {
+    cursor: pointer;
+  }
 }
 
-.img-box:hover {
-  cursor: pointer;
-}
 
 
 .play-box {
@@ -100,15 +97,16 @@
   border-radius: 100%;
   // background-image: image_url("icon-play-128.png");
   // background-size: 60px 60px;
+
+  &:hover {
+    cursor: pointer;
+    background-color: rgba(255, 255, 255, 0.2);
+    border: solid 2px #9DA495;
+    transition: background-color 0.4s ease-in-out,
+    border 0.4s ease-in-out;
+  }
 }
 
-.play-arrow:hover {
-  cursor: pointer;
-  background-color: rgba(255, 255, 255, 0.2);
-  border: solid 2px #9DA495;
-  transition: background-color 0.4s ease-in-out,
-    border 0.4s ease-in-out;
-}
 
 .show-feed-play-circle-pause {
   position: absolute;
@@ -144,40 +142,44 @@
   font-size: 18px;
   height: 30px;
   width: 350px;
-  color: #49596A;
+  color: $grey-blue;
   overflow: hidden;
   transition: color 0.3s ease-in-out;
+
+  &:hover {
+    color: #4FA6D3;
+  }
 }
 
-.play-title:hover {
-  color: #4FA6D3;
-}
 
 .play-tag {
   font-size: 14px;
   padding: 3px 10px;
   border: solid 1px #D8E2E6;
   border-radius: 5px;
+
+  &::after {
+    content: " ...";
+  }
 }
 
-.play-tag::after {
-  content: " ...";
-}
 
 .author_credit {
   width: 80%;
   color: grey;
+
+  a {
+    color: #4FA6D3;
+    padding-left: 5px;
+    transition: color 0.3s ease-in-out;
+
+    &:hover {
+      color: $grey-blue;
+    }
+  }
 }
 
-.author_credit a {
-  color: #4FA6D3;
-  padding-left: 5px;
-  transition: color 0.3s ease-in-out;
-}
 
-.author_credit a:hover {
-  color: #49596A;
-}
 
 .play-wave {
   /*width: 400px;*/
@@ -233,20 +235,19 @@
 
 .s-f-i-b-r {
   position: relative;
-  // width: 80px;
   height: 32px;
-  // border: solid 1px #D8E2E6;
   border-radius: 5px;
   margin-left: 24px;
+
+  p {
+    text-align: right;
+    line-height: 32px;
+    font-size: 14px;
+    color: grey;
+    margin-left: 5px;
+  }
 }
 
-.s-f-i-b-r p {
-  text-align: right;
-  line-height: 32px;
-  font-size: 14px;
-  color: grey;
-  margin-left: 5px;
-}
 
 .fa.fa-headphones, .fa.fa-clock-o, .fa.fa-calendar {
   position: absolute;
