@@ -4,10 +4,6 @@ import { values } from 'lodash';
 import { renderLog } from '../../util/debugging_util';
 
 class ShowFeed extends React.Component {
-  constructor(props) {
-    super(props)
-
-  }
 
   componentDidMount() {
     if (this.props.filter !== 'tag') this.props.fetchAllShows(this.props.filter);
@@ -21,30 +17,34 @@ class ShowFeed extends React.Component {
     }
   }
 
+  _getShowItems() {
+    return this.props.shows.map( show => (
+        <ShowFeedItem
+          key={ show.id }
+          show={ show }
+          tags={ this.props.tags }
+          queue={ this.props.queue }
+          player={ this.props.player}
+          createNewPlay={ this.props.createNewPlay }
+          updatePlayStatus={ this.props.updatePlayStatus }
+          changePlayerOrder={ this.props.changePlayerOrder }
+          createQueueItem={ this.props.createQueueItem }
+          currentUser={ this.props.currentUser }
+          startPreview={ this.props.startPreview }
+          stopPreview={ this.props.stopPreview }
+          preview={ this.props.preview }
+          />
+        )
+      )
+  }
+
   render() {
     if (!this.props.shows) {
-      return (
-        <div>no shows at this time</div>
-      )
+      return <div>no shows at this time</div>;
+
     } else {
-      const showItems = this.props.shows.map( show => {
-        return (
-          <ShowFeedItem
-            key={ show.id }
-            show={ show }
-            tags={ this.props.tags }
-            queue={ this.props.queue }
-            player={ this.props.player}
-            createNewPlay={ this.props.createNewPlay }
-            updatePlayStatus={ this.props.updatePlayStatus }
-            changePlayerOrder={ this.props.changePlayerOrder }
-            createQueueItem={ this.props.createQueueItem }
-            currentUser={ this.props.currentUser }
-            startPreview={ this.props.startPreview }
-            stopPreview={ this.props.stopPreview }
-            preview={ this.props.preview }
-            />
-        )});
+      const showItems = this._getShowItems()
+
       return (
         <section className="show-feed-container group">
           <ul>

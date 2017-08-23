@@ -2,14 +2,22 @@ import React from 'react'
 import { Howl } from 'howler'
 import { values, merge } from 'lodash'
 import { withRouter, Link } from 'react-router-dom'
+
+// UTIL
 import { scaleImg } from '../../util/img_util';
 import { renderLog, nextPropsLog, fired } from '../../util/debugging_util';
+
+// COMPONENTS
+import UserControls from './user_controls'
 import CommentFeed from '../comments/comment_feed'
 import CommentForm from '../comments/comment_form'
 import ShowProfileAside from './show_profile_aside'
+
+// TIME AGO
 import english from 'javascript-time-ago/locales/en'
 import javascript_time_ago from 'javascript-time-ago'
 javascript_time_ago.locale(require('javascript-time-ago/locales/en'))
+
 
 class ShowProfile extends React.Component {
   constructor(props) {
@@ -86,9 +94,13 @@ class ShowProfile extends React.Component {
 
         } else {
 
-          const current = playerQueue[0].show;
+          const current = playerQueue[0].show._sounds[0];
 
-          current._sounds[0]._paused ? current.play() : current.pause();
+          if (current._paused) {
+            playerQueue[0].show.play();
+          } else {
+            playerQueue[0].show.pause();
+          }
 
           this.props.updatePlayStatus(current._paused);
         }
@@ -118,8 +130,31 @@ class ShowProfile extends React.Component {
       })
   }
 
+  _getTags() {
+    return (
+      this.props.show.tag_ids.map( id => {
+        let tag = this.props.tags[id]
+        return (
+          <li key={ tag.id }
+            value={ tag.id }
+            className="s-p-tag"
+            onClick={ this.handleClickTag }>
+            <p>{ tag.genre }</p>
+          </li>
+        )
+      })
+    )
+  }
+
+  _timeAgo() {
+    const timeAgoJS = new javascript_time_ago('en-US');
+    return timeAgoJS.format(new Date(this.props.show.created_at));
+  }
+
 
   render() {
+    console.log('profile status', this.props.player.status)
+
     if (!this.props.show) {
       return <div>loading</div>;
 
@@ -127,31 +162,11 @@ class ShowProfile extends React.Component {
 
       const show = this.props.show;
       const newImgSize = scaleImg(300, show)
-      const timeAgoJS = new javascript_time_ago('en-US');
-      const timeAgo = timeAgoJS.format(new Date(this.props.show.created_at));
+      const timeAgo = this._timeAgo();
       const playerQueue = this.props.player.playerQueue;
-      let previewActive = "";
-      let userControls;
+      const previewActive = this.props.preview.status === 'previewing' ? "preview-active" : "";
       let playDisplay;
-      let tags = "";
 
-      if (show.tag_ids.length && this.props.tags) {
-        tags = show.tag_ids.map( id => {
-          let tag = this.props.tags[id]
-          return (
-            <li key={ tag.id }
-              value={ tag.id }
-              className="s-p-tag"
-              onClick={ this.handleClickTag }>
-              <p>{ tag.genre }</p>
-            </li>
-          )
-        })
-      }
-
-      if (this.props.preview.status === 'previewing') {
-        previewActive = "preview-active";
-      }
 
       if (playerQueue.length && playerQueue[0].show_id === show.id) {
         if (this.props.player.status === 'playing') {
@@ -175,46 +190,6 @@ class ShowProfile extends React.Component {
         );
       }
 
-      if (
-        this.props.currentUser &&
-        this.props.currentUser.id === show.author_id
-      ) {
-
-        userControls = <div className="show-user-controls-container">
-                        <Link to={`/edit/${show.id}`} className="s-u-c-b edit">
-                          <i className="fa fa-toggle-on fa-lg" aria-hidden="true"></i>
-                          <h2>Edit</h2>
-                        </Link>
-
-                        <Link to={`/stats/${show.id}`} className="s-u-c-b stats">
-                          <i className="fa fa-trophy fa-lg" aria-hidden="true"></i>
-                          <h2>Stats</h2>
-                        </Link>
-
-                        <div className="s-u-c-b delete" onClick={ this.handleDelete }>
-                          <i className="fa fa-trash-o fa-lg" aria-hidden="true"></i>
-                          <h2>Delete</h2>
-                        </div>
-
-                        <div className="s-u-c-b embed">
-                          <i className="fa fa-trash-o fa-lg" aria-hidden="true"></i>
-                          <h2>Embed</h2>
-                        </div>
-
-
-                        <div className="s-u-c-b boost">
-                          <i className="fa fa-bullhorn fa-lg" aria-hidden="true"></i>
-                          <h2>Boost</h2>
-                        </div>
-
-                        <div className="s-u-c-b share">
-                          <i className="fa fa-upload fa-lg" aria-hidden="true"></i>
-                          <h2>Share</h2>
-                        </div>
-
-                      </div>;
-      }
-
       return (
         <section className="show-profile-container">
           <div className="show-profile-header">
@@ -232,6 +207,7 @@ class ShowProfile extends React.Component {
                     onMouseLeave={ this.handleStopPreview} >
 
                     { playDisplay }
+
                     <div className={`play-circle-preview-backfill ${previewActive}`}></div>
                 </div>
                 <p className={`play-circle-preview-notice ${previewActive}`}>preview</p>
@@ -282,15 +258,19 @@ class ShowProfile extends React.Component {
               </div>
 
               <div className="show-image-box">
-                <img src={ show.image_url } style={{ width: newImgSize['width'], height: newImgSize['height'] }}/>
+                <img
+                  src={ show.image_url }
+                  style={{ width: newImgSize['width'], height: newImgSize['height'] }}
+                  />
               </div>
             </div>
-
-
-
           </div>
 
-          { userControls }
+          {
+            this.props.currentUser
+              && this.props.currentUser.id === show.author_id
+              && <UserControls show={ show } handleDelete={ this.handleDelete } />
+          }
 
           <div className="s-p-main-container">
             <div className="s-p-about-container">
@@ -299,7 +279,11 @@ class ShowProfile extends React.Component {
               </div>
 
               <ul className="s-p-about-head-under">
-                { tags }
+                {
+                  show.tag_ids.length
+                    && this.props.tags
+                    && this._getTags()
+                }
               </ul>
 
               <div className="s-p-about">

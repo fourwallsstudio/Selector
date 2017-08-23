@@ -15,7 +15,6 @@ class HeaderNav extends React.Component {
   }
 
   componentWillMount() {
-    // this.props.fetchAllUsers()
     this.props.fetchAllTags()
     this.props.fetchNonFollowings(this.props.currentUserId)
   }
@@ -35,11 +34,7 @@ class HeaderNav extends React.Component {
   }
 
   isActive() {
-    if (this.state.dropdownActive) {
-      return <UserNavDropdownContainer />;
-    } else {
-      return "";
-    }
+    return this.state.dropdownActive ? <UserNavDropdownContainer /> : "";
   }
 
   render() {
@@ -48,29 +43,39 @@ class HeaderNav extends React.Component {
 
     if (!this.props.loggedIn && !this.props.currentUser) {
       rightSideNav = <div className="head-nav-right-login">
-                      <Link to={`/login`}
+                      <Link
+                        to={`/login`}
                         className="head-nav-button-login">Log in</Link>
+
                       <p>or</p>
-                      <Link to={`/signup`}
+
+                      <Link
+                        to={`/signup`}
                         className="head-nav-button-signin">Sign up</Link>
                     </div>;
     } else {
         const { currentUser, logout } = this.props
 
         rightSideNav = <div className="head-nav-user">
-          <div className="header-nav-user-img-box">
-            <img src={currentUser.avatar_url} onClick={() => this.props.history.push(`/user/${currentUser.id}`)}/>
-          </div>
-          <Link to={`/user/${currentUser.id}`}>{currentUser.username}</Link>
-          <div className="user-dropdown-arrow"
-            onClick={ this.handleClick }
-            >
-            <i className={"fa fa-chevron-down" + dropdownActive}
-              aria-hidden="true"
-              ></i>
-            { this.isActive() }
-          </div>
-        </div>;
+                        <div className="header-nav-user-img-box">
+                          <img
+                            src={currentUser.avatar_url}
+                            onClick={() => this.props.history.push(`/user/${currentUser.id}`)} />
+                        </div>
+
+                        <Link to={`/user/${currentUser.id}`}>{currentUser.username}</Link>
+
+                        <div
+                          className="user-dropdown-arrow"
+                          onClick={ this.handleClick }>
+
+                          <i
+                            className={"fa fa-chevron-down" + dropdownActive}
+                            aria-hidden="true"></i>
+
+                          { this.isActive() }
+                        </div>
+                      </div>;
     }
 
     return (

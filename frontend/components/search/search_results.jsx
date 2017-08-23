@@ -2,10 +2,14 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { values } from 'lodash'
 import { Link, withRouter } from 'react-router-dom';
+
+// ACTIONS
 import { clearSearch } from '../../actions/search_actions';
 import { fetchShowsByTag } from '../../actions/show_actions';
 import { updateCurrentTag } from '../../actions/tag_actions';
 import { updateFilter } from '../../actions/filter_actions';
+
+// COMPONENTS
 import MustBeLoggedIn from '../errors_notices/must_be_logged_in';
 
 class SearchResults extends React.Component {

@@ -6,7 +6,7 @@ export const renderLog = (type, obj) => {
 }
 
 export const nextPropsLog = (type, props) => {
-  console.group(`%c ${type} render`, 'color:red;font-size:14px;')
+  console.group(`%c ${type} nextProps`, 'color:red;font-size:14px;')
     console.count(type)
     console.log(`%c ${type}`, 'color:green', props)
   console.groupEnd()

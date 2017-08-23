@@ -45,10 +45,9 @@ class Countdown extends React.Component {
         }
       );
 
-      if (nextProps.playerQueue[0].show._sounds[0]._paused) {
-        clearInterval(this.currentInterval);
-      } else {
-        clearInterval(this.currentInterval);
+      clearInterval(this.currentInterval);
+
+      if (!nextProps.playerQueue[0].show._sounds[0]._paused) {
         this.currentInterval = setInterval(this.counter, 1000);
       }
     }
@@ -76,15 +75,15 @@ class Countdown extends React.Component {
   }
 
   stringify(n) {
-    let sec = (n % 60).toString();
-    let min = (Math.floor(n / 60) % 60).toString();
-    let hour = (Math.floor(n / 3600)).toString();
+    const sec = (n % 60).toString();
+    const min = (Math.floor(n / 60) % 60).toString();
+    const hour = (Math.floor(n / 3600)).toString();
 
-    let secStr = (sec.length === 1) ? '0' + sec : sec;
-    let minStr = (min.length === 1) ? '0' + min : min;
-    let hourStr = (hour.length === 1) ? '0' + hour : hour;
+    const secStr = (sec.length === 1) ? '0' + sec : sec;
+    const minStr = (min.length === 1) ? '0' + min : min;
+    const hourStr = (hour.length === 1) ? '0' + hour : hour;
 
-    let display = hour > 0
+    const display = hour > 0
       ? [hourStr, minStr, secStr].join(":")
       : [minStr, secStr].join(":")
 
@@ -107,20 +106,16 @@ class Countdown extends React.Component {
   }
 
   render() {
-    let restorePlayPopUp;
-
-    if (this.props.restoredPlayStatus) {
-      restorePlayPopUp = <div className="retore-play-pop-box">
-        <p>restored play position</p>
-        <div className="retore-play-pop-box-pointer"></div>
-      </div>;
-    } else {
-      restorePlayPopUp = "";
-    }
+    const restorePlayPopUp = <div className="retore-play-pop-box">
+                                <p>restored play position</p>
+                                <div className="retore-play-pop-box-pointer"></div>
+                              </div>;
 
     return (
       <div className="first-queue-playback">
-        { restorePlayPopUp }
+
+        { this.props.restoredPlayStatus && restorePlayPopUp }
+
         <div className="first-queue-playback-countup">
           <p>{ this.stringify(this.state.countup) }</p>
         </div>

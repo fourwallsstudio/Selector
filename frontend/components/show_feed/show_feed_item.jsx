@@ -1,8 +1,13 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+
+// UTIL
 import { scaleImg } from '../../util/img_util';
+
+// TIME AGO
 import javascript_time_ago from 'javascript-time-ago';
 javascript_time_ago.locale(require('javascript-time-ago/locales/en'));
+
 
 class ShowFeedItem extends React.Component {
   constructor(props) {
@@ -46,7 +51,7 @@ class ShowFeedItem extends React.Component {
 
         } else {
 
-          let current = playerQueue[0].show._sounds[0];
+          const current = playerQueue[0].show._sounds[0];
 
           if (current._paused) {
             playerQueue[0].show.play();
@@ -75,14 +80,19 @@ class ShowFeedItem extends React.Component {
     }
   }
 
-  render() {
-    let show = this.props.show;
-    let playerQueue = this.props.player.playerQueue;
-    let playDisplay;
-    let timeAgoJS = new javascript_time_ago('en-US');
-    let timeAgo = timeAgoJS.format(new Date(this.props.show.created_at));
+  _timeAgo() {
+    const timeAgoJS = new javascript_time_ago('en-US');
+    return timeAgoJS.format(new Date(this.props.show.created_at));
+  }
 
+  render() {
+    // console.log('feed item status', this.props.player.status)
+
+    const show = this.props.show;
+    const playerQueue = this.props.player.playerQueue;
+    const timeAgo = this._timeAgo();
     const newImgSize = scaleImg(160, show)
+    let playDisplay;
 
     if (playerQueue.length && playerQueue[0].show_id === show.id) {
       if (this.props.player.status === 'playing') {
