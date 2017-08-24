@@ -86,8 +86,6 @@ class ShowFeedItem extends React.Component {
   }
 
   render() {
-    // console.log('feed item status', this.props.player.status)
-
     const show = this.props.show;
     const playerQueue = this.props.player.playerQueue;
     const timeAgo = this._timeAgo();
