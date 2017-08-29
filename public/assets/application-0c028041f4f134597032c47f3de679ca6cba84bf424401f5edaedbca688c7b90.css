@@ -247,8 +247,10 @@ body {
   line-height: 50px;
 }
 
-/* tag  */
-/* line 29, /Users/calvinmcelroy/Documents/webstuff/app_course/final_project/Selector/app/assets/stylesheets/api/categories.scss */
+/*  =============================================================
+      TAGS
+    ============================================================= */
+/* line 31, /Users/calvinmcelroy/Documents/webstuff/app_course/final_project/Selector/app/assets/stylesheets/api/categories.scss */
 .categories-tag {
   display: flex;
   align-items: center;
@@ -265,7 +267,7 @@ body {
   border-radius: 0 5px 5px 0;
   transition: transform .4s .2s,opacity .4s ease-in-out, background-color 0.2s ease-in-out;
 }
-/* line 46, /Users/calvinmcelroy/Documents/webstuff/app_course/final_project/Selector/app/assets/stylesheets/api/categories.scss */
+/* line 48, /Users/calvinmcelroy/Documents/webstuff/app_course/final_project/Selector/app/assets/stylesheets/api/categories.scss */
 .categories-tag:before {
   content: "";
   position: absolute;
@@ -282,7 +284,7 @@ body {
   /*transform: .4s .2s,opacity .4s ease-in-out;*/
   transition: background-color 0.2s ease-in-out;
 }
-/* line 64, /Users/calvinmcelroy/Documents/webstuff/app_course/final_project/Selector/app/assets/stylesheets/api/categories.scss */
+/* line 66, /Users/calvinmcelroy/Documents/webstuff/app_course/final_project/Selector/app/assets/stylesheets/api/categories.scss */
 .categories-tag:after {
   content: "";
   position: absolute;
@@ -294,16 +296,16 @@ body {
   border-radius: 100%;
   background-color: white;
 }
-/* line 76, /Users/calvinmcelroy/Documents/webstuff/app_course/final_project/Selector/app/assets/stylesheets/api/categories.scss */
+/* line 78, /Users/calvinmcelroy/Documents/webstuff/app_course/final_project/Selector/app/assets/stylesheets/api/categories.scss */
 .categories-tag:hover {
   background-color: #34495E;
   cursor: pointer;
 }
-/* line 81, /Users/calvinmcelroy/Documents/webstuff/app_course/final_project/Selector/app/assets/stylesheets/api/categories.scss */
+/* line 83, /Users/calvinmcelroy/Documents/webstuff/app_course/final_project/Selector/app/assets/stylesheets/api/categories.scss */
 .categories-tag:hover:before {
   background-color: #34495E;
 }
-/* line 85, /Users/calvinmcelroy/Documents/webstuff/app_course/final_project/Selector/app/assets/stylesheets/api/categories.scss */
+/* line 87, /Users/calvinmcelroy/Documents/webstuff/app_course/final_project/Selector/app/assets/stylesheets/api/categories.scss */
 .categories-tag p {
   color: #34495E;
   font-family: OpenSans;
@@ -316,24 +318,22 @@ body {
   white-space: nowrap;
   text-overflow: clip;
 }
-/* line 99, /Users/calvinmcelroy/Documents/webstuff/app_course/final_project/Selector/app/assets/stylesheets/api/categories.scss */
+/* line 101, /Users/calvinmcelroy/Documents/webstuff/app_course/final_project/Selector/app/assets/stylesheets/api/categories.scss */
 .categories-tag:hover > p {
   color: white;
 }
-/* line 103, /Users/calvinmcelroy/Documents/webstuff/app_course/final_project/Selector/app/assets/stylesheets/api/categories.scss */
+/* line 105, /Users/calvinmcelroy/Documents/webstuff/app_course/final_project/Selector/app/assets/stylesheets/api/categories.scss */
 .categories-tag.checked {
   background-color: #34495E;
 }
-/* line 107, /Users/calvinmcelroy/Documents/webstuff/app_course/final_project/Selector/app/assets/stylesheets/api/categories.scss */
+/* line 109, /Users/calvinmcelroy/Documents/webstuff/app_course/final_project/Selector/app/assets/stylesheets/api/categories.scss */
 .categories-tag.checked > p {
   color: white;
 }
-/* line 111, /Users/calvinmcelroy/Documents/webstuff/app_course/final_project/Selector/app/assets/stylesheets/api/categories.scss */
+/* line 113, /Users/calvinmcelroy/Documents/webstuff/app_course/final_project/Selector/app/assets/stylesheets/api/categories.scss */
 .categories-tag.checked:before {
   background-color: #34495E;
 }
-
-/* tag ^^^^ */
 /* line 2, /Users/calvinmcelroy/Documents/webstuff/app_course/final_project/Selector/app/assets/stylesheets/api/contact_footer.scss */
 .contact-footer-contianer h2 {
   font-size: 24px;
@@ -478,10 +478,10 @@ body {
 /*
   SEARCH BAR IN search.scss
 */
-/*
-  nav links
-*/
-/* line 76, /Users/calvinmcelroy/Documents/webstuff/app_course/final_project/Selector/app/assets/stylesheets/api/header_nav.scss */
+/*  =============================================================
+      NAV LINKS
+    ============================================================= */
+/* line 78, /Users/calvinmcelroy/Documents/webstuff/app_course/final_project/Selector/app/assets/stylesheets/api/header_nav.scss */
 .header-nav-links {
   display: flex;
   justify-content: space-between;
@@ -490,7 +490,7 @@ body {
   margin-left: 20px;
 }
 
-/* line 84, /Users/calvinmcelroy/Documents/webstuff/app_course/final_project/Selector/app/assets/stylesheets/api/header_nav.scss */
+/* line 86, /Users/calvinmcelroy/Documents/webstuff/app_course/final_project/Selector/app/assets/stylesheets/api/header_nav.scss */
 .upload, .categories {
   position: relative;
   height: 50px;
@@ -499,23 +499,23 @@ body {
   margin: 0 10px;
 }
 
-/* line 92, /Users/calvinmcelroy/Documents/webstuff/app_course/final_project/Selector/app/assets/stylesheets/api/header_nav.scss */
+/* line 94, /Users/calvinmcelroy/Documents/webstuff/app_course/final_project/Selector/app/assets/stylesheets/api/header_nav.scss */
 .upload {
   width: 100px;
 }
 
-/* line 96, /Users/calvinmcelroy/Documents/webstuff/app_course/final_project/Selector/app/assets/stylesheets/api/header_nav.scss */
+/* line 98, /Users/calvinmcelroy/Documents/webstuff/app_course/final_project/Selector/app/assets/stylesheets/api/header_nav.scss */
 .categories {
   width: 120px;
 }
 
-/* line 100, /Users/calvinmcelroy/Documents/webstuff/app_course/final_project/Selector/app/assets/stylesheets/api/header_nav.scss */
+/* line 102, /Users/calvinmcelroy/Documents/webstuff/app_course/final_project/Selector/app/assets/stylesheets/api/header_nav.scss */
 .upload h4, .categories h4 {
   line-height: 50px;
   margin: 0;
 }
 
-/* line 105, /Users/calvinmcelroy/Documents/webstuff/app_course/final_project/Selector/app/assets/stylesheets/api/header_nav.scss */
+/* line 107, /Users/calvinmcelroy/Documents/webstuff/app_course/final_project/Selector/app/assets/stylesheets/api/header_nav.scss */
 .upload:hover,
 .categories:hover {
   cursor: pointer;
@@ -523,21 +523,23 @@ body {
   transition: color 0.3s ease-in-out;
 }
 
-/* line 113, /Users/calvinmcelroy/Documents/webstuff/app_course/final_project/Selector/app/assets/stylesheets/api/header_nav.scss */
+/* line 115, /Users/calvinmcelroy/Documents/webstuff/app_course/final_project/Selector/app/assets/stylesheets/api/header_nav.scss */
 .fa-level-up {
   width: 20px;
   height: 20px;
 }
 
-/* line 118, /Users/calvinmcelroy/Documents/webstuff/app_course/final_project/Selector/app/assets/stylesheets/api/header_nav.scss */
+/* line 120, /Users/calvinmcelroy/Documents/webstuff/app_course/final_project/Selector/app/assets/stylesheets/api/header_nav.scss */
 .fa-level-up, .fa-th-large {
   position: absolute;
   top: 18px;
   left: 0;
 }
 
-/* right nav login */
-/* line 128, /Users/calvinmcelroy/Documents/webstuff/app_course/final_project/Selector/app/assets/stylesheets/api/header_nav.scss */
+/*  =============================================================
+      RIGHT NAV LOGIN
+    ============================================================= */
+/* line 132, /Users/calvinmcelroy/Documents/webstuff/app_course/final_project/Selector/app/assets/stylesheets/api/header_nav.scss */
 .head-nav-right {
   display: flex;
   justify-content: space-between;
@@ -545,17 +547,17 @@ body {
   font-size: 14px;
 }
 
-/* line 135, /Users/calvinmcelroy/Documents/webstuff/app_course/final_project/Selector/app/assets/stylesheets/api/header_nav.scss */
+/* line 139, /Users/calvinmcelroy/Documents/webstuff/app_course/final_project/Selector/app/assets/stylesheets/api/header_nav.scss */
 .head-nav-button-login {
   margin: 10px;
 }
 
-/* line 139, /Users/calvinmcelroy/Documents/webstuff/app_course/final_project/Selector/app/assets/stylesheets/api/header_nav.scss */
+/* line 143, /Users/calvinmcelroy/Documents/webstuff/app_course/final_project/Selector/app/assets/stylesheets/api/header_nav.scss */
 .head-nav-right p {
   color: lightgrey;
 }
 
-/* line 143, /Users/calvinmcelroy/Documents/webstuff/app_course/final_project/Selector/app/assets/stylesheets/api/header_nav.scss */
+/* line 147, /Users/calvinmcelroy/Documents/webstuff/app_course/final_project/Selector/app/assets/stylesheets/api/header_nav.scss */
 .head-nav-button-signin {
   background-color: #4FA6D3;
   padding: 7px 10px;
@@ -563,8 +565,10 @@ body {
   margin: 10px;
 }
 
-/* right nav  user */
-/* line 154, /Users/calvinmcelroy/Documents/webstuff/app_course/final_project/Selector/app/assets/stylesheets/api/header_nav.scss */
+/*  =============================================================
+      RIGHT NAV USER
+    ============================================================= */
+/* line 160, /Users/calvinmcelroy/Documents/webstuff/app_course/final_project/Selector/app/assets/stylesheets/api/header_nav.scss */
 .head-nav-user {
   display: flex;
   height: 50px;
@@ -572,7 +576,7 @@ body {
   align-items: center;
   color: lightgrey;
 }
-/* line 161, /Users/calvinmcelroy/Documents/webstuff/app_course/final_project/Selector/app/assets/stylesheets/api/header_nav.scss */
+/* line 167, /Users/calvinmcelroy/Documents/webstuff/app_course/final_project/Selector/app/assets/stylesheets/api/header_nav.scss */
 .head-nav-user a {
   font-size: 14px;
   line-height: 6px;
@@ -580,20 +584,20 @@ body {
   color: white;
   transition: color 0.3s ease-in-out;
 }
-/* line 168, /Users/calvinmcelroy/Documents/webstuff/app_course/final_project/Selector/app/assets/stylesheets/api/header_nav.scss */
+/* line 174, /Users/calvinmcelroy/Documents/webstuff/app_course/final_project/Selector/app/assets/stylesheets/api/header_nav.scss */
 .head-nav-user a:hover {
   cursor: pointer;
   color: lightgrey;
 }
 
-/* line 176, /Users/calvinmcelroy/Documents/webstuff/app_course/final_project/Selector/app/assets/stylesheets/api/header_nav.scss */
+/* line 182, /Users/calvinmcelroy/Documents/webstuff/app_course/final_project/Selector/app/assets/stylesheets/api/header_nav.scss */
 .head-nav-right-login {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-/* line 183, /Users/calvinmcelroy/Documents/webstuff/app_course/final_project/Selector/app/assets/stylesheets/api/header_nav.scss */
+/* line 189, /Users/calvinmcelroy/Documents/webstuff/app_course/final_project/Selector/app/assets/stylesheets/api/header_nav.scss */
 .header-nav-user-img-box {
   height: 40px;
   width: 40px;
@@ -602,29 +606,29 @@ body {
   border-radius: 2px;
   background-color: white;
 }
-/* line 191, /Users/calvinmcelroy/Documents/webstuff/app_course/final_project/Selector/app/assets/stylesheets/api/header_nav.scss */
+/* line 197, /Users/calvinmcelroy/Documents/webstuff/app_course/final_project/Selector/app/assets/stylesheets/api/header_nav.scss */
 .header-nav-user-img-box img {
   height: 100%;
   width: auto;
 }
-/* line 195, /Users/calvinmcelroy/Documents/webstuff/app_course/final_project/Selector/app/assets/stylesheets/api/header_nav.scss */
+/* line 201, /Users/calvinmcelroy/Documents/webstuff/app_course/final_project/Selector/app/assets/stylesheets/api/header_nav.scss */
 .header-nav-user-img-box img:hover {
   opacity: .8;
   cursor: pointer;
 }
 
-/* line 203, /Users/calvinmcelroy/Documents/webstuff/app_course/final_project/Selector/app/assets/stylesheets/api/header_nav.scss */
+/* line 209, /Users/calvinmcelroy/Documents/webstuff/app_course/final_project/Selector/app/assets/stylesheets/api/header_nav.scss */
 .user-dropdown-arrow {
   position: relative;
   width: 50px;
   height: 50px;
 }
-/* line 208, /Users/calvinmcelroy/Documents/webstuff/app_course/final_project/Selector/app/assets/stylesheets/api/header_nav.scss */
+/* line 214, /Users/calvinmcelroy/Documents/webstuff/app_course/final_project/Selector/app/assets/stylesheets/api/header_nav.scss */
 .user-dropdown-arrow:hover {
   cursor: pointer;
 }
 
-/* line 214, /Users/calvinmcelroy/Documents/webstuff/app_course/final_project/Selector/app/assets/stylesheets/api/header_nav.scss */
+/* line 220, /Users/calvinmcelroy/Documents/webstuff/app_course/final_project/Selector/app/assets/stylesheets/api/header_nav.scss */
 .fa-chevron-down {
   position: absolute;
   top: 17px;
@@ -633,19 +637,19 @@ body {
   height: 14px;
   color: white;
 }
-/* line 222, /Users/calvinmcelroy/Documents/webstuff/app_course/final_project/Selector/app/assets/stylesheets/api/header_nav.scss */
+/* line 228, /Users/calvinmcelroy/Documents/webstuff/app_course/final_project/Selector/app/assets/stylesheets/api/header_nav.scss */
 .fa-chevron-down:hover {
   color: lightgrey;
 }
-/* line 226, /Users/calvinmcelroy/Documents/webstuff/app_course/final_project/Selector/app/assets/stylesheets/api/header_nav.scss */
+/* line 232, /Users/calvinmcelroy/Documents/webstuff/app_course/final_project/Selector/app/assets/stylesheets/api/header_nav.scss */
 .fa-chevron-down.dropdown-active {
   transform: rotate(180deg);
 }
 
-/*
-  UserNavDropdown
-*/
-/* line 240, /Users/calvinmcelroy/Documents/webstuff/app_course/final_project/Selector/app/assets/stylesheets/api/header_nav.scss */
+/*  =============================================================
+      USER NAV DROPDOWN
+    ============================================================= */
+/* line 247, /Users/calvinmcelroy/Documents/webstuff/app_course/final_project/Selector/app/assets/stylesheets/api/header_nav.scss */
 .user-nav-dropdown-container {
   position: absolute;
   top: 43px;
@@ -653,7 +657,7 @@ body {
   width: 130px;
 }
 
-/* line 247, /Users/calvinmcelroy/Documents/webstuff/app_course/final_project/Selector/app/assets/stylesheets/api/header_nav.scss */
+/* line 254, /Users/calvinmcelroy/Documents/webstuff/app_course/final_project/Selector/app/assets/stylesheets/api/header_nav.scss */
 .user-nav-dropdown-arrow-up {
   width: 0;
   height: 0;
@@ -663,12 +667,12 @@ body {
   margin-left: 110px;
 }
 
-/* line 256, /Users/calvinmcelroy/Documents/webstuff/app_course/final_project/Selector/app/assets/stylesheets/api/header_nav.scss */
+/* line 263, /Users/calvinmcelroy/Documents/webstuff/app_course/final_project/Selector/app/assets/stylesheets/api/header_nav.scss */
 .user-nav-dropdown {
   text-align: center;
 }
 
-/* line 260, /Users/calvinmcelroy/Documents/webstuff/app_course/final_project/Selector/app/assets/stylesheets/api/header_nav.scss */
+/* line 267, /Users/calvinmcelroy/Documents/webstuff/app_course/final_project/Selector/app/assets/stylesheets/api/header_nav.scss */
 .user-nav-dropdown-row {
   width: 100%;
   height: 30px;
@@ -677,16 +681,16 @@ body {
   background-color: white;
   border-bottom: solid 1px lightgrey;
 }
-/* line 268, /Users/calvinmcelroy/Documents/webstuff/app_course/final_project/Selector/app/assets/stylesheets/api/header_nav.scss */
+/* line 275, /Users/calvinmcelroy/Documents/webstuff/app_course/final_project/Selector/app/assets/stylesheets/api/header_nav.scss */
 .user-nav-dropdown-row:first-child {
   border-radius: 5px 5px 0 0;
 }
-/* line 272, /Users/calvinmcelroy/Documents/webstuff/app_course/final_project/Selector/app/assets/stylesheets/api/header_nav.scss */
+/* line 279, /Users/calvinmcelroy/Documents/webstuff/app_course/final_project/Selector/app/assets/stylesheets/api/header_nav.scss */
 .user-nav-dropdown-row:last-child {
   border-bottom: none;
   border-radius: 0 0 5px 5px;
 }
-/* line 277, /Users/calvinmcelroy/Documents/webstuff/app_course/final_project/Selector/app/assets/stylesheets/api/header_nav.scss */
+/* line 284, /Users/calvinmcelroy/Documents/webstuff/app_course/final_project/Selector/app/assets/stylesheets/api/header_nav.scss */
 .user-nav-dropdown-row:hover {
   background-color: #EFFAFF;
   color: #6BACD4;
@@ -749,22 +753,22 @@ body {
   background-color: #2D4050;
 }
 
-/*
-  LEFT
-*/
-/* line 35, /Users/calvinmcelroy/Documents/webstuff/app_course/final_project/Selector/app/assets/stylesheets/api/player.scss */
+/*  =============================================================
+      LEFT
+    ============================================================= */
+/* line 38, /Users/calvinmcelroy/Documents/webstuff/app_course/final_project/Selector/app/assets/stylesheets/api/player.scss */
 .player-container-left {
   display: flex;
   justify-content: flex-start;
 }
 
-/* line 40, /Users/calvinmcelroy/Documents/webstuff/app_course/final_project/Selector/app/assets/stylesheets/api/player.scss */
+/* line 43, /Users/calvinmcelroy/Documents/webstuff/app_course/final_project/Selector/app/assets/stylesheets/api/player.scss */
 .first-queue-box {
   display: flex;
   width: 280px;
 }
 
-/* line 45, /Users/calvinmcelroy/Documents/webstuff/app_course/final_project/Selector/app/assets/stylesheets/api/player.scss */
+/* line 48, /Users/calvinmcelroy/Documents/webstuff/app_course/final_project/Selector/app/assets/stylesheets/api/player.scss */
 .first-queue-image-box {
   width: 50px;
   height: 50px;
@@ -772,17 +776,17 @@ body {
   overflow: hidden;
 }
 
-/* line 53, /Users/calvinmcelroy/Documents/webstuff/app_course/final_project/Selector/app/assets/stylesheets/api/player.scss */
+/* line 56, /Users/calvinmcelroy/Documents/webstuff/app_course/final_project/Selector/app/assets/stylesheets/api/player.scss */
 .first-queue-play-button {
   position: relative;
   width: 50px;
   height: 50px;
 }
-/* line 58, /Users/calvinmcelroy/Documents/webstuff/app_course/final_project/Selector/app/assets/stylesheets/api/player.scss */
+/* line 61, /Users/calvinmcelroy/Documents/webstuff/app_course/final_project/Selector/app/assets/stylesheets/api/player.scss */
 .first-queue-play-button:hover {
   cursor: pointer;
 }
-/* line 62, /Users/calvinmcelroy/Documents/webstuff/app_course/final_project/Selector/app/assets/stylesheets/api/player.scss */
+/* line 65, /Users/calvinmcelroy/Documents/webstuff/app_course/final_project/Selector/app/assets/stylesheets/api/player.scss */
 .first-queue-play-button svg {
   position: absolute;
   width: 21px;
@@ -792,7 +796,7 @@ body {
   fill: white;
 }
 
-/* line 73, /Users/calvinmcelroy/Documents/webstuff/app_course/final_project/Selector/app/assets/stylesheets/api/player.scss */
+/* line 76, /Users/calvinmcelroy/Documents/webstuff/app_course/final_project/Selector/app/assets/stylesheets/api/player.scss */
 .first-queue-play-detail {
   display: flex;
   flex-wrap: wrap;
@@ -800,25 +804,25 @@ body {
   width: 180px;
   padding: 5px 0;
 }
-/* line 80, /Users/calvinmcelroy/Documents/webstuff/app_course/final_project/Selector/app/assets/stylesheets/api/player.scss */
+/* line 83, /Users/calvinmcelroy/Documents/webstuff/app_course/final_project/Selector/app/assets/stylesheets/api/player.scss */
 .first-queue-play-detail h2 {
   width: 180px;
   height: 22px;
   overflow: hidden;
   padding-right: 5px;
 }
-/* line 87, /Users/calvinmcelroy/Documents/webstuff/app_course/final_project/Selector/app/assets/stylesheets/api/player.scss */
+/* line 90, /Users/calvinmcelroy/Documents/webstuff/app_course/final_project/Selector/app/assets/stylesheets/api/player.scss */
 .first-queue-play-detail h4 {
   font-size: 14px;
   margin: 0 5px;
   max-width: 120px;
   overflow: hidden;
 }
-/* line 94, /Users/calvinmcelroy/Documents/webstuff/app_course/final_project/Selector/app/assets/stylesheets/api/player.scss */
+/* line 97, /Users/calvinmcelroy/Documents/webstuff/app_course/final_project/Selector/app/assets/stylesheets/api/player.scss */
 .first-queue-play-detail p {
   font-size: 12px;
 }
-/* line 98, /Users/calvinmcelroy/Documents/webstuff/app_course/final_project/Selector/app/assets/stylesheets/api/player.scss */
+/* line 101, /Users/calvinmcelroy/Documents/webstuff/app_course/final_project/Selector/app/assets/stylesheets/api/player.scss */
 .first-queue-play-detail button {
   display: none;
   height: 12px;
@@ -829,12 +833,12 @@ body {
   background-color: rgba(255, 255, 255, 0);
   margin: 0 5px;
 }
-/* line 108, /Users/calvinmcelroy/Documents/webstuff/app_course/final_project/Selector/app/assets/stylesheets/api/player.scss */
+/* line 111, /Users/calvinmcelroy/Documents/webstuff/app_course/final_project/Selector/app/assets/stylesheets/api/player.scss */
 .first-queue-play-detail button:hover {
   background-color: rgba(255, 255, 255, 0.1);
 }
 
-/* line 115, /Users/calvinmcelroy/Documents/webstuff/app_course/final_project/Selector/app/assets/stylesheets/api/player.scss */
+/* line 118, /Users/calvinmcelroy/Documents/webstuff/app_course/final_project/Selector/app/assets/stylesheets/api/player.scss */
 .first-queue-bottons-box {
   width: 120px;
   height: 50px;
@@ -842,10 +846,10 @@ body {
   border-right: solid 1px black;
 }
 
-/*
-  slider
-*/
-/* line 127, /Users/calvinmcelroy/Documents/webstuff/app_course/final_project/Selector/app/assets/stylesheets/api/player.scss */
+/*  =============================================================
+      SLIDER
+    ============================================================= */
+/* line 131, /Users/calvinmcelroy/Documents/webstuff/app_course/final_project/Selector/app/assets/stylesheets/api/player.scss */
 .retore-play-pop-box {
   position: absolute;
   top: -36px;
@@ -854,14 +858,14 @@ body {
   border: solid 1px black;
   border-radius: 5px;
 }
-/* line 135, /Users/calvinmcelroy/Documents/webstuff/app_course/final_project/Selector/app/assets/stylesheets/api/player.scss */
+/* line 139, /Users/calvinmcelroy/Documents/webstuff/app_course/final_project/Selector/app/assets/stylesheets/api/player.scss */
 .retore-play-pop-box p {
   padding: 5px;
   color: white;
   font-size: 10px;
 }
 
-/* line 143, /Users/calvinmcelroy/Documents/webstuff/app_course/final_project/Selector/app/assets/stylesheets/api/player.scss */
+/* line 147, /Users/calvinmcelroy/Documents/webstuff/app_course/final_project/Selector/app/assets/stylesheets/api/player.scss */
 .retore-play-pop-box-pointer {
   position: absolute;
   bottom: -10px;
@@ -873,14 +877,14 @@ body {
   border-top: 10px solid #2D4050;
 }
 
-/* line 154, /Users/calvinmcelroy/Documents/webstuff/app_course/final_project/Selector/app/assets/stylesheets/api/player.scss */
+/* line 158, /Users/calvinmcelroy/Documents/webstuff/app_course/final_project/Selector/app/assets/stylesheets/api/player.scss */
 .first-queue-playback {
   display: flex;
   justify-content: space-between;
   width: 100%;
 }
 
-/* line 160, /Users/calvinmcelroy/Documents/webstuff/app_course/final_project/Selector/app/assets/stylesheets/api/player.scss */
+/* line 164, /Users/calvinmcelroy/Documents/webstuff/app_course/final_project/Selector/app/assets/stylesheets/api/player.scss */
 .first-queue-playback-countup, .first-queue-playback-countdown {
   width: 80px;
   height: 50px;
@@ -889,21 +893,21 @@ body {
   line-height: 50px;
 }
 
-/* line 168, /Users/calvinmcelroy/Documents/webstuff/app_course/final_project/Selector/app/assets/stylesheets/api/player.scss */
+/* line 172, /Users/calvinmcelroy/Documents/webstuff/app_course/final_project/Selector/app/assets/stylesheets/api/player.scss */
 .first-queue-playback-slider {
   width: 70%;
 }
 
-/*
-  RIGHT
-*/
-/* line 177, /Users/calvinmcelroy/Documents/webstuff/app_course/final_project/Selector/app/assets/stylesheets/api/player.scss */
+/*  =============================================================
+      RIGHT
+    ============================================================= */
+/* line 182, /Users/calvinmcelroy/Documents/webstuff/app_course/final_project/Selector/app/assets/stylesheets/api/player.scss */
 .player-container-right {
   display: flex;
   justify-content: flex-end;
 }
 
-/* line 182, /Users/calvinmcelroy/Documents/webstuff/app_course/final_project/Selector/app/assets/stylesheets/api/player.scss */
+/* line 187, /Users/calvinmcelroy/Documents/webstuff/app_course/final_project/Selector/app/assets/stylesheets/api/player.scss */
 .first-queue-playback-vol-box {
   position: relative;
   height: 50px;
@@ -913,23 +917,23 @@ body {
   border-right: solid 1px black;
   transition: background-color 0.3s ease-in-out;
 }
-/* line 191, /Users/calvinmcelroy/Documents/webstuff/app_course/final_project/Selector/app/assets/stylesheets/api/player.scss */
+/* line 196, /Users/calvinmcelroy/Documents/webstuff/app_course/final_project/Selector/app/assets/stylesheets/api/player.scss */
 .first-queue-playback-vol-box:hover {
   background-color: #1F3341;
   curser: pointer;
 }
-/* line 195, /Users/calvinmcelroy/Documents/webstuff/app_course/final_project/Selector/app/assets/stylesheets/api/player.scss */
+/* line 200, /Users/calvinmcelroy/Documents/webstuff/app_course/final_project/Selector/app/assets/stylesheets/api/player.scss */
 .first-queue-playback-vol-box:hover > .f-q-vol-bar {
   display: block;
 }
-/* line 200, /Users/calvinmcelroy/Documents/webstuff/app_course/final_project/Selector/app/assets/stylesheets/api/player.scss */
+/* line 205, /Users/calvinmcelroy/Documents/webstuff/app_course/final_project/Selector/app/assets/stylesheets/api/player.scss */
 .first-queue-playback-vol-box i {
   position: absolute;
   top: 12px;
   left: 14px;
 }
 
-/* line 207, /Users/calvinmcelroy/Documents/webstuff/app_course/final_project/Selector/app/assets/stylesheets/api/player.scss */
+/* line 212, /Users/calvinmcelroy/Documents/webstuff/app_course/final_project/Selector/app/assets/stylesheets/api/player.scss */
 .f-q-vol-bar {
   display: none;
   position: absolute;
@@ -942,45 +946,45 @@ body {
   border-radius: 5px 5px 0 0;
 }
 
-/* line 219, /Users/calvinmcelroy/Documents/webstuff/app_course/final_project/Selector/app/assets/stylesheets/api/player.scss */
+/* line 224, /Users/calvinmcelroy/Documents/webstuff/app_course/final_project/Selector/app/assets/stylesheets/api/player.scss */
 .f-q-vol-slider {
   transform: rotate(270deg) translate(-75px, -34px);
 }
 
-/* line 223, /Users/calvinmcelroy/Documents/webstuff/app_course/final_project/Selector/app/assets/stylesheets/api/player.scss */
+/* line 228, /Users/calvinmcelroy/Documents/webstuff/app_course/final_project/Selector/app/assets/stylesheets/api/player.scss */
 .playback-queue-dropdown {
   position: relative;
   height: 50px;
   width: 100px;
 }
-/* line 228, /Users/calvinmcelroy/Documents/webstuff/app_course/final_project/Selector/app/assets/stylesheets/api/player.scss */
+/* line 233, /Users/calvinmcelroy/Documents/webstuff/app_course/final_project/Selector/app/assets/stylesheets/api/player.scss */
 .playback-queue-dropdown:hover {
   background-color: #1F3341;
   curser: pointer;
 }
-/* line 233, /Users/calvinmcelroy/Documents/webstuff/app_course/final_project/Selector/app/assets/stylesheets/api/player.scss */
+/* line 238, /Users/calvinmcelroy/Documents/webstuff/app_course/final_project/Selector/app/assets/stylesheets/api/player.scss */
 .playback-queue-dropdown h4 {
   margin: 0;
   font-size: 14px;
   line-height: 50px;
   padding: 0 20px;
 }
-/* line 240, /Users/calvinmcelroy/Documents/webstuff/app_course/final_project/Selector/app/assets/stylesheets/api/player.scss */
+/* line 245, /Users/calvinmcelroy/Documents/webstuff/app_course/final_project/Selector/app/assets/stylesheets/api/player.scss */
 .playback-queue-dropdown i {
   position: absolute;
   top: 15px;
   left: 70px;
 }
-/* line 246, /Users/calvinmcelroy/Documents/webstuff/app_course/final_project/Selector/app/assets/stylesheets/api/player.scss */
+/* line 251, /Users/calvinmcelroy/Documents/webstuff/app_course/final_project/Selector/app/assets/stylesheets/api/player.scss */
 .playback-queue-dropdown.dropdown-active i {
   top: 20px;
   transform: rotate(180deg);
 }
 
-/*
-  QUEUE dropdown
-*/
-/* line 260, /Users/calvinmcelroy/Documents/webstuff/app_course/final_project/Selector/app/assets/stylesheets/api/player.scss */
+/*  =============================================================
+      QUEUE DROPDOWN
+    ============================================================= */
+/* line 266, /Users/calvinmcelroy/Documents/webstuff/app_course/final_project/Selector/app/assets/stylesheets/api/player.scss */
 .player-container-bottom {
   display: flex;
   justify-content: flex-start;
@@ -990,18 +994,18 @@ body {
   background-color: #1F3341;
 }
 
-/* line 269, /Users/calvinmcelroy/Documents/webstuff/app_course/final_project/Selector/app/assets/stylesheets/api/player.scss */
+/* line 275, /Users/calvinmcelroy/Documents/webstuff/app_course/final_project/Selector/app/assets/stylesheets/api/player.scss */
 .rest-queue-box {
   display: flex;
   justify-content: space-between;
   width: 280px;
 }
-/* line 274, /Users/calvinmcelroy/Documents/webstuff/app_course/final_project/Selector/app/assets/stylesheets/api/player.scss */
+/* line 280, /Users/calvinmcelroy/Documents/webstuff/app_course/final_project/Selector/app/assets/stylesheets/api/player.scss */
 .rest-queue-box:hover {
   background-color: #9FC5E2;
 }
 
-/* line 280, /Users/calvinmcelroy/Documents/webstuff/app_course/final_project/Selector/app/assets/stylesheets/api/player.scss */
+/* line 286, /Users/calvinmcelroy/Documents/webstuff/app_course/final_project/Selector/app/assets/stylesheets/api/player.scss */
 .rest-queue-image-box {
   width: 50px;
   height: 50px;
@@ -1009,7 +1013,7 @@ body {
   overflow: hidden;
 }
 
-/* line 287, /Users/calvinmcelroy/Documents/webstuff/app_course/final_project/Selector/app/assets/stylesheets/api/player.scss */
+/* line 293, /Users/calvinmcelroy/Documents/webstuff/app_course/final_project/Selector/app/assets/stylesheets/api/player.scss */
 .rest-queue-play-detail {
   display: flex;
   flex-wrap: wrap;
@@ -1017,25 +1021,27 @@ body {
   width: 180px;
   padding: 5px 0;
 }
-/* line 294, /Users/calvinmcelroy/Documents/webstuff/app_course/final_project/Selector/app/assets/stylesheets/api/player.scss */
+/* line 300, /Users/calvinmcelroy/Documents/webstuff/app_course/final_project/Selector/app/assets/stylesheets/api/player.scss */
 .rest-queue-play-detail h2 {
   width: 180px;
   height: 22px;
   overflow: hidden;
 }
-/* line 300, /Users/calvinmcelroy/Documents/webstuff/app_course/final_project/Selector/app/assets/stylesheets/api/player.scss */
+/* line 306, /Users/calvinmcelroy/Documents/webstuff/app_course/final_project/Selector/app/assets/stylesheets/api/player.scss */
 .rest-queue-play-detail h4 {
   font-size: 14px;
   margin: 0 5px;
   max-width: 120px;
   overflow: hidden;
 }
-/* line 307, /Users/calvinmcelroy/Documents/webstuff/app_course/final_project/Selector/app/assets/stylesheets/api/player.scss */
+/* line 313, /Users/calvinmcelroy/Documents/webstuff/app_course/final_project/Selector/app/assets/stylesheets/api/player.scss */
 .rest-queue-play-detail p {
   font-size: 12px;
 }
-/* Reset */
-/* line 4, /Users/calvinmcelroy/Documents/webstuff/app_course/final_project/Selector/app/assets/stylesheets/api/reset.scss */
+/*  =============================================================
+      RESET
+    ============================================================= */
+/* line 6, /Users/calvinmcelroy/Documents/webstuff/app_course/final_project/Selector/app/assets/stylesheets/api/reset.scss */
 html, body, header, nav, h1, a,
 ul, li, strong, main, button, i,
 section, img, div, h2, p, form,
@@ -1054,19 +1060,19 @@ span, article, footer, time, small {
   background: transparent;
 }
 
-/* line 22, /Users/calvinmcelroy/Documents/webstuff/app_course/final_project/Selector/app/assets/stylesheets/api/reset.scss */
+/* line 24, /Users/calvinmcelroy/Documents/webstuff/app_course/final_project/Selector/app/assets/stylesheets/api/reset.scss */
 ul {
   list-style: none;
 }
 
-/* line 26, /Users/calvinmcelroy/Documents/webstuff/app_course/final_project/Selector/app/assets/stylesheets/api/reset.scss */
+/* line 28, /Users/calvinmcelroy/Documents/webstuff/app_course/final_project/Selector/app/assets/stylesheets/api/reset.scss */
 img {
   display: block;
   width: 100%;
   height: auto;
 }
 
-/* line 32, /Users/calvinmcelroy/Documents/webstuff/app_course/final_project/Selector/app/assets/stylesheets/api/reset.scss */
+/* line 34, /Users/calvinmcelroy/Documents/webstuff/app_course/final_project/Selector/app/assets/stylesheets/api/reset.scss */
 input[type="password"],
 input[type="email"],
 input[type="text"],
@@ -1078,14 +1084,14 @@ button {
   appearance: none;
 }
 
-/* line 43, /Users/calvinmcelroy/Documents/webstuff/app_course/final_project/Selector/app/assets/stylesheets/api/reset.scss */
+/* line 45, /Users/calvinmcelroy/Documents/webstuff/app_course/final_project/Selector/app/assets/stylesheets/api/reset.scss */
 button,
 input[type="submit"] {
   cursor: pointer;
 }
 
 /* Clearfix */
-/* line 50, /Users/calvinmcelroy/Documents/webstuff/app_course/final_project/Selector/app/assets/stylesheets/api/reset.scss */
+/* line 52, /Users/calvinmcelroy/Documents/webstuff/app_course/final_project/Selector/app/assets/stylesheets/api/reset.scss */
 .group:after {
   content: "";
   display: block;
@@ -1153,16 +1159,16 @@ input[type="submit"] {
   top: 6px;
 }
 
-/*
-  SEARCH RESULTS
-*/
-/* line 65, /Users/calvinmcelroy/Documents/webstuff/app_course/final_project/Selector/app/assets/stylesheets/api/search.scss */
+/*  =============================================================
+      SEARCH RESULTS
+    ============================================================= */
+/* line 66, /Users/calvinmcelroy/Documents/webstuff/app_course/final_project/Selector/app/assets/stylesheets/api/search.scss */
 .search-container {
   height: 100%;
   width: 100vw;
 }
 
-/* line 70, /Users/calvinmcelroy/Documents/webstuff/app_course/final_project/Selector/app/assets/stylesheets/api/search.scss */
+/* line 71, /Users/calvinmcelroy/Documents/webstuff/app_course/final_project/Selector/app/assets/stylesheets/api/search.scss */
 .search-mask {
   position: absolute;
   height: 100vw;
@@ -1172,7 +1178,7 @@ input[type="submit"] {
   opacity: .7;
 }
 
-/* line 79, /Users/calvinmcelroy/Documents/webstuff/app_course/final_project/Selector/app/assets/stylesheets/api/search.scss */
+/* line 80, /Users/calvinmcelroy/Documents/webstuff/app_course/final_project/Selector/app/assets/stylesheets/api/search.scss */
 .search-bg-img-box {
   height: 100vw;
   width: 100%;
@@ -1180,7 +1186,7 @@ input[type="submit"] {
   background-size: 100% auto;
 }
 
-/* line 86, /Users/calvinmcelroy/Documents/webstuff/app_course/final_project/Selector/app/assets/stylesheets/api/search.scss */
+/* line 87, /Users/calvinmcelroy/Documents/webstuff/app_course/final_project/Selector/app/assets/stylesheets/api/search.scss */
 .search-results-container {
   width: 80%;
   z-index: 2;
@@ -1190,7 +1196,7 @@ input[type="submit"] {
   margin: 0 auto;
 }
 
-/* line 96, /Users/calvinmcelroy/Documents/webstuff/app_course/final_project/Selector/app/assets/stylesheets/api/search.scss */
+/* line 97, /Users/calvinmcelroy/Documents/webstuff/app_course/final_project/Selector/app/assets/stylesheets/api/search.scss */
 .search-results-shows-box,
 .search-results-users-box,
 .search-results-tags-box {
@@ -1202,13 +1208,13 @@ input[type="submit"] {
   border-radius: 3px;
 }
 
-/* line 107, /Users/calvinmcelroy/Documents/webstuff/app_course/final_project/Selector/app/assets/stylesheets/api/search.scss */
+/* line 108, /Users/calvinmcelroy/Documents/webstuff/app_course/final_project/Selector/app/assets/stylesheets/api/search.scss */
 .search-results-tags-box {
   width: 100%;
   margin-top: 80px;
 }
 
-/* line 112, /Users/calvinmcelroy/Documents/webstuff/app_course/final_project/Selector/app/assets/stylesheets/api/search.scss */
+/* line 113, /Users/calvinmcelroy/Documents/webstuff/app_course/final_project/Selector/app/assets/stylesheets/api/search.scss */
 .search-results-shows-head,
 .search-results-users-head,
 .search-results-tags-head {
@@ -1216,7 +1222,7 @@ input[type="submit"] {
   padding: 10px 10px 0 10px;
 }
 
-/* line 119, /Users/calvinmcelroy/Documents/webstuff/app_course/final_project/Selector/app/assets/stylesheets/api/search.scss */
+/* line 120, /Users/calvinmcelroy/Documents/webstuff/app_course/final_project/Selector/app/assets/stylesheets/api/search.scss */
 .search-results-shows-head h2,
 .search-results-users-head h2,
 .search-results-tags-head h2 {
@@ -1226,13 +1232,13 @@ input[type="submit"] {
   border-bottom: solid 1px #90B2C8;
 }
 
-/* line 128, /Users/calvinmcelroy/Documents/webstuff/app_course/final_project/Selector/app/assets/stylesheets/api/search.scss */
+/* line 129, /Users/calvinmcelroy/Documents/webstuff/app_course/final_project/Selector/app/assets/stylesheets/api/search.scss */
 .search-results-shows-feed {
   display: block;
   width: 100%;
 }
 
-/* line 133, /Users/calvinmcelroy/Documents/webstuff/app_course/final_project/Selector/app/assets/stylesheets/api/search.scss */
+/* line 134, /Users/calvinmcelroy/Documents/webstuff/app_course/final_project/Selector/app/assets/stylesheets/api/search.scss */
 .search-result-show-item, .search-result-user-item {
   width: 80%;
   height: 70px;
@@ -1244,7 +1250,7 @@ input[type="submit"] {
   background-color: rgba(255, 255, 255, 0.05);
 }
 
-/* line 144, /Users/calvinmcelroy/Documents/webstuff/app_course/final_project/Selector/app/assets/stylesheets/api/search.scss */
+/* line 145, /Users/calvinmcelroy/Documents/webstuff/app_course/final_project/Selector/app/assets/stylesheets/api/search.scss */
 .search-result-show-thumb, .search-result-user-thumb {
   width: 50px;
   height: 50px;
@@ -1252,14 +1258,14 @@ input[type="submit"] {
   border: solid 1px lightgrey;
 }
 
-/* line 151, /Users/calvinmcelroy/Documents/webstuff/app_course/final_project/Selector/app/assets/stylesheets/api/search.scss */
+/* line 152, /Users/calvinmcelroy/Documents/webstuff/app_course/final_project/Selector/app/assets/stylesheets/api/search.scss */
 .search-result-show-thumb img, .search-result-user-thumb img {
   height: auto;
   width: 100%;
   border-radius: 3px;
 }
 
-/* line 157, /Users/calvinmcelroy/Documents/webstuff/app_course/final_project/Selector/app/assets/stylesheets/api/search.scss */
+/* line 158, /Users/calvinmcelroy/Documents/webstuff/app_course/final_project/Selector/app/assets/stylesheets/api/search.scss */
 .search-result-show-item h4, .search-result-user-item h4 {
   color: white;
   font-size: 24px;
@@ -1269,8 +1275,10 @@ input[type="submit"] {
   font-family: OpenSans-Light;
 }
 
-/* tags */
-/* line 169, /Users/calvinmcelroy/Documents/webstuff/app_course/final_project/Selector/app/assets/stylesheets/api/search.scss */
+/*  =============================================================
+      TAGS
+    ============================================================= */
+/* line 173, /Users/calvinmcelroy/Documents/webstuff/app_course/final_project/Selector/app/assets/stylesheets/api/search.scss */
 .search-results-tags-feed {
   width: 100%;
   height: auto;
@@ -1279,7 +1287,7 @@ input[type="submit"] {
   margin-bottom: 10px;
 }
 
-/* line 177, /Users/calvinmcelroy/Documents/webstuff/app_course/final_project/Selector/app/assets/stylesheets/api/search.scss */
+/* line 181, /Users/calvinmcelroy/Documents/webstuff/app_course/final_project/Selector/app/assets/stylesheets/api/search.scss */
 .search-result-tag-item {
   display: flex;
   align-items: center;
@@ -1295,7 +1303,7 @@ input[type="submit"] {
   border-radius: 0 5px 5px 0;
   transition: transform .4s .2s,opacity .4s ease-in-out, background-color 0.2s ease-in-out;
 }
-/* line 193, /Users/calvinmcelroy/Documents/webstuff/app_course/final_project/Selector/app/assets/stylesheets/api/search.scss */
+/* line 197, /Users/calvinmcelroy/Documents/webstuff/app_course/final_project/Selector/app/assets/stylesheets/api/search.scss */
 .search-result-tag-item:before {
   content: "";
   position: absolute;
@@ -1312,7 +1320,7 @@ input[type="submit"] {
   /*transform: .4s .2s,opacity .4s ease-in-out;*/
   transition: background-color 0.2s ease-in-out;
 }
-/* line 211, /Users/calvinmcelroy/Documents/webstuff/app_course/final_project/Selector/app/assets/stylesheets/api/search.scss */
+/* line 215, /Users/calvinmcelroy/Documents/webstuff/app_course/final_project/Selector/app/assets/stylesheets/api/search.scss */
 .search-result-tag-item:after {
   content: "";
   position: absolute;
@@ -1324,20 +1332,20 @@ input[type="submit"] {
   border-radius: 100%;
   background-color: #34495E;
 }
-/* line 223, /Users/calvinmcelroy/Documents/webstuff/app_course/final_project/Selector/app/assets/stylesheets/api/search.scss */
+/* line 227, /Users/calvinmcelroy/Documents/webstuff/app_course/final_project/Selector/app/assets/stylesheets/api/search.scss */
 .search-result-tag-item:hover {
   background-color: lightgrey;
   cursor: pointer;
 }
-/* line 227, /Users/calvinmcelroy/Documents/webstuff/app_course/final_project/Selector/app/assets/stylesheets/api/search.scss */
+/* line 231, /Users/calvinmcelroy/Documents/webstuff/app_course/final_project/Selector/app/assets/stylesheets/api/search.scss */
 .search-result-tag-item:hover:before {
   background-color: lightgrey;
 }
-/* line 231, /Users/calvinmcelroy/Documents/webstuff/app_course/final_project/Selector/app/assets/stylesheets/api/search.scss */
+/* line 235, /Users/calvinmcelroy/Documents/webstuff/app_course/final_project/Selector/app/assets/stylesheets/api/search.scss */
 .search-result-tag-item:hover > p {
   color: #34495E;
 }
-/* line 236, /Users/calvinmcelroy/Documents/webstuff/app_course/final_project/Selector/app/assets/stylesheets/api/search.scss */
+/* line 240, /Users/calvinmcelroy/Documents/webstuff/app_course/final_project/Selector/app/assets/stylesheets/api/search.scss */
 .search-result-tag-item p {
   color: white;
   font-family: OpenSans;
@@ -1388,9 +1396,9 @@ input[type="submit"] {
   fill: white;
 }
 
-/*
-  Show Item
-*/
+/*  =============================================================
+      SHOW ITEM
+    ============================================================= */
 /* line 45, /Users/calvinmcelroy/Documents/webstuff/app_course/final_project/Selector/app/assets/stylesheets/api/show_feed.scss */
 .show-feed-item-container {
   /*display: flex;
@@ -1891,9 +1899,9 @@ input[type="submit"] {
   opacity: .1;
 }
 
-/*
-  main container
-*/
+/*  =============================================================
+      MAIN CONTAINER
+    ============================================================= */
 /* line 256, /Users/calvinmcelroy/Documents/webstuff/app_course/final_project/Selector/app/assets/stylesheets/api/show_profile.scss */
 .s-p-main-container {
   display: flex;
@@ -1957,10 +1965,10 @@ input[type="submit"] {
   margin-bottom: 10px;
 }
 
-/*
-  User Controls
-*/
-/* line 322, /Users/calvinmcelroy/Documents/webstuff/app_course/final_project/Selector/app/assets/stylesheets/api/show_profile.scss */
+/*  =============================================================
+      USER CONTROLS
+    ============================================================= */
+/* line 323, /Users/calvinmcelroy/Documents/webstuff/app_course/final_project/Selector/app/assets/stylesheets/api/show_profile.scss */
 .show-user-controls-container {
   display: flex;
   justify-content: space-around;
@@ -1970,7 +1978,7 @@ input[type="submit"] {
   margin: 0 auto;
 }
 
-/* line 331, /Users/calvinmcelroy/Documents/webstuff/app_course/final_project/Selector/app/assets/stylesheets/api/show_profile.scss */
+/* line 332, /Users/calvinmcelroy/Documents/webstuff/app_course/final_project/Selector/app/assets/stylesheets/api/show_profile.scss */
 .s-u-c-b {
   display: flex;
   position: relative;
@@ -1981,14 +1989,14 @@ input[type="submit"] {
   background-color: #EBF0F2;
   transition: background-color 0.2s ease-in-out;
 }
-/* line 341, /Users/calvinmcelroy/Documents/webstuff/app_course/final_project/Selector/app/assets/stylesheets/api/show_profile.scss */
+/* line 342, /Users/calvinmcelroy/Documents/webstuff/app_course/final_project/Selector/app/assets/stylesheets/api/show_profile.scss */
 .s-u-c-b h2 {
   line-height: 50px;
   font-size: 18px;
   margin-right: -20px;
 }
 
-/* line 348, /Users/calvinmcelroy/Documents/webstuff/app_course/final_project/Selector/app/assets/stylesheets/api/show_profile.scss */
+/* line 349, /Users/calvinmcelroy/Documents/webstuff/app_course/final_project/Selector/app/assets/stylesheets/api/show_profile.scss */
 .edit:hover,
 .stats:hover,
 .delete:hover {
@@ -1996,51 +2004,53 @@ input[type="submit"] {
   background-color: #E0E3E4;
 }
 
-/* line 356, /Users/calvinmcelroy/Documents/webstuff/app_course/final_project/Selector/app/assets/stylesheets/api/show_profile.scss */
+/* line 357, /Users/calvinmcelroy/Documents/webstuff/app_course/final_project/Selector/app/assets/stylesheets/api/show_profile.scss */
 .s-u-c-b.edit {
   color: #4FA6D3;
 }
 
-/* line 360, /Users/calvinmcelroy/Documents/webstuff/app_course/final_project/Selector/app/assets/stylesheets/api/show_profile.scss */
+/* line 361, /Users/calvinmcelroy/Documents/webstuff/app_course/final_project/Selector/app/assets/stylesheets/api/show_profile.scss */
 .s-u-c-b.embed {
   color: grey;
 }
 
-/* line 365, /Users/calvinmcelroy/Documents/webstuff/app_course/final_project/Selector/app/assets/stylesheets/api/show_profile.scss */
+/* line 366, /Users/calvinmcelroy/Documents/webstuff/app_course/final_project/Selector/app/assets/stylesheets/api/show_profile.scss */
 .s-u-c-b.stats {
   color: #50B348;
 }
 
-/* line 371, /Users/calvinmcelroy/Documents/webstuff/app_course/final_project/Selector/app/assets/stylesheets/api/show_profile.scss */
+/* line 372, /Users/calvinmcelroy/Documents/webstuff/app_course/final_project/Selector/app/assets/stylesheets/api/show_profile.scss */
 .s-u-c-b.boost {
   color: grey;
 }
 
-/* line 376, /Users/calvinmcelroy/Documents/webstuff/app_course/final_project/Selector/app/assets/stylesheets/api/show_profile.scss */
+/* line 377, /Users/calvinmcelroy/Documents/webstuff/app_course/final_project/Selector/app/assets/stylesheets/api/show_profile.scss */
 .s-u-c-b.share {
   color: grey;
 }
 
-/* line 381, /Users/calvinmcelroy/Documents/webstuff/app_course/final_project/Selector/app/assets/stylesheets/api/show_profile.scss */
+/* line 382, /Users/calvinmcelroy/Documents/webstuff/app_course/final_project/Selector/app/assets/stylesheets/api/show_profile.scss */
 .s-u-c-b .fa-upload {
   position: absolute;
   top: 18px;
 }
 
-/* line 386, /Users/calvinmcelroy/Documents/webstuff/app_course/final_project/Selector/app/assets/stylesheets/api/show_profile.scss */
+/* line 387, /Users/calvinmcelroy/Documents/webstuff/app_course/final_project/Selector/app/assets/stylesheets/api/show_profile.scss */
 .s-u-c-b.delete {
   color: red;
 }
 
-/* line 393, /Users/calvinmcelroy/Documents/webstuff/app_course/final_project/Selector/app/assets/stylesheets/api/show_profile.scss */
+/* line 394, /Users/calvinmcelroy/Documents/webstuff/app_course/final_project/Selector/app/assets/stylesheets/api/show_profile.scss */
 .fa-toggle-on, .fa-trash-o, .fa-trophy,
 .fa-bullhorn, .fa-upload, .fa-trash-o {
   position: absolute;
   left: 30px;
 }
 
-/* tag  */
-/* line 403, /Users/calvinmcelroy/Documents/webstuff/app_course/final_project/Selector/app/assets/stylesheets/api/show_profile.scss */
+/*  =============================================================
+      TAG
+    ============================================================= */
+/* line 406, /Users/calvinmcelroy/Documents/webstuff/app_course/final_project/Selector/app/assets/stylesheets/api/show_profile.scss */
 .s-p-tag {
   display: flex;
   align-items: center;
@@ -2058,7 +2068,7 @@ input[type="submit"] {
   transition: transform .4s .2s,opacity .4s ease-in-out, background-color 0.2s ease-in-out;
 }
 
-/* line 421, /Users/calvinmcelroy/Documents/webstuff/app_course/final_project/Selector/app/assets/stylesheets/api/show_profile.scss */
+/* line 424, /Users/calvinmcelroy/Documents/webstuff/app_course/final_project/Selector/app/assets/stylesheets/api/show_profile.scss */
 .s-p-tag:before {
   content: "";
   position: absolute;
@@ -2076,7 +2086,7 @@ input[type="submit"] {
   transition: background-color 0.2s ease-in-out;
 }
 
-/* line 439, /Users/calvinmcelroy/Documents/webstuff/app_course/final_project/Selector/app/assets/stylesheets/api/show_profile.scss */
+/* line 442, /Users/calvinmcelroy/Documents/webstuff/app_course/final_project/Selector/app/assets/stylesheets/api/show_profile.scss */
 .s-p-tag:after {
   content: "";
   position: absolute;
@@ -2089,7 +2099,7 @@ input[type="submit"] {
   background-color: white;
 }
 
-/* line 451, /Users/calvinmcelroy/Documents/webstuff/app_course/final_project/Selector/app/assets/stylesheets/api/show_profile.scss */
+/* line 454, /Users/calvinmcelroy/Documents/webstuff/app_course/final_project/Selector/app/assets/stylesheets/api/show_profile.scss */
 .s-p-tag p {
   color: #34495E;
   font-family: OpenSans;
@@ -2103,41 +2113,40 @@ input[type="submit"] {
   text-overflow: clip;
 }
 
-/* line 465, /Users/calvinmcelroy/Documents/webstuff/app_course/final_project/Selector/app/assets/stylesheets/api/show_profile.scss */
+/* line 468, /Users/calvinmcelroy/Documents/webstuff/app_course/final_project/Selector/app/assets/stylesheets/api/show_profile.scss */
 .s-p-tag:hover {
   background-color: #34495E;
   cursor: pointer;
 }
 
-/* line 470, /Users/calvinmcelroy/Documents/webstuff/app_course/final_project/Selector/app/assets/stylesheets/api/show_profile.scss */
+/* line 473, /Users/calvinmcelroy/Documents/webstuff/app_course/final_project/Selector/app/assets/stylesheets/api/show_profile.scss */
 .s-p-tag:hover > p {
   color: white;
 }
 
-/* line 474, /Users/calvinmcelroy/Documents/webstuff/app_course/final_project/Selector/app/assets/stylesheets/api/show_profile.scss */
+/* line 477, /Users/calvinmcelroy/Documents/webstuff/app_course/final_project/Selector/app/assets/stylesheets/api/show_profile.scss */
 .s-p-tag:hover:before {
   background-color: #34495E;
 }
 
-/* line 478, /Users/calvinmcelroy/Documents/webstuff/app_course/final_project/Selector/app/assets/stylesheets/api/show_profile.scss */
+/* line 481, /Users/calvinmcelroy/Documents/webstuff/app_course/final_project/Selector/app/assets/stylesheets/api/show_profile.scss */
 .s-p-tag.checked {
   background-color: #34495E;
 }
 
-/* line 482, /Users/calvinmcelroy/Documents/webstuff/app_course/final_project/Selector/app/assets/stylesheets/api/show_profile.scss */
+/* line 485, /Users/calvinmcelroy/Documents/webstuff/app_course/final_project/Selector/app/assets/stylesheets/api/show_profile.scss */
 .s-p-tag.checked > p {
   color: white;
 }
 
-/* line 486, /Users/calvinmcelroy/Documents/webstuff/app_course/final_project/Selector/app/assets/stylesheets/api/show_profile.scss */
+/* line 489, /Users/calvinmcelroy/Documents/webstuff/app_course/final_project/Selector/app/assets/stylesheets/api/show_profile.scss */
 .s-p-tag.checked:before {
   background-color: #34495E;
 }
 
-/* tag ^^^^ */
-/*
-  Show Profile Aside
-*/
+/*  =============================================================
+      SHOW PROFILE ASIDE
+    ============================================================= */
 /* line 499, /Users/calvinmcelroy/Documents/webstuff/app_course/final_project/Selector/app/assets/stylesheets/api/show_profile.scss */
 .show-profile-aside-container {
   width: 300px;
@@ -2186,10 +2195,10 @@ input[type="submit"] {
   border-radius: 5px;
 }
 
-/*
-  Comment Form
-*/
-/* line 545, /Users/calvinmcelroy/Documents/webstuff/app_course/final_project/Selector/app/assets/stylesheets/api/show_profile.scss */
+/*  =============================================================
+      COMMENT FORM
+    ============================================================= */
+/* line 547, /Users/calvinmcelroy/Documents/webstuff/app_course/final_project/Selector/app/assets/stylesheets/api/show_profile.scss */
 .comment-form-container {
   display: flex;
   justify-content: space-between;
@@ -2198,7 +2207,7 @@ input[type="submit"] {
   border-bottom: solid 1px #EBF0F2;
 }
 
-/* line 554, /Users/calvinmcelroy/Documents/webstuff/app_course/final_project/Selector/app/assets/stylesheets/api/show_profile.scss */
+/* line 556, /Users/calvinmcelroy/Documents/webstuff/app_course/final_project/Selector/app/assets/stylesheets/api/show_profile.scss */
 .comment-form-img-box {
   width: 60px;
   height: 60px;
@@ -2206,17 +2215,17 @@ input[type="submit"] {
   margin-right: 20px;
 }
 
-/* line 561, /Users/calvinmcelroy/Documents/webstuff/app_course/final_project/Selector/app/assets/stylesheets/api/show_profile.scss */
+/* line 563, /Users/calvinmcelroy/Documents/webstuff/app_course/final_project/Selector/app/assets/stylesheets/api/show_profile.scss */
 .comment-form-img-box img {
   border-radius: 5px;
 }
 
-/* line 565, /Users/calvinmcelroy/Documents/webstuff/app_course/final_project/Selector/app/assets/stylesheets/api/show_profile.scss */
+/* line 567, /Users/calvinmcelroy/Documents/webstuff/app_course/final_project/Selector/app/assets/stylesheets/api/show_profile.scss */
 .comment-form-form {
   width: 90%;
 }
 
-/* line 570, /Users/calvinmcelroy/Documents/webstuff/app_course/final_project/Selector/app/assets/stylesheets/api/show_profile.scss */
+/* line 572, /Users/calvinmcelroy/Documents/webstuff/app_course/final_project/Selector/app/assets/stylesheets/api/show_profile.scss */
 .comment-form-input {
   height: 90px;
   width: 99%;
@@ -2227,14 +2236,14 @@ input[type="submit"] {
   border-radius: 5px;
 }
 
-/* line 582, /Users/calvinmcelroy/Documents/webstuff/app_course/final_project/Selector/app/assets/stylesheets/api/show_profile.scss */
+/* line 584, /Users/calvinmcelroy/Documents/webstuff/app_course/final_project/Selector/app/assets/stylesheets/api/show_profile.scss */
 .comment-form-button-box {
   width: 100%;
   display: flex;
   justify-content: flex-end;
 }
 
-/* line 588, /Users/calvinmcelroy/Documents/webstuff/app_course/final_project/Selector/app/assets/stylesheets/api/show_profile.scss */
+/* line 590, /Users/calvinmcelroy/Documents/webstuff/app_course/final_project/Selector/app/assets/stylesheets/api/show_profile.scss */
 .comment-form-form button {
   color: white;
   font-size: 14px;
@@ -2246,10 +2255,10 @@ input[type="submit"] {
   margin-top: 20px;
 }
 
-/*
-  Comment Feed
-*/
-/* line 606, /Users/calvinmcelroy/Documents/webstuff/app_course/final_project/Selector/app/assets/stylesheets/api/show_profile.scss */
+/*  =============================================================
+      COMMENT FEED
+    ============================================================= */
+/* line 610, /Users/calvinmcelroy/Documents/webstuff/app_course/final_project/Selector/app/assets/stylesheets/api/show_profile.scss */
 .comment-feed-item {
   display: flex;
   justify-content: space-between;
@@ -2258,7 +2267,7 @@ input[type="submit"] {
   border-bottom: solid 1px #EBF0F2;
 }
 
-/* line 614, /Users/calvinmcelroy/Documents/webstuff/app_course/final_project/Selector/app/assets/stylesheets/api/show_profile.scss */
+/* line 618, /Users/calvinmcelroy/Documents/webstuff/app_course/final_project/Selector/app/assets/stylesheets/api/show_profile.scss */
 .comment-feed-item-img-box {
   width: 60px;
   height: 60px;
@@ -2266,38 +2275,38 @@ input[type="submit"] {
   margin-right: 20px;
 }
 
-/* line 622, /Users/calvinmcelroy/Documents/webstuff/app_course/final_project/Selector/app/assets/stylesheets/api/show_profile.scss */
+/* line 626, /Users/calvinmcelroy/Documents/webstuff/app_course/final_project/Selector/app/assets/stylesheets/api/show_profile.scss */
 .comment-feed-item-img-box img {
   height: auto;
   width: 100%;
   border-radius: 5px;
 }
 
-/* line 628, /Users/calvinmcelroy/Documents/webstuff/app_course/final_project/Selector/app/assets/stylesheets/api/show_profile.scss */
+/* line 632, /Users/calvinmcelroy/Documents/webstuff/app_course/final_project/Selector/app/assets/stylesheets/api/show_profile.scss */
 .comment-feed-item-content {
   width: 90%;
 }
 
-/* line 633, /Users/calvinmcelroy/Documents/webstuff/app_course/final_project/Selector/app/assets/stylesheets/api/show_profile.scss */
+/* line 637, /Users/calvinmcelroy/Documents/webstuff/app_course/final_project/Selector/app/assets/stylesheets/api/show_profile.scss */
 .comment-feed-item-head {
   display: flex;
   position: relative;
   font-size: 14px;
 }
 
-/* line 639, /Users/calvinmcelroy/Documents/webstuff/app_course/final_project/Selector/app/assets/stylesheets/api/show_profile.scss */
+/* line 643, /Users/calvinmcelroy/Documents/webstuff/app_course/final_project/Selector/app/assets/stylesheets/api/show_profile.scss */
 .comment-feed-item-head h4 {
   margin: 0;
   padding-right: 10px;
   color: #5873A7;
 }
 
-/* line 645, /Users/calvinmcelroy/Documents/webstuff/app_course/final_project/Selector/app/assets/stylesheets/api/show_profile.scss */
+/* line 649, /Users/calvinmcelroy/Documents/webstuff/app_course/final_project/Selector/app/assets/stylesheets/api/show_profile.scss */
 .comment-feed-item-head p {
   color: #8196AC;
 }
 
-/* line 649, /Users/calvinmcelroy/Documents/webstuff/app_course/final_project/Selector/app/assets/stylesheets/api/show_profile.scss */
+/* line 653, /Users/calvinmcelroy/Documents/webstuff/app_course/final_project/Selector/app/assets/stylesheets/api/show_profile.scss */
 .comment-delete-button {
   position: absolute;
   right: 0px;
@@ -2306,13 +2315,13 @@ input[type="submit"] {
   right: 20px;
 }
 
-/* line 659, /Users/calvinmcelroy/Documents/webstuff/app_course/final_project/Selector/app/assets/stylesheets/api/show_profile.scss */
+/* line 663, /Users/calvinmcelroy/Documents/webstuff/app_course/final_project/Selector/app/assets/stylesheets/api/show_profile.scss */
 .comment-delete-button:hover {
   cursor: pointer;
   top: 1px;
 }
 
-/* line 664, /Users/calvinmcelroy/Documents/webstuff/app_course/final_project/Selector/app/assets/stylesheets/api/show_profile.scss */
+/* line 668, /Users/calvinmcelroy/Documents/webstuff/app_course/final_project/Selector/app/assets/stylesheets/api/show_profile.scss */
 .comment-feed-item-body {
   padding: 10px 0;
   color: #586573;
@@ -3164,8 +3173,12 @@ input[type=checkbox] {
   border-radius: 5px;
 }
 
+/*  =============================================================
+      MEDIA QUERIES
+    ============================================================= */
+/* > 1600px */
 @media screen and (min-width: 1600px) {
-  /* line 234, /Users/calvinmcelroy/Documents/webstuff/app_course/final_project/Selector/app/assets/stylesheets/api/user_profile.scss */
+  /* line 239, /Users/calvinmcelroy/Documents/webstuff/app_course/final_project/Selector/app/assets/stylesheets/api/user_profile.scss */
   .show-feed-container {
     margin-right: 10%;
   }
@@ -3260,8 +3273,12 @@ input[type=checkbox] {
   line-height: 50px;
 }
 
+/*  =============================================================
+      MEDIA QUERIES
+    ============================================================= */
+/* > 1600px */
 @media screen and (min-width: 1600px) {
-  /* line 90, /Users/calvinmcelroy/Documents/webstuff/app_course/final_project/Selector/app/assets/stylesheets/api/user_welcome.scss */
+  /* line 96, /Users/calvinmcelroy/Documents/webstuff/app_course/final_project/Selector/app/assets/stylesheets/api/user_welcome.scss */
   .user-welcome-container {
     width: 70%;
   }

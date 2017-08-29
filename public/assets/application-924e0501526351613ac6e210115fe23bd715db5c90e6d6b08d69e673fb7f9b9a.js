@@ -58489,8 +58489,6 @@ var ShowFeedItem = function (_React$Component) {
   }, {
     key: 'render',
     value: function render() {
-      // console.log('feed item status', this.props.player.status)
-
       var show = this.props.show;
       var playerQueue = this.props.player.playerQueue;
       var timeAgo = this._timeAgo();

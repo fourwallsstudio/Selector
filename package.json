@@ -10,7 +10,7 @@
   "scripts": {
     "test": "enzyme",
     "webpack": "webpack --watch",
-    "postinstall": "require('newrelic') && webpack"
+    "postinstall": "webpack"
   },
   "keywords": [],
   "author": "",
