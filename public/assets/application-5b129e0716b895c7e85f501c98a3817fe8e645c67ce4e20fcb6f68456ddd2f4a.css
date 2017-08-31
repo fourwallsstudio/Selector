@@ -727,7 +727,7 @@ body {
 /* line 3, /Users/calvinmcelroy/Documents/webstuff/app_course/final_project/Selector/app/assets/stylesheets/api/player.scss */
 .foot-filler {
   height: 100px;
-  width: 100vw;
+  width: 740px;
 }
 
 /* line 8, /Users/calvinmcelroy/Documents/webstuff/app_course/final_project/Selector/app/assets/stylesheets/api/player.scss */
@@ -2957,7 +2957,7 @@ input[type=checkbox] {
   position: absolute;
   top: -50%;
   left: -30px;
-  width: 120%;
+  width: 100%;
   z-index: -1;
   opacity: .8;
   filter: blur(20px);
