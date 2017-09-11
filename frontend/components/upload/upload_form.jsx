@@ -135,7 +135,6 @@ class UploadForm extends React.Component {
       nextState.push(parseInt(e.currentTarget.value))
       this.setState({ tagIds: nextState })
     }
-
   }
 
   render() {

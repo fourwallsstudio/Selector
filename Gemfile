@@ -34,6 +34,7 @@ gem 'figaro'
 gem 'font-awesome-sass'
 gem 'pg_search'
 gem 'newrelic_rpm'
+gem 'rb-readline'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

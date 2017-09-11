@@ -14,6 +14,6 @@ class QueueItem < ActiveRecord::Base
   validates :show_id, :user_id, presence: true
   # validates :show_id, uniqueness: { scope: :user_id }
 
-  belongs_to :show
+  belongs_to :show, counter_cache: true
   belongs_to :user
 end
