@@ -41,13 +41,17 @@ class User < ActiveRecord::Base
   has_many :queue_items
   has_many :comments
 
-  has_many :followers,
+  has_many :followers_joins,
     class_name: :Following,
     foreign_key: :following_id
 
-  has_many :followings,
+  has_many :followings_joins,
     class_name: :Following,
     foreign_key: :follower_id
+
+  has_many :followers, through: :followers_joins
+  has_many :followings, through: :followings_joins
+
 
   has_attached_file :avatar, default_url: "https://s3.us-east-2.amazonaws.com/imagehost1234/BlueSquiggle1.jpg"
   validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\Z/
@@ -75,16 +79,6 @@ class User < ActiveRecord::Base
     self.session_token
   end
 
-  def show_ids
-    ids = []
-
-    self.shows.each do |show|
-      ids << show.id
-    end
-
-    ids
-  end
-
   def queue_hash_by_show
     recent_queue = Hash.new()
 
@@ -103,16 +97,9 @@ class User < ActiveRecord::Base
     queue_hash_by_show
   end
 
-  def followers_ids
-    self.followers.map { |f| f.follower_id }
-  end
-
-  def followings_ids
-    self.followings.map { |f| f.following_id }
-  end
 
   def non_followings
-    User.all.select { |u| !followings_ids.include?(u.id) }
+    User.all.select { |u| !following_ids.include?(u.id) }
   end
 
   private

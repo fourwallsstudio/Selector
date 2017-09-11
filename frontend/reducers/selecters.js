@@ -12,7 +12,7 @@ export const selectFollowings = createSelector(
   [ getUsers, getUserId ],
   (users, userId) => {
     if (users[userId]) {
-      return users[userId].followings_ids.filter( id => users[id] ).map(id => users[id])
+      return users[userId].following_ids.filter( id => users[id] ).map(id => users[id])
     } else {
       return []
     }

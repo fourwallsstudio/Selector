@@ -12,8 +12,8 @@ const userReducer = (state = {}, action) => {
 
     case RECEIVE_USER:
       let newState = { ...state, [action.user.id]: action.user }
-      newState[action.user.id].followers_ids = action.user.followers_ids
-      newState[action.user.id].followings_ids = action.user.followings_ids
+      newState[action.user.id].follower_ids = action.user.follower_ids
+      newState[action.user.id].following_ids = action.user.following_ids
       return newState
 
     case RECEIVE_USERS:

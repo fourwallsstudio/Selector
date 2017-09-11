@@ -10,7 +10,7 @@ class Api::UsersController < ApplicationController
 
     elsif params[:userId]
 
-      following_ids = User.find(params[:userId]).followings_ids
+      following_ids = User.find(params[:userId]).following_ids
       @users = following_ids.map { |id| User.find(id) }
 
     elsif params[:nonFollowingUserId]

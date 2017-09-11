@@ -6,7 +6,7 @@ import ContactFooter from '../contact_footer/contact_footer';
 const UserProfileAside = ({ user, users, followings }) => {
   let followingUsers;
 
-  if (!values(followings).length === user.followings_ids.length) {
+  if (!values(followings).length === user.following_ids.length) {
     followingUsers = <div></div>;
 
     } else {
@@ -24,18 +24,18 @@ const UserProfileAside = ({ user, users, followings }) => {
 
   if (!user) {
     return <div>Loading...</div>
-    
+
   } else {
 
     return (
       <section className="user-profile-aside-container">
         <div className="u-p-a-stats-box">
           <div className="u-p-a-followers">
-            <h3>{ user.followers_ids.length }</h3>
+            <h3>{ user.follower_ids.length }</h3>
             <p>Followers</p>
           </div>
           <div className="u-p-a-following">
-            <h3>{ user.followings_ids.length }</h3>
+            <h3>{ user.following_ids.length }</h3>
             <p>Following</p>
           </div>
           <div className="u-p-a-shows">

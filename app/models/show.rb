@@ -66,12 +66,8 @@ class Show < ActiveRecord::Base
       .limit(10)
   end
 
-  def comment_ids
-    self.comments.map { |c| c.id }
-  end
-
   def plays
-    self.queue_items.length
+    self.queue_items.size
   end
 
   def listeners

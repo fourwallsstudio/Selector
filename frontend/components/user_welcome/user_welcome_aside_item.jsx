@@ -4,11 +4,11 @@ import { Link } from 'react-router-dom';
 
 const UserWelcomeAsideItem = ({ users, currentUser }) => {
 
-  let followings_ids = currentUser.followings_ids
+  let following_ids = currentUser.following_ids
 
   let whoToFollow = values(users).map( user => {
     if (user.id !== currentUser.id
-      && !followings_ids.includes(user.id)) {
+      && !following_ids.includes(user.id)) {
 
       return (
         <li className="who-to-follow-thumb" key={ user.id }>

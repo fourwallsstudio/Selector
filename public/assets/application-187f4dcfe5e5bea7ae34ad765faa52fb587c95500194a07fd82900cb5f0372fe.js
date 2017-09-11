@@ -31530,7 +31530,7 @@ var getUserId = function getUserId(state, props) {
 
 var selectFollowings = exports.selectFollowings = (0, _reselect.createSelector)([getUsers, getUserId], function (users, userId) {
   if (users[userId]) {
-    return users[userId].followings_ids.filter(function (id) {
+    return users[userId].following_ids.filter(function (id) {
       return users[id];
     }).map(function (id) {
       return users[id];
@@ -60111,7 +60111,7 @@ var UserProfile = function (_React$Component) {
               to: '/user/' + user.id + '/settings' },
             'Update cover image'
           );
-        } else if (this.props.currentUser.followings_ids.includes(user.id)) {
+        } else if (this.props.currentUser.following_ids.includes(user.id)) {
           updateOrFollow = _react2.default.createElement(
             'button',
             { className: 'u-p-follow-b',
@@ -60210,7 +60210,7 @@ var UserProfileAside = function UserProfileAside(_ref) {
 
   var followingUsers = void 0;
 
-  if (!(0, _lodash.values)(followings).length === user.followings_ids.length) {
+  if (!(0, _lodash.values)(followings).length === user.following_ids.length) {
     followingUsers = _react2.default.createElement('div', null);
   } else {
 
@@ -60247,7 +60247,7 @@ var UserProfileAside = function UserProfileAside(_ref) {
           _react2.default.createElement(
             'h3',
             null,
-            user.followers_ids.length
+            user.follower_ids.length
           ),
           _react2.default.createElement(
             'p',
@@ -60261,7 +60261,7 @@ var UserProfileAside = function UserProfileAside(_ref) {
           _react2.default.createElement(
             'h3',
             null,
-            user.followings_ids.length
+            user.following_ids.length
           ),
           _react2.default.createElement(
             'p',
@@ -60634,10 +60634,10 @@ var UserWelcomeAsideItem = function UserWelcomeAsideItem(_ref) {
       currentUser = _ref.currentUser;
 
 
-  var followings_ids = currentUser.followings_ids;
+  var following_ids = currentUser.following_ids;
 
   var whoToFollow = (0, _lodash.values)(users).map(function (user) {
-    if (user.id !== currentUser.id && !followings_ids.includes(user.id)) {
+    if (user.id !== currentUser.id && !following_ids.includes(user.id)) {
 
       return _react2.default.createElement(
         'li',
@@ -61353,8 +61353,8 @@ var userReducer = function userReducer() {
 
     case _user_actions.RECEIVE_USER:
       var newState = _extends({}, state, _defineProperty({}, action.user.id, action.user));
-      newState[action.user.id].followers_ids = action.user.followers_ids;
-      newState[action.user.id].followings_ids = action.user.followings_ids;
+      newState[action.user.id].follower_ids = action.user.follower_ids;
+      newState[action.user.id].following_ids = action.user.following_ids;
       return newState;
 
     case _user_actions.RECEIVE_USERS:

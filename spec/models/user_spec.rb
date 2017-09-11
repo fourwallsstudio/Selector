@@ -67,8 +67,8 @@ RSpec.describe User, :type => :model do
     expect(build(:user, :avatar)).to respond_to(:avatar)
   end
 
-  it 'has #followers_ids' do
-    expect(user).to respond_to(:followers_ids)
+  it 'has #follower_ids' do
+    expect(user).to respond_to(:follower_ids)
   end
 
   it 'has followings' do
@@ -120,7 +120,7 @@ RSpec.describe User, :type => :model do
       shows = []
       5.times { |i| shows << build_stubbed(:show, id: i) }
       user.shows = shows
-      
+
       expect(user.show_ids).to match([0, 1, 2, 3, 4])
     end
   end

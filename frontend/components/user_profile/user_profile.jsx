@@ -48,7 +48,7 @@ class UserProfile extends React.Component {
         updateOrFollow = <Link className="update-user-image"
           to={`/user/${user.id}/settings`} >Update cover image</Link>;
 
-      } else if (this.props.currentUser.followings_ids.includes(user.id)) {
+      } else if (this.props.currentUser.following_ids.includes(user.id)) {
         updateOrFollow = <button className="u-p-follow-b"
           onClick={ this.handleFollow } value="unfollow">Unfollow</button>;
 
