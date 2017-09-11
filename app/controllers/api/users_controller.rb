@@ -1,4 +1,5 @@
 class Api::UsersController < ApplicationController
+  before_action :require_logged_in, only: [:update]
 
   def index
     if params[:showId]

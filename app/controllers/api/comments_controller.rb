@@ -1,5 +1,5 @@
 class Api::CommentsController < ApplicationController
-
+  before_action :require_logged_in, only: [:create, :destroy]
 
   def index
     @show = Show.find(params[:showId].to_i)
