@@ -51,8 +51,8 @@ class UploadForm extends React.Component {
     this.setState({ uploadInProgress: true });
     window.scrollTo(0, 0);
 
-    var file = this.state.imageFile;
-    var formData = new FormData();
+    const file = this.state.imageFile;
+    const formData = new FormData();
     formData.append("show[title]", this.state.title);
     formData.append("show[description]", this.state.description);
 
@@ -99,7 +99,7 @@ class UploadForm extends React.Component {
 
   updateAudio(e) {
     e.preventDefault();
-    let file = e.target.files[0];
+    const file = e.target.files[0];
     this.audioFileName = file.name;
     this.setState({ audio: file });
     if (this.props.errors) this.props.clearErrors();
@@ -110,8 +110,8 @@ class UploadForm extends React.Component {
 
     if (this.props.errors) this.props.clearErrors();
 
-    let reader = new FileReader();
-    let file = e.target.files[0];
+    const reader = new FileReader();
+    const file = e.target.files[0];
 
     reader.onloadend = () => {
       this.imagePreviewUrl = reader.result;
@@ -149,7 +149,6 @@ class UploadForm extends React.Component {
       let buttonAction = 'Choose ';
       let uploadInProgress = this.state.uploadInProgress ? "upload-in-progress" : "";
 
-      // if (this.state.uploadInProgress) uploadInProgress = "upload-in-progress";
 
       if (this.imagePreviewUrl !== "") {
         imagePreview = <img className="image-preview" src={this.imagePreviewUrl} />;
