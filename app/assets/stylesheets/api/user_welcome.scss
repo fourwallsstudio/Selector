@@ -52,6 +52,7 @@
 }
 
 .i-h-links:first-of-type:hover > *,
+.i-h-links:nth-of-type(2):hover > *,
 .i-h-links:last-of-type:hover > * {
   cursor: pointer;
   color: #4FA6D3;

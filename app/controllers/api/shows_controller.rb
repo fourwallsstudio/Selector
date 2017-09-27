@@ -10,6 +10,9 @@ class Api::ShowsController < ApplicationController
       @shows = Show.trending
     when "tag"
       @shows = Tag.find(params["tagId"].to_i).shows
+    when "main_feed"
+      followings = current_user.followings
+      @shows = followings.inject([]) { |arr, f| arr + f.shows }
     else
       @shows = User.find(params["filter"].to_i).shows
     end

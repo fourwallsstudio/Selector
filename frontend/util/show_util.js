@@ -9,6 +9,7 @@ export const uploadShow = formData => {
   })
 }
 
+
 export const fetchAllShows = filter => {
     return $.ajax({
     method: 'GET',

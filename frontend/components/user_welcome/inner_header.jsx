@@ -8,6 +8,11 @@ const InnerHeader = ({ fetchAllShows, updateFilter }) => {
   }
 
   const handleFeed = () => {
+    updateFilter("main_feed");
+    fetchAllShows("main_feed");
+  }
+
+  const handleNewShows = () => {
     updateFilter("most_recent");
     fetchAllShows("most_recent");
   }
@@ -16,24 +21,17 @@ const InnerHeader = ({ fetchAllShows, updateFilter }) => {
     <div className="inner-header-container">
       <div className="inner-header-width-box">
         <div className="i-h-links"
-          onClick={ handleFeed.bind(this) }>
+          onClick={ handleFeed }>
           <i className="fa fa-database fa-lg" aria-hidden="true"></i>
           <p>FEED</p>
         </div>
-        <div className="i-h-links">
+        <div className="i-h-links"
+          onClick={ handleNewShows }>
           <i className="fa fa-play-circle-o fa-lg" aria-hidden="true"></i>
           <p>NEW SHOWS</p>
         </div>
-        <div className="i-h-links">
-          <i className="fa fa-history fa-lg" aria-hidden="true"></i>
-          <p>LISTEN LATER</p>
-        </div>
-        <div className="i-h-links">
-          <i className="fa fa-star-o fa-lg" aria-hidden="true"></i>
-          <p>FAVORITES</p>
-        </div>
         <div className="i-h-links"
-              onClick={ handleTrending.bind(this) }>
+              onClick={ handleTrending }>
           <i className="fa fa-fire fa-lg" aria-hidden="true"></i>
           <p>TRENDING</p>
         </div>
@@ -44,3 +42,16 @@ const InnerHeader = ({ fetchAllShows, updateFilter }) => {
 };
 
 export default InnerHeader;
+
+/*
+
+<div className="i-h-links">
+  <i className="fa fa-history fa-lg" aria-hidden="true"></i>
+  <p>LISTEN LATER</p>
+</div>
+<div className="i-h-links">
+  <i className="fa fa-star-o fa-lg" aria-hidden="true"></i>
+  <p>FAVORITES</p>
+</div>
+
+*/
