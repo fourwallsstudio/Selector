@@ -2,6 +2,7 @@ import React from 'react';
 import ShowFeedItem from './show_feed_item';
 import Notice from '../notice/notice';
 import { renderLog } from '../../util/debugging_util';
+import { CSSTransitionGroup } from 'react-transition-group'
 
 class ShowFeed extends React.Component {
 
@@ -50,7 +51,12 @@ class ShowFeed extends React.Component {
       return (
         <section className="show-feed-container group">
           <ul>
-            { showItems }
+            <CSSTransitionGroup
+              transitionName="tgroup-show-items"
+              transitionEnterTimeout={500}
+              transitionLeaveTimeout={300}>
+              { showItems }
+            </CSSTransitionGroup>
 
             {
               this.props.currentUser.id === this.props.filter

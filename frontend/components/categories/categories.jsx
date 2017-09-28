@@ -53,7 +53,7 @@ class Categories extends React.Component {
             <h2>Categories</h2>
           </div>
           <ul className="categories-container">
-            { bigTags }
+              { bigTags }
           </ul>
         </div>
       )

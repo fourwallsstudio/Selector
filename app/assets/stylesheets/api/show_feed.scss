@@ -295,3 +295,26 @@
   background-size: 30px 30px;
   filter: opacity(.3);
 }
+
+
+/*
+  transition-group-show-items
+*/
+
+.tgroup-show-items-enter {
+  opacity: 0.01;
+}
+
+.tgroup-show-items-enter.tgroup-show-items-enter-active {
+  opacity: 1;
+  transition: opacity 500ms ease-in;
+}
+
+.tgroup-show-items-leave {
+  opacity: 1;
+}
+
+.tgroup-show-items-leave.tgroup-show-items-leave-active {
+  opacity: 0.01;
+  transition: opacity 300ms ease-in;
+}

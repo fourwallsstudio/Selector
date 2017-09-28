@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { values } from 'lodash';
+import { CSSTransitionGroup } from 'react-transition-group';
 import javascript_time_ago from 'javascript-time-ago';
 javascript_time_ago.locale(require('javascript-time-ago/locales/en'));
 import english from 'javascript-time-ago/locales/en';
@@ -68,7 +69,15 @@ class CommentFeed extends Component {
 
       return (
         <ul className="comment-feed-container">
-          { comments }
+          <CSSTransitionGroup
+            transitionName="tgroup-comments"
+            transitionAppear={true}
+            transitionAppearTimeout={500}
+            transitionEnterTimeout={500}
+            transitionLeaveTimeout={300} >
+
+            { comments }
+          </CSSTransitionGroup>
         </ul>
       )
     }

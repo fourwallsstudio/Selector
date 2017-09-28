@@ -2,6 +2,7 @@ import React from 'react'
 import { Howl } from 'howler'
 import { values, merge } from 'lodash'
 import { withRouter, Link } from 'react-router-dom'
+import { CSSTransitionGroup } from 'react-transition-group';
 
 // UTIL
 import { scaleImg } from '../../util/img_util';
@@ -216,40 +217,58 @@ class ShowProfile extends React.Component {
           <div className="header-overlap">
             <div className="s-p-inside-header-box">
               <div className="s-p-head-items-box">
-                <div className="play-circle-box"
-                    onClick={ this.handlePlayClick }
-                    onMouseOver={ this.handlePreview }
-                    onMouseLeave={ this.handleStopPreview} >
 
-                    { playDisplay }
 
-                    <div className={`play-circle-preview-backfill ${previewActive}`}></div>
-                </div>
-                <p className={`play-circle-preview-notice ${previewActive}`}>preview</p>
+                <CSSTransitionGroup
+                  transitionName="tgroup-play-circle-box"
+                  transitionAppear={true}
+                  transitionAppearTimeout={500}
+                  transitionEnter={false}
+                  transitionLeave={false} >
 
-                <div className="s-p-head-items-right">
-                  <h1>{ show.title }</h1>
+                  <div className="play-circle-box"
+                      onClick={ this.handlePlayClick }
+                      onMouseOver={ this.handlePreview }
+                      onMouseLeave={ this.handleStopPreview} >
 
-                  <div className="s-p-h-infobar">
-                    <div className="s-p-h-foot-left">
-                      <div className="s-p-author-credit">
-                        <p>by</p>
-                        <Link to={ `/user/${show.author_id}` }>{ show.author_username }</Link>
+                      { playDisplay }
+
+                      <div className={`play-circle-preview-backfill ${previewActive}`}></div>
+                  </div>
+                  <p className={`play-circle-preview-notice ${previewActive}`}>preview</p>
+                </CSSTransitionGroup>
+
+                <CSSTransitionGroup
+                  transitionName="tgroup-s-p-head-items"
+                  transitionAppear={true}
+                  transitionAppearTimeout={500}
+                  transitionEnter={false}
+                  transitionLeave={false} >
+
+                  <div className="s-p-head-items-right">
+                    <h1>{ show.title }</h1>
+
+                    <div className="s-p-h-infobar">
+                      <div className="s-p-h-foot-left">
+                        <div className="s-p-author-credit">
+                          <p>by</p>
+                          <Link to={ `/user/${show.author_id}` }>{ show.author_username }</Link>
+                        </div>
                       </div>
-                    </div>
 
-                    <div className="s-p-h-foot-right">
-                      <div className="s-p-h-b-r hp">
-                        <i className="fa fa-headphones fa-lg" aria-hidden="true"></i>
-                        <p>{ show.plays }</p>
-                      </div>
-                      <div className="s-p-h-b-r cal">
-                        <i className="fa fa-calendar fa-lg" aria-hidden="true"></i>
-                        <p>{ timeAgo }</p>
+                      <div className="s-p-h-foot-right">
+                        <div className="s-p-h-b-r hp">
+                          <i className="fa fa-headphones fa-lg" aria-hidden="true"></i>
+                          <p>{ show.plays }</p>
+                        </div>
+                        <div className="s-p-h-b-r cal">
+                          <i className="fa fa-calendar fa-lg" aria-hidden="true"></i>
+                          <p>{ timeAgo }</p>
+                        </div>
                       </div>
                     </div>
                   </div>
-                </div>
+                </CSSTransitionGroup>
 
 
                 <div className="s-p-h-overlap-footer">
@@ -278,12 +297,20 @@ class ShowProfile extends React.Component {
                 </div>
               </div>
 
-              <div className="show-image-box">
-                <img
-                  src={ show.image_url }
-                  style={{ width: newImgSize['width'], height: newImgSize['height'] }}
-                  />
-              </div>
+
+              <CSSTransitionGroup
+                transitionName="tgroup-show-img"
+                transitionAppear={true}
+                transitionAppearTimeout={500}
+                transitionEnter={false}
+                transitionLeave={false} >
+                <div className="show-image-box">
+                  <img
+                    src={ show.image_url }
+                    style={{ width: newImgSize['width'], height: newImgSize['height'] }}
+                    />
+                </div>
+              </CSSTransitionGroup>
             </div>
           </div>
 

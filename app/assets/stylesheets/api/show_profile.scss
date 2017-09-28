@@ -254,6 +254,40 @@
   opacity: .1;
 }
 
+/*
+  css-transition-group
+*/
+
+.tgroup-play-circle-box-appear {
+  transform: translate(-50%);
+}
+
+.tgroup-play-circle-box-appear.tgroup-play-circle-box-appear-active {
+  transform: translate(0%);
+  transition: transform 500ms ease-in-out;
+}
+
+
+
+.tgroup-s-p-head-items-appear {
+  transform: translateY(-50%);
+}
+
+.tgroup-s-p-head-items-appear.tgroup-s-p-head-items-appear-active {
+  transform: translateY(0%);
+  transition: transform 500ms ease-in-out;
+}
+
+
+.tgroup-show-img-appear {
+  transform: translate(50%);
+}
+
+.tgroup-show-img-appear.tgroup-show-img-appear-active {
+  transform: translate(0%);
+  transition: transform 500ms ease-in-out;
+}
+
 
 /*  =============================================================
       MAIN CONTAINER
@@ -675,4 +709,36 @@
 .comment-feed-item-body {
   padding: 10px 0;
   color: #586573;
+}
+
+
+/*
+  css-transition-group
+*/
+
+.tgroup-comments-appear {
+  opacity: 0.01;
+}
+
+.tgroup-comments-appear.tgroup-comments-appear-active {
+  opacity: 1;
+  transition: opacity 500ms ease-in;
+}
+
+.tgroup-comments-enter {
+  opacity: 0.01;
+}
+
+.tgroup-comments-enter.tgroup-comments-enter-active {
+  opacity: 1;
+  transition: opacity 500ms ease-in;
+}
+
+.tgroup-comments-leave {
+  opacity: 1;
+}
+
+.tgroup-comments-leave.tgroup-comments-leave-active {
+  opacity: 0.01;
+  transition: opacity 300ms ease-in;
 }
