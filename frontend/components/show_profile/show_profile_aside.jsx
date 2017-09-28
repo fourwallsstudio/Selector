@@ -2,6 +2,7 @@ import React from 'react';
 import { values } from 'lodash';
 import { Link } from 'react-router-dom';
 import ContactFooter from '../contact_footer/contact_footer';
+import AdvertisementBox from '../advertisement/advertisement_box';
 
 const ShowProfileAside = ({ show }) => {
   if (!show) {
@@ -30,6 +31,9 @@ const ShowProfileAside = ({ show }) => {
 
         </div>
         <ContactFooter />
+
+        <AdvertisementBox ad={ "assets/pioneer-cdj-850-zilver.jpg" } />
+        <AdvertisementBox ad={ "assets/2-Pioneer-CDJ2000-Nexus3.jpg" } />
       </section>
     )
 

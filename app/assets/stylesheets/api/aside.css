@@ -62,3 +62,26 @@
   height: auto;
   border-radius: 5px;
 }
+
+
+/*
+  advertisement box
+*/
+
+.ad-box {
+  margin-top: 20px;
+  position: relative;
+  border: solid 1px lightgrey;
+}
+
+.ad-box p {
+  background: lightgrey;
+  color: white;
+  padding-left: 10px;
+}
+
+.ad-box img {
+  width: 95%;
+  height: auto;
+  margin: 10px auto;
+}

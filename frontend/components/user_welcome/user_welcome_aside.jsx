@@ -1,6 +1,7 @@
 import React from 'react';
 import UserWelcomeAsideItem from "./user_welcome_aside_item";
 import ContactFooter from '../contact_footer/contact_footer';
+import AdvertisementBox from '../advertisement/advertisement_box';
 
 const UserWelcomeAside = ({ users, currentUser }) => {
   return (
@@ -15,7 +16,11 @@ const UserWelcomeAside = ({ users, currentUser }) => {
          <UserWelcomeAsideItem users={ users }
            currentUser={ currentUser }/>
        </div>
+
        <ContactFooter />
+       
+       <AdvertisementBox ad={ "assets/pioneer-cdj-850-zilver.jpg" } />
+       <AdvertisementBox ad={ "assets/2-Pioneer-CDJ2000-Nexus3.jpg" } />
      </section>
   )
 }
