@@ -254,12 +254,14 @@
   opacity: .1;
 }
 
-/*
-  css-transition-group
-*/
+
+/*  =============================================================
+      CSS-TRANSITION-GROUP SHOW PROFILE HEADER
+    ============================================================= */
+
 
 .tgroup-play-circle-box-appear {
-  transform: translate(-50%);
+  transform: translate(-30%);
 }
 
 .tgroup-play-circle-box-appear.tgroup-play-circle-box-appear-active {
@@ -270,7 +272,7 @@
 
 
 .tgroup-s-p-head-items-appear {
-  transform: translateY(-50%);
+  transform: translateY(-30%);
 }
 
 .tgroup-s-p-head-items-appear.tgroup-s-p-head-items-appear-active {
@@ -280,7 +282,7 @@
 
 
 .tgroup-show-img-appear {
-  transform: translate(50%);
+  transform: translate(30%);
 }
 
 .tgroup-show-img-appear.tgroup-show-img-appear-active {
@@ -712,9 +714,11 @@
 }
 
 
-/*
-  css-transition-group
-*/
+/*  =============================================================
+      CSS-TRANSITION-GROUP COMMENTS
+    ============================================================= */
+
+
 
 .tgroup-comments-appear {
   opacity: 0.01;
