@@ -56497,7 +56497,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var configureStore = function configureStore() {
   var preloadedState = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
 
-  return (0, _redux.createStore)(_root_reducer2.default, preloadedState, (0, _redux.applyMiddleware)(_reduxThunk2.default));
+  return (0, _redux.createStore)(_root_reducer2.default, preloadedState, (0, _redux.applyMiddleware)(_reduxThunk2.default, _reduxLogger2.default));
 };
 
 exports.default = configureStore;
@@ -58276,6 +58276,8 @@ var _lodash = __webpack_require__(11);
 
 var _reactRouterDom = __webpack_require__(7);
 
+var _img_util = __webpack_require__(64);
+
 var _search_actions = __webpack_require__(81);
 
 var _show_actions = __webpack_require__(16);
@@ -58295,6 +58297,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+// UTILS
+
 
 // ACTIONS
 
@@ -58367,6 +58372,9 @@ var SearchResults = function (_React$Component) {
 
       if ((0, _lodash.values)(this.props.showResults).length > 0) {
         showResultFeed = this.props.showResults.map(function (show) {
+
+          var newImgSize = (0, _img_util.scaleImg)(50, show);
+
           return _react2.default.createElement(
             'li',
             { key: show.id, className: 'search-result-show-item' },
@@ -58374,7 +58382,9 @@ var SearchResults = function (_React$Component) {
               _reactRouterDom.Link,
               { to: '/show/' + show.id,
                 className: 'search-result-show-thumb' },
-              _react2.default.createElement('img', { src: show.image_url })
+              _react2.default.createElement('img', {
+                src: show.image_url,
+                style: { width: newImgSize['width'], height: newImgSize['height'] } })
             ),
             _react2.default.createElement(
               'h4',
@@ -58387,13 +58397,18 @@ var SearchResults = function (_React$Component) {
 
       if ((0, _lodash.values)(this.props.userResults).length > 0) {
         userResultFeed = this.props.userResults.map(function (user) {
+
+          var newImgSize = (0, _img_util.scaleImg)(50, user);
+
           return _react2.default.createElement(
             'li',
             { key: user.id, className: 'search-result-user-item' },
             _react2.default.createElement(
               _reactRouterDom.Link,
               { to: '/user/' + user.id, className: 'search-result-user-thumb' },
-              _react2.default.createElement('img', { src: user.avatar_url })
+              _react2.default.createElement('img', {
+                src: user.avatar_url,
+                style: { width: newImgSize['width'], height: newImgSize['height'] } })
             ),
             _react2.default.createElement(
               'h4',
@@ -60675,6 +60690,8 @@ var _ = _interopRequireWildcard(_lodash);
 
 var _reactRouterDom = __webpack_require__(7);
 
+var _img_util = __webpack_require__(64);
+
 var _notice = __webpack_require__(84);
 
 var _notice2 = _interopRequireDefault(_notice);
@@ -60743,6 +60760,8 @@ var UserProfile = function (_React$Component) {
         );
       } else {
         var user = this.props.user;
+        var newImgSize = (0, _img_util.scaleImg)(160, user);
+        console.log('user p image', newImgSize);
         var updateOrFollow = void 0;
 
         if (user.id === this.props.currentUser.id) {
@@ -60781,7 +60800,9 @@ var UserProfile = function (_React$Component) {
               _react2.default.createElement(
                 'div',
                 { className: 'avatar-box' },
-                _react2.default.createElement('img', { src: user.avatar_url })
+                _react2.default.createElement('img', {
+                  src: user.avatar_url,
+                  style: { width: newImgSize['width'], height: newImgSize['height'] } })
               ),
               _react2.default.createElement(
                 'div',
@@ -60866,7 +60887,8 @@ var UserProfileAside = function UserProfileAside(_ref) {
         _react2.default.createElement(
           _reactRouterDom.Link,
           { to: '/user/' + following.id },
-          _react2.default.createElement('img', { src: following.avatar_url })
+          _react2.default.createElement('img', { src: following.avatar_url
+          })
         )
       );
     });
@@ -61311,6 +61333,8 @@ var _lodash = __webpack_require__(11);
 
 var _reactRouterDom = __webpack_require__(7);
 
+var _img_util = __webpack_require__(64);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var UserWelcomeAsideItem = function UserWelcomeAsideItem(_ref) {
@@ -61323,13 +61347,17 @@ var UserWelcomeAsideItem = function UserWelcomeAsideItem(_ref) {
   var whoToFollow = (0, _lodash.values)(users).map(function (user) {
     if (user.id !== currentUser.id && !following_ids.includes(user.id)) {
 
+      var newImgSize = (0, _img_util.scaleImg)(50, user);
+
       return _react2.default.createElement(
         'li',
         { className: 'who-to-follow-thumb', key: user.id },
         _react2.default.createElement(
           _reactRouterDom.Link,
           { to: '/user/' + user.id },
-          _react2.default.createElement('img', { src: user.avatar_url })
+          _react2.default.createElement('img', {
+            src: user.avatar_url,
+            style: { width: newImgSize['width'], height: newImgSize['height'] } })
         )
       );
     }
