@@ -131,7 +131,6 @@ class ShowFeedItem extends React.Component {
       );
     }
 
-    console.log('currentUser', this.props.currentUser);
 
     return (
       <li id={ show.id } className="show-feed-item-container group">

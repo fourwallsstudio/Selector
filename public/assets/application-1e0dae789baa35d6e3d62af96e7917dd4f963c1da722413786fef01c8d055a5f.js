@@ -56016,7 +56016,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var configureStore = function configureStore() {
   var preloadedState = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
 
-  return (0, _redux.createStore)(_root_reducer2.default, preloadedState, (0, _redux.applyMiddleware)(_reduxThunk2.default, _reduxLogger2.default));
+  return (0, _redux.createStore)(_root_reducer2.default, preloadedState, (0, _redux.applyMiddleware)(_reduxThunk2.default));
 };
 
 exports.default = configureStore;
@@ -58298,8 +58298,6 @@ var _notice = __webpack_require__(519);
 
 var _notice2 = _interopRequireDefault(_notice);
 
-var _lodash = __webpack_require__(10);
-
 var _debugging_util = __webpack_require__(134);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
@@ -58566,8 +58564,6 @@ var ShowFeedItem = function (_React$Component) {
           _react2.default.createElement('path', { d: 'M0,18V2C0,0.21,1.35-.51,3,0.38l11.73,8c1.66,0.89,1.66,2.33,0,3.21L3,19.61C1.36,20.49,0,19.77,0,18Z' })
         );
       }
-
-      console.log('currentUser', this.props.currentUser);
 
       return _react2.default.createElement(
         'li',

@@ -1,7 +1,6 @@
 import React from 'react';
 import ShowFeedItem from './show_feed_item';
 import Notice from '../notice/notice';
-import { values } from 'lodash';
 import { renderLog } from '../../util/debugging_util';
 
 class ShowFeed extends React.Component {
@@ -25,7 +24,7 @@ class ShowFeed extends React.Component {
           show={ show }
           tags={ this.props.tags }
           queue={ this.props.queue }
-          player={ this.props.player}
+          player={ this.props.player }
           createNewPlay={ this.props.createNewPlay }
           updatePlayStatus={ this.props.updatePlayStatus }
           changePlayerOrder={ this.props.changePlayerOrder }
