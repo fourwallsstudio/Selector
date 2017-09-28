@@ -11602,6 +11602,10 @@ return jQuery;
 
 
 }).call(this);
+(function() {
+
+
+}).call(this);
 /******/
  (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
@@ -31553,9 +31557,11 @@ var selectAllShows = exports.selectAllShows = (0, _reselect.createSelector)(getS
 var selectFilteredShows = exports.selectFilteredShows = function selectFilteredShows(state, props) {
   var filter = props.filter;
 
-  if (filter === "most_recent") {
+  if (filter === 'main_feed' || filter === 'most_recent' || filter === 'favorites') {
+
     return selectAllShows(state);
   } else if (filter === 'trending') {
+
     return trendingFilter(state);
   } else {
     var userShows = state.users[parseInt(filter)].show_ids;
@@ -44475,6 +44481,8 @@ var _queue_actions = __webpack_require__(45);
 
 var _preview_actions = __webpack_require__(61);
 
+var _favorite_actions = __webpack_require__(515);
+
 var _selecters = __webpack_require__(29);
 
 var _player_actions = __webpack_require__(60);
@@ -44523,6 +44531,12 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
     },
     changePlayerOrder: function changePlayerOrder(queue, idx) {
       return dispatch((0, _player_actions.changePlayerOrder)(queue, idx));
+    },
+    createFavorite: function createFavorite(fav) {
+      return dispatch((0, _favorite_actions.createFavorite)(fav));
+    },
+    deleteFavorite: function deleteFavorite(fav) {
+      return dispatch((0, _favorite_actions.deleteFavorite)(fav));
     }
   };
 };
@@ -44735,8 +44749,6 @@ var UploadForm = function (_React$Component) {
         var formName = 'Upload';
         var buttonAction = 'Choose ';
         var uploadInProgress = this.state.uploadInProgress ? "upload-in-progress" : "";
-
-        // if (this.state.uploadInProgress) uploadInProgress = "upload-in-progress";
 
         if (this.imagePreviewUrl !== "") {
           imagePreview = _react2.default.createElement('img', { className: 'image-preview', src: this.imagePreviewUrl });
@@ -56004,7 +56016,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var configureStore = function configureStore() {
   var preloadedState = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
 
-  return (0, _redux.createStore)(_root_reducer2.default, preloadedState, (0, _redux.applyMiddleware)(_reduxThunk2.default));
+  return (0, _redux.createStore)(_root_reducer2.default, preloadedState, (0, _redux.applyMiddleware)(_reduxThunk2.default, _reduxLogger2.default));
 };
 
 exports.default = configureStore;
@@ -57130,6 +57142,8 @@ var _countdown = __webpack_require__(219);
 
 var _countdown2 = _interopRequireDefault(_countdown);
 
+var _img_util = __webpack_require__(135);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -57253,6 +57267,7 @@ var PlayerDisplay = function (_React$Component) {
 
         var currentShow = this.props.shows[playerQueue[0].show_id];
         var dropdown = this.state.dropdownIsActive ? " dropdown-active" : "";
+        var newImgSize = (0, _img_util.scaleImg)(50, currentShow);
         var counter = void 0;
         var firstPlayDisplay = void 0;
         var volume = void 0;
@@ -57312,7 +57327,9 @@ var PlayerDisplay = function (_React$Component) {
                 _react2.default.createElement(
                   'div',
                   { className: 'first-queue-image-box' },
-                  _react2.default.createElement('img', { src: currentShow.image_url })
+                  _react2.default.createElement('img', {
+                    src: currentShow.image_url,
+                    style: { width: newImgSize['width'], height: newImgSize['height'] } })
                 ),
                 _react2.default.createElement(
                   'div',
@@ -57498,6 +57515,8 @@ var _react = __webpack_require__(1);
 
 var _react2 = _interopRequireDefault(_react);
 
+var _img_util = __webpack_require__(135);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var QueueItem = function QueueItem(props) {
@@ -57521,6 +57540,8 @@ var QueueItem = function QueueItem(props) {
   };
 
   var show = props.show;
+  var newImgSize = (0, _img_util.scaleImg)(50, show);
+
   var firstPlayDisplay = _react2.default.createElement(
     'svg',
     { viewBox: '0 0 21 24' },
@@ -57533,7 +57554,9 @@ var QueueItem = function QueueItem(props) {
     _react2.default.createElement(
       'div',
       { className: 'rest-queue-image-box' },
-      _react2.default.createElement('img', { src: show.image_url })
+      _react2.default.createElement('img', {
+        src: show.image_url,
+        style: { width: newImgSize['width'], height: newImgSize['height'] } })
     ),
     _react2.default.createElement(
       'div',
@@ -58106,6 +58129,8 @@ var SessionForm = function (_React$Component) {
       return _react2.default.createElement(
         'section',
         null,
+        _react2.default.createElement('div', { className: 'home-mask' }),
+        _react2.default.createElement('div', { className: 'home-img-box' }),
         _react2.default.createElement(
           'div',
           { className: 'auth-modal-container' },
@@ -58320,6 +58345,8 @@ var ShowFeed = function (_React$Component) {
           updatePlayStatus: _this2.props.updatePlayStatus,
           changePlayerOrder: _this2.props.changePlayerOrder,
           createQueueItem: _this2.props.createQueueItem,
+          createFavorite: _this2.props.createFavorite,
+          deleteFavorite: _this2.props.deleteFavorite,
           currentUser: _this2.props.currentUser,
           startPreview: _this2.props.startPreview,
           stopPreview: _this2.props.stopPreview,
@@ -58419,6 +58446,7 @@ var ShowFeedItem = function (_React$Component) {
     _this.handlePlayClick = _this.handlePlayClick.bind(_this);
     _this.handlePreview = _this.handlePreview.bind(_this);
     _this.handleStopPreview = _this.handleStopPreview.bind(_this);
+    _this.handleFavorite = _this.handleFavorite.bind(_this);
     return _this;
   }
 
@@ -58481,6 +58509,23 @@ var ShowFeedItem = function (_React$Component) {
       }
     }
   }, {
+    key: 'handleFavorite',
+    value: function handleFavorite() {
+      if (this.props.currentUser) {
+
+        var favorite = {
+          user_id: this.props.currentUser.id,
+          show_id: this.props.show.id
+        };
+
+        if (this.props.currentUser.favorite_ids.includes(this.props.show.id)) {
+          this.props.deleteFavorite(favorite);
+        } else {
+          this.props.createFavorite(favorite);
+        }
+      }
+    }
+  }, {
     key: '_timeAgo',
     value: function _timeAgo() {
       var timeAgoJS = new _javascriptTimeAgo2.default('en-US');
@@ -58516,6 +58561,8 @@ var ShowFeedItem = function (_React$Component) {
           _react2.default.createElement('path', { d: 'M0,18V2C0,0.21,1.35-.51,3,0.38l11.73,8c1.66,0.89,1.66,2.33,0,3.21L3,19.61C1.36,20.49,0,19.77,0,18Z' })
         );
       }
+
+      console.log('currentUser', this.props.currentUser);
 
       return _react2.default.createElement(
         'li',
@@ -58577,22 +58624,24 @@ var ShowFeedItem = function (_React$Component) {
                 { className: 's-f-i-foot-left' },
                 _react2.default.createElement(
                   'div',
-                  { className: 's-f-i-b fav' },
+                  {
+                    className: "s-f-i-b fav" + (this.props.currentUser.favorite_ids.includes(this.props.show.id) && " favorited"),
+                    onClick: this.handleFavorite },
                   _react2.default.createElement('i', { className: 'fa fa-heart-o fa-lg', 'aria-hidden': 'true' })
                 ),
                 _react2.default.createElement(
                   'div',
-                  { className: 's-f-i-b repost' },
+                  { className: 's-f-i-b repost inactive' },
                   _react2.default.createElement('i', { className: 'fa fa-retweet fa-lg', 'aria-hidden': 'true' })
                 ),
                 _react2.default.createElement(
                   'div',
-                  { className: 's-f-i-b share' },
+                  { className: 's-f-i-b share inactive' },
                   _react2.default.createElement('i', { className: 'fa fa-recycle fa-lg', 'aria-hidden': 'true' })
                 ),
                 _react2.default.createElement(
                   'div',
-                  { className: 's-f-i-b add' },
+                  { className: 's-f-i-b add inactive' },
                   _react2.default.createElement('i', { className: 'fa fa-music fa-lg', 'aria-hidden': 'true' })
                 )
               ),
@@ -58718,6 +58767,7 @@ var ShowProfile = function (_React$Component) {
     _this.handlePreview = _this.handlePreview.bind(_this);
     _this.handleStopPreview = _this.handleStopPreview.bind(_this);
     _this.handleClickTag = _this.handleClickTag.bind(_this);
+    _this.handleFavorite = _this.handleFavorite.bind(_this);
     return _this;
   }
 
@@ -58824,6 +58874,23 @@ var ShowProfile = function (_React$Component) {
       });
     }
   }, {
+    key: 'handleFavorite',
+    value: function handleFavorite() {
+      if (this.props.currentUser) {
+
+        var favorite = {
+          user_id: this.props.currentUser.id,
+          show_id: this.props.showId
+        };
+
+        if (this.props.currentUser.favorite_ids.includes(this.props.showId)) {
+          this.props.deleteFavorite(favorite);
+        } else {
+          this.props.createFavorite(favorite);
+        }
+      }
+    }
+  }, {
     key: '_getTags',
     value: function _getTags() {
       var _this4 = this;
@@ -58853,13 +58920,11 @@ var ShowProfile = function (_React$Component) {
   }, {
     key: 'render',
     value: function render() {
-      console.log('profile status', this.props.player.status);
-
       if (!this.props.show) {
         return _react2.default.createElement(
           'div',
           null,
-          'loading'
+          'loading...'
         );
       } else {
 
@@ -58984,25 +59049,27 @@ var ShowProfile = function (_React$Component) {
                   { className: 's-p-h-overlap-footer' },
                   _react2.default.createElement(
                     'div',
-                    { className: 's-p-h-b fav' },
+                    {
+                      className: 's-p-h-b fav',
+                      onClick: this.handleFavorite },
                     _react2.default.createElement('i', { className: 'fa fa-heart-o fa-lg', 'aria-hidden': 'true' }),
-                    'Favorite'
+                    this.props.currentUser.favorite_ids.includes(show.id) ? 'Unfavorite' : 'Favorite'
                   ),
                   _react2.default.createElement(
                     'div',
-                    { className: 's-p-h-b repost' },
+                    { className: 's-p-h-b repost inactive' },
                     _react2.default.createElement('i', { className: 'fa fa-retweet fa-lg', 'aria-hidden': 'true' }),
                     'Add to'
                   ),
                   _react2.default.createElement(
                     'div',
-                    { className: 's-p-h-b share' },
+                    { className: 's-p-h-b share inactive' },
                     _react2.default.createElement('i', { className: 'fa fa-recycle fa-lg', 'aria-hidden': 'true' }),
                     'Repost'
                   ),
                   _react2.default.createElement(
                     'div',
-                    { className: 's-p-h-b add' },
+                    { className: 's-p-h-b add inactive' },
                     _react2.default.createElement('i', { className: 'fa fa-music fa-lg', 'aria-hidden': 'true' }),
                     'Share'
                   )
@@ -59105,6 +59172,10 @@ var _contact_footer = __webpack_require__(80);
 
 var _contact_footer2 = _interopRequireDefault(_contact_footer);
 
+var _advertisement_box = __webpack_require__(517);
+
+var _advertisement_box2 = _interopRequireDefault(_advertisement_box);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var ShowProfileAside = function ShowProfileAside(_ref) {
@@ -59134,15 +59205,6 @@ var ShowProfileAside = function ShowProfileAside(_ref) {
       { className: 'show-profile-aside-container' },
       _react2.default.createElement(
         'div',
-        { className: 's-p-a-favorited' },
-        _react2.default.createElement(
-          'h2',
-          null,
-          'Favorited by'
-        )
-      ),
-      _react2.default.createElement(
-        'div',
         { className: 's-p-a-listeners' },
         _react2.default.createElement(
           'h2',
@@ -59156,7 +59218,9 @@ var ShowProfileAside = function ShowProfileAside(_ref) {
         )
       ),
       _react2.default.createElement('div', { className: 's-p-a-footer' }),
-      _react2.default.createElement(_contact_footer2.default, null)
+      _react2.default.createElement(_contact_footer2.default, null),
+      _react2.default.createElement(_advertisement_box2.default, { ad: "assets/pioneer-cdj-850-zilver.jpg" }),
+      _react2.default.createElement(_advertisement_box2.default, { ad: "assets/2-Pioneer-CDJ2000-Nexus3.jpg" })
     );
   }
 };
@@ -59197,6 +59261,8 @@ var _tag_actions = __webpack_require__(27);
 var _queue_actions = __webpack_require__(45);
 
 var _preview_actions = __webpack_require__(61);
+
+var _favorite_actions = __webpack_require__(515);
 
 var _show_actions = __webpack_require__(19);
 
@@ -59276,6 +59342,12 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
     },
     updateFilter: function updateFilter(filter) {
       return dispatch((0, _filter_actions.updateFilter)(filter));
+    },
+    createFavorite: function createFavorite(fav) {
+      return dispatch((0, _favorite_actions.createFavorite)(fav));
+    },
+    deleteFavorite: function deleteFavorite(fav) {
+      return dispatch((0, _favorite_actions.deleteFavorite)(fav));
     }
   };
 };
@@ -60201,6 +60273,10 @@ var _contact_footer = __webpack_require__(80);
 
 var _contact_footer2 = _interopRequireDefault(_contact_footer);
 
+var _advertisement_box = __webpack_require__(517);
+
+var _advertisement_box2 = _interopRequireDefault(_advertisement_box);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var UserProfileAside = function UserProfileAside(_ref) {
@@ -60331,7 +60407,9 @@ var UserProfileAside = function UserProfileAside(_ref) {
           followingUsers
         )
       ),
-      _react2.default.createElement(_contact_footer2.default, null)
+      _react2.default.createElement(_contact_footer2.default, null),
+      _react2.default.createElement(_advertisement_box2.default, { ad: "assets/pioneer-cdj-850-zilver.jpg" }),
+      _react2.default.createElement(_advertisement_box2.default, { ad: "assets/2-Pioneer-CDJ2000-Nexus3.jpg" })
     );
   }
 };
@@ -60417,14 +60495,9 @@ var InnerHeader = function InnerHeader(_ref) {
       updateFilter = _ref.updateFilter;
 
 
-  var handleTrending = function handleTrending() {
-    updateFilter("trending");
-    fetchAllShows("trending");
-  };
-
-  var handleFeed = function handleFeed() {
-    updateFilter("most_recent");
-    fetchAllShows("most_recent");
+  var handleFilter = function handleFilter(filter) {
+    updateFilter(filter);
+    fetchAllShows(filter);
   };
 
   return _react2.default.createElement(
@@ -60436,7 +60509,9 @@ var InnerHeader = function InnerHeader(_ref) {
       _react2.default.createElement(
         "div",
         { className: "i-h-links",
-          onClick: handleFeed.bind(undefined) },
+          onClick: function onClick() {
+            return handleFilter('main_feed');
+          } },
         _react2.default.createElement("i", { className: "fa fa-database fa-lg", "aria-hidden": "true" }),
         _react2.default.createElement(
           "p",
@@ -60446,7 +60521,10 @@ var InnerHeader = function InnerHeader(_ref) {
       ),
       _react2.default.createElement(
         "div",
-        { className: "i-h-links" },
+        { className: "i-h-links",
+          onClick: function onClick() {
+            return handleFilter('most_recent');
+          } },
         _react2.default.createElement("i", { className: "fa fa-play-circle-o fa-lg", "aria-hidden": "true" }),
         _react2.default.createElement(
           "p",
@@ -60456,33 +60534,28 @@ var InnerHeader = function InnerHeader(_ref) {
       ),
       _react2.default.createElement(
         "div",
-        { className: "i-h-links" },
-        _react2.default.createElement("i", { className: "fa fa-history fa-lg", "aria-hidden": "true" }),
-        _react2.default.createElement(
-          "p",
-          null,
-          "LISTEN LATER"
-        )
-      ),
-      _react2.default.createElement(
-        "div",
-        { className: "i-h-links" },
-        _react2.default.createElement("i", { className: "fa fa-star-o fa-lg", "aria-hidden": "true" }),
-        _react2.default.createElement(
-          "p",
-          null,
-          "FAVORITES"
-        )
-      ),
-      _react2.default.createElement(
-        "div",
         { className: "i-h-links",
-          onClick: handleTrending.bind(undefined) },
+          onClick: function onClick() {
+            return handleFilter('trending');
+          } },
         _react2.default.createElement("i", { className: "fa fa-fire fa-lg", "aria-hidden": "true" }),
         _react2.default.createElement(
           "p",
           null,
           "TRENDING"
+        )
+      ),
+      _react2.default.createElement(
+        "div",
+        { className: "i-h-links",
+          onClick: function onClick() {
+            return handleFilter('favorites');
+          } },
+        _react2.default.createElement("i", { className: "fa fa-star-o fa-lg", "aria-hidden": "true" }),
+        _react2.default.createElement(
+          "p",
+          null,
+          "FAVORITES"
         )
       )
     )
@@ -60490,6 +60563,15 @@ var InnerHeader = function InnerHeader(_ref) {
 };
 
 exports.default = InnerHeader;
+
+/*
+
+<div className="i-h-links">
+  <i className="fa fa-history fa-lg" aria-hidden="true"></i>
+  <p>LISTEN LATER</p>
+</div>
+
+*/
 
 /***/ }),
 /* 244 */
@@ -60521,6 +60603,13 @@ var _show_feed_container2 = _interopRequireDefault(_show_feed_container);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var UserWelcome = function UserWelcome(props) {
+
+  var feedType = void 0;
+
+  if (props.filter === 'most_recent') feedType = ' - New Shows';
+  if (props.filter === 'trending') feedType = ' - Trending';
+  if (props.filter === 'favorites') feedType = ' - Favorites';
+
   return _react2.default.createElement(
     'section',
     { className: 'user-welcome-container' },
@@ -60537,7 +60626,8 @@ var UserWelcome = function UserWelcome(props) {
         _react2.default.createElement(
           'h2',
           null,
-          'Feed'
+          'Feed',
+          feedType
         )
       ),
       _react2.default.createElement(_show_feed_container2.default, {
@@ -60573,6 +60663,10 @@ var _contact_footer = __webpack_require__(80);
 
 var _contact_footer2 = _interopRequireDefault(_contact_footer);
 
+var _advertisement_box = __webpack_require__(517);
+
+var _advertisement_box2 = _interopRequireDefault(_advertisement_box);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var UserWelcomeAside = function UserWelcomeAside(_ref) {
@@ -60602,7 +60696,9 @@ var UserWelcomeAside = function UserWelcomeAside(_ref) {
       _react2.default.createElement(_user_welcome_aside_item2.default, { users: users,
         currentUser: currentUser })
     ),
-    _react2.default.createElement(_contact_footer2.default, null)
+    _react2.default.createElement(_contact_footer2.default, null),
+    _react2.default.createElement(_advertisement_box2.default, { ad: "assets/pioneer-cdj-850-zilver.jpg" }),
+    _react2.default.createElement(_advertisement_box2.default, { ad: "assets/2-Pioneer-CDJ2000-Nexus3.jpg" })
   );
 };
 
@@ -60811,7 +60907,7 @@ Object.defineProperty(exports, "__esModule", {
 var _filter_actions = __webpack_require__(44);
 
 var filterReducer = function filterReducer() {
-  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : "most_recent";
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : "main_feed";
   var action = arguments[1];
 
 
@@ -89050,6 +89146,108 @@ exports.default = valueEqual;
 /***/ (function(module, exports) {
 
 /* (ignored) */
+
+/***/ }),
+/* 515 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.deleteFavorite = exports.createFavorite = undefined;
+
+var _favorite_util = __webpack_require__(516);
+
+var APIUtil = _interopRequireWildcard(_favorite_util);
+
+var _user_actions = __webpack_require__(28);
+
+var _show_actions = __webpack_require__(19);
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+
+var createFavorite = exports.createFavorite = function createFavorite(favorite) {
+  return function (dispatch) {
+    APIUtil.createFavorite(favorite).then(function (favorite) {
+      dispatch((0, _user_actions.fetchUser)(favorite.user_id));
+      dispatch((0, _show_actions.fetchSingleShow)(favorite.show_id));
+    });
+  };
+};
+
+var deleteFavorite = exports.deleteFavorite = function deleteFavorite(favorite) {
+  return function (dispatch) {
+    APIUtil.deleteFavorite(favorite).then(function (favorite) {
+      dispatch((0, _user_actions.fetchUser)(favorite.user_id));
+      dispatch((0, _show_actions.fetchSingleShow)(favorite.show_id));
+    });
+  };
+};
+
+/***/ }),
+/* 516 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+var createFavorite = exports.createFavorite = function createFavorite(favorite) {
+  return $.ajax({
+    method: 'POST',
+    url: '/api/favorites',
+    data: { favorite: favorite }
+  });
+};
+
+var deleteFavorite = exports.deleteFavorite = function deleteFavorite(favorite) {
+  return $.ajax({
+    method: 'DELETE',
+    url: '/api/favorites/' + favorite.user_id,
+    data: { favorite: favorite }
+  });
+};
+
+/***/ }),
+/* 517 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _react = __webpack_require__(1);
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var AdvertisementBox = function AdvertisementBox(props) {
+  return _react2.default.createElement(
+    "div",
+    { className: "ad-box" },
+    _react2.default.createElement(
+      "div",
+      null,
+      _react2.default.createElement(
+        "p",
+        null,
+        "advertisement"
+      )
+    ),
+    _react2.default.createElement("img", { src: props.ad, alt: "cjd" })
+  );
+};
+
+exports.default = AdvertisementBox;
 
 /***/ })
 /******/ ]);
