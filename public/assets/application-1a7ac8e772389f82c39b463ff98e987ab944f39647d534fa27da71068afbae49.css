@@ -745,6 +745,13 @@ body {
   background: url(/assets/recordplayerbg-c49aec9eaf6216733b25a6ab97042f04c3795a5a6c02b1eb219afb46c917a495.jpg) no-repeat;
   background-size: 100% auto;
 }
+/* line 1, /Users/calvinmcelroy/Documents/webstuff/app_course/final_project/Selector/app/assets/stylesheets/api/notice.scss */
+.notice {
+  border: solid 1px lightgrey;
+  color: grey;
+  text-align: center;
+  margin: 20px 0;
+}
 /* line 3, /Users/calvinmcelroy/Documents/webstuff/app_course/final_project/Selector/app/assets/stylesheets/api/player.scss */
 .foot-filler {
   height: 100px;

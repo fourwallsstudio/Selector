@@ -58294,6 +58294,10 @@ var _show_feed_item = __webpack_require__(229);
 
 var _show_feed_item2 = _interopRequireDefault(_show_feed_item);
 
+var _notice = __webpack_require__(519);
+
+var _notice2 = _interopRequireDefault(_notice);
+
 var _lodash = __webpack_require__(10);
 
 var _debugging_util = __webpack_require__(134);
@@ -58372,7 +58376,8 @@ var ShowFeed = function (_React$Component) {
           _react2.default.createElement(
             'ul',
             null,
-            showItems
+            showItems,
+            this.props.currentUser.id === this.props.filter && !this.props.shows.length && _react2.default.createElement(_notice2.default, { message: 'upload shows to your profile' })
           ),
           _react2.default.createElement(
             'div',
@@ -60110,7 +60115,13 @@ var _react2 = _interopRequireDefault(_react);
 
 var _lodash = __webpack_require__(10);
 
+var _ = _interopRequireWildcard(_lodash);
+
 var _reactRouterDom = __webpack_require__(7);
+
+var _notice = __webpack_require__(519);
+
+var _notice2 = _interopRequireDefault(_notice);
 
 var _user_profile_aside = __webpack_require__(241);
 
@@ -60119,6 +60130,8 @@ var _user_profile_aside2 = _interopRequireDefault(_user_profile_aside);
 var _show_feed_container = __webpack_require__(132);
 
 var _show_feed_container2 = _interopRequireDefault(_show_feed_container);
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -60592,6 +60605,10 @@ var _inner_header = __webpack_require__(243);
 
 var _inner_header2 = _interopRequireDefault(_inner_header);
 
+var _notice = __webpack_require__(519);
+
+var _notice2 = _interopRequireDefault(_notice);
+
 var _user_welcome_aside = __webpack_require__(245);
 
 var _user_welcome_aside2 = _interopRequireDefault(_user_welcome_aside);
@@ -60599,6 +60616,12 @@ var _user_welcome_aside2 = _interopRequireDefault(_user_welcome_aside);
 var _show_feed_container = __webpack_require__(132);
 
 var _show_feed_container2 = _interopRequireDefault(_show_feed_container);
+
+var _lodash = __webpack_require__(10);
+
+var _ = _interopRequireWildcard(_lodash);
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -60609,6 +60632,14 @@ var UserWelcome = function UserWelcome(props) {
   if (props.filter === 'most_recent') feedType = ' - New Shows';
   if (props.filter === 'trending') feedType = ' - Trending';
   if (props.filter === 'favorites') feedType = ' - Favorites';
+
+  var message = props.filter === 'main_feed' ? "follow users to add to your feed -->" : "add shows to your favorites";
+
+  var notice = void 0;
+
+  if (_.values(props.shows).length === 0) {
+    notice = _react2.default.createElement(_notice2.default, { message: message });
+  }
 
   return _react2.default.createElement(
     'section',
@@ -60630,6 +60661,7 @@ var UserWelcome = function UserWelcome(props) {
           feedType
         )
       ),
+      notice,
       _react2.default.createElement(_show_feed_container2.default, {
         filter: props.filter })
     ),
@@ -60785,6 +60817,7 @@ var mapStateToProps = function mapStateToProps(state) {
     filter: state.filter,
     currentTag: state.tags.currentTag,
     users: state.users,
+    shows: state.shows.entities,
     currentUser: state.users[state.session.currentUser]
   };
 };
@@ -89248,6 +89281,38 @@ var AdvertisementBox = function AdvertisementBox(props) {
 };
 
 exports.default = AdvertisementBox;
+
+/***/ }),
+/* 518 */,
+/* 519 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _react = __webpack_require__(1);
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var Notice = function Notice(props) {
+  return _react2.default.createElement(
+    "div",
+    { className: "notice" },
+    _react2.default.createElement(
+      "h4",
+      null,
+      props.message
+    )
+  );
+};
+
+exports.default = Notice;
 
 /***/ })
 /******/ ]);
