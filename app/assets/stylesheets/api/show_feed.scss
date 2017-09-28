@@ -213,9 +213,9 @@
   border-radius: 5px;
 }
 
-// .s-f-i-b:hover {
-//   cursor: pointer;
-// }
+.s-f-i-b:hover {
+  cursor: pointer;
+}
 
 .fa-heart-o, .fa-retweet, .fa-recycle, .fa-music {
   position: absolute;
@@ -224,6 +224,15 @@
   top: 10px;
   left: 14px;
   color: #697F95;
+}
+
+.favorited {
+  background: #697F95;
+  border: solid 1px white;
+
+  & i {
+    color: white;
+  }
 }
 
 .s-f-i-foot-right {

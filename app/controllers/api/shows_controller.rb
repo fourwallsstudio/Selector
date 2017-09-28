@@ -8,6 +8,8 @@ class Api::ShowsController < ApplicationController
       @shows = Show.most_recent
     when "trending"
       @shows = Show.trending
+    when "favorites"
+      @shows = current_user.favorite_shows
     when "tag"
       @shows = Tag.find(params["tagId"].to_i).shows
     when "main_feed"

@@ -29,6 +29,8 @@ class ShowFeed extends React.Component {
           updatePlayStatus={ this.props.updatePlayStatus }
           changePlayerOrder={ this.props.changePlayerOrder }
           createQueueItem={ this.props.createQueueItem }
+          createFavorite={ this.props.createFavorite }
+          deleteFavorite={ this.props.deleteFavorite }
           currentUser={ this.props.currentUser }
           startPreview={ this.props.startPreview }
           stopPreview={ this.props.stopPreview }

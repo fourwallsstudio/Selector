@@ -51,6 +51,7 @@ class Show < ActiveRecord::Base
 
   has_many :queue_items
   has_many :comments
+  has_many :favorites
   has_many :taggings, dependent: :destroy, inverse_of: :show
   has_many :tags, through: :taggings, source: :tag
 
@@ -78,5 +79,9 @@ class Show < ActiveRecord::Base
     end
 
     listeners
+  end
+
+  def favorite_ids
+    favorites.map { |f| f.user_id }
   end
 end

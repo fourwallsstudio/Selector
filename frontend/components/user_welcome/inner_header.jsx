@@ -25,7 +25,11 @@ const InnerHeader = ({ fetchAllShows, updateFilter }) => {
           <i className="fa fa-fire fa-lg" aria-hidden="true"></i>
           <p>TRENDING</p>
         </div>
-
+        <div className="i-h-links"
+              onClick={ () => handleFilter('favorites') }>
+          <i className="fa fa-star-o fa-lg" aria-hidden="true"></i>
+          <p>FAVORITES</p>
+        </div>
       </div>
     </div>
   );
@@ -38,10 +42,6 @@ export default InnerHeader;
 <div className="i-h-links">
   <i className="fa fa-history fa-lg" aria-hidden="true"></i>
   <p>LISTEN LATER</p>
-</div>
-<div className="i-h-links">
-  <i className="fa fa-star-o fa-lg" aria-hidden="true"></i>
-  <p>FAVORITES</p>
 </div>
 
 */

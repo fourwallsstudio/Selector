@@ -1,5 +1,5 @@
 json.extract! show, :id, :title, :description,
-  :audio_file_size, :created_at, :plays, :listeners, :tag_ids
+  :audio_file_size, :created_at, :plays, :listeners, :tag_ids, :favorite_ids
 json.comments show.comment_ids
 json.author_id show.author.id
 json.author_username show.author.username

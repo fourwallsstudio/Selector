@@ -18,6 +18,7 @@ import { updateFilter } from '../../actions/filter_actions';
 import { updateCurrentTag } from '../../actions/tag_actions';
 import { createQueueItem } from '../../actions/queue_actions';
 import { startPreview, stopPreview } from '../../actions/preview_actions';
+import { createFavorite, deleteFavorite } from '../../actions/favorite_actions';
 import { fetchSingleShow, deleteShow, fetchShowsByTag } from '../../actions/show_actions';
 
 
@@ -57,7 +58,9 @@ const mapDispatchToProps = dispatch => {
     stopPreview: src => dispatch(stopPreview(src)),
     fetchShowsByTag: (filter, tagId) => dispatch(fetchShowsByTag(filter, tagId)),
     updateCurrentTag: tagId => dispatch(updateCurrentTag(tagId)),
-    updateFilter: filter => dispatch(updateFilter(filter))
+    updateFilter: filter => dispatch(updateFilter(filter)),
+    createFavorite: fav => dispatch(createFavorite(fav)),
+    deleteFavorite: fav => dispatch(deleteFavorite(fav)),
   }
 }
 

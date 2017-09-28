@@ -40,6 +40,7 @@ class User < ActiveRecord::Base
 
   has_many :queue_items
   has_many :comments
+  has_many :favorites
 
   has_many :followers_joins,
     class_name: :Following,
@@ -100,6 +101,14 @@ class User < ActiveRecord::Base
 
   def non_followings
     User.all.select { |u| !following_ids.include?(u.id) }
+  end
+
+  def favorite_ids
+    favorites.map { |f| f.show_id }
+  end
+
+  def favorite_shows
+    favorites.map { |f| Show.find(f.show_id) }
   end
 
   private

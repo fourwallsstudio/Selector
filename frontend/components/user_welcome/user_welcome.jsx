@@ -9,6 +9,8 @@ const UserWelcome = props => {
 
   if (props.filter === 'most_recent') feedType = ' - New Shows';
   if (props.filter === 'trending') feedType = ' - Trending';
+  if (props.filter === 'favorites') feedType = ' - Favorites';
+
 
   return (
     <section className="user-welcome-container">

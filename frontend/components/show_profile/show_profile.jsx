@@ -29,6 +29,7 @@ class ShowProfile extends React.Component {
     this.handlePreview = this.handlePreview.bind(this);
     this.handleStopPreview = this.handleStopPreview.bind(this);
     this.handleClickTag = this.handleClickTag.bind(this);
+    this.handleFavorite = this.handleFavorite.bind(this);
   }
 
   componentDidMount() {
@@ -130,6 +131,22 @@ class ShowProfile extends React.Component {
       })
   }
 
+  handleFavorite() {
+    if (this.props.currentUser) {
+
+      const favorite = {
+        user_id: this.props.currentUser.id,
+        show_id: this.props.showId
+      };
+
+      if (this.props.currentUser.favorite_ids.includes(this.props.showId)) {
+        this.props.deleteFavorite(favorite);
+      } else {
+        this.props.createFavorite(favorite);
+      }
+    }
+  }
+
   _getTags() {
     return (
       this.props.show.tag_ids.map( id => {
@@ -153,10 +170,8 @@ class ShowProfile extends React.Component {
 
 
   render() {
-    console.log('profile status', this.props.player.status)
-
     if (!this.props.show) {
-      return <div>loading</div>;
+      return <div>loading...</div>;
 
     } else {
 
@@ -238,19 +253,25 @@ class ShowProfile extends React.Component {
 
 
                 <div className="s-p-h-overlap-footer">
-                  <div className="s-p-h-b fav">
+                  <div
+                    className="s-p-h-b fav"
+                    onClick={ this.handleFavorite } >
                     <i className="fa fa-heart-o fa-lg" aria-hidden="true"></i>
-                    Favorite
+                    {
+                      this.props.currentUser.favorite_ids.includes(show.id)
+                      ? 'Unfavorite'
+                      : 'Favorite'
+                    }
                   </div>
-                  <div className="s-p-h-b repost">
+                  <div className="s-p-h-b repost inactive">
                     <i className="fa fa-retweet fa-lg" aria-hidden="true"></i>
                     Add to
                   </div>
-                  <div className="s-p-h-b share">
+                  <div className="s-p-h-b share inactive">
                     <i className="fa fa-recycle fa-lg" aria-hidden="true"></i>
                     Repost
                   </div>
-                  <div className="s-p-h-b add">
+                  <div className="s-p-h-b add inactive">
                     <i className="fa fa-music fa-lg" aria-hidden="true"></i>
                     Share
                   </div>

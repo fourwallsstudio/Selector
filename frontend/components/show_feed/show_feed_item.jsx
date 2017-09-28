@@ -16,6 +16,7 @@ class ShowFeedItem extends React.Component {
     this.handlePlayClick = this.handlePlayClick.bind(this);
     this.handlePreview = this.handlePreview.bind(this);
     this.handleStopPreview = this.handleStopPreview.bind(this);
+    this.handleFavorite = this.handleFavorite.bind(this);
   }
 
   handlePlayClick(e) {
@@ -77,6 +78,22 @@ class ShowFeedItem extends React.Component {
   handleStopPreview() {
     if (this.props.preview.status !== "off") {
       this.props.stopPreview(this.props.preview.howlPreview);
+    }
+  }
+
+  handleFavorite() {
+    if (this.props.currentUser) {
+
+      const favorite = {
+        user_id: this.props.currentUser.id,
+        show_id: this.props.show.id
+      };
+
+      if (this.props.currentUser.favorite_ids.includes(this.props.show.id)) {
+        this.props.deleteFavorite(favorite);
+      } else {
+        this.props.createFavorite(favorite);
+      }
     }
   }
 
@@ -151,16 +168,20 @@ class ShowFeedItem extends React.Component {
 
             <div className="s-f-i-foot">
               <div className="s-f-i-foot-left">
-                <div className="s-f-i-b fav">
+                <div
+                  className={ "s-f-i-b fav"
+                    + (this.props.currentUser.favorite_ids.includes(this.props.show.id)
+                    && " favorited") }
+                  onClick={ this.handleFavorite }>
                   <i className="fa fa-heart-o fa-lg" aria-hidden="true"></i>
                 </div>
-                <div className="s-f-i-b repost">
+                <div className="s-f-i-b repost inactive">
                   <i className="fa fa-retweet fa-lg" aria-hidden="true"></i>
                 </div>
-                <div className="s-f-i-b share">
+                <div className="s-f-i-b share inactive">
                   <i className="fa fa-recycle fa-lg" aria-hidden="true"></i>
                 </div>
-                <div className="s-f-i-b add">
+                <div className="s-f-i-b add inactive">
                   <i className="fa fa-music fa-lg" aria-hidden="true"></i>
                 </div>
               </div>

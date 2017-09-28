@@ -33,8 +33,9 @@ export const selectAllShows = createSelector(
 export const selectFilteredShows = (state, props) => {
   const filter = props.filter
 
-  if (filter === "main_feed"
-    || filter === "most_recent") {
+  if (filter === 'main_feed'
+    || filter === 'most_recent'
+    || filter === 'favorites') {
 
     return selectAllShows(state);
 
