@@ -81,6 +81,9 @@ class SessionForm extends React.Component {
 
     return (
       <section>
+				<div className="home-mask"></div>
+				<div className="home-img-box"></div>
+				
           <div className="auth-modal-container">
             <div className="link-nav-box">
               <Link to={`/login`}>Login</Link>
