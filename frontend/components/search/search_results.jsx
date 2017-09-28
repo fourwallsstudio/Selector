@@ -3,6 +3,9 @@ import { connect } from 'react-redux';
 import { values } from 'lodash'
 import { Link, withRouter } from 'react-router-dom';
 
+// UTILS
+import { scaleImg } from '../../util/img_util';
+
 // ACTIONS
 import { clearSearch } from '../../actions/search_actions';
 import { fetchShowsByTag } from '../../actions/show_actions';
@@ -11,6 +14,9 @@ import { updateFilter } from '../../actions/filter_actions';
 
 // COMPONENTS
 import MustBeLoggedIn from '../errors_notices/must_be_logged_in';
+
+
+
 
 class SearchResults extends React.Component {
   constructor(props) {
@@ -63,11 +69,16 @@ class SearchResults extends React.Component {
 
     if (values(this.props.showResults).length > 0) {
       showResultFeed = this.props.showResults.map( show => {
+
+        const newImgSize = scaleImg(50, show);
+
         return (
           <li key={ show.id } className="search-result-show-item">
               <Link to={`/show/${show.id}`}
                 className="search-result-show-thumb">
-                <img src={ show.image_url } />
+                <img
+                  src={ show.image_url }
+                  style={{ width: newImgSize['width'], height: newImgSize['height'] }} />
               </Link>
             <h4>{show.title}</h4>
           </li>
@@ -77,10 +88,15 @@ class SearchResults extends React.Component {
 
     if (values(this.props.userResults).length > 0) {
       userResultFeed = this.props.userResults.map( user => {
+
+        const newImgSize = scaleImg(50, user);
+
         return (
           <li key={ user.id } className="search-result-user-item">
             <Link to={`/user/${user.id}`} className="search-result-user-thumb">
-              <img src={ user.avatar_url } />
+              <img
+                src={ user.avatar_url }
+                style={{ width: newImgSize['width'], height: newImgSize['height'] }} />
             </Link>
             <h4>{user.username}</h4>
           </li>

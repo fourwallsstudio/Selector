@@ -15,7 +15,6 @@
 .background-photo {
   position: absolute;
   top: -50%;
-  // height: 100%;
   left: -30px;
   width: 120%;
   z-index: -2;
@@ -123,15 +122,15 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  width: 70%;
+  width: 100%;
 }
 
 .s-p-head-items-box h1 {
   font-size: 36px;
   font-weight: 100;
-  height: 46px;
-  line-height: 46px;
-  overflow: hidden;
+  height: 36px;
+  line-height: 36px;
+  text-overflow: clip;
   text-shadow: .5px .5px 3px grey;
 }
 

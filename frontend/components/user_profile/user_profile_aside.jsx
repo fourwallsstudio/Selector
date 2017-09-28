@@ -17,7 +17,8 @@ const UserProfileAside = ({ user, users, followings }) => {
         return (
           <li className="followings-thumb" key={ following.id }>
             <Link to={ `/user/${following.id}` }>
-              <img src={ following.avatar_url } />
+              <img src={ following.avatar_url }
+                />
             </Link>
           </li>
         )

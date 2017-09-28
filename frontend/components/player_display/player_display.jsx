@@ -158,7 +158,6 @@ class PlayerDisplay extends React.Component {
           );
         }
 
-
       return (
         <section className={"player-container" + dropdown }>
 

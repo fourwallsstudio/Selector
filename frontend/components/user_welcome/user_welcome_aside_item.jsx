@@ -1,6 +1,7 @@
 import React from 'react';
 import { values } from 'lodash';
 import { Link } from 'react-router-dom';
+import { scaleImg } from '../../util/img_util';
 
 const UserWelcomeAsideItem = ({ users, currentUser }) => {
 
@@ -10,10 +11,14 @@ const UserWelcomeAsideItem = ({ users, currentUser }) => {
     if (user.id !== currentUser.id
       && !following_ids.includes(user.id)) {
 
+      const newImgSize = scaleImg(50, user);
+
       return (
         <li className="who-to-follow-thumb" key={ user.id }>
           <Link to={ `/user/${ user.id }` }>
-            <img src={ user.avatar_url } />
+            <img
+              src={ user.avatar_url }
+              style={{ width: newImgSize['width'], height: newImgSize['height'] }} />
           </Link>
         </li>
       )

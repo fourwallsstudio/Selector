@@ -59,7 +59,7 @@ class HeaderNav extends React.Component {
         rightSideNav = <div className="head-nav-user">
                         <div className="header-nav-user-img-box">
                           <img
-                            src={currentUser.avatar_url}
+                            src={ currentUser.avatar_url }
                             onClick={() => this.props.history.push(`/user/${currentUser.id}`)} />
                         </div>
 

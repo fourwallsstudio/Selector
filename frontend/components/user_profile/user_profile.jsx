@@ -1,6 +1,7 @@
 import React from 'react';
 import * as _ from 'lodash';
 import { Link } from 'react-router-dom';
+import { scaleImg } from '../../util/img_util';
 import Notice from '../notice/notice';
 import UserProfileAside from './user_profile_aside';
 import ShowFeedContainer from '../show_feed/show_feed_container';
@@ -43,6 +44,8 @@ class UserProfile extends React.Component {
 
     } else {
       const user = this.props.user
+      const newImgSize = scaleImg(160, user)
+      console.log('user p image', newImgSize);
       let updateOrFollow;
 
       if (user.id === this.props.currentUser.id) {
@@ -64,7 +67,9 @@ class UserProfile extends React.Component {
             <img className="user-profile-background-photo" src={ user.avatar_url } />
             <div className="u-p-head-items-box">
               <div className="avatar-box">
-                <img src={ user.avatar_url } />
+                <img
+                  src={ user.avatar_url }
+                  style={{ width: newImgSize['width'], height: newImgSize['height'] }} />
               </div>
               <div className="u-p-title-box">
                 <h1>{ user.username }</h1>
@@ -85,7 +90,7 @@ class UserProfile extends React.Component {
                 users={ this.props.users }
                 followings={ this.props.followings } />
 
-              <ShowFeedContainer filter={ user.id }/>
+              <ShowFeedContainer filter={ user.id } />
             </div>
           </div>
 

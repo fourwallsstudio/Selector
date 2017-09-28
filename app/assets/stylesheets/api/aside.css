@@ -55,12 +55,12 @@
   height: 50px;
   margin: 10px 10px 10px 0;
   overflow: hidden;
+  border-radius: 5px;
 }
 
 .who-to-follow-thumb img {
   width: 100%;
   height: auto;
-  border-radius: 5px;
 }
 
 
