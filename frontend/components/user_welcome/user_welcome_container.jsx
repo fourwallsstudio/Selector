@@ -9,6 +9,7 @@ const mapStateToProps = state => {
     filter: state.filter,
     currentTag: state.tags.currentTag,
     users: state.users,
+    shows: state.shows.entities,
     currentUser: state.users[state.session.currentUser]
   }
 }

@@ -1,6 +1,7 @@
 import React from 'react';
-import { values } from 'lodash';
+import * as _ from 'lodash';
 import { Link } from 'react-router-dom';
+import Notice from '../notice/notice';
 import UserProfileAside from './user_profile_aside';
 import ShowFeedContainer from '../show_feed/show_feed_container';
 

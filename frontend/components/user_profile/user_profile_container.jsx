@@ -12,7 +12,7 @@ const mapStateToProps = (state, ownProps) => {
     followings: selectFollowings(state, ownProps),
     users: state.users,
     currentUser: state.users[state.session.currentUser],
-    currentUserId: state.session.currentUser,
+    currentUserId: state.session.currentUser, 
     userId,
   }
 }

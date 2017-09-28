@@ -1,5 +1,6 @@
 import React from 'react';
 import ShowFeedItem from './show_feed_item';
+import Notice from '../notice/notice';
 import { values } from 'lodash';
 import { renderLog } from '../../util/debugging_util';
 
@@ -51,6 +52,13 @@ class ShowFeed extends React.Component {
         <section className="show-feed-container group">
           <ul>
             { showItems }
+
+            {
+              this.props.currentUser.id === this.props.filter
+              && !this.props.shows.length
+              && <Notice message="upload shows to your profile" />
+            }
+
           </ul>
 
           <div className="show-feed-foot">
