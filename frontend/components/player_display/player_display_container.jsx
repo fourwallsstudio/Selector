@@ -13,7 +13,8 @@ import {
   updatePlayStatus,
   removeHowlerPlay,
   restoredPlayPosition,
-  changePlayerOrder
+  changePlayerOrder,
+  removePlayAtIndex
  } from '../../actions/player_actions';
  import { selectUser } from '../../reducers/selecters'
 
@@ -21,7 +22,7 @@ import {
 
 const mapStateToProps = state => {
   const { player, preview, shows, queue } = state
-  
+
   return {
     currentUser: selectUser(state, state.session.currentUser),
     queue: queue.queue,
@@ -44,7 +45,8 @@ const mapDispatchToProps = dispatch => {
     startPreview: src => dispatch(startPreview(src)),
     stopPreview: src => dispatch(startPreview(src)),
     createQueueItem: q => dispatch(createQueueItem(q)),
-    updateQueueItem: q => dispatch(updateQueueItem(q))
+    updateQueueItem: q => dispatch(updateQueueItem(q)),
+    removePlayAtIndex: idx => dispatch(removePlayAtIndex(idx)),
   }
 }
 

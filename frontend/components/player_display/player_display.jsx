@@ -18,6 +18,7 @@ class PlayerDisplay extends React.Component {
     this.handleVolume = this.handleVolume.bind(this);
     this.handleShowOnEnd = this.handleShowOnEnd.bind(this);
     this.handleShowOnPause = this.handleShowOnPause.bind(this);
+    this.handleDelete = this.handleDelete.bind(this);
   }
 
   componentWillReceiveProps(nextProps) {
@@ -91,6 +92,12 @@ class PlayerDisplay extends React.Component {
     current.volume(this.state.volume / 10);
   }
 
+  handleDelete() {
+    this.props.player.playerQueue[0].show.pause();
+    this.props.updatePlayStatus('paused');
+    this.props.removePlayAtIndex(0);
+  }
+
 
   render() {
     let playerQueue = this.props.player.playerQueue;
@@ -111,14 +118,17 @@ class PlayerDisplay extends React.Component {
 
       // QUEUE REST
       let restOfQueue = playerQueue.slice(1).map( q => this.props.shows[q.show_id] );
-      let rest = restOfQueue.map( show => {
+      let rest = restOfQueue.map( (show, idx) => {
 
         return <QueueItem key={ show.id }
                     player={ this.props.player } stopPreview={ this.props.stopPreview }
                     changePlayerOrder={ this.props.changePlayerOrder }
+                    removePlayAtIndex={ this.props.removePlayAtIndex }
                     updatePlayStatus={ this.props.updatePlayStatus }
-                    preview={ this.props.preview } show={ show }
-                    currentUser={ this.props.currentUser.id } />;
+                    preview={ this.props.preview }
+                    currentUser={ this.props.currentUser.id }
+                    idx={ idx + 1 }
+                    show={ show } />;
       })
 
 
@@ -171,6 +181,10 @@ class PlayerDisplay extends React.Component {
                   <p>by</p>
                   <h4>{currentShow.author_username}</h4>
                   <button>FOLLOW</button>
+                </div>
+                <div className="first-queue-delete"
+                  onClick={ this.handleDelete } >
+                  <i className="fa fa-times" aria-hidden="true"></i>
                 </div>
               </div>
 

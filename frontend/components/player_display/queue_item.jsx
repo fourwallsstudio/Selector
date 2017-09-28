@@ -19,6 +19,10 @@ const QueueItem = (props) => {
     props.changePlayerOrder(props.player.playerQueue, showQueue.indexOf(props.show.id))
   }
 
+  const handleDelete = () => {
+    props.removePlayAtIndex(props.idx);
+  }
+
   const show = props.show;
   const newImgSize = scaleImg(50, show);
 
@@ -48,6 +52,11 @@ const QueueItem = (props) => {
         <h2>{ show.title }</h2>
         <p>by</p>
         <h4>{ show.author_username }</h4>
+      </div>
+
+      <div className="rest-queue-delete"
+        onClick={ handleDelete } >
+        <i className="fa fa-times" aria-hidden="true"></i>
       </div>
     </li>
   )

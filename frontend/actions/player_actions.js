@@ -8,6 +8,7 @@ export const REMOVE_HOWLER_PLAY = 'REMOVE_HOWLER_PLAY';
 export const LOADING_HOWLER = 'LOADING_HOWLER';
 export const RESTORED_PLAY_POSITION = 'RESTORED_PLAY_POSITION';
 export const CHANGE_PLAYER_ORDER = 'CHANGE_PLAYER_ORDER';
+export const REMOVE_PLAY_AT_INDEX = 'REMOVE_PLAY_AT_INDEX';
 
 
 export const createNewPlay = (show, currentUser) => {
@@ -71,7 +72,12 @@ export const changePlayerOrder = (queue, idx) => {
   }
 }
 
-
+export const removePlayAtIndex = (idx) => {
+  return {
+    type: REMOVE_PLAY_AT_INDEX,
+    idx
+  }
+}
 
 export const addHowlerPlay = howlPlay => {
   return {

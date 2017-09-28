@@ -6,7 +6,8 @@ import {
   REMOVE_HOWLER_PLAY,
   LOADING_HOWLER,
   RESTORED_PLAY_POSITION,
-  CHANGE_PLAYER_ORDER
+  CHANGE_PLAYER_ORDER,
+  REMOVE_PLAY_AT_INDEX
 } from '../actions/player_actions';
 
 const defaultState = {
@@ -63,6 +64,7 @@ const playerReducer = (state = defaultState, action) => {
         loading: state.loading,
         restoredPlayPosition: state.restoredPlayPosition
       };
+
       return newState;
     }
 
@@ -77,6 +79,15 @@ const playerReducer = (state = defaultState, action) => {
       newPlayerQueue.splice(action.idx, 1);
       newPlayerQueue.unshift(newFirstPos);
       return { ...state, status: "playing", playerQueue: newPlayerQueue }
+    }
+
+    case REMOVE_PLAY_AT_INDEX: {
+      let idx = action.idx;
+      let newPlayerQueue = [
+        ...state.playerQueue.slice(0,idx),
+        ...state.playerQueue.slice(idx + 1)
+      ];
+      return { ...state, playerQueue: newPlayerQueue }
     }
 
     default:

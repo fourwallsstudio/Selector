@@ -113,6 +113,20 @@
   }
 }
 
+.first-queue-delete {
+  position: relative;
+
+  & .fa-times {
+    position: absolute;
+    left: -14px;
+
+    &:hover {
+      cursor: pointer;
+      top: 1px;
+    }
+  }
+}
+
 
 .first-queue-bottons-box {
   width: 120px;
@@ -293,7 +307,7 @@
   display: flex;
   flex-wrap: wrap;
   align-items: baseline;
-  width: 180px;
+  width: 160px;
   padding: 5px 0;
 
   h2 {
@@ -311,5 +325,19 @@
 
   p {
     font-size: 12px;
+  }
+}
+
+.rest-queue-delete {
+  position: relative;
+
+  & .fa-times {
+    position: absolute;
+    left: -14px;
+
+    &:hover {
+      cursor: pointer;
+      top: 1px;
+    }
   }
 }
