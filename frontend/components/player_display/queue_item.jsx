@@ -1,4 +1,5 @@
 import React from 'react';
+import { scaleImg } from '../../util/img_util';
 
 const QueueItem = (props) => {
 
@@ -19,16 +20,22 @@ const QueueItem = (props) => {
   }
 
   const show = props.show;
+  const newImgSize = scaleImg(50, show);
+
   let firstPlayDisplay = (
     <svg viewBox="0 0 21 24">
       <path d="M0,21.6V2.4c0-2.2,1.7-3,3.9-1.9l15.5,9.6c2.1,1.1,2.1,2.8,0,3.9L3.9,23.5C1.8,24.6,0,23.7,0,21.6z"/>
     </svg>
   );
 
+
   return (
     <li className="rest-queue-box" >
       <div className="rest-queue-image-box">
-        <img src={ show.image_url } />
+        <img
+          src={ show.image_url }
+          style={{ width: newImgSize['width'], height: newImgSize['height'] }} />
+
       </div>
       <div className="first-queue-play-button"
         onClick={ handlePlayClick } >

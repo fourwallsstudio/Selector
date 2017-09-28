@@ -2,6 +2,7 @@ import React from 'react';
 import { values } from 'lodash';
 import QueueItem from './queue_item';
 import Countdown from './countdown';
+import { scaleImg } from '../../util/img_util';
 
 class PlayerDisplay extends React.Component {
   constructor(props) {
@@ -100,8 +101,10 @@ class PlayerDisplay extends React.Component {
 
     } else {
 
-      let currentShow = this.props.shows[playerQueue[0].show_id];
-      let dropdown = this.state.dropdownIsActive ? " dropdown-active" : "";
+
+      const currentShow = this.props.shows[playerQueue[0].show_id];
+      const dropdown = this.state.dropdownIsActive ? " dropdown-active" : "";
+      const newImgSize = scaleImg(50, currentShow);
       let counter;
       let firstPlayDisplay;
       let volume;
@@ -153,7 +156,9 @@ class PlayerDisplay extends React.Component {
             <div className="player-container-left">
               <div className="first-queue-box">
                 <div className="first-queue-image-box">
-                  <img src={ currentShow.image_url } />
+                  <img
+                    src={ currentShow.image_url }
+                    style={{ width: newImgSize['width'], height: newImgSize['height'] }} />
                 </div>
                 <div className="first-queue-play-button"
                   onClick={ this.handlePlayClick } >
