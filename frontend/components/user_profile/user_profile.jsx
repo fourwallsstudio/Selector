@@ -45,7 +45,6 @@ class UserProfile extends React.Component {
     } else {
       const user = this.props.user
       const newImgSize = scaleImg(160, user)
-      console.log('user p image', newImgSize);
       let updateOrFollow;
 
       if (user.id === this.props.currentUser.id) {

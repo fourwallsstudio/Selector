@@ -17,6 +17,7 @@
 #  image_file_size    :integer
 #  image_updated_at   :datetime
 #  image_meta         :text
+#  queue_items_count  :integer
 #
 
 require 'rails_helper'

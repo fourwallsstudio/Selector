@@ -3,49 +3,57 @@ import InnerHeader from './inner_header';
 import Notice from '../notice/notice';
 import UserWelcomeAside from './user_welcome_aside';
 import ShowFeedContainer from '../show_feed/show_feed_container';
-import * as _ from 'lodash';
+import { values } from 'lodash';
 
-const UserWelcome = props => {
+class UserWelcome extends React.Component {
 
-  let feedType;
+  componentDidMount() {
+    if (this.props.currentUser) {
+      this.props.fetchNonFollowings(this.props.currentUser.id)
+    }
+  }
 
-  if (props.filter === 'most_recent') feedType = ' - New Shows';
-  if (props.filter === 'trending') feedType = ' - Trending';
-  if (props.filter === 'favorites') feedType = ' - Favorites';
+  render() {
+    let feedType;
 
-  const message = props.filter === 'main_feed'
+    if (this.props.filter === 'most_recent') feedType = ' - New Shows';
+    if (this.props.filter === 'trending') feedType = ' - Trending';
+    if (this.props.filter === 'favorites') feedType = ' - Favorites';
+
+    const message = this.props.filter === 'main_feed'
     ? "follow users to add to your feed -->"
     : "add shows to your favorites";
 
-  let notice;
+    let notice;
 
-  if (_.values(props.shows).length === 0) {
-    notice = <Notice message={ message } />;
-  }
+    if (values(this.props.shows).length === 0) {
+      notice = <Notice message={ message } />;
+    }
 
-  return (
-    <section className="user-welcome-container">
-      <InnerHeader
-        fetchAllShows={ props.fetchAllShows }
-        updateFilter={ props.updateFilter } />
-      <div className="inner-header-clear"></div>
+    return (
+      <section className="user-welcome-container">
+        <InnerHeader
+          fetchAllShows={ this.props.fetchAllShows }
+          updateFilter={ this.props.updateFilter } />
+        <div className="inner-header-clear"></div>
 
-      <div className="user-welcome-feed">
-        <div className="user-welcome-feed-head">
-          <h2>Feed{ feedType }</h2>
+        <div className="user-welcome-feed">
+          <div className="user-welcome-feed-head">
+            <h2>Feed{ feedType }</h2>
+          </div>
+
+          { notice }
+
+          <ShowFeedContainer
+            filter={ this.props.filter } />
         </div>
 
-        { notice }
 
-        <ShowFeedContainer
-          filter={ props.filter } />
-      </div>
-
-
-      <UserWelcomeAside users={ props.users }
-        currentUser={ props.currentUser } />
-    </section>
-  )
+        <UserWelcomeAside users={ this.props.users }
+          currentUser={ this.props.currentUser } />
+        </section>
+    )
+  }
 };
 
 export default UserWelcome;

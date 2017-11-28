@@ -29,8 +29,9 @@ class CommentFeed extends Component {
 
       let comments = values(this.props.comments).sort((a,b) => b.id - a.id)
         .map(comment => {
-          let timeAgo = timeAgoJS.format(new Date(comment.created_at));
+          const timeAgo = timeAgoJS.format(new Date(comment.created_at));
           let deleteButton = "";
+
 
           if (this.props.currentUser &&
             comment.user_id === this.props.currentUser.id) {

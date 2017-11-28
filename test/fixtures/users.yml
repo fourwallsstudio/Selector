@@ -16,6 +16,7 @@
 #  bio                 :text
 #  city                :string
 #  country             :string
+#  avatar_meta         :text
 #
 
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html

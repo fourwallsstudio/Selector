@@ -108,7 +108,6 @@ class PlayerDisplay extends React.Component {
 
     } else {
 
-
       const currentShow = this.props.shows[playerQueue[0].show_id];
       const dropdown = this.state.dropdownIsActive ? " dropdown-active" : "";
       const newImgSize = scaleImg(50, currentShow);

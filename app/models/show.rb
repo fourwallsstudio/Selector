@@ -17,6 +17,7 @@
 #  image_file_size    :integer
 #  image_updated_at   :datetime
 #  image_meta         :text
+#  queue_items_count  :integer
 #
 
 require 'paperclip/media_type_spoof_detector'
@@ -49,9 +50,9 @@ class Show < ActiveRecord::Base
     foreign_key: :author_id,
     primary_key: :id
 
-  has_many :queue_items
-  has_many :comments
-  has_many :favorites
+  has_many :queue_items, dependent: :destroy
+  has_many :comments, dependent: :destroy
+  has_many :favorites, dependent: :destroy
   has_many :taggings, dependent: :destroy, inverse_of: :show
   has_many :tags, through: :taggings, source: :tag
 

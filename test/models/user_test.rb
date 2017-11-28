@@ -16,6 +16,7 @@
 #  bio                 :text
 #  city                :string
 #  country             :string
+#  avatar_meta         :text
 #
 
 require 'test_helper'

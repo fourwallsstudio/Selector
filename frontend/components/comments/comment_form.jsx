@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
+import { scaleImg } from '../../util/img_util';
 
 class CommentForm extends React.Component {
   constructor(props) {
@@ -33,13 +34,16 @@ class CommentForm extends React.Component {
       return <div></div>;
     } else {
       const { show, currentUser } = this.props
+      const newImgSize = scaleImg(60, currentUser);
 
       return (
         <div className="comment-form-container">
 
           <div className="comment-form-img-box">
             <Link to={`/user/${currentUser.id}`}>
-              <img src={ currentUser.avatar_url } />
+              <img
+                src={ currentUser.avatar_url }
+                style={{ width: newImgSize['width'], height: newImgSize['height'] }} />
             </Link>
           </div>
 

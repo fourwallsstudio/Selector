@@ -14,9 +14,8 @@ class HeaderNav extends React.Component {
     this.isActive = this.isActive.bind(this);
   }
 
-  componentWillMount() {
+  componentDidMount() {
     this.props.fetchAllTags()
-    this.props.fetchNonFollowings(this.props.currentUserId)
   }
 
 

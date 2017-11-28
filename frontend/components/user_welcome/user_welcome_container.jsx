@@ -2,6 +2,7 @@ import { connect } from 'react-redux';
 import UserWelcome from './user_welcome';
 import { fetchAllShows } from '../../actions/show_actions';
 import { updateFilter } from '../../actions/filter_actions';
+import { fetchNonFollowings } from '../../actions/user_actions';
 
 const mapStateToProps = state => {
   return {
@@ -16,8 +17,9 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    fetchAllShows: filter => { dispatch(fetchAllShows(filter))},
-    updateFilter: filter => { dispatch(updateFilter(filter))}
+    fetchAllShows: filter => dispatch(fetchAllShows(filter)),
+    updateFilter: filter => dispatch(updateFilter(filter)),
+    fetchNonFollowings: id => dispatch(fetchNonFollowings(id)),
   }
 }
 

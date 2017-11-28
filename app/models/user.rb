@@ -16,6 +16,7 @@
 #  bio                 :text
 #  city                :string
 #  country             :string
+#  avatar_meta         :text
 #
 
 class User < ActiveRecord::Base
@@ -36,19 +37,22 @@ class User < ActiveRecord::Base
   has_many :shows,
     class_name: :Show,
     foreign_key: :author_id,
-    primary_key: :id
+    primary_key: :id,
+    dependent: :destroy
 
   has_many :queue_items
-  has_many :comments
-  has_many :favorites
+  has_many :comments, dependent: :destroy
+  has_many :favorites, dependent: :destroy
 
   has_many :followers_joins,
     class_name: :Following,
-    foreign_key: :following_id
+    foreign_key: :following_id,
+    dependent: :destroy
 
   has_many :followings_joins,
     class_name: :Following,
-    foreign_key: :follower_id
+    foreign_key: :follower_id,
+    dependent: :destroy
 
   has_many :followers, through: :followers_joins
   has_many :followings, through: :followings_joins
