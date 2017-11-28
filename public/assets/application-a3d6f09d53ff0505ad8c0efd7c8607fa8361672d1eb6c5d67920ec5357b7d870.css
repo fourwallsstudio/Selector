@@ -2358,12 +2358,8 @@ input[type="submit"] {
   width: 60px;
   height: 60px;
   border-radius: 5px;
+  overflow: hidden;
   margin-right: 20px;
-}
-
-/* line 605, /Users/calvinmcelroy/Documents/webstuff/app_course/final_project/Selector/app/assets/stylesheets/api/show_profile.scss */
-.comment-form-img-box img {
-  border-radius: 5px;
 }
 
 /* line 609, /Users/calvinmcelroy/Documents/webstuff/app_course/final_project/Selector/app/assets/stylesheets/api/show_profile.scss */
