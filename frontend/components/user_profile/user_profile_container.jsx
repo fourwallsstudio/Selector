@@ -3,6 +3,7 @@ import UserProfile from './user_profile';
 import { selectUser, selectFollowings } from '../../reducers/selecters';
 import { fetchUserFollowings, fetchUser } from '../../actions/user_actions'
 import { createFollowing, deleteFollowing } from '../../actions/following_actions';
+import { fetchAllShows } from '../../actions/show_actions';
 
 const mapStateToProps = (state, ownProps) => {
   const userId = parseInt(ownProps.match.params.userId);
@@ -12,7 +13,7 @@ const mapStateToProps = (state, ownProps) => {
     followings: selectFollowings(state, ownProps),
     users: state.users,
     currentUser: state.users[state.session.currentUser],
-    currentUserId: state.session.currentUser, 
+    currentUserId: state.session.currentUser,
     userId,
   }
 }
@@ -23,6 +24,7 @@ const mapDispatchToProps = dispatch => {
     deleteFollowing: f => dispatch(deleteFollowing(f)),
     fetchUser: id => dispatch(fetchUser(id)),
     fetchUserFollowings: id => dispatch(fetchUserFollowings(id)),
+    fetchAllShows: id => dispatch(fetchAllShows(id)),
   }
 }
 

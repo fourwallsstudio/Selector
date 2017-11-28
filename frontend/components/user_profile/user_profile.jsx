@@ -18,6 +18,12 @@ class UserProfile extends React.Component {
     this.props.fetchUserFollowings(this.props.userId)
   }
 
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.userId !== this.props.userId) {
+      this.props.fetchAllShows(nextProps.userId)
+    }
+  }
+
   handleFollow(e) {
     e.preventDefault();
     if (e.target.value === "follow") {
