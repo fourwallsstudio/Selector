@@ -2,6 +2,8 @@ export const previewPlayer = src => {
 
     const howlPreview = new Howl({
       src: [src],
+      html5: true,
+      preload: true,
       onplay: () => {
         let length = howlPreview._duration
 
