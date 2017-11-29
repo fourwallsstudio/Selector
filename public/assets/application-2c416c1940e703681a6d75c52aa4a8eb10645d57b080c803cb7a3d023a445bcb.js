@@ -62329,6 +62329,8 @@ var previewPlayer = exports.previewPlayer = function previewPlayer(src) {
 
   var howlPreview = new Howl({
     src: [src],
+    html5: true,
+    preload: true,
     onplay: function onplay() {
       var length = howlPreview._duration;
 
